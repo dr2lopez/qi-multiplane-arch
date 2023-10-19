@@ -28,7 +28,7 @@
 #    email: "diego.r.lopez@telefonica.com"
 title: "A Multiplane Architecture Proposal for the Quantum Internet"
 abbrev: "qi-multiplane-arch"
-category: experimental
+category: info
 docname: draft-lopez-qirg-multiplane-arch-latest
 submissiontype: IRTF
 number:
