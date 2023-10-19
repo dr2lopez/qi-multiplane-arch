@@ -1,10 +1,37 @@
+# ---
+# title: " Multiplane Architecture Proposal for the Quantum Internet"
+# abbrev: "qi-multiplane-arch"
+# category: experimental
+# docname: draft-lopez-qirg-qi-multiplane-arch-latest
+# submissiontype: IRTF  # also: "independent", "editorial", "IAB", or "IETF"
+# number:
+# date:
+# consensus: true
+# v: 3
+# area: "IRTF"
+# workgroup: "Quantum Internet Research Group"
+# keyword:
+# - quantum
+# - architecture
+# - QKD
+# - CLAS
+# venue:
+#  group: "Quantum Internet Research Group"
+#  type: "Research Group"
+#  mail: "qirg@irtf.org"
+#  arch: "https://irtf.org/mail-archive/web/qirg/"
+#  github: "dr2lopez/qi-multiplane-arch"
+#  latest: "https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html"
+# author:
+#  - name: Diego Lopez
+#    organization: Telefonica
+#    email: "diego.r.lopez@telefonica.com"
 ---
-title: " Multiplane Architecture Proposal for the Quantum Internet"
+title: "A Multiplane Architecture Proposal for the Quantum Internet"
 abbrev: "qi-multiplane-arch"
-category: info
-
-docname: draft-lopez-qirg-qi-multiplane-arch-latest
-submissiontype: IRTF  # also: "independent", "editorial", "IAB", or "IETF"
+category: experimental
+docname: draft-lopez-qirg-multiplane-arch-latest
+submissiontype: IRTF
 number:
 date:
 consensus: true
@@ -20,17 +47,22 @@ venue:
   group: "Quantum Internet Research Group"
   type: "Research Group"
   mail: "qirg@irtf.org"
-  arch: "https://irtf.org/mail-archive/web/qirg/"
+  arch: "https://mailarchive.ietf.org/arch/browse/qirg/"
   github: "dr2lopez/qi-multiplane-arch"
   latest: "https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html"
-
 author:
-  - name: Diego Lopez
-    organization: Telefonica
-    email: "diego.r.lopez@telefonica.com"
-  - name: Vicente Martin
-    organization: UPM
-    email: "vicente.martin@upm.es"
+ - name: Diego Lopez
+   organization: Telefonica
+   email: "diego.r.lopez@telefonica.com"
+ - name: Vicente Martin
+   organization: UPM
+   email: "vicente.martin@upm.es"
+ - name: Blanca Lopez
+   organization: IMDEA Networks
+   email: "blanca.lopez@imdea.org"
+ - name: Luis M. Contreras
+   organization: Telefonica
+   email: "luismiguel.contrerasmurillo@telefonica.com"
 
 normative:
 
