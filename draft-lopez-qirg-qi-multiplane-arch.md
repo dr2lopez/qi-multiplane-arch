@@ -9,19 +9,19 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: "IRTF"
+workgroup: "Quantum Internet Research Group"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Quantum Internet Research Group"
+  type: "Research Group"
+  mail: "qirg@irtf.org"
+  arch: "https://irtf.org/mail-archive/web/qirg/"
+  github: "dr2lopez/qi-multiplane-arch"
+  latest: "https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html"
 
 author:
  -
