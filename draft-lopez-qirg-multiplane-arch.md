@@ -21,8 +21,7 @@ venue:
   mail: "qirg@irtf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/qirg/"
   github: "dr2lopez/qi-multiplane-arch"
-  latest: REV "https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html"
-
+  latest: "https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html"
 author:
  -
   fullname: Diego Lopez
@@ -40,4 +39,3 @@ author:
   fullname: Luis M. Contreras
   organization: Telefonica
   email: "luismiguel.contrerasmurillo@telefonica.com"
-
