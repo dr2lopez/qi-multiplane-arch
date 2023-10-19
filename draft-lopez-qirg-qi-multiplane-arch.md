@@ -2,7 +2,7 @@
 title: "A Multiplane Architecture Proposal for the Quantum Internet"
 abbrev: "qi-multiplane-arch"
 category: info
-docname: draft-lopez-qirg-multiplane-arch-latest
+docname: draft-lopez-qirg-qi-multiplane-arch-latest
 submissiontype: IRTF
 number:
 date:
@@ -77,7 +77,7 @@ informative:
   title: "ETSI GS QKD 015: Quantum Key Distribution (QKD); Control Interface for Software Defined Networks"
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/015/02.01.01_60/gs_QKD015v020101p.pdf
  ETSI18:
-  title: "ETSI GS QKD 018: QQuantum Key Distribution (QKD); Orchestration Interface for Software Defined Networks"
+  title: "ETSI GS QKD 018: Quantum Key Distribution (QKD); Orchestration Interface for Software Defined Networks"
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/018/01.01.01_60/gs_QKD018v010101p.pdf
  NFV06:
   title: "ETSI GS NFV 006: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification"
