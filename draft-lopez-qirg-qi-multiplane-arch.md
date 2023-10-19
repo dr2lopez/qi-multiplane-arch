@@ -40,47 +40,47 @@ normative:
  RFC8597:
 informative:
  QTTI21:
-  title: Quantum Technologies in the Telecommunications Industry
+  title: "Quantum Technologies in the Telecommunications Industry"
   author:
   - name: V. Martin et al.
   target: https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00108-9
  RFC9340:
  QUCS: I-D.irtf-qirg-quantum-internet-use-cases
  QIPS22:
-  title: Quantum Internet Protocol Stack: a Comprehensive Survey
+  title: "Quantum Internet Protocol Stack: a Comprehensive Survey"
   author:
   - name: J. Illiano et al.
   target: https://www.sciencedirect.com/science/article/abs/pii/S1389128622002250
  Y3802:
-  title: ITU-T Recommendation Y.3802: Quantum key distribution networks. Functional architecture
+  title: "ITU-T Recommendation Y.3802: Quantum key distribution networks. Functional architecture"
   target: https://www.itu.int/rec/T-REC-Y.3802
  MADQCI23:
-  title: The Madrid Testbed: QKD SDN Control and Key Management in a Production Network
+  title: "The Madrid Testbed: QKD SDN Control and Key Management in a Production Network"
   author:
   - name: V. Martin et al.
   target: https://ieeexplore.ieee.org/document/10207295
  EUROQCI:
-  title: The European Quantum Communication Infrastructure (EuroQCI) Initiative
+  title: "The European Quantum Communication Infrastructure (EuroQCI) Initiative"
   target: https://digital-strategy.ec.europa.eu/en/policies/european-quantum-communication-infrastructure-euroqci
  PSQN22:
-  title: Packet switching in quantum networks: A path to the quantum Internet
+  title: "Packet switching in quantum networks: A path to the quantum Internet"
   author:
   - name: S. DiAdamo et al.
   target: https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.4.043064
  ETSI04:
-  title: ETSI GS QKD 004: Quantum Key Distribution (QKD); Application Interface
+  title: "ETSI GS QKD 004: Quantum Key Distribution (QKD); Application Interface"
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/004/02.01.01_60/gs_QKD004v020101p.pdf
  ETSI14:
-  title: ETSI GS QKD 014: Quantum Key Distribution (QKD); Protocol and data format of REST-based key delivery API
+  title: "ETSI GS QKD 014: Quantum Key Distribution (QKD); Protocol and data format of REST-based key delivery API"
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/014/01.01.01_60/gs_qkd014v010101p.pdf
  ETSI15:
-  title: ETSI GS QKD 015: Quantum Key Distribution (QKD); Control Interface for Software Defined Networks
+  title: "ETSI GS QKD 015: Quantum Key Distribution (QKD); Control Interface for Software Defined Networks"
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/015/02.01.01_60/gs_QKD015v020101p.pdf
  ETSI18:
-  title: ETSI GS QKD 018: QQuantum Key Distribution (QKD); Orchestration Interface for Software Defined Networks
+  title: "ETSI GS QKD 018: QQuantum Key Distribution (QKD); Orchestration Interface for Software Defined Networks"
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/018/01.01.01_60/gs_QKD018v010101p.pdf
  NFV06:
-  title: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification
+  title: "ETSI GS NFV 006: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification"
   target: https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf
  CLASEVO: I-D.contreras-coinrg-clas-evolution
 
