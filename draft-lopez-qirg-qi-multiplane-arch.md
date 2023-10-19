@@ -1,4 +1,4 @@
-# ---
+---
 # title: " Multiplane Architecture Proposal for the Quantum Internet"
 # abbrev: "qi-multiplane-arch"
 # category: experimental
@@ -26,7 +26,6 @@
 #  - name: Diego Lopez
 #    organization: Telefonica
 #    email: "diego.r.lopez@telefonica.com"
----
 title: "A Multiplane Architecture Proposal for the Quantum Internet"
 abbrev: "qi-multiplane-arch"
 category: experimental
