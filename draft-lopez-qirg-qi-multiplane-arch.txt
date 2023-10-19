@@ -4,8 +4,9 @@
 
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
-Intended status: Informational                           19 October 2023
-Expires: 21 April 2024
+Intended status: Informational                                 V. Martin
+Expires: 21 April 2024                                               UPM
+                                                         19 October 2023
 
 
        Multiplane Architecture Proposal for the Quantum Internet
@@ -69,7 +70,7 @@ Table of Contents
    4.  IANA Considerations
    5.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -106,8 +107,13 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Diego Lopez
    Telefonica
    Email: diego.r.lopez@telefonica.com
+
+
+   Vicente Martin
+   UPM
+   Email: vicente.martin@upm.es
