@@ -516,53 +516,62 @@ Table of Contents
               coinrg-clas-evolution-01>.
 
    [ETSI04]   "ETSI GS QKD 004: Quantum Key Distribution (QKD);
-              Application Interface", n.d.,
+              Application Interface", August 2020,
               <https://www.etsi.org/deliver/etsi_gs/
               QKD/001_099/004/02.01.01_60/gs_QKD004v020101p.pdf>.
 
    [ETSI14]   "ETSI GS QKD 014: Quantum Key Distribution (QKD); Protocol
-              and data format of REST-based key delivery API", n.d.,
-              <https://www.etsi.org/deliver/etsi_gs/
+              and data format of REST-based key delivery API", February
+              2019, <https://www.etsi.org/deliver/etsi_gs/
               QKD/001_099/014/01.01.01_60/gs_qkd014v010101p.pdf>.
 
    [ETSI15]   "ETSI GS QKD 015: Quantum Key Distribution (QKD); Control
-              Interface for Software Defined Networks", n.d.,
+              Interface for Software Defined Networks", April 2022,
               <https://www.etsi.org/deliver/etsi_gs/
               QKD/001_099/015/02.01.01_60/gs_QKD015v020101p.pdf>.
 
    [ETSI18]   "ETSI GS QKD 018: Quantum Key Distribution (QKD);
               Orchestration Interface for Software Defined Networks",
-              n.d., <https://www.etsi.org/deliver/etsi_gs/
+              April 2022, <https://www.etsi.org/deliver/etsi_gs/
               QKD/001_099/018/01.01.01_60/gs_QKD018v010101p.pdf>.
 
    [EUROQCI]  "The European Quantum Communication Infrastructure
-              (EuroQCI) Initiative", n.d., <https://digital-
+              (EuroQCI) Initiative", September 2023, <https://digital-
               strategy.ec.europa.eu/en/policies/european-quantum-
               communication-infrastructure-euroqci>.
 
-   [MADQCI23] al., V. M. et., "The Madrid Testbed: QKD SDN Control and
-              Key Management in a Production Network", n.d.,
-              <https://ieeexplore.ieee.org/document/10207295>.
+   [MADQCI23] Martin, V., Brito, J. P., Ortíz, L., Brito-Méndez, R.,
+              Vicente, R., Saez-Buruaga, J., Sebastian, A. J., Aguado,
+              D. G., García-Cid, M. I., Setien, J., Salas, P.,
+              Escribano, C., Dopazo, E., Rivas-Moscoso, J., Pastor-
+              Perales, A., and D. Lopez, "The Madrid Testbed: QKD SDN
+              Control and Key Management in a Production Network", July
+              2023, <https://ieeexplore.ieee.org/document/10207295>.
 
    [NFV06]    "ETSI GS NFV 006: Network Functions Virtualisation (NFV)
               Release 4; Management and Orchestration; Architectural
-              Framework Specification", n.d.,
+              Framework Specification", December 2022,
               <https://www.etsi.org/deliver/etsi_gs/
               NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf>.
 
-   [PSQN22]   al., S. D. et., "Packet switching in quantum networks: A
-              path to the quantum Internet", n.d.,
+   [PSQN22]   DiAdamo, S., Qi, B., Miller, G., Kompella, R., and A.
+              Shabani, "Packet switching in quantum networks: A path to
+              the quantum Internet", October 2022,
               <https://journals.aps.org/prresearch/abstract/10.1103/
               PhysRevResearch.4.043064>.
 
-   [QIPS22]   al., J. I. et., "Quantum Internet Protocol Stack: a
-              Comprehensive Survey", n.d.,
+   [QIPS22]   Illiano, J., Caleffia, M., Manzalini, A., and A. S.
+              Cacciapuoti, "Quantum Internet Protocol Stack: a
+              Comprehensive Survey", August 2022,
               <https://www.sciencedirect.com/science/article/abs/pii/
               S1389128622002250>.
 
-   [QTTI21]   al., V. M. et., "Quantum Technologies in the
-              Telecommunications Industry", n.d.,
-              <https://epjquantumtechnology.springeropen.com/
+   [QTTI21]   Martin, V., Brito, J. P., Escribano, C., Menchetti, M.,
+              White, C., Lord, A., Wissel, F., Gunkel, M., Gavignet, P.,
+              Genay, N., Moult, O. L., Abellan, C., Manzalini, A.,
+              Pastor-Perales, A., Lopez, V., and D. Lopez, "Quantum
+              Technologies in the Telecommunications Industry", July
+              2021, <https://epjquantumtechnology.springeropen.com/
               articles/10.1140/epjqt/s40507-021-00108-9>.
 
    [QUCS]     Wang, C., Rahman, A., Li, R., Aelmans, M., and K.
@@ -579,7 +588,7 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc9340>.
 
    [Y3802]    "ITU-T Recommendation Y.3802: Quantum key distribution
-              networks. Functional architecture", n.d.,
+              networks. Functional architecture", April 2021,
               <https://www.itu.int/rec/T-REC-Y.3802>.
 
 Acknowledgments
