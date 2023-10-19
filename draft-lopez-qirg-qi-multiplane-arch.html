@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>Multiplane Architecture Proposal for the Quantum Internet</title>
+<title>A Multiplane Architecture Proposal for the Quantum Internet</title>
 <meta content="Diego Lopez" name="author">
 <meta content="Vicente Martin" name="author">
+<meta content="Blanca Lopez" name="author">
+<meta content="Luis M. Contreras" name="author">
 <meta content="
        TODO Abstract 
     " name="description">
@@ -15,7 +17,7 @@
 <meta content="architecture" name="keyword">
 <meta content="QKD" name="keyword">
 <meta content="CLAS" name="keyword">
-<meta content="draft-lopez-qirg-qi-multiplane-arch-latest" name="ietf.draft">
+<meta content="draft-lopez-qirg-multiplane-arch-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.18.2
     Python 3.11.6
@@ -1032,7 +1034,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <td class="right">October 2023</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Lopez &amp; Martin</td>
+<td class="left">Lopez, et al.</td>
 <td class="center">Expires 21 April 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1043,7 +1045,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">Quantum Internet Research Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-lopez-qirg-qi-multiplane-arch-latest</dd>
+<dd class="internet-draft">draft-lopez-qirg-multiplane-arch-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
 <time datetime="2023-10-19" class="published">19 October 2023</time>
@@ -1062,10 +1064,18 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <div class="author-name">V. Martin</div>
 <div class="org">UPM</div>
 </div>
+<div class="author">
+      <div class="author-name">B. Lopez</div>
+<div class="org">IMDEA Networks</div>
+</div>
+<div class="author">
+      <div class="author-name">L. M. Contreras</div>
+<div class="org">Telefonica</div>
+</div>
 </dd>
 </dl>
 </div>
-<h1 id="title">Multiplane Architecture Proposal for the Quantum Internet</h1>
+<h1 id="title">A Multiplane Architecture Proposal for the Quantum Internet</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
@@ -1077,11 +1087,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
         The latest revision of this draft can be found at <span><a href="https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html">https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-lopez-qirg-qi-multiplane-arch/">https://datatracker.ietf.org/doc/draft-lopez-qirg-qi-multiplane-arch/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-lopez-qirg-multiplane-arch/">https://datatracker.ietf.org/doc/draft-lopez-qirg-multiplane-arch/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
         Quantum Internet Research Group Research Group mailing list (<span><a href="mailto:qirg@irtf.org">mailto:qirg@irtf.org</a></span>),
-        which is archived at <span><a href="https://irtf.org/mail-archive/web/qirg/">https://irtf.org/mail-archive/web/qirg/</a></span>.
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/qirg/">https://mailarchive.ietf.org/arch/browse/qirg/</a></span>.
         Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/qirg/">https://www.ietf.org/mailman/listinfo/qirg/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
         <span><a href="https://github.com/dr2lopez/qi-multiplane-arch">https://github.com/dr2lopez/qi-multiplane-arch</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
@@ -1235,6 +1245,22 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <div class="email">
 <span>Email:</span>
 <a href="mailto:vicente.martin@upm.es" class="email">vicente.martin@upm.es</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Blanca Lopez</span></div>
+<div dir="auto" class="left"><span class="org">IMDEA Networks</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:blanca.lopez@imdea.org" class="email">blanca.lopez@imdea.org</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Luis M. Contreras</span></div>
+<div dir="auto" class="left"><span class="org">Telefonica</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:luismiguel.contrerasmurillo@telefonica.com" class="email">luismiguel.contrerasmurillo@telefonica.com</a>
 </div>
 </address>
 </section>

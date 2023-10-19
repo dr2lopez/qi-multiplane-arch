@@ -6,11 +6,15 @@ Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
 Expires: 21 April 2024                                               UPM
+                                                                B. Lopez
+                                                          IMDEA Networks
+                                                         L. M. Contreras
+                                                              Telefonica
                                                          19 October 2023
 
 
-       Multiplane Architecture Proposal for the Quantum Internet
-               draft-lopez-qirg-qi-multiplane-arch-latest
+      A Multiplane Architecture Proposal for the Quantum Internet
+                draft-lopez-qirg-multiplane-arch-latest
 
 Abstract
 
@@ -23,12 +27,12 @@ About This Document
    The latest revision of this draft can be found at
    https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-
    multiplane-arch.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-lopez-qirg-qi-
+   found at https://datatracker.ietf.org/doc/draft-lopez-qirg-
    multiplane-arch/.
 
    Discussion of this document takes place on the Quantum Internet
    Research Group Research Group mailing list (mailto:qirg@irtf.org),
-   which is archived at https://irtf.org/mail-archive/web/qirg/.
+   which is archived at https://mailarchive.ietf.org/arch/browse/qirg/.
    Subscribe at https://www.ietf.org/mailman/listinfo/qirg/.
 
    Source for this draft and an issue tracker can be found at
@@ -117,3 +121,13 @@ Authors' Addresses
    Vicente Martin
    UPM
    Email: vicente.martin@upm.es
+
+
+   Blanca Lopez
+   IMDEA Networks
+   Email: blanca.lopez@imdea.org
+
+
+   Luis M. Contreras
+   Telefonica
+   Email: luismiguel.contrerasmurillo@telefonica.com
