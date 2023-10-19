@@ -30,14 +30,17 @@ author:
   fullname: Diego Lopez
   organization: Telefonica
   email: "diego.r.lopez@telefonica.com"
+
 -
   fullname: Vicente Martin
   organization: UPM
   email: "vicente.martin@upm.es"
+
 -
   fullname: Blanca Lopez
   organization: IMDEA Networks
   email: "blanca.lopez@imdea.org"
+
 -
   fullname: Luis M. Contreras
   organization: Telefonica
