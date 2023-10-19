@@ -25,26 +25,10 @@ venue:
   latest: "https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html"
 
 author:
-
  -
   fullname: Diego Lopez
   organization: Telefonica
   email: "diego.r.lopez@telefonica.com"
-
--
-  fullname: Vicente Martin
-  organization: UPM
-  email: "vicente.martin@upm.es"
-
--
-  fullname: Blanca Lopez
-  organization: IMDEA Networks
-  email: "blanca.lopez@imdea.org"
-
--
-  fullname: Luis M. Contreras
-  organization: Telefonica
-  email: "luismiguel.contrerasmurillo@telefonica.com"
 
 normative:
 
