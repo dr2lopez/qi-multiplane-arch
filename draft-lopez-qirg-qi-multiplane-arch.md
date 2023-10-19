@@ -42,45 +42,93 @@ informative:
  QTTI21:
   title: "Quantum Technologies in the Telecommunications Industry"
   author:
-  - name: V. Martin et al.
+  - name: Vicente Martin
+  - name: Juan Pedro Brito
+  - name: Carmen Escribano
+  - name: Marco Menchetti
+  - name: Catherine White
+  - name: Andrew Lord
+  - name: Felix Wissel
+  - name: Matthias Gunkel
+  - name: Paulette Gavignet
+  - name: Naveena Genay
+  - name: Olivier Le Moult
+  - name: Carlos Abellan
+  - name: Antonio Manzalini
+  - name: Antonio Pastor-Perales
+  - name: Victor Lopez
+  - name: Diego Lopez
+  date: July 2021
   target: https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00108-9
  RFC9340:
  QUCS: I-D.irtf-qirg-quantum-internet-use-cases
  QIPS22:
   title: "Quantum Internet Protocol Stack: a Comprehensive Survey"
   author:
-  - name: J. Illiano et al.
+  - name: Jessica Illiano
+  - name: Marcello Caleffia
+  - name: Antonio Manzalini
+  - name: Angela Sara Cacciapuoti
+  date: Augut 2022
   target: https://www.sciencedirect.com/science/article/abs/pii/S1389128622002250
  Y3802:
   title: "ITU-T Recommendation Y.3802: Quantum key distribution networks. Functional architecture"
+  date: April 2021
   target: https://www.itu.int/rec/T-REC-Y.3802
  MADQCI23:
   title: "The Madrid Testbed: QKD SDN Control and Key Management in a Production Network"
   author:
-  - name: V. Martin et al.
+  - ins: V. Martin
+  - ins: J.P. Brito
+  - ins: L. Ortíz
+  - ins: R. Brito-Méndez
+  - ins: R. Vicente
+  - ins: J. Saez-Buruaga
+  - ins: A.J. Sebastian
+  - ins: D.G. Aguado
+  - ins: M.I. García-Cid
+  - ins: J. Setien
+  - ins: P. Salas
+  - ins: C. Escribano
+  - ins: E. Dopazo
+  - ins: J. Rivas-Moscoso
+  - ins: A. Pastor-Perales
+  - ins: D. Lopez
+  date: July 2023
   target: https://ieeexplore.ieee.org/document/10207295
  EUROQCI:
   title: "The European Quantum Communication Infrastructure (EuroQCI) Initiative"
+  date: September 2023
   target: https://digital-strategy.ec.europa.eu/en/policies/european-quantum-communication-infrastructure-euroqci
  PSQN22:
   title: "Packet switching in quantum networks: A path to the quantum Internet"
   author:
-  - name: S. DiAdamo et al.
+  - name: Stephen DiAdamo
+  - name: Bing Qi
+  - name: Glen Miller
+  - name: Ramana Kompella
+  - name: Alireza Shabani
+  date: October 2022
   target: https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.4.043064
  ETSI04:
   title: "ETSI GS QKD 004: Quantum Key Distribution (QKD); Application Interface"
+  date: August 2020
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/004/02.01.01_60/gs_QKD004v020101p.pdf
  ETSI14:
   title: "ETSI GS QKD 014: Quantum Key Distribution (QKD); Protocol and data format of REST-based key delivery API"
+  date: February 2019
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/014/01.01.01_60/gs_qkd014v010101p.pdf
  ETSI15:
   title: "ETSI GS QKD 015: Quantum Key Distribution (QKD); Control Interface for Software Defined Networks"
+  date: April 2022
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/015/02.01.01_60/gs_QKD015v020101p.pdf
  ETSI18:
   title: "ETSI GS QKD 018: Quantum Key Distribution (QKD); Orchestration Interface for Software Defined Networks"
+  date: April 2022
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/018/01.01.01_60/gs_QKD018v010101p.pdf
  NFV06:
   title: "ETSI GS NFV 006: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification"
+  date: December 2022
   target: https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf
  CLASEVO: I-D.contreras-coinrg-clas-evolution
 
