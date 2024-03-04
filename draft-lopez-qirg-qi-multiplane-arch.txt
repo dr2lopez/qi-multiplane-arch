@@ -91,7 +91,8 @@ Table of Contents
      3.3.  CLAS and Quantum Networks
    4.  A Framework Architecture for the Quantum Internet
      4.1.  Strata for Quantum Networks
-     4.2.  Identification of interfaces and protocols
+     4.2.  Identification of Interfaces and Protocols
+       4.2.1.  The Role of Synthetic Environments
    5.  Security Considerations
    6.  References
      6.1.  Normative References
@@ -506,7 +507,7 @@ Table of Contents
 
    The proposed architecture will address the evolution of network base
    technologies by providing abstractions able to accommodate to this
-   evolution.  Considering the stages analyzed in [QIROAD], the QKD
+   evolution.  Considering the stages analyzed in [QIROAD18], the QKD
    deployment patterns described in the previous section already cover
    "Trusted Repeater Networks" and "Prepare and Measure Networks", and
    the general architecture proposed here is able to accommodate the
@@ -545,7 +546,7 @@ Table of Contents
    stratum focused on this aspects makes the proposed architecture
    better aligned with the sustainability goal.
 
-4.2.  Identification of interfaces and protocols
+4.2.  Identification of Interfaces and Protocols
 
    This section, TBP once there is agreement on the architecture
    framework, will include a discussion on the applicable and foreseen
@@ -554,11 +555,35 @@ Table of Contents
    applicable) interactions, as well as the capability exposure
    mechanisms to support the aggregation mechanisms mentioned above.
 
+4.2.1.  The Role of Synthetic Environments
+
+   Due to the early stage of many, if not all, quantum technologies,
+   experimenting with quantum devices and equipment can be seriously
+   hindered by high costs and limited availabilty.  This is especially
+   true for experimentation at the scale requires to validate network
+   protocolos and inter- and intra-strata interfaces.  The use of
+   synthetic testbeds where it is feasible to emulate the deployment of
+   quantum networks, thus enabling the execution of experiments and
+   trials, where even potential network attacks can be analyzed without
+   compromising the integrity of an already built quantum network or a
+   signinficant number of physical devices.  Based on the results
+   introduced in [QKNDT24] for QKD networks, a characterization of such
+   Quantum Network Digital Twin (QNDT) will support a better
+   understanding of the properties of the different interfaces and
+   protocols, and the applicability of the architecture proposed in this
+   document.
+
+   A more detailed description of the features of a generalized QNDT,
+   based on [QKNDT24] findings and the principles of the architecture
+   described in this document is being produced, and will be integrated
+   in a future version.
+
 5.  Security Considerations
 
-   This sections is TBP, as the identification of interfaces and
-   protocols progresses.  The general considerations made in [RFC8597]
-   apply, as well as an elaboration on the following points regarding:
+   This section is TBP in detail, as the identification of interfaces
+   and protocols progresses.  The general considerations made in
+   [RFC8597] apply, as well as an elaboration on the following points
+   regarding:
 
    *  The requirements on mutual authentication in the channels used for
       quantum interactions, as they should require methods rooted at
@@ -651,9 +676,14 @@ Table of Contents
               <https://www.sciencedirect.com/science/article/abs/pii/
               S1389128622002250>.
 
-   [QIROAD]   Wehner, S., Elkouss, D., and R. Hanson, "Quantum internet:
+   [QIROAD18] Wehner, S., Elkouss, D., and R. Hanson, "Quantum internet:
               A vision for the road ahead", October 2018,
               <https://doi.org/10.1126/science.aam9288>.
+
+   [QKNDT24]  Martin, R., Lopez, B., Vidal, I., Valera, F., and B.
+              Nogales, "Service for Deploying Digital Twins of QKD
+              Networks", January 2024,
+              <https://doi.org/10.3390/app14031018>.
 
    [QTTI21]   Martin, V., Brito, J. P., Escribano, C., Menchetti, M.,
               White, C., Lord, A., Wissel, F., Gunkel, M., Gavignet, P.,
