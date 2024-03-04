@@ -131,7 +131,7 @@ informative:
   date: December 2022
   target: https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf
  CLASEVO: I-D.contreras-coinrg-clas-evolution
- QIROAD: 
+ QIROAD:
   title: "Quantum internet: A vision for the road ahead"
   author:
   - name: Stephanie Wehner
