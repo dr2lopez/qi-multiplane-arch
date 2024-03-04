@@ -337,7 +337,7 @@ Table of Contents
    services they provide and the required interactions in the use of
    classical infrastructure to support the required connectivity
    patterns.  The original CLAS archiecture, as defined by [RFC8597],
-   addresses SDN evolution considering the forwarding (trannsport) and
+   addresses SDN evolution considering the forwarding (transport) and
    service aspects in two separated but coordinated planes.  This
    approach matches the multi-plane approach described for QKD
    infeastructures, though it seems somehow limited to address the
@@ -560,18 +560,18 @@ Table of Contents
    Due to the early stage of many, if not all, quantum technologies,
    experimenting with quantum devices and equipment can be seriously
    hindered by high costs and limited availabilty.  This is especially
-   true for experimentation at the scale requires to validate network
-   protocolos and inter- and intra-strata interfaces.  The use of
-   synthetic testbeds where it is feasible to emulate the deployment of
-   quantum networks, thus enabling the execution of experiments and
-   trials, where even potential network attacks can be analyzed without
-   compromising the integrity of an already built quantum network or a
-   signinficant number of physical devices.  Based on the results
-   introduced in [QKNDT24] for QKD networks, a characterization of such
-   Quantum Network Digital Twin (QNDT) will support a better
-   understanding of the properties of the different interfaces and
-   protocols, and the applicability of the architecture proposed in this
-   document.
+   true for experimentation at the scale required to validate network
+   protocolos and inter- and intra-strata interfaces.  In this context,
+   it becomes appropriate the use of synthetic testbeds where it is
+   feasible to emulate the deployment of quantum networks, thus enabling
+   the execution of experiments and trials, where even potential network
+   attacks can be analyzed without compromising the integrity of an
+   already built quantum network or a signinficant number of physical
+   devices.  Based on the results introduced in [QKNDT24] for QKD
+   networks, a characterization of such Quantum Network Digital Twin
+   (QNDT) will support a better understanding of the properties of the
+   different interfaces and protocols, and the applicability of the
+   architecture proposed in this document.
 
    A more detailed description of the features of a generalized QNDT,
    based on [QKNDT24] findings and the principles of the architecture
