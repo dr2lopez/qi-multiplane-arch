@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 21 April 2024                                               UPM
+Expires: 5 September 2024                                            UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                         19 October 2023
+                                                            4 March 2024
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -27,10 +27,13 @@ Abstract
    sustainability, with open availability in technological and
    economical terms, and pliability, being able to integrate with the
    operations and management procedures in current networks.  This
-   document proposes such an architecture framework, based on the
-   already extensive experience in the deployment of QKD network
-   infrastructures and related initiatives on the integration of network
-   infrastructures and services.
+   document proposes such an architecture framework, with the goal of
+   providing a conceptual common framework for the integration of
+   technologies intended to build the Quantum Internet infrastructure
+   and its integration with the current Internet.  The framework is
+   based on the already extensive experience in the deployment of QKD
+   network infrastructures and on related initiatives focused on the
+   integration of network infrastructures and services.
 
 About This Document
 
@@ -65,11 +68,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 April 2024.
+   This Internet-Draft will expire on 5 September 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -82,10 +85,12 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  A QKD Multi-Plane Architecture
-     3.1.  Interfacing with Classical Networks
-   4.  Introducing CLAS for Quantum Networks
-     4.1.  CLAS Strata for Quantum Networks
+   3.  Base Technologies: QKD Experience and Evolved SDN Concepts
+     3.1.  A QKD Multi-Plane Architecture
+     3.2.  Interfacing with Classical Networks
+     3.3.  CLAS and Quantum Networks
+   4.  A Framework Architecture for the Quantum Internet
+     4.1.  Strata for Quantum Networks
      4.2.  Identification of interfaces and protocols
    5.  Security Considerations
    6.  References
@@ -179,7 +184,7 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  A QKD Multi-Plane Architecture
+3.  Base Technologies: QKD Experience and Evolved SDN Concepts
 
    The design and deployment of QKD infrastructures has followed a
    number of design principles, based on the best practices in network
@@ -189,50 +194,66 @@ Table of Contents
    disaggregation strategies, and the identification of separate data
    and control planes, connected by means of open interfaces.
 
-   Applying these principles, QKD infrastructures are essentially
-   structured around three different planes [QTTI21].  While we are not
-   talking about a rigid, layered structure, where a given layer can
-   only provide services to the immediate upper layer and consume
-   services from the immediate lower layer, it is worth noting that
-   interactions among elements in the different planes must use well-
-   defined interfaces [ETSI04] [ETSI14] [ETSI15] [ETSI18], and this
-   interactions may incorporate a layered approach.
+   In what relates to the evolution of SDN concepts, the Cooperating
+   Layered Architecture for Software-Defined Networking (CLAS) [RFC8597]
+   described a SDN architecture structured in two different strata,
+   namely Service Stratum and Transport Stratum.  On one hand, the
+   Service Stratum contains the functions related to the provision of
+   services and the capabilities offered to external applications.  On
+   the other hand, the Transport Stratum comprises the functions focused
+   on the transfer of data between the communication endpoints, e.g.,
+   between end-user devices, between two service gateways, etc.
 
-   The Quantum Forwarding Plane (QFP) is in charge of performing the
-   operations (quantum and classical) to ensure the forwarding of the
-   quantum signals or enable the utilization of persistent quantum
-   resources, like persistent, distributed entanglement.  In QKD, the
-   QFP encapsulates all the functionality required to obtain an end-to-
-   end secret key across the network.  This implies the transmission of
-   the quantum signals and the execution of any associated protocols.
-   Note this would require the use of classical procedures, either via a
-   separated physical "classical channel" [QTTI21] or the reuse of a
-   common channel, as proposed in "packet-oriented" approaches [PSQN22].
-   In this sense, the forwarding of the keys at intermediate nodes in
-   the multi-hop chains used to overcome current limitations in
-   propagation of quantum signals or states, has to be considered part
-   of the QFP, since it is done exclusively on behalf of the QKD
-   functionality.
+3.1.  A QKD Multi-Plane Architecture
 
-   The Service Overlay Plane (SOP) supports the use of the keys derived
-   from the QFP by applications.  This includes the storage,
-   identification, delivery, and lifecycle management of the units of
-   consumption (keys of different length, delivered according to
-   specific patterns) at the endpoints of the network.  All network
-   functionalities at this plane can be considered conventional, with a
-   clear mapping to and overlay data plane in classical network, though
-   the SOP elements should be aware of the nature and specific needs of
-   the QFP they interact with.
+   Applying the SDN and disaggregation principles, QKD infrastructures
+   have been essentially structured around three different planes
+   [QTTI21].  While we are not talking about a rigid, layered structure,
+   where a given layer can only provide services to the immediate upper
+   layer and consume services from the immediate lower layer, it is
+   worth noting that interactions among elements in the different planes
+   must use well-defined interfaces [ETSI04] [ETSI14] [ETSI15] [ETSI18],
+   and these interactions may incorporate a layered approach.
 
-   The Control and Management Plane (CMP) is made of the elements that
-   create and supervise the state of the network.  This decoupling
-   between network configuration and (general) data forwarding is
-   supported by the controller, a mediation logically centralized
-   element between the control capabilities supported by the elements in
-   the QFP and SOP and the management and control functions.  These
-   management and control applications rely on the controller, taking
-   advantage of the centralization it provides, to guarantee the best
-   performance of the network and avoid diverging local control
+   In this approach, the Quantum Forwarding Plane (QFP) is in charge of
+   performing the operations (quantum and classical) to ensure the
+   forwarding of the quantum signals or enable the utilization of
+   persistent quantum resources, like persistent, distributed
+   entanglement.  In QKD, the QFP encapsulates all the functionality
+   required to obtain an end-to-end secret key across the network.  This
+   implies the transmission of the quantum signals and the execution of
+   any associated protocols.  Note this would require the use of
+   classical procedures, either via a separated physical "classical
+   channel" [QTTI21] or the reuse of a common channel, as proposed in
+   "packet-oriented" approaches [PSQN22].  In this sense, the forwarding
+   of the keys at intermediate nodes in the multi-hop chains used to
+   overcome current limitations in propagation of quantum signals or
+   states, has to be considered part of the QFP, since it is done
+   exclusively on behalf of the QKD functionality.
+
+   On its side, the Service Overlay Plane (SOP) supports the use of the
+   keys derived from the QFP by applications.  This includes the
+   storage, identification, delivery, and lifecycle management of the
+   units of consumption (keys of different length, delivered according
+   to specific patterns) at the endpoints of the network.  All network
+   functionalities at this plane can be considered application-oriented,
+   with a clear mapping to an overlay data plane in a classical network,
+   though the SOP elements should be aware of the nature and specific
+   needs of the QFP they interact with.  Key management mechanisms,
+   beyond key forwarding by intermediate nodes, fit within the SOP.
+   This comprises methods such as hybridization and augmentation
+   techniques, or the means for synchronizing key identifiers across API
+   boundaries.
+
+   Finally, the Control and Management Plane (CMP) is made of the
+   elements that create and supervise the state of the network.  This
+   decoupling between network configuration and (general) data
+   forwarding is supported by the controller, a mediation logically
+   centralized element between the control capabilities supported by the
+   elements in the QFP and SOP and the management and control functions.
+   These management and control applications rely on the controller,
+   taking advantage of the centralization it provides, to guarantee the
+   best performance of the network and avoid diverging local control
    decisions that might lead to sub-optimal configurations.
 
    It is worth noting this management centralization does not contradict
@@ -253,7 +274,7 @@ Table of Contents
    general approach to quantum communications networks, regardless of
    their final purpose.
 
-3.1.  Interfacing with Classical Networks
+3.2.  Interfacing with Classical Networks
 
    The interface of QKD infrastructures with classical networks
    (commonly identified as OTN, Optical Transport Networks) has been
@@ -308,25 +329,29 @@ Table of Contents
    minimize interferences of any nature and guarantee OTN connectivity
    for the quantum algorithms.
 
-4.  Introducing CLAS for Quantum Networks
+3.3.  CLAS and Quantum Networks
 
-   The Cooperating Layered Architecture for Software-Defined Networking
-   (CLAS) [RFC8597] describes a SDN architecture structured in two
-   different strata, namely Service Stratum and Transport Stratum.  On
-   one hand, the Service Stratum contains the functions related to the
-   provision of services and the capabilities offered to external
-   applications.  On the other hand, the Transport Stratum comprises the
-   functions focused on the transfer of data between the communication
-   endpoints (e.g., between end-user devices, between two service
-   gateways, etc.).
+   As discussed above, SDN principles have enabled the base abstractions
+   for the conceptualization of QKD infrastructures, including the
+   services they provide and the required interactions in the use of
+   classical infrastructure to support the required connectivity
+   patterns.  The original CLAS archiecture, as defined by [RFC8597],
+   addresses SDN evolution considering the forwarding (trannsport) and
+   service aspects in two separated but coordinated planes.  This
+   approach matches the multi-plane approach described for QKD
+   infeastructures, though it seems somehow limited to address the
+   required interactions with physical connectivity, as well as to
+   incorporate general requirements regarding automation to support
+   convergence with operational practices.
 
-   A new extension of the CLAS architecture [CLASEVO] intends to address
-   the current evolution of networks and the services they support
-   introducing new aspects, in particular the considerations of
-   distributed computing capabilities attached to different points in
-   the network, and the introduction of evidence-driven techniques, such
-   as Analytics, Artificial Intelligence (AI) and Machine Learning (ML)
-   to improve operations by means of closed-loop automation.
+   The new extension of the CLAS architecture, as defined in
+   [CLASEVO], intends to address the current evolution of networks and
+   the services they support introducing new aspects, in particular the
+   considerations of distributed computing capabilities attached to
+   different points in the network, and the introduction of evidence-
+   driven techniques, such as Analytics, Artificial Intelligence (AI)
+   and Machine Learning (ML) to improve operations by means of closed-
+   loop automation.
 
    The CLAS framework provides a sound foundation for incorporating the
    experience gained with QKD deployments in a general proposal
@@ -334,38 +359,65 @@ Table of Contents
    with the architectural lessons learned within the QKD fields, and at
    the same time supports additional degrees of freedom regarding the
    integration of control mechanisms, and the interplay with the
-   (shared) infrastructure and its management.  Furthermore, we are
-   talking of a general network architecture trying to incorporate
-   general trends such as cloud nativeness, the integration of zero-
-   touch management, or the considerations about intent.  With this in
-   mind, in what follows a CLAS-based architecture frameworks for
-   quantum communications networks is introduced, including the proposed
-   strata and their main characteristics.
+   (shared) infrastructure and its management.
 
-4.1.  CLAS Strata for Quantum Networks
+4.  A Framework Architecture for the Quantum Internet
 
-   Following the CLAS philosophy, as proposed in its recent update
-   [CLASEVO] of decoupling services, additional function, and base
-   connectivity, the architecture of a quantum network should be
-   composed of:
+   Based on the available experience on the deployment of existing QKD
+   infrastructures and on the evolution of SDN-enabled architectures
+   described in the previous section, this document proposes an
+   architecture framework intended to offer a conceptual common
+   framework for the integration of technologies intended to build the
+   Quantum Internet infrastructure and its integration with the current
+   Internet.
+
+   Once we presented in the previous section the lessons learned from
+   QKD deployments, introducing a general architecture applicable to
+   those deployments, in this section we propose the generalization of
+   such architecture towards a Quantum Internet, augmented by the
+   extended SDN approach proposed by the evolved CLAS in [CLASEVO].  In
+   what follows,we will discuss how this framework architecure would
+   support the required properties: agility, allowing for technology
+   evolution, sustainability, fostering infrastructure reuse, and
+   pliability, supporting operational best practices.
+
+   Furthermore, we propose here a general network architecture trying to
+   incorporate relevant trends such as cloud nativeness, the integration
+   of zero-touch management, or the considerations about intent.  With
+   this in mind, in what follows a CLAS-based architecture frameworks
+   for quantum communications networks is introduced, including the
+   proposed strata and their main characteristics.
+
+4.1.  Strata for Quantum Networks
+
+   The CLAS architecture was initially conceived from the perspective of
+   exploiting the advantages of network programmability in operational
+   networks, complementing and going beyond the traditional layered
+   structured of the original SDN proposal.  Following the CLAS
+   philosophy, as proposed in its recent update [CLASEVO] of decoupling
+   services, additional functionality, and base connectivity, the
+   architecture of a quantum network should be composed of:
 
    *  A Service Stratum, dealing with the functionality related to the
       purpose of the quantum network, and aligned with SOP described for
-      QKD networks above.  At this moment, the most feasible services
-      are the generation of management of keys in QKD, and entanglement
-      distribution in a general quantum network, but others can be
-      considered, as time synchronization, identity assurance or
-      sensing.  The service stratum would consider the relevant service
-      units (keys, shared states, identities, timelines...), deal with
-      their appropriate forwarding and routing, and deliver these
-      service units as requested by the user application functions.
+      QKD networks above.  At this moment, the most general service,
+      beyond QKD key management, is obviously entanglement distribution
+      in a general quantum network.  Others can be considered, as time
+      synchronization, identity assurance or sensing.  The service
+      stratum would consider the relevant service units (keys, shared
+      states, identities, timelines...), deal with their appropriate
+      forwarding and routing, and deliver these service units as
+      requested by the user application functions.
 
    *  A Quantum Forwarding Stratum, in charge of the direct application
       of quantum protocols and algorithms between the two endpoints of a
       quantum link, even when it is a multi-hop one, very much as the
       QFP we described as part of QKD deployments.
 
-   *  Connectivity Stratum, taking care of providing the paths to
+   (TBD: The term "Quantum Forwarding" seems to not gather full
+   consensus.  A proposal for a better term would be welcome!!)
+
+   *  A Connectivity Stratum, taking care of providing the paths to
       support the quantum links used by the quantum forwarding and
       service strata.  Typically, the connectivity stratum would be
       supported by OTN infrastructure, via fiber and/or open-space
@@ -376,6 +428,17 @@ Table of Contents
       "quantum packets" [PSQN22] and the connectivity stratum would have
       to deal, in general terms, with the classical headers of such
       packets.
+
+   This architecture, following the CLAS proposal itself, is built under
+   the assumption that planes within and across strata communicate
+   through well-defined, open interfaces supporting programmability, as
+   a generalization of the common SDN architecture that defines a
+   controller as a mediator between application and network (forwarding)
+   devices.  It includes the archetypal case of a centralized
+   controller, but is not limited to that particular realization.  These
+   broader implications of SDN principles are among the main motivation
+   of the original CLAS proposal in [CLASEVO], and it is the main reason
+   for using it as the base for the framework proposed by ths document.
 
    Based on the images used to illustrate the strata proposed in
    [CLASEVO] and [RFC8597], the relationship among the strata described
@@ -433,32 +496,54 @@ Table of Contents
                           +---------------------------------------+
 
    Essentially, this architecture model incorporates the findings from
-   QKD deployments, and enhancing the current QKD approach by:
+   QKD deployments, and addresses the requirements for providing a
+   general framework for quantum networks towards the Quantum Internet.
+   It is intended to support the evolution of network base technologies,
+   provide the degrees of freedom necessary to encompass different
+   deployment models, and align with relevant trends in network
+   operation, while considering the practical aspects related to
+   classical connectivity.
 
-   *  Providing some additional degrees of freedom through the
-      incorporation of independent resource and control planes at each
-      stratum.  Given the control mechanisms identified as "SDN
-      intelligence" on the diagram above are able to expose open
-      interfaces, the approach for coordinating the different strata via
-      mechanisms like those defined in [ETSI18] is totally feasible, and
-      different aggregation patterns (multi-stratum, multi-domain...)
-      and models (federated, hierarchical...) can be applied.  These
-      aggregation mechanisms are equally applicable in the case of
-      telemetry data and their integration with closed-loop mechanisms
-      for automation, in support of the required quantum network
-      agility.
+   The proposed architecture will address the evolution of network base
+   technologies by providing abstractions able to accommodate to this
+   evolution.  Considering the stages analyzed in [QIROAD], the QKD
+   deployment patterns described in the previous section already cover
+   "Trusted Repeater Networks" and "Prepare and Measure Networks", and
+   the general architecture proposed here is able to accommodate the
+   more evolved stages, namely "Entanglement Distribution Networks",
+   "Quantum Memory Networks", "Few Qubit Fault-Tolerant Networks", and
+   "Quantum Computing Networks".  As immediate examples we can consider
+   the integration of features in the Connectivity Stratum with the
+   other two strata to support entanglement forwarding among different
+   locations, or the incorporation of future quantum repeaters into the
+   Quantum Forwarding Stratum to support more ellaborated behaviors of
+   the Service Stratum.
 
-   *  Incorporating the current trends to network automation, in
-      whatever the flavor including AI and intent expressions,
-      guaranteeing the future pliability of quantum networks, in
-      alignment with the evolution of best practices in general network
-      management.
+   In addition, these network abstractions are intended to provide
+   specific degrees of freedom for network design and deployment,
+   through the incorporation of independent resource and control planes
+   at each stratum.  Given the control mechanisms identified as "SDN
+   intelligence" on the diagram above are able to expose open
+   interfaces, the approach for coordinating the different strata via
+   mechanisms like those defined in [ETSI18] is totally feasible, and
+   different aggregation patterns (multi-stratum, multi-domain...) and
+   models (federated, hierarchical...) can be applied.  These
+   aggregation mechanisms are equally applicable in the case of
+   telemetry data and their integration with closed-loop mechanisms for
+   automation, in support of the required quantum network agility.
 
-   *  Explicitly addressing the issues related to the connectivity of
-      quantum links and its interaction with the other relevant activity
-      for providing quantum network services.  The direct integration of
-      a stratum focused on this aspects makes the proposed architecture
-      better aligned with the sustainability goal.
+   The evolved CLAS proposal in [CLASEVO] explicitly incorporates
+   current trends in network automation, in whatever the flavor
+   including AI and intent expressions.  This architecture guarantees
+   the future pliability of quantum networks, in alignment with the
+   evolution of best practices in general network management.
+
+   Finally, by explicitly addressing the issues related to the
+   connectivity of quantum links, the architecture considers the
+   interactionis with any other relevant oparational aspects required
+   for providing quantum network services.  The direct integration of a
+   stratum focused on this aspects makes the proposed architecture
+   better aligned with the sustainability goal.
 
 4.2.  Identification of interfaces and protocols
 
@@ -511,9 +596,9 @@ Table of Contents
               Bernardos, "An Evolution of Cooperating Layered
               Architecture for SDN (CLAS) for Compute and Data
               Awareness", Work in Progress, Internet-Draft, draft-
-              contreras-coinrg-clas-evolution-01, 10 July 2023,
+              contreras-coinrg-clas-evolution-02, 23 October 2023,
               <https://datatracker.ietf.org/doc/html/draft-contreras-
-              coinrg-clas-evolution-01>.
+              coinrg-clas-evolution-02>.
 
    [ETSI04]   "ETSI GS QKD 004: Quantum Key Distribution (QKD);
               Application Interface", August 2020,
@@ -565,6 +650,10 @@ Table of Contents
               Comprehensive Survey", August 2022,
               <https://www.sciencedirect.com/science/article/abs/pii/
               S1389128622002250>.
+
+   [QIROAD]   Wehner, S., Elkouss, D., and R. Hanson, "Quantum internet:
+              A vision for the road ahead", October 2018,
+              <https://doi.org/10.1126/science.aam9288>.
 
    [QTTI21]   Martin, V., Brito, J. P., Escribano, C., Menchetti, M.,
               White, C., Lord, A., Wissel, F., Gunkel, M., Gavignet, P.,
