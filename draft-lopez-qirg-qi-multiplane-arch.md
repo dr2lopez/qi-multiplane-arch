@@ -131,7 +131,7 @@ informative:
   date: December 2022
   target: https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf
  CLASEVO: I-D.contreras-coinrg-clas-evolution
- QIROAD:
+ QIROAD18:
   title: "Quantum internet: A vision for the road ahead"
   author:
   - name: Stephanie Wehner
@@ -139,6 +139,16 @@ informative:
   - name: Ronald Hanson
   date: October 2018
   target: https://doi.org/10.1126/science.aam9288
+ QKNDT24:
+  title: "Service for Deploying Digital Twins of QKD Networks"
+  author:
+  - name: Raul Martin
+  - name: Blanca Lopez
+  - name: Ivan Vidal
+  - name: Francisco Valera
+  - name: Borja Nogales
+  date: January 2024
+  target: https://doi.org/10.3390/app14031018
 
 
 --- abstract
@@ -305,7 +315,7 @@ Based on the images used to illustrate the strata proposed in {{CLASEVO}} and {{
 
 Essentially, this architecture model incorporates the findings from QKD deployments, and addresses the requirements for providing a general framework for quantum networks towards the Quantum Internet. It is intended to support the evolution of network base technologies, provide the degrees of freedom necessary to encompass different deployment models, and align with relevant trends in network operation, while considering the practical aspects related to classical connectivity.
 
-The proposed architecture will address the evolution of network base technologies by providing abstractions able to accommodate to this evolution. Considering the stages analyzed in {{QIROAD}}, the QKD deployment patterns described in the previous section already cover "Trusted Repeater Networks" and "Prepare and Measure Networks", and the general architecture proposed here is able to accommodate the more evolved stages, namely "Entanglement Distribution Networks", "Quantum Memory Networks", "Few Qubit Fault-Tolerant Networks", and "Quantum Computing Networks". As immediate examples we can consider the integration of features in the Connectivity Stratum with the other two strata to support entanglement forwarding among different locations, or the incorporation of future quantum repeaters into the Quantum Forwarding Stratum to support more ellaborated behaviors of the Service Stratum.
+The proposed architecture will address the evolution of network base technologies by providing abstractions able to accommodate to this evolution. Considering the stages analyzed in {{QIROAD18}}, the QKD deployment patterns described in the previous section already cover "Trusted Repeater Networks" and "Prepare and Measure Networks", and the general architecture proposed here is able to accommodate the more evolved stages, namely "Entanglement Distribution Networks", "Quantum Memory Networks", "Few Qubit Fault-Tolerant Networks", and "Quantum Computing Networks". As immediate examples we can consider the integration of features in the Connectivity Stratum with the other two strata to support entanglement forwarding among different locations, or the incorporation of future quantum repeaters into the Quantum Forwarding Stratum to support more ellaborated behaviors of the Service Stratum.
 
 In addition, these network abstractions are intended to provide specific degrees of freedom for network design and deployment, through the incorporation of independent resource and control planes at each stratum. Given the control mechanisms identified as "SDN intelligence" on the diagram above are able to expose open interfaces, the approach for coordinating the different strata via mechanisms like those defined in {{ETSI18}} is totally feasible, and different aggregation patterns (multi-stratum, multi-domain...) and models (federated, hierarchical...) can be applied. These aggregation mechanisms are equally applicable in the case of telemetry data and their integration with closed-loop mechanisms for automation, in support of the required quantum network agility.
 
@@ -313,13 +323,19 @@ The evolved CLAS proposal in {{CLASEVO}} explicitly incorporates current trends 
 
 Finally, by explicitly addressing the issues related to the connectivity of quantum links, the architecture considers the interactionis with any other relevant oparational aspects required for providing quantum network services. The direct integration of a stratum focused on this aspects makes the proposed architecture better aligned with the sustainability goal.
 
-## Identification of interfaces and protocols
+## Identification of Interfaces and Protocols
 
 This section, TBP once there is agreement on the architecture framework, will include a discussion on the applicable and foreseen protocols and interfaces to be used for intra-stratum (SDN and telemetry, essentially) and inter-stratum (APIs and models applicable) interactions, as well as the capability exposure mechanisms to support the aggregation mechanisms mentioned above.
 
+### The Role of Synthetic Environments
+
+Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availabilty. This is especially true for experimentation at the scale requires to validate network protocolos and inter- and intra-strata interfaces. The use of synthetic testbeds where it is feasible to emulate the deployment of quantum networks, thus enabling the execution of experiments and trials, where even potential network attacks can be analyzed without compromising the integrity of an already built quantum network or a signinficant number of physical devices. Based on the results introduced in {{QKNDT24}} for QKD networks, a characterization of such Quantum Network Digital Twin (QNDT) will support a better understanding of the properties of the different interfaces and protocols, and the applicability of the architecture proposed in this document.
+
+A more detailed description of the features of a generalized QNDT, based on {{QKNDT24}} findings and the principles of the architecture described in this document is being produced, and will be integrated in a future version.
+
 # Security Considerations
 
-This sections is TBP, as the identification of interfaces and protocols progresses. The general considerations made in {{RFC8597}} apply, as well as an elaboration on the following points regarding:
+This section is TBP in detail, as the identification of interfaces and protocols progresses. The general considerations made in {{RFC8597}} apply, as well as an elaboration on the following points regarding:
 
 * The requirements on mutual authentication in the channels used for quantum interactions, as they should require methods rooted at physical properties.
 
