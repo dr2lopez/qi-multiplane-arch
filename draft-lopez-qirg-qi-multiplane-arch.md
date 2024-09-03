@@ -225,6 +225,12 @@ At the control and management level, the distinct nature of network elements and
 
 At the forwarding level, there is a radical difference between the network elements in quantum networks and OTN, and therefore interactions in data forwarding are not feasible, with only two exceptions: the possibility of sharing physical media, and the use of classical channels to support QKD algorithms, as it is the case of distillation channels in protocols like BB84. In this case, a proper control of the path and physical parameters has to be applied to minimize interferences of any nature and guarantee OTN connectivity for the quantum algorithms.
 
+## Applying Network Virtualization Principles
+
+Recent proposals for QKD network management have explored the use of operational models that radically leverage the virtualization of control and key management functionalities. These approaches pave the way for a tighter integration of quantum functionality with functions already established in state of the art classical networks, while adhering to established QKD network standards.
+
+(TBD: Include here the reference and results of a paper on the mentioned approach, and extend the discussion on the general architecture framework with the lessons learned in the preparation of that paper)
+
 ## CLAS and Quantum Networks
 
 As discussed above, SDN principles have enabled the base abstractions for the conceptualization of QKD infrastructures, including the services they provide and the required interactions in the use of classical infrastructure to support the required connectivity patterns. The original CLAS archiecture, as defined by {{RFC8597}}, addresses SDN evolution considering the forwarding (transport) and service aspects in two separated but coordinated planes. This approach matches the multi-plane approach described for QKD infeastructures, though it seems somehow limited to address the required interactions with physical connectivity, as well as to incorporate general requirements regarding automation to support convergence with operational practices.
