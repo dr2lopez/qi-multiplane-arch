@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 5 September 2024                                            UPM
+Expires: 7 March 2025                                                UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                            4 March 2024
+                                                        3 September 2024
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 7 March 2025.
 
 Copyright Notice
 
@@ -88,7 +88,8 @@ Table of Contents
    3.  Base Technologies: QKD Experience and Evolved SDN Concepts
      3.1.  A QKD Multi-Plane Architecture
      3.2.  Interfacing with Classical Networks
-     3.3.  CLAS and Quantum Networks
+     3.3.  Applying Network Virtualization Principles
+     3.4.  CLAS and Quantum Networks
    4.  A Framework Architecture for the Quantum Internet
      4.1.  Strata for Quantum Networks
      4.2.  Identification of Interfaces and Protocols
@@ -330,7 +331,21 @@ Table of Contents
    minimize interferences of any nature and guarantee OTN connectivity
    for the quantum algorithms.
 
-3.3.  CLAS and Quantum Networks
+3.3.  Applying Network Virtualization Principles
+
+   Recent proposals for QKD network management have explored the use of
+   operational models that radically leverage the virtualization of
+   control and key management functionalities.  These approaches pave
+   the way for a tighter integration of quantum functionality with
+   functions already established in state of the art classical networks,
+   while adhering to established QKD network standards.
+
+   (TBD: Include here the reference and results of a paper on the
+   mentioned approach, and extend the discussion on the general
+   architecture framework with the lessons learned in the preparation of
+   that paper)
+
+3.4.  CLAS and Quantum Networks
 
    As discussed above, SDN principles have enabled the base abstractions
    for the conceptualization of QKD infrastructures, including the
@@ -621,9 +636,9 @@ Table of Contents
               Bernardos, "An Evolution of Cooperating Layered
               Architecture for SDN (CLAS) for Compute and Data
               Awareness", Work in Progress, Internet-Draft, draft-
-              contreras-coinrg-clas-evolution-02, 23 October 2023,
+              contreras-coinrg-clas-evolution-03, 5 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-contreras-
-              coinrg-clas-evolution-02>.
+              coinrg-clas-evolution-03>.
 
    [ETSI04]   "ETSI GS QKD 004: Quantum Key Distribution (QKD);
               Application Interface", August 2020,

@@ -12,26 +12,25 @@
 <meta content="
        A consistent reference architecture model for the Quantum Internet is required to progress in its evolution, providing a framework for the integration of the protocols applicable to it, and enabling the advance of the applications based on it. This model has to satisfy three essential requirements: agility, so it is able to adapt to the evolution of quantum communications base technologies, sustainability, with open availability in technological and economical terms, and pliability, being able to integrate with the operations and management procedures in current networks. This document proposes such an architecture framework, with the goal of providing a conceptual common framework for the integration of technologies intended to build the Quantum Internet infrastructure and its integration with the current Internet. The framework is based on the already extensive experience in the deployment of QKD network infrastructures and on related initiatives focused on the integration of network infrastructures and services. 
     " name="description">
-<meta content="xml2rfc 3.20.0" name="generator">
+<meta content="xml2rfc 3.23.0" name="generator">
 <meta content="quantum" name="keyword">
 <meta content="architecture" name="keyword">
 <meta content="QKD" name="keyword">
 <meta content="CLAS" name="keyword">
 <meta content="draft-lopez-qirg-qi-multiplane-arch-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.20.0
-    Python 3.11.8
+  xml2rfc 3.23.0
+    Python 3.12.3
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.2
-    lxml 4.9.3
-    platformdirs 4.2.0
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
     pycountry 22.3.5
     PyYAML 6.0.1
-    requests 2.31.0
-    setuptools 68.2.2
-    six 1.16.0
+    requests 2.32.3
+    setuptools 70.3.0
     wcwidth 0.2.13
 -->
 <link href="draft-lopez-qirg-qi-multiplane-arch.xml" rel="alternate" type="application/rfc+xml">
@@ -1031,11 +1030,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">qi-multiplane-arch</td>
-<td class="right">March 2024</td>
+<td class="right">September 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lopez, et al.</td>
-<td class="center">Expires 5 September 2024</td>
+<td class="center">Expires 7 March 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1048,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-lopez-qirg-qi-multiplane-arch-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-03-04" class="published">4 March 2024</time>
+<time datetime="2024-09-03" class="published">3 September 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-09-05">5 September 2024</time></dd>
+<dd class="expires"><time datetime="2025-03-07">7 March 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1115,7 +1114,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 7 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1157,7 +1156,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-interfacing-with-classical-" class="internal xref">Interfacing with Classical Networks</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-clas-and-quantum-networks" class="internal xref">CLAS and Quantum Networks</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-applying-network-virtualiza" class="internal xref">Applying Network Virtualization Principles</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-clas-and-quantum-networks" class="internal xref">CLAS and Quantum Networks</a></p>
 </li>
             </ul>
 </li>
@@ -1291,14 +1293,23 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3.2-5">At the forwarding level, there is a radical difference between the network elements in quantum networks and OTN, and therefore interactions in data forwarding are not feasible, with only two exceptions: the possibility of sharing physical media, and the use of classical channels to support QKD algorithms, as it is the case of distillation channels in protocols like BB84. In this case, a proper control of the path and physical parameters has to be applied to minimize interferences of any nature and guarantee OTN connectivity for the quantum algorithms.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="clas-and-quantum-networks">
+<div id="applying-network-virtualization-principles">
 <section id="section-3.3">
-        <h3 id="name-clas-and-quantum-networks">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-clas-and-quantum-networks" class="section-name selfRef">CLAS and Quantum Networks</a>
+        <h3 id="name-applying-network-virtualiza">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-applying-network-virtualiza" class="section-name selfRef">Applying Network Virtualization Principles</a>
         </h3>
-<p id="section-3.3-1">As discussed above, SDN principles have enabled the base abstractions for the conceptualization of QKD infrastructures, including the services they provide and the required interactions in the use of classical infrastructure to support the required connectivity patterns. The original CLAS archiecture, as defined by <span>[<a href="#RFC8597" class="cite xref">RFC8597</a>]</span>, addresses SDN evolution considering the forwarding (transport) and service aspects in two separated but coordinated planes. This approach matches the multi-plane approach described for QKD infeastructures, though it seems somehow limited to address the required interactions with physical connectivity, as well as to incorporate general requirements regarding automation to support convergence with operational practices.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.3-2">The new extension of the CLAS architecture, as defined in <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span>, intends to address the current evolution of networks and the services they support introducing new aspects, in particular the considerations of distributed computing capabilities attached to different points in the network, and the introduction of evidence-driven techniques, such as Analytics, Artificial Intelligence (AI) and Machine Learning (ML) to improve operations by means of closed-loop automation.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
-<p id="section-3.3-3">The CLAS framework provides a sound foundation for incorporating the experience gained with QKD deployments in a general proposal applicable to the Quantum Internet, as it is essentially compatible with the architectural lessons learned within the QKD fields, and at the same time supports additional degrees of freedom regarding the integration of control mechanisms, and the interplay with the (shared) infrastructure and its management.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.3-1">Recent proposals for QKD network management have explored the use of operational models that radically leverage the virtualization of control and key management functionalities. These approaches pave the way for a tighter integration of quantum functionality with functions already established in state of the art classical networks, while adhering to established QKD network standards.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">(TBD: Include here the reference and results of a paper on the mentioned approach, and extend the discussion on the general architecture framework with the lessons learned in the preparation of that paper)<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="clas-and-quantum-networks">
+<section id="section-3.4">
+        <h3 id="name-clas-and-quantum-networks">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-clas-and-quantum-networks" class="section-name selfRef">CLAS and Quantum Networks</a>
+        </h3>
+<p id="section-3.4-1">As discussed above, SDN principles have enabled the base abstractions for the conceptualization of QKD infrastructures, including the services they provide and the required interactions in the use of classical infrastructure to support the required connectivity patterns. The original CLAS archiecture, as defined by <span>[<a href="#RFC8597" class="cite xref">RFC8597</a>]</span>, addresses SDN evolution considering the forwarding (transport) and service aspects in two separated but coordinated planes. This approach matches the multi-plane approach described for QKD infeastructures, though it seems somehow limited to address the required interactions with physical connectivity, as well as to incorporate general requirements regarding automation to support convergence with operational practices.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">The new extension of the CLAS architecture, as defined in <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span>, intends to address the current evolution of networks and the services they support introducing new aspects, in particular the considerations of distributed computing capabilities attached to different points in the network, and the introduction of evidence-driven techniques, such as Analytics, Artificial Intelligence (AI) and Machine Learning (ML) to improve operations by means of closed-loop automation.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+<p id="section-3.4-3">The CLAS framework provides a sound foundation for incorporating the experience gained with QKD deployments in a general proposal applicable to the Quantum Internet, as it is essentially compatible with the architectural lessons learned within the QKD fields, and at the same time supports additional degrees of freedom regarding the integration of control mechanisms, and the interplay with the (shared) infrastructure and its management.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1433,6 +1444,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       </ul>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-6">
       <h2 id="name-references">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -1466,7 +1478,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dl class="references">
 <dt id="CLASEVO">[CLASEVO]</dt>
         <dd>
-<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Lopez, D.</span>, and <span class="refAuthor">C. J. Bernardos</span>, <span class="refTitle">"An Evolution of Cooperating Layered Architecture for SDN (CLAS) for Compute and Data Awareness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-contreras-coinrg-clas-evolution-02</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-02">https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Lopez, D.</span>, and <span class="refAuthor">C. J. Bernardos</span>, <span class="refTitle">"An Evolution of Cooperating Layered Architecture for SDN (CLAS) for Compute and Data Awareness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-contreras-coinrg-clas-evolution-03</span>, <time datetime="2024-07-05" class="refDate">5 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-03">https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ETSI04">[ETSI04]</dt>
         <dd>
@@ -1532,6 +1544,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 </section>
 </div>
 </section>
+</div>
 <div id="acknowledgments">
 <section id="appendix-A">
       <h2 id="name-acknowledgments">
