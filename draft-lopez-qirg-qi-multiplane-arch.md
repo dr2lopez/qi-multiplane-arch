@@ -130,6 +130,25 @@ informative:
   title: "ETSI GS NFV 006: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification"
   date: December 2022
   target: https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf
+ EVCKMM:
+  title: "An Enhanced Virtualized Control and Key Management Model for QKD Networks"
+  author:
+  - name: Blanca Lopez
+  - name: Ivan Vidal
+  - name: Francisco Valera
+  - name: Diego Lopez
+  date: January 2025
+  target: https://ieeexplore.ieee.org/document/10870375
+ FIQNSA:
+  title: "Unleashing Flexibility and Interoperability in QKD Networks: The Power of Softwarized Architectures"
+  author:
+  - name: Blanca Lopez
+  - name: Ivan Vidal
+  - name: Francisco Valera
+  - name: Diego Lopez
+  - name: Antonio Pastor
+  date: July 2024
+  target: https://ieeexplore.ieee.org/document/10628345
  CLASEVO: I-D.contreras-coinrg-clas-evolution
  QIROAD18:
   title: "Quantum internet: A vision for the road ahead"
@@ -227,9 +246,15 @@ At the forwarding level, there is a radical difference between the network eleme
 
 ## Applying Network Virtualization Principles
 
-Recent proposals for QKD network management have explored the use of operational models that radically leverage the virtualization of control and key management functionalities. These approaches pave the way for a tighter integration of quantum functionality with functions already established in state of the art classical networks, while adhering to established QKD network standards.
+Recent proposals for QKD network management have explored the use of operational models that radically leverage the virtualization of control and key management functionalities {{EVCKMM}}. These approaches pave the way for a tighter integration of quantum functionality with functions already established in state of the art classical networks, including support for user/function authentication and authorization, and support for user and function mobility, while adhering to established QKD network standards. Integrating these mechanisms enhance security measures and ensure that quantum networks can seamlessly interface with existing and future telecommunications infrastructure.
 
-(TBD: Include here the reference and results of a paper on the mentioned approach, and extend the discussion on the general architecture framework with the lessons learned in the preparation of that paper)
+While SDN ensures higher degrees of flexibility and reconfigurability by allowing network functions to be easily modified and upgraded through software changes, virtualization enables the abstraction of hardware devices by creating virtual instances, which improves scalability, resource efficiency and allows the dynamic allocation of softwarized network functions in different locations. As quantum technology evolves, a virtualized layer for softwarized network functions significantly aids adaptation to these changes, ensuring pliability and responsiveness for seamless updates, and incorporating new mechanisms without extensive hardware modifications.
+
+As for key exchange, current technology does not allow direct end-to-end quantum key exchange between distant nodes. Instead, key distribution must rely on trusted intermediary nodes to transmit keys hop-by-hop. A key management layer where the actions of all nodes are coordinated is needed to ensure secure and efficient key distribution. Virtualizing and decoupling key management from the physical QKD devices enhances flexibility and scalability, and supports the integration of hybrid cryptographic strategies, combining QKD and post-quantum algorithms to ensure security and performance. Additionally, it allows real-time performance monitoring, data-driven control and management, and tailored access and admission mechanisms {{FIQNSA}}.
+
+The virtualized key management layer acts as an intermediary between the clients and the cryptographic material generating devices. This layer would have as functions both those that fall within the framework of the SOP defined in previous sections, as well as key forwarding, specific to the QFP. For the latter, each functional element of this layer, identified as key managers entities in {{EVCKMM}}, has a forwarding table, which can be dynamically updated whenever necessary by the control plane. Adittionally, they implement a token bucket for each application session, to control the request rate by limiting it to an agreed-upon value at the Quality of Service (QoS) level.
+
+The virtualized control plane can have different functional elements, and, as with the key management layer, several instances of the same element can be executed as necessary for the correct operation of the network. Foundational elements include: a controller, an access control and an admission control component, a routing module, and a monitoring element. This set allows the execution of network access policies, ensuring that no unauthorized user or process enters the network, verifies the configuration parameters of new sessions opened by applications, ensuring that they are granted the appropriate QoS, and performs performance tests on the physical links and collecting statistics on the QKD modules, quickly alerting about any failure or possible attack on the QFP. 
 
 ## CLAS and Quantum Networks
 
@@ -247,6 +272,7 @@ Based on the available experience on the deployment of existing QKD infrastructu
 Once we presented in the  previous section the lessons learned from QKD deployments, introducing a general architecture applicable to those deployments, in this section we propose the generalization of such architecture towards a Quantum Internet, augmented by the extended SDN approach proposed by the evolved CLAS in {{CLASEVO}}. In what follows,we will discuss how this framework architecure would support the required properties: agility, allowing for technology evolution, sustainability, fostering infrastructure reuse, and pliability, supporting operational best practices.
 
 Furthermore, we propose here a general network architecture trying to incorporate relevant trends such as cloud nativeness, the integration of zero-touch management, or the considerations about intent. With this in mind, in what follows a CLAS-based architecture frameworks for quantum communications networks is introduced, including the proposed strata and their main characteristics.
+
 
 ## Strata for Quantum Networks
 
