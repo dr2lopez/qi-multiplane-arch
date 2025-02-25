@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 7 March 2025                                                UPM
+Expires: 29 August 2025                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        3 September 2024
+                                                        25 February 2025
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,11 +68,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 March 2025.
+   This Internet-Draft will expire on 29 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -335,15 +335,64 @@ Table of Contents
 
    Recent proposals for QKD network management have explored the use of
    operational models that radically leverage the virtualization of
-   control and key management functionalities.  These approaches pave
-   the way for a tighter integration of quantum functionality with
-   functions already established in state of the art classical networks,
-   while adhering to established QKD network standards.
+   control and key management functionalities [EVCKMM].  These
+   approaches pave the way for a tighter integration of quantum
+   functionality with functions already established in state of the art
+   classical networks, including support for user/function
+   authentication and authorization, and support for user and function
+   mobility, while adhering to established QKD network standards.
+   Integrating these mechanisms enhance security measures and ensure
+   that quantum networks can seamlessly interface with existing and
+   future telecommunications infrastructure.
 
-   (TBD: Include here the reference and results of a paper on the
-   mentioned approach, and extend the discussion on the general
-   architecture framework with the lessons learned in the preparation of
-   that paper)
+   While SDN ensures higher degrees of flexibility and reconfigurability
+   by allowing network functions to be easily modified and upgraded
+   through software changes, virtualization enables the abstraction of
+   hardware devices by creating virtual instances, which improves
+   scalability, resource efficiency and allows the dynamic allocation of
+   softwarized network functions in different locations.  As quantum
+   technology evolves, a virtualized layer for softwarized network
+   functions significantly aids adaptation to these changes, ensuring
+   pliability and responsiveness for seamless updates, and incorporating
+   new mechanisms without extensive hardware modifications.
+
+   As for key exchange, current technology does not allow direct end-to-
+   end quantum key exchange between distant nodes.  Instead, key
+   distribution must rely on trusted intermediary nodes to transmit keys
+   hop-by-hop.  A key management layer where the actions of all nodes
+   are coordinated is needed to ensure secure and efficient key
+   distribution.  Virtualizing and decoupling key management from the
+   physical QKD devices enhances flexibility and scalability, and
+   supports the integration of hybrid cryptographic strategies,
+   combining QKD and post-quantum algorithms to ensure security and
+   performance.  Additionally, it allows real-time performance
+   monitoring, data-driven control and management, and tailored access
+   and admission mechanisms [FIQNSA].
+
+   The virtualized key management layer acts as an intermediary between
+   the clients and the cryptographic material generating devices.  This
+   layer would have as functions both those that fall within the
+   framework of the SOP defined in previous sections, as well as key
+   forwarding, specific to the QFP.  For the latter, each functional
+   element of this layer, identified as key managers entities in
+   [EVCKMM], has a forwarding table, which can be dynamically updated
+   whenever necessary by the control plane.  Adittionally, they
+   implement a token bucket for each application session, to control the
+   request rate by limiting it to an agreed-upon value at the Quality of
+   Service (QoS) level.
+
+   The virtualized control plane can have different functional elements,
+   and, as with the key management layer, several instances of the same
+   element can be executed as necessary for the correct operation of the
+   network.  Foundational elements include: a controller, an access
+   control and an admission control component, a routing module, and a
+   monitoring element.  This set allows the execution of network access
+   policies, ensuring that no unauthorized user or process enters the
+   network, verifies the configuration parameters of new sessions opened
+   by applications, ensuring that they are granted the appropriate QoS,
+   and performs performance tests on the physical links and collecting
+   statistics on the QKD modules, quickly alerting about any failure or
+   possible attack on the QFP.
 
 3.4.  CLAS and Quantum Networks
 
@@ -664,6 +713,17 @@ Table of Contents
               (EuroQCI) Initiative", September 2023, <https://digital-
               strategy.ec.europa.eu/en/policies/european-quantum-
               communication-infrastructure-euroqci>.
+
+   [EVCKMM]   Lopez, B., Vidal, I., Valera, F., and D. Lopez, "An
+              Enhanced Virtualized Control and Key Management Model for
+              QKD Networks", January 2025,
+              <https://ieeexplore.ieee.org/document/10870375>.
+
+   [FIQNSA]   Lopez, B., Vidal, I., Valera, F., Lopez, D., and A.
+              Pastor, "Unleashing Flexibility and Interoperability in
+              QKD Networks: The Power of Softwarized Architectures",
+              July 2024,
+              <https://ieeexplore.ieee.org/document/10628345>.
 
    [MADQCI23] Martin, V., Brito, J. P., Ortíz, L., Brito-Méndez, R.,
               Vicente, R., Saez-Buruaga, J., Sebastian, A. J., Aguado,
