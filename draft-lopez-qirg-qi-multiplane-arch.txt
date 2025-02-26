@@ -93,7 +93,8 @@ Table of Contents
    4.  A Framework Architecture for the Quantum Internet
      4.1.  Strata for Quantum Networks
      4.2.  Identification of Interfaces and Protocols
-       4.2.1.  The Role of Synthetic Environments
+       4.2.1.  The Role of Network Virtualization
+       4.2.2.  The Role of Synthetic Environments
    5.  Security Considerations
    6.  References
      6.1.  Normative References
@@ -335,7 +336,7 @@ Table of Contents
 
    Recent proposals for QKD network management have explored the use of
    operational models that radically leverage the virtualization of
-   control and key management functionalities [EVCKMM].  These
+   control and key management functionalities [EVCK25].  These
    approaches pave the way for a tighter integration of quantum
    functionality with functions already established in state of the art
    classical networks, including support for user/function
@@ -367,7 +368,7 @@ Table of Contents
    combining QKD and post-quantum algorithms to ensure security and
    performance.  Additionally, it allows real-time performance
    monitoring, data-driven control and management, and tailored access
-   and admission mechanisms [FIQNSA].
+   and admission mechanisms [QNSA24].
 
    The virtualized key management layer acts as an intermediary between
    the clients and the cryptographic material generating devices.  This
@@ -375,7 +376,7 @@ Table of Contents
    framework of the SOP defined in previous sections, as well as key
    forwarding, specific to the QFP.  For the latter, each functional
    element of this layer, identified as key managers entities in
-   [EVCKMM], has a forwarding table, which can be dynamically updated
+   [EVCK25], has a forwarding table, which can be dynamically updated
    whenever necessary by the control plane.  Adittionally, they
    implement a token bucket for each application session, to control the
    request rate by limiting it to an agreed-upon value at the Quality of
@@ -472,15 +473,29 @@ Table of Contents
       stratum would consider the relevant service units (keys, shared
       states, identities, timelines...), deal with their appropriate
       forwarding and routing, and deliver these service units as
-      requested by the user application functions.
+      requested by the user application functions.  The concept of
+      service unit becomes essential here, as the cornerstone for
+      fundamental network characteristics (addressing, routing,
+      information structuring...) and for the interface to the
+      applications using the network.  As the discussion on how to
+      identify and relate keys in a wide-area QKD network is still
+      alive, the need to identify how to “pack” qubits in a way useful
+      for, say, distributed computations or teleportation coding, how to
+      route these packs, and how to request and consume services based
+      on them is crucial to define how a global quantum network should
+      be built and operated.
 
    *  A Quantum Forwarding Stratum, in charge of the direct application
       of quantum protocols and algorithms between the two endpoints of a
       quantum link, even when it is a multi-hop one, very much as the
-      QFP we described as part of QKD deployments.
-
-   (TBD: The term "Quantum Forwarding" seems to not gather full
-   consensus.  A proposal for a better term would be welcome!!)
+      QFP we described as part of QKD deployments.  It is important to
+      note that this stratum must be able to support the service units
+      that constitute, but there is no need for a one-to-one mapping
+      between those quantum forwarding units and the service units.  As
+      example, let us consider entanglement forwarding via swapping,
+      which would likely occur on a pairwise basis at this stratum, but
+      needs to be considered in a collective view to make sense to the
+      applications interacting with the service stratum.
 
    *  A Connectivity Stratum, taking care of providing the paths to
       support the quantum links used by the quantum forwarding and
@@ -492,7 +507,12 @@ Table of Contents
       based paradigm, recent proposals are addressing the idea of
       "quantum packets" [PSQN22] and the connectivity stratum would have
       to deal, in general terms, with the classical headers of such
-      packets.
+      packets.  Furthermore, classical links are always required for
+      supporting quantum links procedures, and by any kind of
+      monitoring, control, and management connections.  The provisioning
+      of related quantum and classical links, and their consistent
+      operation to meet service levels will be the main concern of this
+      stratum.
 
    This architecture, following the CLAS proposal itself, is built under
    the assumption that planes within and across strata communicate
@@ -504,6 +524,14 @@ Table of Contents
    broader implications of SDN principles are among the main motivation
    of the original CLAS proposal in [CLASEVO], and it is the main reason
    for using it as the base for the framework proposed by ths document.
+   The archetypal case of a centralized controller would be the most
+   common deployment style, but the architecture is able to support more
+   distributed approaches, in which each participating domain runs a
+   specific instance of the different strata, providing collaboration by
+   the exposure of tailored information to the other domains via border
+   protocols, as proposed in [ALTOQ24].  Even configurations where a
+   particular domain focuses on one or two of the strata, supporting the
+   other strata being hosted in different domains is also conceivable.
 
    Based on the images used to illustrate the strata proposed in
    [CLASEVO] and [RFC8597], the relationship among the strata described
@@ -619,7 +647,38 @@ Table of Contents
    applicable) interactions, as well as the capability exposure
    mechanisms to support the aggregation mechanisms mentioned above.
 
-4.2.1.  The Role of Synthetic Environments
+4.2.1.  The Role of Network Virtualization
+
+   As a natural consequence of what is disucssed above in the framework
+   of cloud-native QKD, the use of network virtualization techniques
+   would be essential for the Service Stratum, at all of their planes:
+
+   *  The SDN intelligence plane, allowing the dynamic management of
+      service units and their association with the corresponding units
+      in the Quantum Forwarding Stratum.
+
+   *  The telemetry plane, for dynamic monitoring and data aggregation.
+
+   *  The resource plane, in support of the different nature of the
+      interactions at the Quantum Forwarding Stratum, like the case of
+      entanglement persistence beyond direct physical reachability.
+
+   The current trends in optical disagreggation and the use of
+   orchestrated SDN mechanisms for network path management and
+   monitoring provide a natural path for leveraging network
+   virtualization mechanisms iwithin the Connectivity Stratum,
+   facilitating their integration with the Service Stratum.
+
+   In what relates to the Quantum Forwarding Stratum, current best
+   practices indicate that telemetry and SDN intelligence planes will
+   follow the same directions as the other strata, with virtualized,
+   likely cloud-native implementations for them.  Even in the case of
+   the resource plane, one can expect the availability of specific
+   software agent elements in charge of managing devices, interacting
+   with the Connectivity Plane and providing support to the service
+   units relevant for the Service Stratum.
+
+4.2.2.  The Role of Synthetic Environments
 
    Due to the early stage of many, if not all, quantum technologies,
    experimenting with quantum devices and equipment can be seriously
@@ -639,8 +698,9 @@ Table of Contents
 
    A more detailed description of the features of a generalized QNDT,
    based on [QKNDT24] findings and the principles of the architecture
-   described in this document is being produced, and will be integrated
-   in a future version.
+   described in this document is planned once the experiments on the
+   revamped version of the mentioned QNDT becomes available, and will be
+   integrated in a future version.
 
 5.  Security Considerations
 
@@ -681,6 +741,11 @@ Table of Contents
 
 6.2.  Informative References
 
+   [ALTOQ24]  Muniz, A., Canto, R., Contreras, L., Pastor, A., Lopez,
+              D., and J. Morales, "Using Protocol to Address SD-QKD
+              Federation in Multi-Domain Scenarios", July 2024,
+              <https://ieeexplore.ieee.org/document/10628176>.
+
    [CLASEVO]  Contreras, L. M., Boucadair, M., Lopez, D., and C. J.
               Bernardos, "An Evolution of Cooperating Layered
               Architecture for SDN (CLAS) for Compute and Data
@@ -714,16 +779,10 @@ Table of Contents
               strategy.ec.europa.eu/en/policies/european-quantum-
               communication-infrastructure-euroqci>.
 
-   [EVCKMM]   Lopez, B., Vidal, I., Valera, F., and D. Lopez, "An
+   [EVCK25]   Lopez, B., Vidal, I., Valera, F., and D. Lopez, "An
               Enhanced Virtualized Control and Key Management Model for
               QKD Networks", January 2025,
               <https://ieeexplore.ieee.org/document/10870375>.
-
-   [FIQNSA]   Lopez, B., Vidal, I., Valera, F., Lopez, D., and A.
-              Pastor, "Unleashing Flexibility and Interoperability in
-              QKD Networks: The Power of Softwarized Architectures",
-              July 2024,
-              <https://ieeexplore.ieee.org/document/10628345>.
 
    [MADQCI23] Martin, V., Brito, J. P., Ortíz, L., Brito-Méndez, R.,
               Vicente, R., Saez-Buruaga, J., Sebastian, A. J., Aguado,
@@ -759,6 +818,12 @@ Table of Contents
               Nogales, "Service for Deploying Digital Twins of QKD
               Networks", January 2024,
               <https://doi.org/10.3390/app14031018>.
+
+   [QNSA24]   Lopez, B., Vidal, I., Valera, F., Lopez, D., and A.
+              Pastor, "Unleashing Flexibility and Interoperability in
+              QKD Networks: The Power of Softwarized Architectures",
+              July 2024,
+              <https://ieeexplore.ieee.org/document/10628345>.
 
    [QTTI21]   Martin, V., Brito, J. P., Escribano, C., Menchetti, M.,
               White, C., Lord, A., Wissel, F., Gunkel, M., Gavignet, P.,
