@@ -150,7 +150,7 @@ informative:
   date: July 2024
   target: https://ieeexplore.ieee.org/document/10628345
  ALTOQ24:
- title: "Using ALTO Protocol to Address SD-QKD Federation in Multi-Domain Scenarios"
+ title: "Using  Protocol to Address SD-QKD Federation in Multi-Domain Scenarios"
  author:
  - name: Alejandro Muniz
  - name: Rafael Canto
