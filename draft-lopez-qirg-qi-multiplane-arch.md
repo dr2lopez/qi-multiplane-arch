@@ -150,16 +150,16 @@ informative:
   date: July 2024
   target: https://ieeexplore.ieee.org/document/10628345
  ALTOQ24:
- title: "Using  Protocol to Address SD-QKD Federation in Multi-Domain Scenarios"
- author:
- - name: Alejandro Muniz
- - name: Rafael Canto
- - name: Luis Contreras
- - name: Antonio Pastor
- - name: Diego Lopez
- - name: Juan Morales
- date: July 2024
- target: https://ieeexplore.ieee.org/document/10628176
+  title: "Using  Protocol to Address SD-QKD Federation in Multi-Domain Scenarios"
+  author:
+  - name: Alejandro Muniz
+  - name: Rafael Canto
+  - name: Luis Contreras
+  - name: Antonio Pastor
+  - name: Diego Lopez
+  - name: Juan Morales
+  date: July 2024
+  target: https://ieeexplore.ieee.org/document/10628176
  CLASEVO: I-D.contreras-coinrg-clas-evolution
  QIROAD18:
   title: "Quantum internet: A vision for the road ahead"
