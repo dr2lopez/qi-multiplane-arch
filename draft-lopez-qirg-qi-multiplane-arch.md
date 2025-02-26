@@ -130,7 +130,7 @@ informative:
   title: "ETSI GS NFV 006: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification"
   date: December 2022
   target: https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf
- EVCKMM:
+ EVCK25:
   title: "An Enhanced Virtualized Control and Key Management Model for QKD Networks"
   author:
   - name: Blanca Lopez
@@ -139,7 +139,7 @@ informative:
   - name: Diego Lopez
   date: January 2025
   target: https://ieeexplore.ieee.org/document/10870375
- FIQNSA:
+ QNSA24:
   title: "Unleashing Flexibility and Interoperability in QKD Networks: The Power of Softwarized Architectures"
   author:
   - name: Blanca Lopez
@@ -149,6 +149,17 @@ informative:
   - name: Antonio Pastor
   date: July 2024
   target: https://ieeexplore.ieee.org/document/10628345
+ ALTOQ24:
+ title: "Using ALTO Protocol to Address SD-QKD Federation in Multi-Domain Scenarios"
+ author:
+ - name: Alejandro Muniz
+ - name: Rafael Canto
+ - name: Luis Contreras
+ - name: Antonio Pastor
+ - name: Diego Lopez
+ - name: Juan Morales
+ date: July 2024
+ target: https://ieeexplore.ieee.org/document/10628176
  CLASEVO: I-D.contreras-coinrg-clas-evolution
  QIROAD18:
   title: "Quantum internet: A vision for the road ahead"
@@ -246,13 +257,13 @@ At the forwarding level, there is a radical difference between the network eleme
 
 ## Applying Network Virtualization Principles
 
-Recent proposals for QKD network management have explored the use of operational models that radically leverage the virtualization of control and key management functionalities {{EVCKMM}}. These approaches pave the way for a tighter integration of quantum functionality with functions already established in state of the art classical networks, including support for user/function authentication and authorization, and support for user and function mobility, while adhering to established QKD network standards. Integrating these mechanisms enhance security measures and ensure that quantum networks can seamlessly interface with existing and future telecommunications infrastructure.
+Recent proposals for QKD network management have explored the use of operational models that radically leverage the virtualization of control and key management functionalities {{EVCK25}}. These approaches pave the way for a tighter integration of quantum functionality with functions already established in state of the art classical networks, including support for user/function authentication and authorization, and support for user and function mobility, while adhering to established QKD network standards. Integrating these mechanisms enhance security measures and ensure that quantum networks can seamlessly interface with existing and future telecommunications infrastructure.
 
 While SDN ensures higher degrees of flexibility and reconfigurability by allowing network functions to be easily modified and upgraded through software changes, virtualization enables the abstraction of hardware devices by creating virtual instances, which improves scalability, resource efficiency and allows the dynamic allocation of softwarized network functions in different locations. As quantum technology evolves, a virtualized layer for softwarized network functions significantly aids adaptation to these changes, ensuring pliability and responsiveness for seamless updates, and incorporating new mechanisms without extensive hardware modifications.
 
-As for key exchange, current technology does not allow direct end-to-end quantum key exchange between distant nodes. Instead, key distribution must rely on trusted intermediary nodes to transmit keys hop-by-hop. A key management layer where the actions of all nodes are coordinated is needed to ensure secure and efficient key distribution. Virtualizing and decoupling key management from the physical QKD devices enhances flexibility and scalability, and supports the integration of hybrid cryptographic strategies, combining QKD and post-quantum algorithms to ensure security and performance. Additionally, it allows real-time performance monitoring, data-driven control and management, and tailored access and admission mechanisms {{FIQNSA}}.
+As for key exchange, current technology does not allow direct end-to-end quantum key exchange between distant nodes. Instead, key distribution must rely on trusted intermediary nodes to transmit keys hop-by-hop. A key management layer where the actions of all nodes are coordinated is needed to ensure secure and efficient key distribution. Virtualizing and decoupling key management from the physical QKD devices enhances flexibility and scalability, and supports the integration of hybrid cryptographic strategies, combining QKD and post-quantum algorithms to ensure security and performance. Additionally, it allows real-time performance monitoring, data-driven control and management, and tailored access and admission mechanisms {{QNSA24}}.
 
-The virtualized key management layer acts as an intermediary between the clients and the cryptographic material generating devices. This layer would have as functions both those that fall within the framework of the SOP defined in previous sections, as well as key forwarding, specific to the QFP. For the latter, each functional element of this layer, identified as key managers entities in {{EVCKMM}}, has a forwarding table, which can be dynamically updated whenever necessary by the control plane. Adittionally, they implement a token bucket for each application session, to control the request rate by limiting it to an agreed-upon value at the Quality of Service (QoS) level.
+The virtualized key management layer acts as an intermediary between the clients and the cryptographic material generating devices. This layer would have as functions both those that fall within the framework of the SOP defined in previous sections, as well as key forwarding, specific to the QFP. For the latter, each functional element of this layer, identified as key managers entities in {{EVCK25}}, has a forwarding table, which can be dynamically updated whenever necessary by the control plane. Adittionally, they implement a token bucket for each application session, to control the request rate by limiting it to an agreed-upon value at the Quality of Service (QoS) level.
 
 The virtualized control plane can have different functional elements, and, as with the key management layer, several instances of the same element can be executed as necessary for the correct operation of the network. Foundational elements include: a controller, an access control and an admission control component, a routing module, and a monitoring element. This set allows the execution of network access policies, ensuring that no unauthorized user or process enters the network, verifies the configuration parameters of new sessions opened by applications, ensuring that they are granted the appropriate QoS, and performs performance tests on the physical links and collecting statistics on the QKD modules, quickly alerting about any failure or possible attack on the QFP.
 
@@ -273,20 +284,17 @@ Once we presented in the  previous section the lessons learned from QKD deployme
 
 Furthermore, we propose here a general network architecture trying to incorporate relevant trends such as cloud nativeness, the integration of zero-touch management, or the considerations about intent. With this in mind, in what follows a CLAS-based architecture frameworks for quantum communications networks is introduced, including the proposed strata and their main characteristics.
 
-
 ## Strata for Quantum Networks
 
 The CLAS architecture was initially conceived from the perspective of exploiting the advantages of network programmability in operational networks, complementing and going beyond the traditional layered structured of the original SDN proposal. Following the CLAS philosophy, as proposed in its recent update {{CLASEVO}} of decoupling services, additional functionality, and base connectivity, the architecture of a quantum network should be composed of:
 
-* A Service Stratum, dealing with the functionality related to the purpose of the quantum network, and aligned with SOP described for QKD networks above. At this moment, the most general service, beyond QKD key management, is obviously entanglement distribution in a general quantum network. Others can be considered, as time synchronization, identity assurance or sensing. The service stratum would consider the relevant service units (keys, shared states, identities, timelines...), deal with their appropriate forwarding and routing, and deliver these service units as requested by the user application functions.
+* A Service Stratum, dealing with the functionality related to the purpose of the quantum network, and aligned with SOP described for QKD networks above. At this moment, the most general service, beyond QKD key management, is obviously entanglement distribution in a general quantum network. Others can be considered, as time synchronization, identity assurance or sensing. The service stratum would consider the relevant service units (keys, shared states, identities, timelines...), deal with their appropriate forwarding and routing, and deliver these service units as requested by the user application functions. The concept of service unit becomes essential here, as the cornerstone for fundamental network characteristics (addressing, routing, information structuring...) and for the interface to the applications using the network. As the discussion on how to identify and relate keys in a wide-area QKD network is still alive, the need to identify how to “pack” qubits in a way useful for, say, distributed computations or teleportation coding, how to route these packs, and how to request and consume services based on them is crucial to define how a global quantum network should be built and operated.
 
-* A Quantum Forwarding Stratum, in charge of the direct application of quantum protocols and algorithms between the two endpoints of a quantum link, even when it is a multi-hop one, very much as the QFP we described as part of QKD deployments.
+* A Quantum Forwarding Stratum, in charge of the direct application of quantum protocols and algorithms between the two endpoints of a quantum link, even when it is a multi-hop one, very much as the QFP we described as part of QKD deployments.  It is important to note that this stratum must be able to support the service units that constitute, but there is no need for a one-to-one mapping between those quantum forwarding units and the service units. As example, let us consider entanglement forwarding via swapping, which would likely occur on a pairwise basis at this stratum, but needs to be considered in a collective view to make sense to the applications interacting with the service stratum.
 
-(TBD: The term "Quantum Forwarding" seems to not gather full consensus. A proposal for a better term would be welcome!!)
+* A Connectivity Stratum, taking care of providing the paths to support the quantum links used by the quantum forwarding and service strata. Typically, the connectivity stratum would be supported by OTN infrastructure, via fiber and/or open-space links, and would follow a common connectivity paradigm, specifically a circuit-based or packet-based one. While current quantum links deal with OTN infrastructure according to a  circuit-based paradigm, recent proposals are addressing the idea of "quantum packets" {{PSQN22}} and the connectivity stratum would have to deal, in general terms, with the classical headers of such packets. Furthermore, classical links are always required for supporting quantum links procedures, and by any kind of monitoring, control, and management connections. The provisioning of related quantum and classical links, and their consistent operation to meet service levels will be the main concern of this stratum.
 
-* A Connectivity Stratum, taking care of providing the paths to support the quantum links used by the quantum forwarding and service strata. Typically, the connectivity stratum would be supported by OTN infrastructure, via fiber and/or open-space links, and would follow a common connectivity paradigm, specifically a circuit-based or packet-based one. While current quantum links deal with OTN infrastructure according to a  circuit-based paradigm, recent proposals are addressing the idea of "quantum packets" {{PSQN22}} and the connectivity stratum would have to deal, in general terms, with the classical headers of such packets.
-
-This architecture, following the CLAS proposal itself, is built under the assumption that planes within and across strata communicate through well-defined, open interfaces supporting programmability, as a generalization of the common SDN architecture that defines a controller as a mediator between application and network (forwarding) devices. It includes the archetypal case of a centralized controller, but is not limited to that particular realization. These broader implications of SDN principles are among the main motivation of the original CLAS proposal in {{CLASEVO}}, and it is the main reason for using it as the base for the framework proposed by ths document.
+This architecture, following the CLAS proposal itself, is built under the assumption that planes within and across strata communicate through well-defined, open interfaces supporting programmability, as a generalization of the common SDN architecture that defines a controller as a mediator between application and network (forwarding) devices. It includes the archetypal case of a centralized controller, but is not limited to that particular realization. These broader implications of SDN principles are among the main motivation of the original CLAS proposal in {{CLASEVO}}, and it is the main reason for using it as the base for the framework proposed by ths document. The archetypal case of a centralized controller would be the most common deployment style, but the architecture is able to support more distributed approaches, in which each participating domain runs a specific instance of the different strata, providing collaboration by the exposure of tailored information to the other domains via border protocols, as proposed in {{ALTOQ24}}. Even configurations where a particular domain focuses on one or two of the strata, supporting the other strata being hosted in different domains is also conceivable.
 
 Based on the images used to illustrate the strata proposed in {{CLASEVO}} and {{RFC8597}}, the relationship among the strata described above would be as shown in the following diagram:
 
@@ -359,11 +367,25 @@ Finally, by explicitly addressing the issues related to the connectivity of quan
 
 This section, TBP once there is agreement on the architecture framework, will include a discussion on the applicable and foreseen protocols and interfaces to be used for intra-stratum (SDN and telemetry, essentially) and inter-stratum (APIs and models applicable) interactions, as well as the capability exposure mechanisms to support the aggregation mechanisms mentioned above.
 
+### The Role of Network Virtualization
+
+As a natural consequence of what is disucssed above in the framework of cloud-native QKD, the use of network virtualization techniques would be essential for the Service Stratum, at all of their planes:
+
+* The SDN intelligence plane, allowing the dynamic management of service units and their association with the corresponding units in the Quantum Forwarding Stratum.
+
+* The telemetry plane, for dynamic monitoring and data aggregation.
+
+* The resource plane, in support of the different nature of the interactions at the Quantum Forwarding Stratum, like the case of entanglement persistence beyond direct physical reachability.
+
+The current trends in optical disagreggation and the use of orchestrated SDN mechanisms for network path management and monitoring provide a natural path for leveraging network virtualization mechanisms iwithin the Connectivity Stratum, facilitating their integration with the Service Stratum.
+
+In what relates to the Quantum Forwarding Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum.
+
 ### The Role of Synthetic Environments
 
 Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availabilty. This is especially true for experimentation at the scale required to validate network protocolos and inter- and intra-strata interfaces. In this context, it becomes appropriate the use of synthetic testbeds where it is feasible to emulate the deployment of quantum networks, thus enabling the execution of experiments and trials, where even potential network attacks can be analyzed without compromising the integrity of an already built quantum network or a signinficant number of physical devices. Based on the results introduced in {{QKNDT24}} for QKD networks, a characterization of such Quantum Network Digital Twin (QNDT) will support a better understanding of the properties of the different interfaces and protocols, and the applicability of the architecture proposed in this document.
 
-A more detailed description of the features of a generalized QNDT, based on {{QKNDT24}} findings and the principles of the architecture described in this document is being produced, and will be integrated in a future version.
+A more detailed description of the features of a generalized QNDT, based on {{QKNDT24}} findings and the principles of the architecture described in this document is planned once the experiments on the revamped version of the mentioned QNDT becomes available, and will be integrated in a future version.
 
 # Security Considerations
 
