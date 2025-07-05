@@ -126,6 +126,9 @@ informative:
   title: "ETSI GS QKD 018: Quantum Key Distribution (QKD); Orchestration Interface for Software Defined Networks"
   date: April 2022
   target: https://www.etsi.org/deliver/etsi_gs/QKD/001_099/018/01.01.01_60/gs_QKD018v010101p.pdf
+ ETSI23:
+  title: "ETSI Work-Item QKD 023: Quantum Key Distribution (QKD); Monitoring Interface and Data Model"
+  target: https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=69537
  NFV06:
   title: "ETSI GS NFV 006: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification"
   date: December 2022
@@ -169,6 +172,9 @@ informative:
   - name: Ronald Hanson
   date: October 2018
   target: https://doi.org/10.1126/science.aam9288
+ TAPI240:
+  title: "ONF Transport API SDK 2.4.0"
+  target: https://github.com/Open-Network-Models-and-Interfaces-ONMI/TAPI/releases/tag/v2.4.0
  QKNDT24:
   title: "Service for Deploying Digital Twins of QKD Networks"
   author:
@@ -236,6 +242,28 @@ Finally, the Control and Management Plane (CMP) is made of the elements that cre
 It is worth noting this management centralization does not contradict the distributed principles generally applied in current networks. Local control decisions are intended to be coordinated by centralized management. While the communication between the controller and the controlled elements relies on some kind of SDN protocol, the controller exposes a consistent abstract model of the network devices and topology, that can be structured in a hierarchy of abstractions, from lower-level, element-focused ones, up to application-oriented ones.
 
 In summary, QKD infrastructures are converging into an extended SDN model, with two differentiated data planes, controlled in a coordinated manner through a common Control and Management Plane, that supports aggregated mechanisms for further orchestration. The QFP/SOP duality constitutes a common abstract foundation for a general approach to quantum communications networks, regardless of their final purpose.
+
+### The Service Unit Concept in QKD Networks
+
+QKD infrastructures are evolving from a conglomerate of links, where keys derived from the protocol applied to a link are used to secure the communication between two entities directly associated to the endpoints of the link, into real networks, able to forward a key to be used between any two entities attached to the network. As discussed above, the entities in the SOP play a key role for this, supporting the storage, delivery and lifecycle management of the service units being consumed by the applications attached to the network. These SOP entities, are commonly referred as KME (Key Management Entity), acting as key storage for a specific element or elements in the QFP, and providing an endpoint for applications to request and consume keys for a specific secure interaction. The interfaces KMEs use to interact with the QFP elements are usually provided by specific (commonly software-based) components, acting as agents in the QFP, and therefore termed Key Management Agent (KMA).
+
+Several of these KMEs can be logically grouped into what is called a KMS (Key Management System), supporting a set of related applications grouped into a trust domain, and therefore consistently operated by a corresponding entity in the CMP. The differentiation between KME and KMS functionalities becomes more apparent as networks expand and consolidate, with many cases of current QKD link-oriented infrastructures referring to a KMS as the entity integrating both roles.
+
+The service units provided by a QKD network have to be uniquely identified within the network, so they can be properly managed by the SOP, including their routing across the different required KMEs, the requests of appropriate links in the QFP, and the management of the lifecycle events related to making the key available to the applications willing to use it. It is important to note we are talking about a service unit, and not a data unit associated with a particular protocol, and therefore what is relevant here are the identification of the two application endpoints (that should include a nonce mechanism to identify the specific pairing) together with relevant parameters regarding the key lifecycle, such as its length and valid time-to-live. While these are the two essential lifecycle parameters, others, as it might be the case of applicable crypto algorithms, could be considered as well. The service unit identifier is not directional, i.e., it has no source or destination addresses, as it defines a shared state to be used by two applications. We can consider the analogy of transport flows in the current Internet, rather than packets.
+
+The current proposal we are experimenting with advocate for using URNs [RFC8141] as endpoint identifiers, taking advantage of their nature of location-independent, persistent resource identifiers. The q-component of the endpoint URN can be used to carry the nonce part of the specific application identifier. If we consider that lifecycle parameters can be expressed using a specific URN in its q-component, we have that a service unit identifier consists of the combination of three URNs.
+
+As an example, let’s consider URNs for application endpoints use the qkd namespace id, and that lifecycle parameters use the URN qkd:lifecycle assigned name, with the parameters size and valid-until. A service unit identifier for QKD between two domains, with roots madqci and quditto, would look like:
+
+~~~
+urn:qkd:madqci:ccips?=nonce=177923
+urn:qkd:quditto:emulator:ipsec:controller?=nid=af33017
+urn:qkd:lifecycle?=size=256&valid-until=1750708945
+~~~
+
+The structure and delegation mechanisms provided by URNs allow for arbitrary aggregation of prefixes, enabling any kind of routing style, from the aggregation and inter-domain announcement similar (or compatible) to BGP in classical Internet to the decision on which prefixes are announced and how they are routed by means of SDN controllers, whether by means of a federation approach or in a hierarchical control structure. The approach also supports the use of non-routable identifiers that cannot be announced outside a given domain or KMS and can only establish service pairing with other applications within the same domain. These mechanisms would be applied by the corresponding elements in the CMP.
+
+The QKD service unit identifies a shared state between two application entities, and therefore cannot be consider directional, and the concepts of source and destination do not apply here. Nevertheless, directionality is relevant in the process of establishing the QKD service unit, both in terms of its identifier and of its contents. In the case of the identifier, one of the application entities will request a service unit to the relevant KMS/KME it is attached to, identifying itself and the other peer in the service unit, together with the applicable lifecycle parameters. Relying on the available route information and the replies of the intermediate elements in the SOP, the final identifier of the QKD service unit will be built. The associated content, i.e., the bit string defining the key to be shared between the two application endpoints, will be derived from the elements in the participating links in the QFP and the application of any additional mechanisms (key encryption, augmentation, trusted node forwarding…) required by the participating KMEs and the corresponding links.
 
 ## Interfacing with Classical Networks
 
@@ -380,6 +408,20 @@ As a natural consequence of what is disucssed above in the framework of cloud-na
 The current trends in optical disagreggation and the use of orchestrated SDN mechanisms for network path management and monitoring provide a natural path for leveraging network virtualization mechanisms iwithin the Connectivity Stratum, facilitating their integration with the Service Stratum.
 
 In what relates to the Quantum Forwarding Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum.
+
+### The Role of Service Units
+
+The fact we remarked above about the QKD service unit being a shared state between two application entities supports a direct translation of the concept to apply it in a generalized quantum network. A service unit in this context will correspond to the shared quantum states to be consume by the application entities, according to the goals of their sharing of these quantum states. This implies that a QKD service unit can be considered a specialized quantum service unit, where the shared state has been somehow pre-processed to distill the bits that define the shared key. A similar pattern could be applicable to other specialized quantum network applications, as it would be the case of distributed quantum sensing or metrology.
+
+The identification of such service units can follow the same patterns described for the QKD service units, with three URNs, two of them identifying the pair of application entities sharing the state, and a third one defining the lifecycle parameters. Obviously, these parameters should differ from the ones postulated for QKD, and it is possible to envisage parameters such as shared state size (the number of entangled pairs), a timestamp regarding lifetime of the shared state, and others addressing aspects like fidelity. As the quantum memory technology at the foundation of these shared states evolve, a clearer view of the parameter URN will become available. Experiments on this issue will be really useful to identify these parameters and shape the q-component of the parameter URN.
+
+The content of a QKD service unit is a bitstring corresponding to the shared key. These bitstring is stored in the memories of the corresponding KMEs, with individual bits differentiated by their position in the string. Quantum memories must be available at the resource plane of the Service Stratum (SS), and the service unit should contain the addresses used by those quantum memories to identify the corresponding entangled pairs. The elements equivalent to the KMEs in the control plane of the SS interact with these quantum memories to identify the applicable addresses, and to require the elements in the control plane of the Quantum Forwarding Stratum (QFS) to activate the corresponding exchanges in the quantum links they operate. Each of the endpoints of these quantum links is expected to provide a functionality equivalent to the agents discussed for QKD networks, in support of the SS quantum memories.
+
+As discussed in the case of QKD service units, directionality (the specification of an origin and a destination) is not applicable in this case either, as service units correspond to a shared state. What can be certainly considered is an originator of this shared state, corresponding to the application element requesting the establishment of the service unit. This would trigger the SS control plane element attached to the application to start its route decision procedures and to start the interactions with the relevant SS control planes to start the necessary exchanges to establish the shared quantum states. The nature of the endpoint identifiers support, as discussed for shared keys in QKD, the use of any routing mechanisms, ranging from strictly hierarchical and centralized schemas based on orchestration mechanisms to fully distributed routing algorithms.
+
+As a result of the routing procedures and the interaction among SS control plane elements, there should be corresponding interactions with elements in the control planes of the Connectivity Strata (CS) and the QFS, to verify and require, as needed, the establishment of the individual entangled pairs and, as required, the physical links to support them. There is a consolidated corpus of interfaces (usually known as North-Bound Interfaces, NBI) for the control of classical connectivity, and specially of optical links, such as the TAPI specification {{TAPI240}}, and different proposals to select and establish paths. It seems necessary to explore and experiment with similar interfaces and procedures for the management and control of quantum links, addressing the challenges already identified in {{RFC9340}}.
+
+Finally, a word on the telemetry planes in each of the proposed strata. It should be obvious the elements in the control planes at each of the strata should start monitoring mechanisms at the involved elements in the resource planes and activate telemetry collection mechanisms. This brings the requirement of defining and experimenting with appropriate metrics and telemetry data models for both the SS and the QFS, as already being defined for QKD infrastructures {{ETSI23}}.
 
 ### The Role of Synthetic Environments
 
