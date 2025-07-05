@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>A Multiplane Architecture Proposal for the Quantum Internet</title>
+<meta content="Diego Lopez" name="author">
+<meta content="Vicente Martin" name="author">
+<meta content="Blanca Lopez" name="author">
+<meta content="Luis M. Contreras" name="author">
+<meta content="
+       A consistent reference architecture model for the Quantum Internet is required to progress in its evolution, providing a framework for the integration of the protocols applicable to it, and enabling the advance of the applications based on it. This model has to satisfy three essential requirements: agility, so it is able to adapt to the evolution of quantum communications base technologies, sustainability, with open availability in technological and economical terms, and pliability, being able to integrate with the operations and management procedures in current networks. This document proposes such an architecture framework, with the goal of providing a conceptual common framework for the integration of technologies intended to build the Quantum Internet infrastructure and its integration with the current Internet. The framework is based on the already extensive experience in the deployment of QKD network infrastructures and on related initiatives focused on the integration of network infrastructures and services. 
+    " name="description">
+<meta content="xml2rfc 3.29.0" name="generator">
+<meta content="quantum" name="keyword">
+<meta content="architecture" name="keyword">
+<meta content="QKD" name="keyword">
+<meta content="CLAS" name="keyword">
+<meta content="draft-lopez-qirg-qi-multiplane-arch-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.29.0
+    Python 3.12.11
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.3.8
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.4
+    setuptools 80.9.0
+    wcwidth 0.2.13
+-->
+<link href="draft-lopez-qirg-qi-multiplane-arch.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #222;
+  --title-color: #191919;
+  --link-color: #2a6496;
+  --highlight-color: #f9f9f9;
+  --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
+  --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
+  scrollbar-color: #bbb #eee;
+}
+body {
+  max-width: 600px;
+  margin: 75px auto;
+  padding: 0 5px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font: 16px/22px "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+.ears {
+  display: none;
+}
+
+/* headings */
+section {
+  clear: both;
+}
+.section-number {
+  padding-right: 0.5em;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 680;
+  margin: 0.8em 0 0.3em;
+  font-size-adjust: 0.5;
+  color: var(--title-color);
+}
+h1#title {
+  font-size: 32px;
+  line-height: 40px;
+  clear: both;
+}
+h1#title, h1#rfcnum {
+  margin: 1.5em 0 0.2em;
+}
+h1#rfcnum + h1#title {
+  margin: 0.2em 0;
+}
+
+h1, h2, h3 {
+  font-size: 22px;
+  line-height: 27px;
+}
+h4, h5, h6 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* general structure */
+.author {
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+#abstract+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+#abstract+p code, #abstract+p samp, #abstract+p tt {
+  font-size: 16px;
+  line-height: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: left;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 0.5em 2em;
+  & :is(ol, ul) {
+    margin-left: 1em;
+  }
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+  & li {
+    margin-top: 0.5em;
+  }
+}
+:is(ul, ol).compact, .ulCompact, .olCompact {
+  margin: 0 0 0 2em;
+  & li {
+    margin: 0;
+    & :first-child { margin-top: 0; }
+    & :last-child { margin-bottom: 0; }
+  }
+}
+
+/* definition lists */
+dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+  &.olPercent {
+    --indent: 5ch;
+    & > dt {
+      min-width: calc(var(--indent) - 2ch);
+    }
+  }
+  &.olPercent > dt {
+    float: none;
+  }
+
+  dl > dd > & {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+}
+dl:not(.dlNewline) > dt {
+  float: left;
+  margin-right: 2ch;
+  min-width: 8ch;
+}
+dl > dd {
+  margin-bottom: .8em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
+}
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+  & > :is(:first-child, .break:first-child + *) {
+    margin-top: 0;
+  }
+  & > :is(:last-child) {
+    margin-bottom: 0;
+  }
+}
+:is(dd, span).break {
+  display: none;
+}
+
+/* links */
+a, a[href].selfRef:hover {
+  text-decoration: none;
+}
+a[href] {
+  color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+a[href].selfRef:hover {
+  background-color: var(--highlight-color);
+}
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
+  white-space: nowrap;
+}
+
+/* Figures */
+tt, code, pre {
+  background-color: var(--highlight-color);
+  font: 14px/22px var(--font-mono);
+}
+tt, code {
+  /* changing the font for inline elements leads to different ascender
+     and descender heights; as we want to retain baseline alignment,
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
+  line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
+pre {
+  border: 1px solid var(--line-color);
+  font-size: 13.5px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+  margin: 5px;
+  padding: 5px;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0.5em 0;
+  padding: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption, caption {
+  font-style: italic;
+  margin: 0.5em 1.5em;
+  text-align: left;
+  caption-side: bottom;
+}
+@media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
+  pre, svg {
+    display: inline-block;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
+  }
+  pre {
+    max-width: 100%;
+    width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
+  }
+  figure pre {
+    display: block;
+    width: calc(100% - 25px);
+  }
+  :is(pre, svg) + .pilcrow {
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 8px;
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+blockquote {
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  width: auto;
+  max-width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
+}
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
+thead, tbody {
+  border: 1px solid var(--line-color);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+th {
+  background-color: var(--line-color);
+}
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
+  background-color: var(--background-color);
+}
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
+  background-color: var(--highlight-color);
+}
+table caption {
+  margin: 0;
+  padding: 3px 0 3px 1em;
+}
+table p {
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  margin-left: 3px;
+  opacity: 0.2;
+  user-select: none;
+  &[href] {
+    color: var(--pilcrow-weak);
+    &:hover { text-decoration: none; }
+  }
+}
+@media not print {
+  :hover > a.pilcrow {
+    opacity: 1;
+  }
+  a.pilcrow[href]:hover {
+    color: var(--pilcrow-strong);
+    background-color: transparent;
+  }
+}
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line-color);
+}
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
+}
+.role {
+  font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: var(--small-font-size);
+  line-height: 18px;
+  --identifier-width: 15ch;
+  & dt {
+    width: var(--identifier-width);
+    min-width: var(--identifier-width);
+    clear: left;
+    float: left;
+    text-align: right;
+    margin-right: 1ch;
+  }
+  & dd {
+    margin: 0;
+    margin-left: calc(1em + var(--identifier-width)) !important;
+    min-width: 5em;
+  }
+  & .authors {
+    & .author {
+      display: inline-block;
+      margin-right: 1.5em;
+    }
+    & .org {
+      font-style: italic;
+    }
+  }
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+
+  & nav {
+    & ul {
+      margin: 0 0.5em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    & li {
+      line-height: 1.3em;
+      margin: 2px 0;
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+  }
+  & a.xref {
+    white-space: normal;
+  }
+}
+
+.references {
+  & > dt {
+    text-align: right;
+    font-weight: bold;
+    min-width: 10ch;
+    margin-right: 1.5ch;
+    &:target::before {
+      content: "⇒";
+      margin: 0 10px 0 -25px;
+    }
+  }
+  & > dd {
+    margin-left: 12ch !important;
+    overflow: visible;
+    & .refInstance {
+      margin-bottom: 0.8em;
+    }
+    & .ascii {
+      margin-bottom: 0.25em;
+    }
+  }
+}
+
+#rfc\.index\.index + ul {
+  margin-left: 0;
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  max-width: 20em;
+  margin: 1em auto 1em 0;
+
+  & .nameRole {
+    font-weight: 700;
+    margin-left: 0;
+  }
+  & .label {
+    margin: 0.5em 0;
+  }
+  & .type {
+    display: none;
+  }
+  & .alternative-contact {
+    margin: 0.5em 0 0.25em 0;
+  }
+  & .non-ascii {
+    margin: 0 0 0 2em;
+  }
+  & div.left {
+    text-align: left;
+  }
+  & div.right {
+    text-align: right;
+  }
+}
+
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+@media (min-width: 500px) {
+  #authors-addresses > section {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  #authors-addresses > section > h2 {
+    column-span: all;
+  }
+  /* hack for break-inside: avoid-column */
+  #authors-addresses address {
+    display: inline-block;
+    break-inside: avoid-column;
+  }
+}
+
+/* Comments */
+.rfcEditorRemove p:first-of-type {
+  font-style: italic;
+}
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+    & > ul { margin-bottom: 2em; }
+    & ul {
+      margin: 0 0 0 4px;
+      & :is(p, li) {
+        margin: 2px 0;
+      }
+    }
+  }
+  #toc a.toplink {
+    float: right;
+  }
+}
+@media not screen {
+  #toc a.toplink {
+    display: none;
+  }
+}
+
+
+/* TOC layout for smaller screens */
+@media screen and (max-width: 929px) {
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 1px 0 0 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    opacity: 0.6;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 2px 0 2px 6px;
+    padding-right: 1em;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 190px;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    &::before { /* css hamburger */
+      float: right;
+      position: relative;
+      width: 1em;
+      height: 1px;
+      left: -164px;
+      margin: 8px 0 0 0;
+      background: white none repeat scroll 0 0;
+      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+      content: "";
+    }
+  }
+  #toc nav {
+    display: none;
+    background-color: var(--background-color);
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+  #toc.active {
+    opacity: 1;
+    & nav { display: block; }
+  }
+  /* Make the collapsed ToC header render white on gray also when it's a link */
+  #toc h2 a,
+  #toc h2 a:is(:link, :focus, :hover),
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+  #toc a.toplink {
+    margin: 2px 0.5em 0;
+  }
+}
+
+/* TOC layout for wide screens */
+@media screen and (min-width: 930px) {
+  body {
+    padding-right: 360px;
+    padding-right: calc(min(180px + 20%, 500px));
+  }
+  #toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 480px);
+    width: 312px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 2em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+  #toc a.toplink {
+    margin: 8px 0.5em 0;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre, .vcard {
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  :is(h2, h3, h4, h5, h6)+*, dd {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+}
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
+  stroke: var(--text-color);
+}
+svg :is([stroke="white"], [stroke^="#fff"]) {
+  stroke: var(--background-color);
+}
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
+  fill: var(--text-color);
+}
+svg :is([fill="white"], [fill^="#fff"]) {
+  fill: var(--background-color);
+}
+</style>
+
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">qi-multiplane-arch</td>
+<td class="right">July 2025</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Lopez, et al.</td>
+<td class="center">Expires 6 January 2026</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">Quantum Internet Research Group</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-lopez-qirg-qi-multiplane-arch-latest</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2025-07-05" class="published">5 July 2025</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Informational</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2026-01-06">6 January 2026</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">D. Lopez</div>
+<div class="org">Telefonica</div>
+</div>
+<div class="author">
+      <div class="author-name">V. Martin</div>
+<div class="org">UPM</div>
+</div>
+<div class="author">
+      <div class="author-name">B. Lopez</div>
+<div class="org">IMDEA Networks</div>
+</div>
+<div class="author">
+      <div class="author-name">L. M. Contreras</div>
+<div class="org">Telefonica</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">A Multiplane Architecture Proposal for the Quantum Internet</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">A consistent reference architecture model for the Quantum Internet is required to progress in its evolution, providing a framework for the integration of the protocols applicable to it, and enabling the advance of the applications based on it. This model has to satisfy three essential requirements: agility, so it is able to adapt to the evolution of quantum communications base technologies, sustainability, with open availability in technological and economical terms, and pliability, being able to integrate with the operations and management procedures in current networks. This document proposes such an architecture framework, with the goal of providing a conceptual common framework for the integration of technologies intended to build the Quantum Internet infrastructure and its integration with the current Internet. The framework is based on the already extensive experience in the deployment of QKD network infrastructures and on related initiatives focused on the integration of network infrastructures and services.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-about-this-document">
+<a href="#name-about-this-document" class="section-name selfRef">About This Document</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">
+        The latest revision of this draft can be found at <span><a href="https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html">https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-multiplane-arch.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-lopez-qirg-qi-multiplane-arch/">https://datatracker.ietf.org/doc/draft-lopez-qirg-qi-multiplane-arch/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">
+        Discussion of this document takes place on the
+        Quantum Internet Research Group Research Group mailing list (<span><a href="mailto:qirg@irtf.org">mailto:qirg@irtf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/qirg/">https://mailarchive.ietf.org/arch/browse/qirg/</a></span>.
+        Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/qirg/">https://www.ietf.org/mailman/listinfo/qirg/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/dr2lopez/qi-multiplane-arch">https://github.com/dr2lopez/qi-multiplane-arch</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 6 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2025 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-base-technologies-qkd-exper" class="internal xref">Base Technologies: QKD Experience and Evolved SDN Concepts</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-a-qkd-multi-plane-architect" class="internal xref">A QKD Multi-Plane Architecture</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1.2.1">
+                    <p id="section-toc.1-1.3.2.1.2.1.1" class="keepWithNext"><a href="#section-3.1.1" class="auto internal xref">3.1.1</a>.  <a href="#name-the-service-unit-concept-in" class="internal xref">The Service Unit Concept in QKD Networks</a></p>
+</li>
+                </ul>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-interfacing-with-classical-" class="internal xref">Interfacing with Classical Networks</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-applying-network-virtualiza" class="internal xref">Applying Network Virtualization Principles</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-clas-and-quantum-networks" class="internal xref">CLAS and Quantum Networks</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-a-framework-architecture-fo" class="internal xref">A Framework Architecture for the Quantum Internet</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-strata-for-quantum-networks" class="internal xref">Strata for Quantum Networks</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-identification-of-interface" class="internal xref">Identification of Interfaces and Protocols</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
+                    <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-the-role-of-network-virtual" class="internal xref">The Role of Network Virtualization</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.2">
+                    <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-the-role-of-service-units" class="internal xref">The Role of Service Units</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.3">
+                    <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="auto internal xref">4.2.3</a>.  <a href="#name-the-role-of-synthetic-envir" class="internal xref">The Role of Synthetic Environments</a></p>
+</li>
+                </ul>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="introduction">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">As another case of the "classical vs quantum" apparent contradictions, the nature of quantum communications <span>[<a href="#QTTI21" class="cite xref">QTTI21</a>]</span>, associated with natural physical effects that require a specific infrastructure to be used for communications, poses a significant challenge in the definition of any network reference architecture to be used for such communications. Nevertheless, the growing interest on quantum networking, its applications, and the eventual availability of a Quantum Internet, require of consensus on an architecture framework able to support the definition and evolution of different protocols and interfaces.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Several steps have been taken in this direction, including the identification of architectural principles and base technologies made in <span>[<a href="#RFC9340" class="cite xref">RFC9340</a>]</span>, the description of relevant use cases <span>[<a href="#RFC9583" class="cite xref">RFC9583</a>]</span>, and specific approaches to layered models for Quantum Networking, summarized and discussed in <span>[<a href="#QIPS22" class="cite xref">QIPS22</a>]</span>. While the principles provide an extremely valuable common ground for further collaboration among quantum and network practitioners, they are not intended to provide the solid framework required for progressing in the definition of specific protocols and other interfaces for common network management tasks and interactions with user applications. On the other hand, the proposals made for a layered approach provide interesting insights on requirements and potential mechanisms to structure quantum communications, but, first, they do not include essential aspects for a network at scale and, second and most important, they do not take into account the need for direct interactions beyond the layered structure, such as those between classical and quantum networking services, between applications and the quantum network, etc.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">In parallel, the operational experience with the first kind of infrastructures using quantum communication technologies to provide an actual network service, those focused on Quantum Key Distribution (QKD), has allowed practitioners to explore the solution space and identify design patterns that seem applicable to the general case of a Quantum Internet. A corpus of architectural proposals <span>[<a href="#Y3802" class="cite xref">Y3802</a>]</span>, experimental deployments <span>[<a href="#MADQCI23" class="cite xref">MADQCI23</a>]</span> and pilot infrastructures <span>[<a href="#EUROQCI" class="cite xref">EUROQCI</a>]</span> have become available in the recent years, and can be used to derive useful conclusions, especially if combined with recent proposals in network architecture <span>[<a href="#RFC8597" class="cite xref">RFC8597</a>]</span>, intended to address the complexity of management and integration at scale beyond the basic layered constructs supporting connectivity.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">This document proposes a multi-plane reference architecture for the Quantum Internet, derived from available proposals and the operational experience with QKD infrastructure. The proposal attempts to define a framework with three essential properties to guarantee a seamless evolution of the technology, and the consolidation of applications and management practices:<a href="#section-1-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-5.1">
+          <p id="section-1-5.1.1">Agility: Provide abstractions able to incorporate new protocols and interfaces as the technology evolves, avoiding a tight coupling with specific physical technologies.<a href="#section-1-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-5.2">
+          <p id="section-1-5.2.1">Sustainability: Considering it at all levels and in full scale, especially regarding environmental and social impacts, including open availability in technological and economical terms, and fostering infrastructure reuse.<a href="#section-1-5.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-5.3">
+          <p id="section-1-5.3.1">Pliability: Facilitate the seamless integration of classical and quantum network operational procedures, applying and adapting best practices in use by the Internet community.<a href="#section-1-5.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-1-6">And trying to address three essential characteristics already identified in <span>[<a href="#PSQN22" class="cite xref">PSQN22</a>]</span>:<a href="#section-1-6" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-7.1">
+          <p id="section-1-7.1.1">Universality, so a quantum network can accommodate any application.<a href="#section-1-7.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-7.2">
+          <p id="section-1-7.2.1">Transparency, so quantum networks can share physical media with classical networks.<a href="#section-1-7.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-7.3">
+          <p id="section-1-7.3.1">Scalability, so quantum networking protocols can support the growth of the network.<a href="#section-1-7.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+</section>
+</div>
+<div id="conventions-and-definitions">
+<section id="section-2">
+      <h2 id="name-conventions-and-definitions">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
+      </h2>
+<p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="base-technologies-qkd-experience-and-evolved-sdn-concepts">
+<section id="section-3">
+      <h2 id="name-base-technologies-qkd-exper">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-base-technologies-qkd-exper" class="section-name selfRef">Base Technologies: QKD Experience and Evolved SDN Concepts</a>
+      </h2>
+<p id="section-3-1">The design and deployment of QKD infrastructures has followed a number of design principles, based on the best practices in network architecture and management established during the lifetime of the Internet (and even before), and focused on the separation of concerns, that have been converging on the trends around open disaggregation strategies, and the identification of separate data and control planes, connected by means of open interfaces.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">In what relates to the evolution of SDN concepts, the Cooperating Layered Architecture for Software-Defined Networking (CLAS) <span>[<a href="#RFC8597" class="cite xref">RFC8597</a>]</span> described a SDN architecture structured in two different strata, namely Service Stratum and Transport Stratum.  On one hand, the Service Stratum contains the functions related to the provision of services and the capabilities offered to external applications. On the other hand, the Transport Stratum comprises the functions focused on the transfer of data between the communication endpoints, e.g., between end-user devices, between two service gateways, etc.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<div id="a-qkd-multi-plane-architecture">
+<section id="section-3.1">
+        <h3 id="name-a-qkd-multi-plane-architect">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-a-qkd-multi-plane-architect" class="section-name selfRef">A QKD Multi-Plane Architecture</a>
+        </h3>
+<p id="section-3.1-1">Applying the SDN and disaggregation principles, QKD infrastructures have been essentially structured around three different planes <span>[<a href="#QTTI21" class="cite xref">QTTI21</a>]</span>. While we are not talking about a rigid, layered structure, where a given layer can only provide services to the immediate upper layer and consume services from the immediate lower layer, it is worth noting that interactions among elements in the different planes must use well-defined interfaces <span>[<a href="#ETSI04" class="cite xref">ETSI04</a>]</span> <span>[<a href="#ETSI14" class="cite xref">ETSI14</a>]</span> <span>[<a href="#ETSI15" class="cite xref">ETSI15</a>]</span> <span>[<a href="#ETSI18" class="cite xref">ETSI18</a>]</span>, and these interactions may incorporate a layered approach.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">In this approach, the Quantum Forwarding Plane (QFP) is in charge of performing the operations (quantum and classical) to ensure the forwarding of the quantum signals or enable the utilization of persistent quantum resources, like persistent, distributed  entanglement. In QKD, the QFP encapsulates all the functionality required to obtain an end-to-end secret key across the network. This implies the transmission of the quantum signals and the execution of any associated protocols. Note this would require the use of classical procedures, either via a separated physical "classical channel" <span>[<a href="#QTTI21" class="cite xref">QTTI21</a>]</span> or the reuse of a common channel, as proposed in "packet-oriented" approaches <span>[<a href="#PSQN22" class="cite xref">PSQN22</a>]</span>. In this sense, the forwarding of the keys at intermediate nodes in the multi-hop chains used to overcome current limitations in propagation of quantum signals or states, has to be considered part of the QFP, since it is done exclusively on behalf of the QKD functionality.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1-3">On its side, the Service Overlay Plane (SOP) supports the use of the keys derived from the QFP by applications. This includes the storage, identification, delivery, and lifecycle management of the units of consumption (keys of different length, delivered according to specific patterns) at the endpoints of the network. All network functionalities at this plane can be considered application-oriented, with a clear mapping to an overlay data plane in a classical network, though the SOP elements should be aware of the nature and specific needs of the QFP they interact with. Key management mechanisms, beyond key forwarding by intermediate nodes, fit within the SOP. This comprises methods such as hybridization and augmentation techniques, or the means for synchronizing key identifiers across API boundaries.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">Finally, the Control and Management Plane (CMP) is made of the elements that create and supervise the state of the network. This decoupling between network configuration and (general) data forwarding is supported by the controller, a mediation logically centralized element between the control capabilities supported by the elements in the QFP and SOP and the management and control functions. These management and control applications rely on the controller, taking advantage of the centralization it provides, to guarantee the best performance of the network and avoid diverging local control decisions that might lead to sub-optimal configurations.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1-5">It is worth noting this management centralization does not contradict the distributed principles generally applied in current networks. Local control decisions are intended to be coordinated by centralized management. While the communication between the controller and the controlled elements relies on some kind of SDN protocol, the controller exposes a consistent abstract model of the network devices and topology, that can be structured in a hierarchy of abstractions, from lower-level, element-focused ones, up to application-oriented ones.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1-6">In summary, QKD infrastructures are converging into an extended SDN model, with two differentiated data planes, controlled in a coordinated manner through a common Control and Management Plane, that supports aggregated mechanisms for further orchestration. The QFP/SOP duality constitutes a common abstract foundation for a general approach to quantum communications networks, regardless of their final purpose.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+<div id="the-service-unit-concept-in-qkd-networks">
+<section id="section-3.1.1">
+          <h4 id="name-the-service-unit-concept-in">
+<a href="#section-3.1.1" class="section-number selfRef">3.1.1. </a><a href="#name-the-service-unit-concept-in" class="section-name selfRef">The Service Unit Concept in QKD Networks</a>
+          </h4>
+<p id="section-3.1.1-1">QKD infrastructures are evolving from a conglomerate of links, where keys derived from the protocol applied to a link are used to secure the communication between two entities directly associated to the endpoints of the link, into real networks, able to forward a key to be used between any two entities attached to the network. As discussed above, the entities in the SOP play a key role for this, supporting the storage, delivery and lifecycle management of the service units being consumed by the applications attached to the network. These SOP entities, are commonly referred as KME (Key Management Entity), acting as key storage for a specific element or elements in the QFP, and providing an endpoint for applications to request and consume keys for a specific secure interaction. The interfaces KMEs use to interact with the QFP elements are usually provided by specific (commonly software-based) components, acting as agents in the QFP, and therefore termed Key Management Agent (KMA).<a href="#section-3.1.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-2">Several of these KMEs can be logically grouped into what is called a KMS (Key Management System), supporting a set of related applications grouped into a trust domain, and therefore consistently operated by a corresponding entity in the CMP. The differentiation between KME and KMS functionalities becomes more apparent as networks expand and consolidate, with many cases of current QKD link-oriented infrastructures referring to a KMS as the entity integrating both roles.<a href="#section-3.1.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-3">The service units provided by a QKD network have to be uniquely identified within the network, so they can be properly managed by the SOP, including their routing across the different required KMEs, the requests of appropriate links in the QFP, and the management of the lifecycle events related to making the key available to the applications willing to use it. It is important to note we are talking about a service unit, and not a data unit associated with a particular protocol, and therefore what is relevant here are the identification of the two application endpoints (that should include a nonce mechanism to identify the specific pairing) together with relevant parameters regarding the key lifecycle, such as its length and valid time-to-live. While these are the two essential lifecycle parameters, others, as it might be the case of applicable crypto algorithms, could be considered as well. The service unit identifier is not directional, i.e., it has no source or destination addresses, as it defines a shared state to be used by two applications. We can consider the analogy of transport flows in the current Internet, rather than packets.<a href="#section-3.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-4">The current proposal we are experimenting with advocate for using URNs [RFC8141] as endpoint identifiers, taking advantage of their nature of location-independent, persistent resource identifiers. The q-component of the endpoint URN can be used to carry the nonce part of the specific application identifier. If we consider that lifecycle parameters can be expressed using a specific URN in its q-component, we have that a service unit identifier consists of the combination of three URNs.<a href="#section-3.1.1-4" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-5">As an example, let’s consider URNs for application endpoints use the qkd namespace id, and that lifecycle parameters use the URN qkd:lifecycle assigned name, with the parameters size and valid-until. A service unit identifier for QKD between two domains, with roots madqci and quditto, would look like:<a href="#section-3.1.1-5" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-3.1.1-6">
+<pre>
+urn:qkd:madqci:ccips?=nonce=177923
+urn:qkd:quditto:emulator:ipsec:controller?=nid=af33017
+urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
+</pre><a href="#section-3.1.1-6" class="pilcrow">¶</a>
+</div>
+<p id="section-3.1.1-7">The structure and delegation mechanisms provided by URNs allow for arbitrary aggregation of prefixes, enabling any kind of routing style, from the aggregation and inter-domain announcement similar (or compatible) to BGP in classical Internet to the decision on which prefixes are announced and how they are routed by means of SDN controllers, whether by means of a federation approach or in a hierarchical control structure. The approach also supports the use of non-routable identifiers that cannot be announced outside a given domain or KMS and can only establish service pairing with other applications within the same domain. These mechanisms would be applied by the corresponding elements in the CMP.<a href="#section-3.1.1-7" class="pilcrow">¶</a></p>
+<p id="section-3.1.1-8">The QKD service unit identifies a shared state between two application entities, and therefore cannot be consider directional, and the concepts of source and destination do not apply here. Nevertheless, directionality is relevant in the process of establishing the QKD service unit, both in terms of its identifier and of its contents. In the case of the identifier, one of the application entities will request a service unit to the relevant KMS/KME it is attached to, identifying itself and the other peer in the service unit, together with the applicable lifecycle parameters. Relying on the available route information and the replies of the intermediate elements in the SOP, the final identifier of the QKD service unit will be built. The associated content, i.e., the bit string defining the key to be shared between the two application endpoints, will be derived from the elements in the participating links in the QFP and the application of any additional mechanisms (key encryption, augmentation, trusted node forwarding…) required by the participating KMEs and the corresponding links.<a href="#section-3.1.1-8" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="interfacing-with-classical-networks">
+<section id="section-3.2">
+        <h3 id="name-interfacing-with-classical-">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-interfacing-with-classical-" class="section-name selfRef">Interfacing with Classical Networks</a>
+        </h3>
+<p id="section-3.2-1">The interface of QKD infrastructures with classical networks (commonly identified as OTN, Optical Transport Networks) has been based on three basic principles, related to the ones we mentioned above: facilitate the reuse of physical infrastructure (sustainability and transparency), apply the abstractions commonly used in open and disaggregated networks (agility and universality), and reuse the best practices in network management being applied in current infrastructures (pliability and scalability). We can classify the interface mechanisms according to the level at which they occur.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">At the application level, end-to-end key management and end-to-end key creation are obviously the main target. Since many applications of these keys are related to classical communications (direct encryption, key derivation for symmetric algorithms, peer identity…) there is a clear interface for the SOP, with classical network functions acting as consumers of the keys or, in general terms, the bit streams generated by the QFP. Further on, the application of NFV  mechanisms to any network function allows for its implementation through software virtualization techniques (virtual machines, para-virtualization containers, unikernels, etc.), irrespectively of their application environments or specific plane. The lifecycle management of all network functions, of any nature, under a common MANO stack <span>[<a href="#NFV06" class="cite xref">NFV06</a>]</span>, seems the most reasonable option.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-3">At the control and management level, the distinct nature of network elements and the mediation nature of the controller role do not make advisable the use of common quantum/OTN controllers, but there are common abstractions able to support cross-interactions among controllers and management applications, especially regarding:<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.2-4.1">
+            <p id="section-3.2-4.1.1">Quantum management applications requiring operations on topologies and physical paths in the OTN mediated by an OTN controller.<a href="#section-3.2-4.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.2-4.2">
+            <p id="section-3.2-4.2.1">OTN management applications requiring operation on quantum topologies mediated by the quantum controller.<a href="#section-3.2-4.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.2-4.3">
+            <p id="section-3.2-4.3.1">Topology updates exchanged between quantum and OTN controllers.<a href="#section-3.2-4.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.2-4.4">
+            <p id="section-3.2-4.4.1">The coordination through an integrated controller (commonly referred as "orchestrator"), able to provide a common view to application network functions.<a href="#section-3.2-4.4.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-3.2-5">At the forwarding level, there is a radical difference between the network elements in quantum networks and OTN, and therefore interactions in data forwarding are not feasible, with only two exceptions: the possibility of sharing physical media, and the use of classical channels to support QKD algorithms, as it is the case of distillation channels in protocols like BB84. In this case, a proper control of the path and physical parameters has to be applied to minimize interferences of any nature and guarantee OTN connectivity for the quantum algorithms.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="applying-network-virtualization-principles">
+<section id="section-3.3">
+        <h3 id="name-applying-network-virtualiza">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-applying-network-virtualiza" class="section-name selfRef">Applying Network Virtualization Principles</a>
+        </h3>
+<p id="section-3.3-1">Recent proposals for QKD network management have explored the use of operational models that radically leverage the virtualization of control and key management functionalities <span>[<a href="#EVCK25" class="cite xref">EVCK25</a>]</span>. These approaches pave the way for a tighter integration of quantum functionality with functions already established in state of the art classical networks, including support for user/function authentication and authorization, and support for user and function mobility, while adhering to established QKD network standards. Integrating these mechanisms enhance security measures and ensure that quantum networks can seamlessly interface with existing and future telecommunications infrastructure.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">While SDN ensures higher degrees of flexibility and reconfigurability by allowing network functions to be easily modified and upgraded through software changes, virtualization enables the abstraction of hardware devices by creating virtual instances, which improves scalability, resource efficiency and allows the dynamic allocation of softwarized network functions in different locations. As quantum technology evolves, a virtualized layer for softwarized network functions significantly aids adaptation to these changes, ensuring pliability and responsiveness for seamless updates, and incorporating new mechanisms without extensive hardware modifications.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">As for key exchange, current technology does not allow direct end-to-end quantum key exchange between distant nodes. Instead, key distribution must rely on trusted intermediary nodes to transmit keys hop-by-hop. A key management layer where the actions of all nodes are coordinated is needed to ensure secure and efficient key distribution. Virtualizing and decoupling key management from the physical QKD devices enhances flexibility and scalability, and supports the integration of hybrid cryptographic strategies, combining QKD and post-quantum algorithms to ensure security and performance. Additionally, it allows real-time performance monitoring, data-driven control and management, and tailored access and admission mechanisms <span>[<a href="#QNSA24" class="cite xref">QNSA24</a>]</span>.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.3-4">The virtualized key management layer acts as an intermediary between the clients and the cryptographic material generating devices. This layer would have as functions both those that fall within the framework of the SOP defined in previous sections, as well as key forwarding, specific to the QFP. For the latter, each functional element of this layer, identified as key managers entities in <span>[<a href="#EVCK25" class="cite xref">EVCK25</a>]</span>, has a forwarding table, which can be dynamically updated whenever necessary by the control plane. Adittionally, they implement a token bucket for each application session, to control the request rate by limiting it to an agreed-upon value at the Quality of Service (QoS) level.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+<p id="section-3.3-5">The virtualized control plane can have different functional elements, and, as with the key management layer, several instances of the same element can be executed as necessary for the correct operation of the network. Foundational elements include: a controller, an access control and an admission control component, a routing module, and a monitoring element. This set allows the execution of network access policies, ensuring that no unauthorized user or process enters the network, verifies the configuration parameters of new sessions opened by applications, ensuring that they are granted the appropriate QoS, and performs performance tests on the physical links and collecting statistics on the QKD modules, quickly alerting about any failure or possible attack on the QFP.<a href="#section-3.3-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="clas-and-quantum-networks">
+<section id="section-3.4">
+        <h3 id="name-clas-and-quantum-networks">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-clas-and-quantum-networks" class="section-name selfRef">CLAS and Quantum Networks</a>
+        </h3>
+<p id="section-3.4-1">As discussed above, SDN principles have enabled the base abstractions for the conceptualization of QKD infrastructures, including the services they provide and the required interactions in the use of classical infrastructure to support the required connectivity patterns. The original CLAS archiecture, as defined by <span>[<a href="#RFC8597" class="cite xref">RFC8597</a>]</span>, addresses SDN evolution considering the forwarding (transport) and service aspects in two separated but coordinated planes. This approach matches the multi-plane approach described for QKD infeastructures, though it seems somehow limited to address the required interactions with physical connectivity, as well as to incorporate general requirements regarding automation to support convergence with operational practices.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">The new extension of the CLAS architecture, as defined in <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span>, intends to address the current evolution of networks and the services they support introducing new aspects, in particular the considerations of distributed computing capabilities attached to different points in the network, and the introduction of evidence-driven techniques, such as Analytics, Artificial Intelligence (AI) and Machine Learning (ML) to improve operations by means of closed-loop automation.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+<p id="section-3.4-3">The CLAS framework provides a sound foundation for incorporating the experience gained with QKD deployments in a general proposal applicable to the Quantum Internet, as it is essentially compatible with the architectural lessons learned within the QKD fields, and at the same time supports additional degrees of freedom regarding the integration of control mechanisms, and the interplay with the (shared) infrastructure and its management.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="a-framework-architecture-for-the-quantum-internet">
+<section id="section-4">
+      <h2 id="name-a-framework-architecture-fo">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-a-framework-architecture-fo" class="section-name selfRef">A Framework Architecture for the Quantum Internet</a>
+      </h2>
+<p id="section-4-1">Based on the available experience on the deployment of existing QKD infrastructures and on the evolution of SDN-enabled architectures described in the previous section, this document proposes an architecture framework intended to offer a conceptual common framework for the integration of technologies intended to build the Quantum Internet infrastructure and its integration with the current Internet.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">Once we presented in the  previous section the lessons learned from QKD deployments, introducing a general architecture applicable to those deployments, in this section we propose the generalization of such architecture towards a Quantum Internet, augmented by the extended SDN approach proposed by the evolved CLAS in <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span>. In what follows,we will discuss how this framework architecure would support the required properties: agility, allowing for technology evolution, sustainability, fostering infrastructure reuse, and pliability, supporting operational best practices.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">Furthermore, we propose here a general network architecture trying to incorporate relevant trends such as cloud nativeness, the integration of zero-touch management, or the considerations about intent. With this in mind, in what follows a CLAS-based architecture frameworks for quantum communications networks is introduced, including the proposed strata and their main characteristics.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<div id="strata-for-quantum-networks">
+<section id="section-4.1">
+        <h3 id="name-strata-for-quantum-networks">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-strata-for-quantum-networks" class="section-name selfRef">Strata for Quantum Networks</a>
+        </h3>
+<p id="section-4.1-1">The CLAS architecture was initially conceived from the perspective of exploiting the advantages of network programmability in operational networks, complementing and going beyond the traditional layered structured of the original SDN proposal. Following the CLAS philosophy, as proposed in its recent update <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span> of decoupling services, additional functionality, and base connectivity, the architecture of a quantum network should be composed of:<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.1-2.1">
+            <p id="section-4.1-2.1.1">A Service Stratum, dealing with the functionality related to the purpose of the quantum network, and aligned with SOP described for QKD networks above. At this moment, the most general service, beyond QKD key management, is obviously entanglement distribution in a general quantum network. Others can be considered, as time synchronization, identity assurance or sensing. The service stratum would consider the relevant service units (keys, shared states, identities, timelines...), deal with their appropriate forwarding and routing, and deliver these service units as requested by the user application functions. The concept of service unit becomes essential here, as the cornerstone for fundamental network characteristics (addressing, routing, information structuring...) and for the interface to the applications using the network. As the discussion on how to identify and relate keys in a wide-area QKD network is still alive, the need to identify how to “pack” qubits in a way useful for, say, distributed computations or teleportation coding, how to route these packs, and how to request and consume services based on them is crucial to define how a global quantum network should be built and operated.<a href="#section-4.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-2.2">
+            <p id="section-4.1-2.2.1">A Quantum Forwarding Stratum, in charge of the direct application of quantum protocols and algorithms between the two endpoints of a quantum link, even when it is a multi-hop one, very much as the QFP we described as part of QKD deployments.  It is important to note that this stratum must be able to support the service units that constitute, but there is no need for a one-to-one mapping between those quantum forwarding units and the service units. As example, let us consider entanglement forwarding via swapping, which would likely occur on a pairwise basis at this stratum, but needs to be considered in a collective view to make sense to the applications interacting with the service stratum.<a href="#section-4.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-4.1-2.3">
+            <p id="section-4.1-2.3.1">A Connectivity Stratum, taking care of providing the paths to support the quantum links used by the quantum forwarding and service strata. Typically, the connectivity stratum would be supported by OTN infrastructure, via fiber and/or open-space links, and would follow a common connectivity paradigm, specifically a circuit-based or packet-based one. While current quantum links deal with OTN infrastructure according to a  circuit-based paradigm, recent proposals are addressing the idea of "quantum packets" <span>[<a href="#PSQN22" class="cite xref">PSQN22</a>]</span> and the connectivity stratum would have to deal, in general terms, with the classical headers of such packets. Furthermore, classical links are always required for supporting quantum links procedures, and by any kind of monitoring, control, and management connections. The provisioning of related quantum and classical links, and their consistent operation to meet service levels will be the main concern of this stratum.<a href="#section-4.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-4.1-3">This architecture, following the CLAS proposal itself, is built under the assumption that planes within and across strata communicate through well-defined, open interfaces supporting programmability, as a generalization of the common SDN architecture that defines a controller as a mediator between application and network (forwarding) devices. It includes the archetypal case of a centralized controller, but is not limited to that particular realization. These broader implications of SDN principles are among the main motivation of the original CLAS proposal in <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span>, and it is the main reason for using it as the base for the framework proposed by ths document. The archetypal case of a centralized controller would be the most common deployment style, but the architecture is able to support more distributed approaches, in which each participating domain runs a specific instance of the different strata, providing collaboration by the exposure of tailored information to the other domains via border protocols, as proposed in <span>[<a href="#ALTOQ24" class="cite xref">ALTOQ24</a>]</span>. Even configurations where a particular domain focuses on one or two of the strata, supporting the other strata being hosted in different domains is also conceivable.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-4">Based on the images used to illustrate the strata proposed in <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span> and <span>[<a href="#RFC8597" class="cite xref">RFC8597</a>]</span>, the relationship among the strata described above would be as shown in the following diagram:<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-ascii-art art-text artwork" id="section-4.1-5">
+<pre>
+                                    Application Functions
+                                              /\
+                                              ||
+        +-------------------------------------||-------------+
+        | Service Stratum                     ||             |
+        |                                     \/             |
+        |  +--------------+     ...........................  |
+        |  | Telemetry Pl.|     . SDN Intelligence        .  |
+        |  |              |&lt;===&gt;.                         .  |
+        |  +-----/\-------+     .        +--------------+ .  |
+        |        ||             .        |   Mgmt. Pl.  | .  |
+        |        ||             .  +--------------+     | .  |
+        |  +-----\/-------+     .  |  Control Pl. |-----+ .  |
+        |  | Resource Pl. |     .  |              |       .  |
+        |  |              |&lt;===&gt;.  +--------------+       .  |
+        |  +--------------+     ...........................  |
+        |                                /\             /\   |
+        |                                ||             ||   |
+        +--------------------------------||-------------||---+
+                         Standard API -- || --          ||
+        +--------------------------------||-----+       ||
+        | Quantum Forwarding Stratum     ||     |       ||
+        |                                \/     |       ||
+        |  +----------+    ...................  |       ||
+        |  | Telemetry|    . SDN             .  |  Std. ||
+        |  | Plane    |&lt;==&gt;. Intelligence    .  |  API  ||
+        |  +-----/\---+    .    +----------+ .  |    -- || --
+        |        ||        .    | Mgmt. Pl.| .  |       ||
+        |        ||        .  +----------+ | .  |       ||
+        |  +-----\/---+    .  | Control  |-+ .  |       ||
+        |  | Resource |    .  | Plane    |   .  |       ||
+        |  | Plane    |&lt;==&gt;.  +----------+   .  |       ||
+        |  +----------+    ...................  |       ||
+        +----------------------------------/\---+       ||
+                           Standard API -- || --        ||
+                       +-------------------||-----------||-----+
+                       | Connectivity      ||           ||     |
+                       | Stratum           ||           ||     |
+                       |                   \/           \/     |
+                       |  +----------+    ...................  |
+                       |  | Telemetry|    . SDN             .  |
+                       |  | Plane    |&lt;==&gt;. Intelligence    .  |
+                       |  +-----/\---+    .    +----------+ .  |
+                       |        ||        .    | Mgmt. Pl.| .  |
+                       |        ||        .  +----------+ | .  |
+                       |  +-----\/---+    .  | Control  |-+ .  |
+                       |  | Resource |    .  | Plane    |   .  |
+                       |  | Plane    |&lt;==&gt;.  +----------+   .  |
+                       |  +----------+    ...................  |
+                       +---------------------------------------+
+
+</pre><a href="#section-4.1-5" class="pilcrow">¶</a>
+</div>
+<p id="section-4.1-6">Essentially, this architecture model incorporates the findings from QKD deployments, and addresses the requirements for providing a general framework for quantum networks towards the Quantum Internet. It is intended to support the evolution of network base technologies, provide the degrees of freedom necessary to encompass different deployment models, and align with relevant trends in network operation, while considering the practical aspects related to classical connectivity.<a href="#section-4.1-6" class="pilcrow">¶</a></p>
+<p id="section-4.1-7">The proposed architecture will address the evolution of network base technologies by providing abstractions able to accommodate to this evolution. Considering the stages analyzed in <span>[<a href="#QIROAD18" class="cite xref">QIROAD18</a>]</span>, the QKD deployment patterns described in the previous section already cover "Trusted Repeater Networks" and "Prepare and Measure Networks", and the general architecture proposed here is able to accommodate the more evolved stages, namely "Entanglement Distribution Networks", "Quantum Memory Networks", "Few Qubit Fault-Tolerant Networks", and "Quantum Computing Networks". As immediate examples we can consider the integration of features in the Connectivity Stratum with the other two strata to support entanglement forwarding among different locations, or the incorporation of future quantum repeaters into the Quantum Forwarding Stratum to support more ellaborated behaviors of the Service Stratum.<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+<p id="section-4.1-8">In addition, these network abstractions are intended to provide specific degrees of freedom for network design and deployment, through the incorporation of independent resource and control planes at each stratum. Given the control mechanisms identified as "SDN intelligence" on the diagram above are able to expose open interfaces, the approach for coordinating the different strata via mechanisms like those defined in <span>[<a href="#ETSI18" class="cite xref">ETSI18</a>]</span> is totally feasible, and different aggregation patterns (multi-stratum, multi-domain...) and models (federated, hierarchical...) can be applied. These aggregation mechanisms are equally applicable in the case of telemetry data and their integration with closed-loop mechanisms for automation, in support of the required quantum network agility.<a href="#section-4.1-8" class="pilcrow">¶</a></p>
+<p id="section-4.1-9">The evolved CLAS proposal in <span>[<a href="#CLASEVO" class="cite xref">CLASEVO</a>]</span> explicitly incorporates current trends in network automation, in whatever the flavor including AI and intent expressions. This architecture guarantees the future pliability of quantum networks, in alignment with the evolution of best practices in general network management.<a href="#section-4.1-9" class="pilcrow">¶</a></p>
+<p id="section-4.1-10">Finally, by explicitly addressing the issues related to the connectivity of quantum links, the architecture considers the interactionis with any other relevant oparational aspects required for providing quantum network services. The direct integration of a stratum focused on this aspects makes the proposed architecture better aligned with the sustainability goal.<a href="#section-4.1-10" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="identification-of-interfaces-and-protocols">
+<section id="section-4.2">
+        <h3 id="name-identification-of-interface">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-identification-of-interface" class="section-name selfRef">Identification of Interfaces and Protocols</a>
+        </h3>
+<p id="section-4.2-1">This section, TBP once there is agreement on the architecture framework, will include a discussion on the applicable and foreseen protocols and interfaces to be used for intra-stratum (SDN and telemetry, essentially) and inter-stratum (APIs and models applicable) interactions, as well as the capability exposure mechanisms to support the aggregation mechanisms mentioned above.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<div id="the-role-of-network-virtualization">
+<section id="section-4.2.1">
+          <h4 id="name-the-role-of-network-virtual">
+<a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-the-role-of-network-virtual" class="section-name selfRef">The Role of Network Virtualization</a>
+          </h4>
+<p id="section-4.2.1-1">As a natural consequence of what is disucssed above in the framework of cloud-native QKD, the use of network virtualization techniques would be essential for the Service Stratum, at all of their planes:<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4.2.1-2.1">
+              <p id="section-4.2.1-2.1.1">The SDN intelligence plane, allowing the dynamic management of service units and their association with the corresponding units in the Quantum Forwarding Stratum.<a href="#section-4.2.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.2.1-2.2">
+              <p id="section-4.2.1-2.2.1">The telemetry plane, for dynamic monitoring and data aggregation.<a href="#section-4.2.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-4.2.1-2.3">
+              <p id="section-4.2.1-2.3.1">The resource plane, in support of the different nature of the interactions at the Quantum Forwarding Stratum, like the case of entanglement persistence beyond direct physical reachability.<a href="#section-4.2.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-4.2.1-3">The current trends in optical disagreggation and the use of orchestrated SDN mechanisms for network path management and monitoring provide a natural path for leveraging network virtualization mechanisms iwithin the Connectivity Stratum, facilitating their integration with the Service Stratum.<a href="#section-4.2.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.1-4">In what relates to the Quantum Forwarding Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum.<a href="#section-4.2.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="the-role-of-service-units">
+<section id="section-4.2.2">
+          <h4 id="name-the-role-of-service-units">
+<a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-the-role-of-service-units" class="section-name selfRef">The Role of Service Units</a>
+          </h4>
+<p id="section-4.2.2-1">The fact we remarked above about the QKD service unit being a shared state between two application entities supports a direct translation of the concept to apply it in a generalized quantum network. A service unit in this context will correspond to the shared quantum states to be consume by the application entities, according to the goals of their sharing of these quantum states. This implies that a QKD service unit can be considered a specialized quantum service unit, where the shared state has been somehow pre-processed to distill the bits that define the shared key. A similar pattern could be applicable to other specialized quantum network applications, as it would be the case of distributed quantum sensing or metrology.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-2">The identification of such service units can follow the same patterns described for the QKD service units, with three URNs, two of them identifying the pair of application entities sharing the state, and a third one defining the lifecycle parameters. Obviously, these parameters should differ from the ones postulated for QKD, and it is possible to envisage parameters such as shared state size (the number of entangled pairs), a timestamp regarding lifetime of the shared state, and others addressing aspects like fidelity. As the quantum memory technology at the foundation of these shared states evolve, a clearer view of the parameter URN will become available. Experiments on this issue will be really useful to identify these parameters and shape the q-component of the parameter URN.<a href="#section-4.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-3">The content of a QKD service unit is a bitstring corresponding to the shared key. These bitstring is stored in the memories of the corresponding KMEs, with individual bits differentiated by their position in the string. Quantum memories must be available at the resource plane of the Service Stratum (SS), and the service unit should contain the addresses used by those quantum memories to identify the corresponding entangled pairs. The elements equivalent to the KMEs in the control plane of the SS interact with these quantum memories to identify the applicable addresses, and to require the elements in the control plane of the Quantum Forwarding Stratum (QFS) to activate the corresponding exchanges in the quantum links they operate. Each of the endpoints of these quantum links is expected to provide a functionality equivalent to the agents discussed for QKD networks, in support of the SS quantum memories.<a href="#section-4.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-4">As discussed in the case of QKD service units, directionality (the specification of an origin and a destination) is not applicable in this case either, as service units correspond to a shared state. What can be certainly considered is an originator of this shared state, corresponding to the application element requesting the establishment of the service unit. This would trigger the SS control plane element attached to the application to start its route decision procedures and to start the interactions with the relevant SS control planes to start the necessary exchanges to establish the shared quantum states. The nature of the endpoint identifiers support, as discussed for shared keys in QKD, the use of any routing mechanisms, ranging from strictly hierarchical and centralized schemas based on orchestration mechanisms to fully distributed routing algorithms.<a href="#section-4.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-5">As a result of the routing procedures and the interaction among SS control plane elements, there should be corresponding interactions with elements in the control planes of the Connectivity Strata (CS) and the QFS, to verify and require, as needed, the establishment of the individual entangled pairs and, as required, the physical links to support them. There is a consolidated corpus of interfaces (usually known as North-Bound Interfaces, NBI) for the control of classical connectivity, and specially of optical links, such as the TAPI specification <span>[<a href="#TAPI240" class="cite xref">TAPI240</a>]</span>, and different proposals to select and establish paths. It seems necessary to explore and experiment with similar interfaces and procedures for the management and control of quantum links, addressing the challenges already identified in <span>[<a href="#RFC9340" class="cite xref">RFC9340</a>]</span>.<a href="#section-4.2.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-6">Finally, a word on the telemetry planes in each of the proposed strata. It should be obvious the elements in the control planes at each of the strata should start monitoring mechanisms at the involved elements in the resource planes and activate telemetry collection mechanisms. This brings the requirement of defining and experimenting with appropriate metrics and telemetry data models for both the SS and the QFS, as already being defined for QKD infrastructures <span>[<a href="#ETSI23" class="cite xref">ETSI23</a>]</span>.<a href="#section-4.2.2-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="the-role-of-synthetic-environments">
+<section id="section-4.2.3">
+          <h4 id="name-the-role-of-synthetic-envir">
+<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-the-role-of-synthetic-envir" class="section-name selfRef">The Role of Synthetic Environments</a>
+          </h4>
+<p id="section-4.2.3-1">Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availabilty. This is especially true for experimentation at the scale required to validate network protocolos and inter- and intra-strata interfaces. In this context, it becomes appropriate the use of synthetic testbeds where it is feasible to emulate the deployment of quantum networks, thus enabling the execution of experiments and trials, where even potential network attacks can be analyzed without compromising the integrity of an already built quantum network or a signinficant number of physical devices. Based on the results introduced in <span>[<a href="#QKNDT24" class="cite xref">QKNDT24</a>]</span> for QKD networks, a characterization of such Quantum Network Digital Twin (QNDT) will support a better understanding of the properties of the different interfaces and protocols, and the applicability of the architecture proposed in this document.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-2">A more detailed description of the features of a generalized QNDT, based on <span>[<a href="#QKNDT24" class="cite xref">QKNDT24</a>]</span> findings and the principles of the architecture described in this document is planned once the experiments on the revamped version of the mentioned QNDT becomes available, and will be integrated in a future version.<a href="#section-4.2.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-5">
+      <h2 id="name-security-considerations">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-5-1">This section is TBP in detail, as the identification of interfaces and protocols progresses. The general considerations made in <span>[<a href="#RFC8597" class="cite xref">RFC8597</a>]</span> apply, as well as an elaboration on the following points regarding:<a href="#section-5-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-5-2.1">
+          <p id="section-5-2.1.1">The requirements on mutual authentication in the channels used for quantum interactions, as they should require methods rooted at physical properties.<a href="#section-5-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.2">
+          <p id="section-5-2.2.1">Specific physical attacks related to the particular quantum mechanisms in use by the quantum forwarding stratum.<a href="#section-5-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-5-2.3">
+          <p id="section-5-2.3.1">The interaction of these physical attacks with classical attacks to the control and monitoring activities, possibly translating into a threat surface augmentation.<a href="#section-5-2.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+</section>
+</div>
+<div id="sec-combined-references">
+<section id="section-6">
+      <h2 id="name-references">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<div id="sec-normative-references">
+<section id="section-6.1">
+        <h3 id="name-normative-references">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+        <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8597">[RFC8597]</dt>
+      <dd>
+<span class="refAuthor">Contreras, LM.</span>, <span class="refAuthor">Bernardos, CJ.</span>, <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">P. Iovanna</span>, <span class="refTitle">"Cooperating Layered Architecture for Software-Defined Networking (CLAS)"</span>, <span class="seriesInfo">RFC 8597</span>, <span class="seriesInfo">DOI 10.17487/RFC8597</span>, <time datetime="2019-05" class="refDate">May 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8597">https://www.rfc-editor.org/rfc/rfc8597</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-6.2">
+        <h3 id="name-informative-references">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="ALTOQ24">[ALTOQ24]</dt>
+        <dd>
+<span class="refAuthor">Muniz, A.</span>, <span class="refAuthor">Canto, R.</span>, <span class="refAuthor">Contreras, L.</span>, <span class="refAuthor">Pastor, A.</span>, <span class="refAuthor">Lopez, D.</span>, and <span class="refAuthor">J. Morales</span>, <span class="refTitle">"Using Protocol to Address SD-QKD Federation in Multi-Domain Scenarios"</span>, <time datetime="2024-07" class="refDate">July 2024</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/10628176">https://ieeexplore.ieee.org/document/10628176</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="CLASEVO">[CLASEVO]</dt>
+        <dd>
+<span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Lopez, D.</span>, and <span class="refAuthor">C. J. Bernardos</span>, <span class="refTitle">"An Evolution of Cooperating Layered Architecture for SDN (CLAS) for Compute and Data Awareness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-contreras-coinrg-clas-evolution-03</span>, <time datetime="2024-07-05" class="refDate">5 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-03">https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="ETSI04">[ETSI04]</dt>
+        <dd>
+<span class="refTitle">"ETSI GS QKD 004: Quantum Key Distribution (QKD); Application Interface"</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.etsi.org/deliver/etsi_gs/QKD/001_099/004/02.01.01_60/gs_QKD004v020101p.pdf">https://www.etsi.org/deliver/etsi_gs/QKD/001_099/004/02.01.01_60/gs_QKD004v020101p.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="ETSI14">[ETSI14]</dt>
+        <dd>
+<span class="refTitle">"ETSI GS QKD 014: Quantum Key Distribution (QKD); Protocol and data format of REST-based key delivery API"</span>, <time datetime="2019-02" class="refDate">February 2019</time>, <span>&lt;<a href="https://www.etsi.org/deliver/etsi_gs/QKD/001_099/014/01.01.01_60/gs_qkd014v010101p.pdf">https://www.etsi.org/deliver/etsi_gs/QKD/001_099/014/01.01.01_60/gs_qkd014v010101p.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="ETSI15">[ETSI15]</dt>
+        <dd>
+<span class="refTitle">"ETSI GS QKD 015: Quantum Key Distribution (QKD); Control Interface for Software Defined Networks"</span>, <time datetime="2022-04" class="refDate">April 2022</time>, <span>&lt;<a href="https://www.etsi.org/deliver/etsi_gs/QKD/001_099/015/02.01.01_60/gs_QKD015v020101p.pdf">https://www.etsi.org/deliver/etsi_gs/QKD/001_099/015/02.01.01_60/gs_QKD015v020101p.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="ETSI18">[ETSI18]</dt>
+        <dd>
+<span class="refTitle">"ETSI GS QKD 018: Quantum Key Distribution (QKD); Orchestration Interface for Software Defined Networks"</span>, <time datetime="2022-04" class="refDate">April 2022</time>, <span>&lt;<a href="https://www.etsi.org/deliver/etsi_gs/QKD/001_099/018/01.01.01_60/gs_QKD018v010101p.pdf">https://www.etsi.org/deliver/etsi_gs/QKD/001_099/018/01.01.01_60/gs_QKD018v010101p.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="ETSI23">[ETSI23]</dt>
+        <dd>
+<span class="refTitle">"ETSI Work-Item QKD 023: Quantum Key Distribution (QKD); Monitoring Interface and Data Model"</span>, <span>n.d.</span>, <span>&lt;<a href="https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=69537">https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=69537</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="EUROQCI">[EUROQCI]</dt>
+        <dd>
+<span class="refTitle">"The European Quantum Communication Infrastructure (EuroQCI) Initiative"</span>, <time datetime="2023-09" class="refDate">September 2023</time>, <span>&lt;<a href="https://digital-strategy.ec.europa.eu/en/policies/european-quantum-communication-infrastructure-euroqci">https://digital-strategy.ec.europa.eu/en/policies/european-quantum-communication-infrastructure-euroqci</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="EVCK25">[EVCK25]</dt>
+        <dd>
+<span class="refAuthor">Lopez, B.</span>, <span class="refAuthor">Vidal, I.</span>, <span class="refAuthor">Valera, F.</span>, and <span class="refAuthor">D. Lopez</span>, <span class="refTitle">"An Enhanced Virtualized Control and Key Management Model for QKD Networks"</span>, <time datetime="2025-01" class="refDate">January 2025</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/10870375">https://ieeexplore.ieee.org/document/10870375</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MADQCI23">[MADQCI23]</dt>
+        <dd>
+<span class="refAuthor">Martin, V.</span>, <span class="refAuthor">Brito, J. P.</span>, <span class="refAuthor">Ortíz, L.</span>, <span class="refAuthor">Brito-Méndez, R.</span>, <span class="refAuthor">Vicente, R.</span>, <span class="refAuthor">Saez-Buruaga, J.</span>, <span class="refAuthor">Sebastian, A. J.</span>, <span class="refAuthor">Aguado, D. G.</span>, <span class="refAuthor">García-Cid, M. I.</span>, <span class="refAuthor">Setien, J.</span>, <span class="refAuthor">Salas, P.</span>, <span class="refAuthor">Escribano, C.</span>, <span class="refAuthor">Dopazo, E.</span>, <span class="refAuthor">Rivas-Moscoso, J.</span>, <span class="refAuthor">Pastor-Perales, A.</span>, and <span class="refAuthor">D. Lopez</span>, <span class="refTitle">"The Madrid Testbed: QKD SDN Control and Key Management in a Production Network"</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/10207295">https://ieeexplore.ieee.org/document/10207295</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="NFV06">[NFV06]</dt>
+        <dd>
+<span class="refTitle">"ETSI GS NFV 006: Network Functions Virtualisation (NFV) Release 4; Management and Orchestration; Architectural Framework Specification"</span>, <time datetime="2022-12" class="refDate">December 2022</time>, <span>&lt;<a href="https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf">https://www.etsi.org/deliver/etsi_gs/NFV/001_099/006/04.04.01_60/gs_NFV006v040401p.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="PSQN22">[PSQN22]</dt>
+        <dd>
+<span class="refAuthor">DiAdamo, S.</span>, <span class="refAuthor">Qi, B.</span>, <span class="refAuthor">Miller, G.</span>, <span class="refAuthor">Kompella, R.</span>, and <span class="refAuthor">A. Shabani</span>, <span class="refTitle">"Packet switching in quantum networks: A path to the quantum Internet"</span>, <time datetime="2022-10" class="refDate">October 2022</time>, <span>&lt;<a href="https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.4.043064">https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.4.043064</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="QIPS22">[QIPS22]</dt>
+        <dd>
+<span class="refAuthor">Illiano, J.</span>, <span class="refAuthor">Caleffia, M.</span>, <span class="refAuthor">Manzalini, A.</span>, and <span class="refAuthor">A. S. Cacciapuoti</span>, <span class="refTitle">"Quantum Internet Protocol Stack: a Comprehensive Survey"</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.sciencedirect.com/science/article/abs/pii/S1389128622002250">https://www.sciencedirect.com/science/article/abs/pii/S1389128622002250</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="QIROAD18">[QIROAD18]</dt>
+        <dd>
+<span class="refAuthor">Wehner, S.</span>, <span class="refAuthor">Elkouss, D.</span>, and <span class="refAuthor">R. Hanson</span>, <span class="refTitle">"Quantum internet: A vision for the road ahead"</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://doi.org/10.1126/science.aam9288">https://doi.org/10.1126/science.aam9288</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="QKNDT24">[QKNDT24]</dt>
+        <dd>
+<span class="refAuthor">Martin, R.</span>, <span class="refAuthor">Lopez, B.</span>, <span class="refAuthor">Vidal, I.</span>, <span class="refAuthor">Valera, F.</span>, and <span class="refAuthor">B. Nogales</span>, <span class="refTitle">"Service for Deploying Digital Twins of QKD Networks"</span>, <time datetime="2024-01" class="refDate">January 2024</time>, <span>&lt;<a href="https://doi.org/10.3390/app14031018">https://doi.org/10.3390/app14031018</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="QNSA24">[QNSA24]</dt>
+        <dd>
+<span class="refAuthor">Lopez, B.</span>, <span class="refAuthor">Vidal, I.</span>, <span class="refAuthor">Valera, F.</span>, <span class="refAuthor">Lopez, D.</span>, and <span class="refAuthor">A. Pastor</span>, <span class="refTitle">"Unleashing Flexibility and Interoperability in QKD Networks: The Power of Softwarized Architectures"</span>, <time datetime="2024-07" class="refDate">July 2024</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/10628345">https://ieeexplore.ieee.org/document/10628345</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="QTTI21">[QTTI21]</dt>
+        <dd>
+<span class="refAuthor">Martin, V.</span>, <span class="refAuthor">Brito, J. P.</span>, <span class="refAuthor">Escribano, C.</span>, <span class="refAuthor">Menchetti, M.</span>, <span class="refAuthor">White, C.</span>, <span class="refAuthor">Lord, A.</span>, <span class="refAuthor">Wissel, F.</span>, <span class="refAuthor">Gunkel, M.</span>, <span class="refAuthor">Gavignet, P.</span>, <span class="refAuthor">Genay, N.</span>, <span class="refAuthor">Moult, O. L.</span>, <span class="refAuthor">Abellan, C.</span>, <span class="refAuthor">Manzalini, A.</span>, <span class="refAuthor">Pastor-Perales, A.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">D. Lopez</span>, <span class="refTitle">"Quantum Technologies in the Telecommunications Industry"</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00108-9">https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00108-9</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9340">[RFC9340]</dt>
+        <dd>
+<span class="refAuthor">Kozlowski, W.</span>, <span class="refAuthor">Wehner, S.</span>, <span class="refAuthor">Van Meter, R.</span>, <span class="refAuthor">Rijsman, B.</span>, <span class="refAuthor">Cacciapuoti, A. S.</span>, <span class="refAuthor">Caleffi, M.</span>, and <span class="refAuthor">S. Nagayama</span>, <span class="refTitle">"Architectural Principles for a Quantum Internet"</span>, <span class="seriesInfo">RFC 9340</span>, <span class="seriesInfo">DOI 10.17487/RFC9340</span>, <time datetime="2023-03" class="refDate">March 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9340">https://www.rfc-editor.org/rfc/rfc9340</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9583">[RFC9583]</dt>
+        <dd>
+<span class="refAuthor">Wang, C.</span>, <span class="refAuthor">Rahman, A.</span>, <span class="refAuthor">Li, R.</span>, <span class="refAuthor">Aelmans, M.</span>, and <span class="refAuthor">K. Chakraborty</span>, <span class="refTitle">"Application Scenarios for the Quantum Internet"</span>, <span class="seriesInfo">RFC 9583</span>, <span class="seriesInfo">DOI 10.17487/RFC9583</span>, <time datetime="2024-06" class="refDate">June 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9583">https://www.rfc-editor.org/rfc/rfc9583</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="TAPI240">[TAPI240]</dt>
+        <dd>
+<span class="refTitle">"ONF Transport API SDK 2.4.0"</span>, <span>n.d.</span>, <span>&lt;<a href="https://github.com/Open-Network-Models-and-Interfaces-ONMI/TAPI/releases/tag/v2.4.0">https://github.com/Open-Network-Models-and-Interfaces-ONMI/TAPI/releases/tag/v2.4.0</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="Y3802">[Y3802]</dt>
+      <dd>
+<span class="refTitle">"ITU-T Recommendation Y.3802: Quantum key distribution networks. Functional architecture"</span>, <time datetime="2021-04" class="refDate">April 2021</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-Y.3802">https://www.itu.int/rec/T-REC-Y.3802</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-A">
+      <h2 id="name-acknowledgments">
+<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+      </h2>
+<p id="appendix-A-1">This document is based on work partially funded by the EU Horizon Europe project QSNP (grant 101114043), the Spanish UNICO project OPENSEC (grant TSI-063000-2021-60), and the MadridQuantum–CM project (funded by the EU, NextGenerationEU, grant PRTR-C17.I1, and by the Comunidad de Madrid, Programa de Acciones Complementarias).<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-B">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Diego Lopez</span></div>
+<div dir="auto" class="left"><span class="org">Telefonica</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:diego.r.lopez@telefonica.com" class="email">diego.r.lopez@telefonica.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Vicente Martin</span></div>
+<div dir="auto" class="left"><span class="org">UPM</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:vicente.martin@upm.es" class="email">vicente.martin@upm.es</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Blanca Lopez</span></div>
+<div dir="auto" class="left"><span class="org">IMDEA Networks</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:blanca.lopez@imdea.org" class="email">blanca.lopez@imdea.org</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Luis M. Contreras</span></div>
+<div dir="auto" class="left"><span class="org">Telefonica</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:luismiguel.contrerasmurillo@telefonica.com" class="email">luismiguel.contrerasmurillo@telefonica.com</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
