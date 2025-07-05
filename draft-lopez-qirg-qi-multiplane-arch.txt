@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 30 August 2025                                              UPM
+Expires: 6 January 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        26 February 2025
+                                                             5 July 2025
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 August 2025.
+   This Internet-Draft will expire on 6 January 2026.
 
 Copyright Notice
 
@@ -117,7 +117,7 @@ Table of Contents
 
    Several steps have been taken in this direction, including the
    identification of architectural principles and base technologies made
-   in [RFC9340], the description of relevant use cases [QUCS], and
+   in [RFC9340], the description of relevant use cases [RFC9583], and
    specific approaches to layered models for Quantum Networking,
    summarized and discussed in [QIPS22].  While the principles provide
    an extremely valuable common ground for further collaboration among
@@ -833,18 +833,16 @@ Table of Contents
               2021, <https://epjquantumtechnology.springeropen.com/
               articles/10.1140/epjqt/s40507-021-00108-9>.
 
-   [QUCS]     Wang, C., Rahman, A., Li, R., Aelmans, M., and K.
-              Chakraborty, "Application Scenarios for the Quantum
-              Internet", Work in Progress, Internet-Draft, draft-irtf-
-              qirg-quantum-internet-use-cases-19, 16 October 2023,
-              <https://datatracker.ietf.org/doc/html/draft-irtf-qirg-
-              quantum-internet-use-cases-19>.
-
    [RFC9340]  Kozlowski, W., Wehner, S., Van Meter, R., Rijsman, B.,
               Cacciapuoti, A. S., Caleffi, M., and S. Nagayama,
               "Architectural Principles for a Quantum Internet",
               RFC 9340, DOI 10.17487/RFC9340, March 2023,
               <https://www.rfc-editor.org/rfc/rfc9340>.
+
+   [RFC9583]  Wang, C., Rahman, A., Li, R., Aelmans, M., and K.
+              Chakraborty, "Application Scenarios for the Quantum
+              Internet", RFC 9583, DOI 10.17487/RFC9583, June 2024,
+              <https://www.rfc-editor.org/rfc/rfc9583>.
 
    [Y3802]    "ITU-T Recommendation Y.3802: Quantum key distribution
               networks. Functional architecture", April 2021,
