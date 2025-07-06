@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-03T01:06:49.168360+00:00",
+  "timestamp": "2025-07-06T01:13:19.128188+00:00",
   "repo": "dr2lopez/qi-multiplane-arch",
   "labels": [
     {
@@ -56,26 +56,42 @@
       "id": "PR_kwDOKiMxCM6PAGdo",
       "title": "Fixed rfc9583 reference",
       "url": "https://github.com/dr2lopez/qi-multiplane-arch/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "maelmans",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "QUCS was referencing the draft. In the meantime this became rfc9583.",
       "createdAt": "2025-03-17T22:13:15Z",
-      "updatedAt": "2025-03-17T22:13:15Z",
+      "updatedAt": "2025-07-05T11:44:16Z",
       "baseRepository": "dr2lopez/qi-multiplane-arch",
       "baseRefName": "main",
       "baseRefOid": "d813535398cb3e5ca1ad26409cad4add18f74a0d",
       "headRepository": "maelmans/qi-multiplane-arch",
       "headRefName": "patch-1",
       "headRefOid": "0d934380a7847c36f314a50e844fe12a54a557a5",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-05T11:44:16Z",
+      "mergedAt": "2025-07-05T11:44:16Z",
+      "mergedBy": "dr2lopez",
+      "mergeCommit": {
+        "oid": "fdf6f9e52ada75cf4ea778cefc267cdec23b3461"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOKiMxCM6yNktT",
+          "commit": {
+            "abbreviatedOid": "0d93438"
+          },
+          "author": "dr2lopez",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "Thanks for the updated reference",
+          "createdAt": "2025-07-05T11:43:56Z",
+          "updatedAt": "2025-07-05T11:43:56Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
