@@ -474,7 +474,7 @@ Table of Contents
    forwarding, specific to the QFP.  For the latter, each functional
    element of this layer, identified as key managers entities in
    [EVCK25], has a forwarding table, which can be dynamically updated
-   whenever necessary by the control plane.  Adittionally, they
+   whenever necessary by the control plane.  Additionally, they
    implement a token bucket for each application session, to control the
    request rate by limiting it to an agreed-upon value at the Quality of
    Service (QoS) level.
@@ -498,11 +498,11 @@ Table of Contents
    for the conceptualization of QKD infrastructures, including the
    services they provide and the required interactions in the use of
    classical infrastructure to support the required connectivity
-   patterns.  The original CLAS archiecture, as defined by [RFC8597],
+   patterns.  The original CLAS architecture, as defined by [RFC8597],
    addresses SDN evolution considering the forwarding (transport) and
    service aspects in two separated but coordinated planes.  This
    approach matches the multi-plane approach described for QKD
-   infeastructures, though it seems somehow limited to address the
+   infrastructures, though it seems somehow limited to address the
    required interactions with physical connectivity, as well as to
    incorporate general requirements regarding automation to support
    convergence with operational practices.
@@ -539,7 +539,7 @@ Table of Contents
    those deployments, in this section we propose the generalization of
    such architecture towards a Quantum Internet, augmented by the
    extended SDN approach proposed by the evolved CLAS in [CLASEVO].  In
-   what follows,we will discuss how this framework architecure would
+   what follows, we will discuss how this framework architecture would
    support the required properties: agility, allowing for technology
    evolution, sustainability, fostering infrastructure reuse, and
    pliability, supporting operational best practices.
@@ -616,11 +616,11 @@ Table of Contents
    through well-defined, open interfaces supporting programmability, as
    a generalization of the common SDN architecture that defines a
    controller as a mediator between application and network (forwarding)
-   devices.  It includes the archetypal case of a centralized
-   controller, but is not limited to that particular realization.  These
-   broader implications of SDN principles are among the main motivation
-   of the original CLAS proposal in [CLASEVO], and it is the main reason
-   for using it as the base for the framework proposed by ths document.
+   devices.  It includes the archetypal case of a centralized controller
+   but is not limited to that particular realization.  These broader
+   implications of SDN principles are among the main motivation of the
+   original CLAS proposal in [CLASEVO], and it is the main reason for
+   using it as the base for the framework proposed by this document.
    The archetypal case of a centralized controller would be the most
    common deployment style, but the architecture is able to support more
    distributed approaches, in which each participating domain runs a
@@ -686,7 +686,7 @@ Table of Contents
                           +---------------------------------------+
 
    Essentially, this architecture model incorporates the findings from
-   QKD deployments, and addresses the requirements for providing a
+   QKD deployments and addresses the requirements for providing a
    general framework for quantum networks towards the Quantum Internet.
    It is intended to support the evolution of network base technologies,
    provide the degrees of freedom necessary to encompass different
@@ -730,9 +730,9 @@ Table of Contents
 
    Finally, by explicitly addressing the issues related to the
    connectivity of quantum links, the architecture considers the
-   interactionis with any other relevant oparational aspects required
-   for providing quantum network services.  The direct integration of a
-   stratum focused on this aspects makes the proposed architecture
+   interactions with any other relevant operational aspects required for
+   providing quantum network services.  The direct integration of a
+   stratum focused on these aspects makes the proposed architecture
    better aligned with the sustainability goal.
 
 4.2.  Identification of Interfaces and Protocols
@@ -746,7 +746,7 @@ Table of Contents
 
 4.2.1.  The Role of Network Virtualization
 
-   As a natural consequence of what is disucssed above in the framework
+   As a natural consequence of what is discussed above in the framework
    of cloud-native QKD, the use of network virtualization techniques
    would be essential for the Service Stratum, at all of their planes:
 
@@ -760,10 +760,10 @@ Table of Contents
       interactions at the Quantum Forwarding Stratum, like the case of
       entanglement persistence beyond direct physical reachability.
 
-   The current trends in optical disagreggation and the use of
+   The current trends in optical disaggregation and the use of
    orchestrated SDN mechanisms for network path management and
    monitoring provide a natural path for leveraging network
-   virtualization mechanisms iwithin the Connectivity Stratum,
+   virtualization mechanisms within the Connectivity Stratum,
    facilitating their integration with the Service Stratum.
 
    In what relates to the Quantum Forwarding Stratum, current best
@@ -878,7 +878,7 @@ Table of Contents
    proposed in this document.  It is important to note that a QNDT is
    not a simulation tool, even though some of its components may apply
    simulation functionality to adapt their behavior to that of a quantum
-   element.  Rather, a QNDT represents a distributed classical systems
+   element.  Rather, a QNDT represents a distributed classical system
    that mirrors the operational behavior of a quantum network,
    responding in real time and accurately reproducing the dynamics and
    interactions of quantum entities.
@@ -886,26 +886,25 @@ Table of Contents
    In the case of QKD network deployments, significant progress has been
    achieved thanks to both practical deployments, as exemplified in
    [EUROQCI] and the early coordinated efforts of standardization
-   bodieu.  These advances include the defininition of standardized APIs
+   bodies.  These advances include the definition of standardized APIs
    that specify the communication means between quantum nodes and
    customer applications, like [ETSI04], and the integration of network
    management mechanisms widely adopted in classical communication
-   systems, like the SDN approach defined in [ETSI15].  This
-   coordinarted efforts have translated into more flexible,
-   programmable, and scalable control of quantum resources, facilitating
-   seamless interoperability between quantum and classical
-   infrastructures.  Despite these advances, several aspects of QKD
-   networking remain under active development.  These include the
-   definition of interfaces that ensure interoperability across
-   different administrative domains, as well as the design and
-   validation of architectures capable of supporting large-scale
-   deployments, that is, networks comprising hundreds of interconnected
-   nodes.  In this regard, platforms such as the one described in
-   [QUDITTO] offer a valuable opportunity, as they enable the emulation
-   of low-level quantum network behaviors using classical computational
-   resources.  Such synthetic environments provide the means to model
-   and analyze complex network scenarios that are currently unattainable
-   in fully physical experimental testbeds.
+   systems, like the SDN approach defined in [ETSI15].  This coordinated
+   efforts have translated into more flexible, programmable, and
+   scalable control of quantum resources, facilitating seamless
+   interoperability between quantum and classical infrastructures.
+   Despite these advances, several aspects of QKD networking remain
+   under active development.  These include the definition of interfaces
+   that ensure interoperability across different administrative domains,
+   as well as the design and validation of architectures capable of
+   supporting large-scale deployments, that is, networks comprising
+   hundreds of interconnected nodes.  In this regard, platforms such as
+   the one described in [QUDITTO] offer a valuable opportunity, as they
+   enable the emulation of low-level quantum network behaviors using
+   classical computational resources.  Such synthetic environments
+   provide the means to model and analyze complex network scenarios that
+   are currently unattainable in fully physical experimental testbeds.
 
    When considering general-purpose quantum networks, particularly those
    based on entanglement distribution and management, the role of
@@ -923,7 +922,7 @@ Table of Contents
 
    However, the development of a general-purpose QNDT introduces its own
    set of challenges.  Such a system must not only emulate the
-   functional behavior of quantum components, but also ensure that the
+   functional behavior of quantum components but also ensure that the
    underlying classical infrastructure responds within the same temporal
    and operational constraints as its quantum counterpart, thereby
    enabling accurate validation of protocols and network strategies.
@@ -1091,7 +1090,7 @@ Table of Contents
               articles/10.1140/epjqt/s40507-021-00108-9>.
 
    [QUDITTO]  "Quditto, a tool that allows deploying digital twins of
-              QKD networks over classical infrastructure", n.d.,
+              QKD networks over classical infrastructure", April 2025,
               <https://quditto.io/>.
 
    [RFC9340]  Kozlowski, W., Wehner, S., Van Meter, R., Rijsman, B.,
