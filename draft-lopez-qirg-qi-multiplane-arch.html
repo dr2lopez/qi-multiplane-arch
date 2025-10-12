@@ -12,26 +12,26 @@
 <meta content="
        A consistent reference architecture model for the Quantum Internet is required to progress in its evolution, providing a framework for the integration of the protocols applicable to it, and enabling the advance of the applications based on it. This model has to satisfy three essential requirements: agility, so it is able to adapt to the evolution of quantum communications base technologies, sustainability, with open availability in technological and economical terms, and pliability, being able to integrate with the operations and management procedures in current networks. This document proposes such an architecture framework, with the goal of providing a conceptual common framework for the integration of technologies intended to build the Quantum Internet infrastructure and its integration with the current Internet. The framework is based on the already extensive experience in the deployment of QKD network infrastructures and on related initiatives focused on the integration of network infrastructures and services. 
     " name="description">
-<meta content="xml2rfc 3.29.0" name="generator">
+<meta content="xml2rfc 3.30.2" name="generator">
 <meta content="quantum" name="keyword">
 <meta content="architecture" name="keyword">
 <meta content="QKD" name="keyword">
 <meta content="CLAS" name="keyword">
 <meta content="draft-lopez-qirg-qi-multiplane-arch-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.29.0
+  xml2rfc 3.30.2
     Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.1
-    platformdirs 4.3.8
+    platformdirs 4.4.0
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.4
+    requests 2.32.5
     setuptools 80.9.0
-    wcwidth 0.2.13
+    wcwidth 0.2.14
 -->
 <link href="draft-lopez-qirg-qi-multiplane-arch.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1050,11 +1050,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">qi-multiplane-arch</td>
-<td class="right">July 2025</td>
+<td class="right">October 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lopez, et al.</td>
-<td class="center">Expires 8 January 2026</td>
+<td class="center">Expires 15 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-lopez-qirg-qi-multiplane-arch-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-07" class="published">7 July 2025</time>
+<time datetime="2025-10-12" class="published">12 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-08">8 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-04-15">15 April 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1134,7 +1134,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1503,8 +1503,12 @@ urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
           <h4 id="name-the-role-of-synthetic-envir">
 <a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-the-role-of-synthetic-envir" class="section-name selfRef">The Role of Synthetic Environments</a>
           </h4>
-<p id="section-4.2.3-1">Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availabilty. This is especially true for experimentation at the scale required to validate network protocolos and inter- and intra-strata interfaces. In this context, it becomes appropriate the use of synthetic testbeds where it is feasible to emulate the deployment of quantum networks, thus enabling the execution of experiments and trials, where even potential network attacks can be analyzed without compromising the integrity of an already built quantum network or a signinficant number of physical devices. Based on the results introduced in <span>[<a href="#QKNDT24" class="cite xref">QKNDT24</a>]</span> for QKD networks, a characterization of such Quantum Network Digital Twin (QNDT) will support a better understanding of the properties of the different interfaces and protocols, and the applicability of the architecture proposed in this document.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.2.3-2">A more detailed description of the features of a generalized QNDT, based on <span>[<a href="#QKNDT24" class="cite xref">QKNDT24</a>]</span> findings and the principles of the architecture described in this document is planned once the experiments on the revamped version of the mentioned QNDT becomes available, and will be integrated in a future version.<a href="#section-4.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-1">Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availability. This challenge is particularly evident for experimentation at the scale required to validate network protocols and inter- and intra-strata interfaces. In this context, synthetic environments, and synthetic testbeds enabled by these environments, become an essential tool. They enable the emulation of quantum network deployments in a fully controlled setting, allowing the execution of experiments and trials, protocol evaluations, and even security analyses, where potential network attacks can be tested without compromising the integrity of an already built quantum network or a significant number of physical devices.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-2">Based on the results introduced in <span>[<a href="#QKNDT24" class="cite xref">QKNDT24</a>]</span> for QKD networks, the concept of a Quantum Network Digital Twin (QNDT) provides a foundation for such environments. QNDTs will enable a better understanding of the properties of the different network elements, interfaces, and protocols, and the applicability of the architecture proposed in this document. It is important to note that a QNDT is not a simulation tool, even though some of its components may apply simulation functionality to adapt their behavior to that of a quantum element. Rather, a QNDT represents a distributed classical systems that mirrors the operational behavior of a quantum network, responding in real time and accurately reproducing the dynamics and interactions of quantum entities.<a href="#section-4.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-3">In the case of QKD network deployments, significant progress has been achieved thanks to both practical deployments, as exemplified in <span>[<a href="#EUROQCI" class="cite xref">EUROQCI</a>]</span> and the early coordinated efforts of standardization bodieu. These advances include the defininition of standardized APIs that specify the communication means between quantum nodes and customer applications, like <span>[<a href="#ETSI04" class="cite xref">ETSI04</a>]</span>, and the integration of network management mechanisms widely adopted in classical communication systems, like the SDN approach defined in <span>[<a href="#ETSI15" class="cite xref">ETSI15</a>]</span>. This coordinarted efforts have translated into more flexible, programmable, and scalable control of quantum resources, facilitating seamless interoperability between quantum and classical infrastructures. Despite these advances, several aspects of QKD networking remain under active development. These include the definition of interfaces that ensure interoperability across different administrative domains, as well as the design and validation of architectures capable of supporting large-scale deployments, that is, networks comprising hundreds of interconnected nodes. In this regard, platforms such as the one described in <span>[<a href="#QUDITTO" class="cite xref">QUDITTO</a>]</span> offer a valuable opportunity, as they enable the emulation of low-level quantum network behaviors using classical computational resources. Such synthetic environments provide the means to model and analyze complex network scenarios that are currently unattainable in fully physical experimental testbeds.<a href="#section-4.2.3-3" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-4">When considering general-purpose quantum networks, particularly those based on entanglement distribution and management, the role of synthetic environments becomes even more significant. Unlike QKD networks, whose architectural and operational principles are relatively well understood, entanglement-based networks are still in an early stage of development. Many fundamental networking aspects, such as entanglement routing, resource scheduling, and inter-layer coordination, remain open research questions, with a crucial lack of practical validation. In this context, QNDTs offer a unique opportunity to accelerate progress: by enabling controlled emulation of quantum states, interactions, and network behaviors, they allow to test novel architectures, evaluate protocol performance, and explore scalability under realistic yet fully reproducible conditions.<a href="#section-4.2.3-4" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-5">However, the development of a general-purpose QNDT introduces its own set of challenges. Such a system must not only emulate the functional behavior of quantum components, but also ensure that the underlying classical infrastructure responds within the same temporal and operational constraints as its quantum counterpart, thereby enabling accurate validation of protocols and network strategies. Moreover, unlike QKD networks where standardized interfaces and APIs have already been established (or are at least emerging), no equivalent standards currently exist for general quantum networks. Consequently, a QNDT must be designed to be inherently flexible and extensible, capable of accomodating evolving definitions of interfaces, communication protocols, and architectural abstractions. In this regard, the QNDT once again becomes a key enabler for the development, integration, and testing of these foundational elements.<a href="#section-4.2.3-5" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-6">Building upon the above discussion, two primary challenges must be addressed as prerequisites for constructing a fully functional QNDT. First, it is necessary to develop a mechanism capable of handling the quantum-specific aspects of the system, executing simulations and distributing results across nodes, resulting in the emulation of the quantum behavior of network elements within the underlying classical infrastructure. Second, there must be a definition of a minimal set of core primitives or instructions that serves as the foundation for constructing more advanced mechanisms, such as standardized interfaces and communication methods between network elements and external systems. Together, these two pillars will establish the groundwork for a QNDT framework capable of evolving in parallel with the broader quantum networking ecosystem.<a href="#section-4.2.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1633,6 +1637,10 @@ urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
 <dt id="QTTI21">[QTTI21]</dt>
         <dd>
 <span class="refAuthor">Martin, V.</span>, <span class="refAuthor">Brito, J. P.</span>, <span class="refAuthor">Escribano, C.</span>, <span class="refAuthor">Menchetti, M.</span>, <span class="refAuthor">White, C.</span>, <span class="refAuthor">Lord, A.</span>, <span class="refAuthor">Wissel, F.</span>, <span class="refAuthor">Gunkel, M.</span>, <span class="refAuthor">Gavignet, P.</span>, <span class="refAuthor">Genay, N.</span>, <span class="refAuthor">Moult, O. L.</span>, <span class="refAuthor">Abellan, C.</span>, <span class="refAuthor">Manzalini, A.</span>, <span class="refAuthor">Pastor-Perales, A.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">D. Lopez</span>, <span class="refTitle">"Quantum Technologies in the Telecommunications Industry"</span>, <time datetime="2021-07" class="refDate">July 2021</time>, <span>&lt;<a href="https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00108-9">https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00108-9</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="QUDITTO">[QUDITTO]</dt>
+        <dd>
+<span class="refTitle">"Quditto, a tool that allows deploying digital twins of QKD networks over classical infrastructure"</span>, <span>n.d.</span>, <span>&lt;<a href="https://quditto.io/">https://quditto.io/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9340">[RFC9340]</dt>
         <dd>

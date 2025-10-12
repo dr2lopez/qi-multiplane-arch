@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 8 January 2026                                              UPM
+Expires: 15 April 2026                                               UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                             7 July 2025
+                                                         12 October 2025
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 January 2026.
+   This Internet-Draft will expire on 15 April 2026.
 
 Copyright Notice
 
@@ -858,25 +858,97 @@ Table of Contents
 
    Due to the early stage of many, if not all, quantum technologies,
    experimenting with quantum devices and equipment can be seriously
-   hindered by high costs and limited availabilty.  This is especially
-   true for experimentation at the scale required to validate network
-   protocolos and inter- and intra-strata interfaces.  In this context,
-   it becomes appropriate the use of synthetic testbeds where it is
-   feasible to emulate the deployment of quantum networks, thus enabling
-   the execution of experiments and trials, where even potential network
-   attacks can be analyzed without compromising the integrity of an
-   already built quantum network or a signinficant number of physical
-   devices.  Based on the results introduced in [QKNDT24] for QKD
-   networks, a characterization of such Quantum Network Digital Twin
-   (QNDT) will support a better understanding of the properties of the
-   different interfaces and protocols, and the applicability of the
-   architecture proposed in this document.
+   hindered by high costs and limited availability.  This challenge is
+   particularly evident for experimentation at the scale required to
+   validate network protocols and inter- and intra-strata interfaces.
+   In this context, synthetic environments, and synthetic testbeds
+   enabled by these environments, become an essential tool.  They enable
+   the emulation of quantum network deployments in a fully controlled
+   setting, allowing the execution of experiments and trials, protocol
+   evaluations, and even security analyses, where potential network
+   attacks can be tested without compromising the integrity of an
+   already built quantum network or a significant number of physical
+   devices.
 
-   A more detailed description of the features of a generalized QNDT,
-   based on [QKNDT24] findings and the principles of the architecture
-   described in this document is planned once the experiments on the
-   revamped version of the mentioned QNDT becomes available, and will be
-   integrated in a future version.
+   Based on the results introduced in [QKNDT24] for QKD networks, the
+   concept of a Quantum Network Digital Twin (QNDT) provides a
+   foundation for such environments.  QNDTs will enable a better
+   understanding of the properties of the different network elements,
+   interfaces, and protocols, and the applicability of the architecture
+   proposed in this document.  It is important to note that a QNDT is
+   not a simulation tool, even though some of its components may apply
+   simulation functionality to adapt their behavior to that of a quantum
+   element.  Rather, a QNDT represents a distributed classical systems
+   that mirrors the operational behavior of a quantum network,
+   responding in real time and accurately reproducing the dynamics and
+   interactions of quantum entities.
+
+   In the case of QKD network deployments, significant progress has been
+   achieved thanks to both practical deployments, as exemplified in
+   [EUROQCI] and the early coordinated efforts of standardization
+   bodieu.  These advances include the defininition of standardized APIs
+   that specify the communication means between quantum nodes and
+   customer applications, like [ETSI04], and the integration of network
+   management mechanisms widely adopted in classical communication
+   systems, like the SDN approach defined in [ETSI15].  This
+   coordinarted efforts have translated into more flexible,
+   programmable, and scalable control of quantum resources, facilitating
+   seamless interoperability between quantum and classical
+   infrastructures.  Despite these advances, several aspects of QKD
+   networking remain under active development.  These include the
+   definition of interfaces that ensure interoperability across
+   different administrative domains, as well as the design and
+   validation of architectures capable of supporting large-scale
+   deployments, that is, networks comprising hundreds of interconnected
+   nodes.  In this regard, platforms such as the one described in
+   [QUDITTO] offer a valuable opportunity, as they enable the emulation
+   of low-level quantum network behaviors using classical computational
+   resources.  Such synthetic environments provide the means to model
+   and analyze complex network scenarios that are currently unattainable
+   in fully physical experimental testbeds.
+
+   When considering general-purpose quantum networks, particularly those
+   based on entanglement distribution and management, the role of
+   synthetic environments becomes even more significant.  Unlike QKD
+   networks, whose architectural and operational principles are
+   relatively well understood, entanglement-based networks are still in
+   an early stage of development.  Many fundamental networking aspects,
+   such as entanglement routing, resource scheduling, and inter-layer
+   coordination, remain open research questions, with a crucial lack of
+   practical validation.  In this context, QNDTs offer a unique
+   opportunity to accelerate progress: by enabling controlled emulation
+   of quantum states, interactions, and network behaviors, they allow to
+   test novel architectures, evaluate protocol performance, and explore
+   scalability under realistic yet fully reproducible conditions.
+
+   However, the development of a general-purpose QNDT introduces its own
+   set of challenges.  Such a system must not only emulate the
+   functional behavior of quantum components, but also ensure that the
+   underlying classical infrastructure responds within the same temporal
+   and operational constraints as its quantum counterpart, thereby
+   enabling accurate validation of protocols and network strategies.
+   Moreover, unlike QKD networks where standardized interfaces and APIs
+   have already been established (or are at least emerging), no
+   equivalent standards currently exist for general quantum networks.
+   Consequently, a QNDT must be designed to be inherently flexible and
+   extensible, capable of accomodating evolving definitions of
+   interfaces, communication protocols, and architectural abstractions.
+   In this regard, the QNDT once again becomes a key enabler for the
+   development, integration, and testing of these foundational elements.
+
+   Building upon the above discussion, two primary challenges must be
+   addressed as prerequisites for constructing a fully functional QNDT.
+   First, it is necessary to develop a mechanism capable of handling the
+   quantum-specific aspects of the system, executing simulations and
+   distributing results across nodes, resulting in the emulation of the
+   quantum behavior of network elements within the underlying classical
+   infrastructure.  Second, there must be a definition of a minimal set
+   of core primitives or instructions that serves as the foundation for
+   constructing more advanced mechanisms, such as standardized
+   interfaces and communication methods between network elements and
+   external systems.  Together, these two pillars will establish the
+   groundwork for a QNDT framework capable of evolving in parallel with
+   the broader quantum networking ecosystem.
 
 5.  Security Considerations
 
@@ -1017,6 +1089,10 @@ Table of Contents
               Technologies in the Telecommunications Industry", July
               2021, <https://epjquantumtechnology.springeropen.com/
               articles/10.1140/epjqt/s40507-021-00108-9>.
+
+   [QUDITTO]  "Quditto, a tool that allows deploying digital twins of
+              QKD networks over classical infrastructure", n.d.,
+              <https://quditto.io/>.
 
    [RFC9340]  Kozlowski, W., Wehner, S., Van Meter, R., Rijsman, B.,
               Cacciapuoti, A. S., Caleffi, M., and S. Nagayama,
