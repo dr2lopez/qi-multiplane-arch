@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 15 April 2026                                               UPM
+Expires: 22 April 2026                                               UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                         12 October 2025
+                                                         19 October 2025
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 April 2026.
+   This Internet-Draft will expire on 22 April 2026.
 
 Copyright Notice
 
@@ -949,6 +949,42 @@ Table of Contents
    groundwork for a QNDT framework capable of evolving in parallel with
    the broader quantum networking ecosystem.
 
+   The core quantum emulation mechanism for such an environment,
+   according to the current state of the art, would be the QNDT
+   emulation engine, based on a centralized simulation component
+   designed to execute the simulations needed to emulate the quantum
+   behavior of all network elements.  This engine may rely on quantum
+   network simulators such as [NetSquid], [SeQUeNCe], or [QuNetSim].
+   However, these platforms alone do not fulfill the requirements of a
+   QNDT, since, as discussed above, a QNDT is not a simulation of the
+   network but a distributed classical system that replicates the
+   behavior of a real quantum network.  Therefore, the central
+   simulation element must be complemented by a result distribution
+   mechanism, for example, through a publish/subscribe (Pub/Sub)
+   protocol.  In such a setup, network elements subscribe to topics
+   relevant to their operation and can communicate with the central
+   simulation tool both to request simulations and receive results
+   through asynchronous interactions.
+
+   Another essential aspect concerns the handling of temporal
+   consistency between the “simulation time”, i.e., the time required to
+   execute a simulation, and the “simulated time,” i.e., the time the
+   simulation calculates the real system would take to perform the same
+   operation.  Since simulation time is generally shorter than simulated
+   time, the QNDT must incorporate logic ensuring that results are
+   delivered only after the appropriate simulated delay has elapsed.
+   This guarantees that the QNDT responds within the same temporal
+   boundaries as its physical counterpart, thereby preserving the
+   fidelity and realism of the emulated network behavior.  In addition,
+   to maintain state realism within the QNDT, it is crucial to take into
+   account the natural decoherence and noise dynamics of quantum states
+   over time.  For instance, when entangled pairs are distributed
+   between two nodes and stored for a period before being used in
+   subsequent operations, the QNDT must emulate the gradual evolution
+   and degradation of these states.  This entails tracking the elapsed
+   time between state creation and use, and updating the state
+   accordingly before executing the next instruction.
+
 5.  Security Considerations
 
    This section is TBP in detail, as the identification of interfaces
@@ -1048,6 +1084,12 @@ Table of Contents
               Control and Key Management in a Production Network", July
               2023, <https://ieeexplore.ieee.org/document/10207295>.
 
+   [NetSquid] Coopmans, T., Knegjens, R., Dahlberg, A., Maier, D.,
+              Nijsten, L., Filho, J. de O., and et. al., "NetSquid, a
+              NETwork Simulator for QUantum Information using Discrete
+              events", July 2021,
+              <https://doi.org/10.1038/s42005-021-00647-8>.
+
    [NFV06]    "ETSI GS NFV 006: Network Functions Virtualisation (NFV)
               Release 4; Management and Orchestration; Architectural
               Framework Specification", December 2022,
@@ -1093,6 +1135,10 @@ Table of Contents
               QKD networks over classical infrastructure", April 2025,
               <https://quditto.io/>.
 
+   [QuNetSim] Diadamo, S., Nötzel, J., Zanger, B., and M. M. Beşe,
+              "QuNetSim: A Software Framework for Quantum Networks",
+              June 2021, <https://doi.org/10.1109/TQE.2021.3092395>.
+
    [RFC9340]  Kozlowski, W., Wehner, S., Van Meter, R., Rijsman, B.,
               Cacciapuoti, A. S., Caleffi, M., and S. Nagayama,
               "Architectural Principles for a Quantum Internet",
@@ -1103,6 +1149,11 @@ Table of Contents
               Chakraborty, "Application Scenarios for the Quantum
               Internet", RFC 9583, DOI 10.17487/RFC9583, June 2024,
               <https://www.rfc-editor.org/rfc/rfc9583>.
+
+   [SeQUeNCe] Wu, X., Kolar, A., Chung, J., Jin, D., Zhong, T.,
+              Kettimuthu, R., and M. Suchara, "SeQUeNCe: A Customizable
+              Discrete-Event Simulator of Quantum Networks", September
+              2020, <https://doi.org/10.1088/2058-9565/ac22f6>.
 
    [TAPI240]  "ONF Transport API SDK 2.4.0", n.d., <https://github.com/
               Open-Network-Models-and-Interfaces-ONMI/TAPI/releases/tag/
