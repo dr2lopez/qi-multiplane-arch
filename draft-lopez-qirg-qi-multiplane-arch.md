@@ -479,7 +479,7 @@ As a result of the routing procedures and the interaction among SS control plane
 
 Finally, a word on the telemetry planes in each of the proposed strata. It should be obvious the elements in the control planes at each of the strata should start monitoring mechanisms at the involved elements in the resource planes and activate telemetry collection mechanisms. This brings the requirement of defining and experimenting with appropriate metrics and telemetry data models for both the SS and the QFS, as already being defined for QKD infrastructures {{ETSI23}}.
 
-### The Role of Synthetic Environments {QNDTS}
+### The Role of Synthetic Environments {#QNDTS}
 
 Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availability. This challenge is particularly evident for experimentation at the scale required to validate network protocols and inter- and intra-strata interfaces. In this context, synthetic environments, and synthetic testbeds enabled by these environments, become an essential tool. They enable the emulation of quantum network deployments in a fully controlled setting, allowing the execution of experiments and trials, protocol evaluations, and even security analyses, where potential network attacks can be tested without compromising the integrity of an already built quantum network or a significant number of physical devices.
 
