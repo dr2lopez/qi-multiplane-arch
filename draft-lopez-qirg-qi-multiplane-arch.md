@@ -190,6 +190,39 @@ informative:
   title: "Quditto, a tool that allows deploying digital twins of QKD networks over classical infrastructure"
   date: April 2025
   target: https://quditto.io/
+ NetSquid:
+  title: "NetSquid, a NETwork Simulator for QUantum Information using Discrete events"
+  author:
+  - name: Tim Coopmans
+  - name: Robert Knegjens
+  - name: Axel Dahlberg
+  - name: David Maier
+  - name: Loek Nijsten
+  - name: Julio de Oliveira Filho
+  - name: et al.
+  date: July 2021
+  target: https://doi.org/10.1038/s42005-021-00647-8
+ SeQUeNCe:
+  title: "SeQUeNCe: A Customizable Discrete-Event Simulator of Quantum Networks"
+  author:
+  - name: Xiaoliang Wu
+  - name: Alexander Kolar
+  - name: Joaquin Chung
+  - name: Dong Jin
+  - name: Tian Zhong
+  - name: Rajkumar Kettimuthu
+  - name: Martin Suchara
+  date: September 2020
+  target: https://doi.org/10.1088/2058-9565/ac22f6
+ QuNetSim:
+  title: "QuNetSim: A Software Framework for Quantum Networks"
+  author:
+  - name: Stephen Diadamo
+  - name: Janis Nötzel
+  - name: Benjamin Zanger
+  - name: Mehmet Mert Beşe
+  date: June 2021
+  target: https://doi.org/10.1109/TQE.2021.3092395
 
 --- abstract
 
@@ -440,6 +473,10 @@ When considering general-purpose quantum networks, particularly those based on e
 However, the development of a general-purpose QNDT introduces its own set of challenges. Such a system must not only emulate the functional behavior of quantum components but also ensure that the underlying classical infrastructure responds within the same temporal and operational constraints as its quantum counterpart, thereby enabling accurate validation of protocols and network strategies. Moreover, unlike QKD networks where standardized interfaces and APIs have already been established (or are at least emerging), no equivalent standards currently exist for general quantum networks. Consequently, a QNDT must be designed to be inherently flexible and extensible, capable of accomodating evolving definitions of interfaces, communication protocols, and architectural abstractions. In this regard, the QNDT once again becomes a key enabler for the development, integration, and testing of these foundational elements.
 
 Building upon the above discussion, two primary challenges must be addressed as prerequisites for constructing a fully functional QNDT. First, it is necessary to develop a mechanism capable of handling the quantum-specific aspects of the system, executing simulations and distributing results across nodes, resulting in the emulation of the quantum behavior of network elements within the underlying classical infrastructure. Second, there must be a definition of a minimal set of core primitives or instructions that serves as the foundation for constructing more advanced mechanisms, such as standardized interfaces and communication methods between network elements and external systems. Together, these two pillars will establish the groundwork for a QNDT framework capable of evolving in parallel with the broader quantum networking ecosystem.
+
+The core quantum emulation mechanism for such an environment, according to the current state of the art, would be the QNDT emulation engine, based on a centralized simulation component designed to execute the simulations needed to emulate the quantum behavior of all network elements. This engine may rely on quantum network simulators such as {{NetSquid}}, {{SeQUeNCe}}, or {{QuNetSim}}. However, these platforms alone do not fulfill the requirements of a QNDT, since, as discussed above, a QNDT is not a simulation of the network but a distributed classical system that replicates the behavior of a real quantum network. Therefore, the central simulation element must be complemented by a result distribution mechanism, for example, through a publish/subscribe (Pub/Sub) protocol. In such a setup, network elements subscribe to topics relevant to their operation and can communicate with the central simulation tool both to request simulations and receive results through asynchronous interactions.
+
+Another essential aspect concerns the handling of temporal consistency between the “simulation time”, i.e., the time required to execute a simulation, and the “simulated time,” i.e., the time the simulation calculates the real system would take to perform the same operation. Since simulation time is generally shorter than simulated time, the QNDT must incorporate logic ensuring that results are delivered only after the appropriate simulated delay has elapsed. This guarantees that the QNDT responds within the same temporal boundaries as its physical counterpart, thereby preserving the fidelity and realism of the emulated network behavior. In addition, to maintain state realism within the QNDT, it is crucial to take into account the natural decoherence and noise dynamics of quantum states over time. For instance, when entangled pairs are distributed between two nodes and stored for a period before being used in subsequent operations, the QNDT must emulate the gradual evolution and degradation of these states. This entails tracking the elapsed time between state creation and use, and updating the state accordingly before executing the next instruction.
 
 # Security Considerations
 
