@@ -975,14 +975,15 @@ Table of Contents
    delivered only after the appropriate simulated delay has elapsed.
    This guarantees that the QNDT responds within the same temporal
    boundaries as its physical counterpart, thereby preserving the
-   fidelity and realism of the emulated network behavior.  In addition,
-   to maintain state realism within the QNDT, it is crucial to take into
-   account the natural decoherence and noise dynamics of quantum states
-   over time.  For instance, when entangled pairs are distributed
-   between two nodes and stored for a period before being used in
-   subsequent operations, the QNDT must emulate the gradual evolution
-   and degradation of these states.  This entails tracking the elapsed
-   time between state creation and use, and updating the state
+   fidelity and realism of the emulated network behavior.
+
+   In addition, to maintain state realism within the QNDT, it is crucial
+   to take into account the natural decoherence and noise dynamics of
+   quantum states over time.  For instance, when entangled pairs are
+   distributed between two nodes and stored for a period before being
+   used in subsequent operations, the QNDT must emulate the gradual
+   evolution and degradation of these states.  This entails tracking the
+   elapsed time between state creation and use, and updating the state
    accordingly before executing the next instruction.
 
 5.  Security Considerations
