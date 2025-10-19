@@ -202,7 +202,7 @@ informative:
   target: https://doi.org/10.1103/RevModPhys.95.045006
  QUADDR:
   title: "Quantum Internet Architecture: unlocking Quantum-Native Routing via Quantum Addressing"
-  date; July 2025
+  date: July 2025
   author:
   - name: Marcello Caleffi
   - name: Angela Sara Cacciapuoti
