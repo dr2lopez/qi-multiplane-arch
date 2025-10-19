@@ -61,6 +61,8 @@ informative:
   - name: Diego Lopez
   date: July 2021
   target: https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00108-9
+ RFC8453:
+ RFC8637:
  RFC9340:
  RFC9583:
  QIPS22:
@@ -186,6 +188,25 @@ informative:
   - name: Borja Nogales
   date: January 2024
   target: https://doi.org/10.3390/app14031018
+ QREPS:
+  title: "Quantum repeaters: From quantum networks to the quantum internet"
+  author:
+  -name: Koji Azuma
+  -name: Sophia E. Economou
+  -name: David Elkouss
+  -name: Paul Hilaire
+  -name: Liang Jiang
+  -name: Hoi-Kwong Lo
+  -name: Ilan Tzitrin
+  date: December 2023
+  target: https://doi.org/10.1103/RevModPhys.95.045006
+ QUADDR:
+  title: "Quantum Internet Architecture: unlocking Quantum-Native Routing via Quantum Addressing"
+  date; July 2025
+  author:
+  - name: Marcello Caleffi
+  - name: Angela Sara Cacciapuoti
+  target: https://doi.org/10.48550/arXiv.2507.19655
  QUDITTO:
   title: "Quditto, a tool that allows deploying digital twins of QKD networks over classical infrastructure"
   date: April 2025
@@ -420,7 +441,7 @@ Based on the images used to illustrate the strata proposed in {{CLASEVO}} and {{
 
 Essentially, this architecture model incorporates the findings from QKD deployments and addresses the requirements for providing a general framework for quantum networks towards the Quantum Internet. It is intended to support the evolution of network base technologies, provide the degrees of freedom necessary to encompass different deployment models, and align with relevant trends in network operation, while considering the practical aspects related to classical connectivity.
 
-The proposed architecture will address the evolution of network base technologies by providing abstractions able to accommodate to this evolution. Considering the stages analyzed in {{QIROAD18}}, the QKD deployment patterns described in the previous section already cover "Trusted Repeater Networks" and "Prepare and Measure Networks", and the general architecture proposed here is able to accommodate the more evolved stages, namely "Entanglement Distribution Networks", "Quantum Memory Networks", "Few Qubit Fault-Tolerant Networks", and "Quantum Computing Networks". As immediate examples we can consider the integration of features in the Connectivity Stratum with the other two strata to support entanglement forwarding among different locations, or the incorporation of future quantum repeaters into the Quantum Forwarding Stratum to support more ellaborated behaviors of the Service Stratum.
+The proposed architecture will address the evolution of network base technologies by providing abstractions able to accommodate to this evolution. Considering the stages analyzed in {{QIROAD18}}, the QKD deployment patterns described in the previous section already cover "Trusted Repeater Networks" and "Prepare and Measure Networks", and the general architecture proposed here is able to accommodate the more evolved stages, namely "Entanglement Distribution Networks", "Quantum Memory Networks", "Few Qubit Fault-Tolerant Networks", and "Quantum Computing Networks". As immediate examples we can consider the integration of features in the Connectivity Stratum with the other two strata to support entanglement forwarding among different locations, or the incorporation of future quantum repeaters into the Quantum Forwarding Stratum to support more elaborated behaviors of the Service Stratum.
 
 In addition, these network abstractions are intended to provide specific degrees of freedom for network design and deployment, through the incorporation of independent resource and control planes at each stratum. Given the control mechanisms identified as "SDN intelligence" on the diagram above are able to expose open interfaces, the approach for coordinating the different strata via mechanisms like those defined in {{ETSI18}} is totally feasible, and different aggregation patterns (multi-stratum, multi-domain...) and models (federated, hierarchical...) can be applied. These aggregation mechanisms are equally applicable in the case of telemetry data and their integration with closed-loop mechanisms for automation, in support of the required quantum network agility.
 
@@ -430,21 +451,19 @@ Finally, by explicitly addressing the issues related to the connectivity of quan
 
 ## Identification of Interfaces and Protocols
 
-This section, TBP once there is agreement on the architecture framework, will include a discussion on the applicable and foreseen protocols and interfaces to be used for intra-stratum (SDN and telemetry, essentially) and inter-stratum (APIs and models applicable) interactions, as well as the capability exposure mechanisms to support the aggregation mechanisms mentioned above.
+The architecture proposed in this document is intended as a framework to evaluate and explore compatibility among the different proposals on protocols and interfaces for the future availability of quantum features in the global Internet, with the goal of providing a uniform reference model to choose and apply the most appropriate solutions to the Quantum Internet challenges. While the reference architecture does not intend to identify a concrete set of these protocols and interfaces, it is useful to analyze current proposals and trends, and provide some guidance on how the framework can be useful for assessing the integration of the solutions applicable to the different elements that have to converge to realize the Quantum Internet.
 
-### The Role of Network Virtualization
+There is a significant corpus of standards and operational practica applicable for the Connectivity Stratum, sustained by a well established experience in the management and use of optical and, to some extent, satellite-based networks. The differentiation of the planes considered in the CLAS architecture within the Connectivity Stratum has been common practice in the deployment and operation of IP converged services over optical networks, The abstractions and topology views described in the ACTN framework defined in {{RFC8453}} constitute a solid foundation to describe the functionality of the planes within the Connectivity Stratum, and the interfaces to be used in the interactions with the other strata. An element like the Path Computation Element (PCE) described in {{RFC8637}}, able to address the considerations related to quantum connectivity and the implications of entanglement-based forwarding, could constitute the core of the intelligence and telemetry planes. Specific forwarding elements, able to fulfill the conditions for quantum signals, including the potential co-propagation with classical signals, and to interface with future quantum repeaters {{QREPS}}, would constitute the essential substrate of the resource plane. The current trends in optical disaggregation and the use of orchestrated SDN mechanisms for network path management and monitoring provide a natural path for leveraging network virtualization mechanisms within the Connectivity Stratum, facilitating their integration.
 
-As a natural consequence of what is discussed above in the framework of cloud-native QKD, the use of network virtualization techniques would be essential for the Service Stratum, at all of their planes:
+In what relates to the Quantum Forwarding Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum. A recent proposal {{QUADDR}}, beyond the foundations described in {{RFC9340}}, can be used to exemplify the main objective of the framework architecture described in this document. The proposal presents quantum-native mechanisms for routing procedures, and the corresponding addressing conventions supporting them, and considers network-wide mechanisms, structured in two tiers defining what could be assimilated to a local domain and an internetworking domain. This proposal can be naturally integrated in the Quantum Forwarding Stratum (QFS), and its SDN-inspired architecture would map the proposed Entanglement-Defined Controller (EDC) at the kernel of the SDN intelligence plane. The integration of an architecture like this within the framework described in this document would require to analyze the mapping between the node identifiers described in the paper and the service units discussed below. The choices for the coordination among the different strata if the QFS uses an architecture like the one proposed in the references paper would need to be also analyzed: on the one hand, the interface between the EDC and Service Stratum should be defined, and the QFS elements should need to be extended to include its interactions with the Connectivity Stratum, or consider it oblivious to physical connectivity and leave the coordination to the Service Stratum. This is the kind of evaluations the synthetic environments discussed in {{QNDTS}} will be extremely useful.
+
+The discussion on the foundations of the Service Stratum (SS) is made on the following section, where the concept of service units, as already introduced for the case of QKD networks, is analyzed. Furthermore, As a natural consequence of what is discussed above in the framework of cloud-native QKD, the use of network virtualization techniques would be essential for the Service Stratum, at all of their planes:
 
 * The SDN intelligence plane, allowing the dynamic management of service units and their association with the corresponding units in the Quantum Forwarding Stratum.
 
 * The telemetry plane, for dynamic monitoring and data aggregation.
 
 * The resource plane, in support of the different nature of the interactions at the Quantum Forwarding Stratum, like the case of entanglement persistence beyond direct physical reachability.
-
-The current trends in optical disaggregation and the use of orchestrated SDN mechanisms for network path management and monitoring provide a natural path for leveraging network virtualization mechanisms within the Connectivity Stratum, facilitating their integration with the Service Stratum.
-
-In what relates to the Quantum Forwarding Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum.
 
 ### The Role of Service Units
 
@@ -456,11 +475,11 @@ The content of a QKD service unit is a bitstring corresponding to the shared key
 
 As discussed in the case of QKD service units, directionality (the specification of an origin and a destination) is not applicable in this case either, as service units correspond to a shared state. What can be certainly considered is an originator of this shared state, corresponding to the application element requesting the establishment of the service unit. This would trigger the SS control plane element attached to the application to start its route decision procedures and to start the interactions with the relevant SS control planes to start the necessary exchanges to establish the shared quantum states. The nature of the endpoint identifiers support, as discussed for shared keys in QKD, the use of any routing mechanisms, ranging from strictly hierarchical and centralized schemas based on orchestration mechanisms to fully distributed routing algorithms.
 
-As a result of the routing procedures and the interaction among SS control plane elements, there should be corresponding interactions with elements in the control planes of the Connectivity Strata (CS) and the QFS, to verify and require, as needed, the establishment of the individual entangled pairs and, as required, the physical links to support them. There is a consolidated corpus of interfaces (usually known as North-Bound Interfaces, NBI) for the control of classical connectivity, and specially of optical links, such as the TAPI specification {{TAPI240}}, and different proposals to select and establish paths. It seems necessary to explore and experiment with similar interfaces and procedures for the management and control of quantum links, addressing the challenges already identified in {{RFC9340}}.
+As a result of the routing procedures and the interaction among SS control plane elements, there should be corresponding interactions with elements in the control planes of the Connectivity Strata (CS) and the QFS, to verify and require, as needed, the establishment of the individual entangled pairs and, as required, the physical links to support them. There is a consolidated corpus of interfaces (usually known as North-Bound Interfaces, NBI) for the control of classical connectivity, and specially of optical links, such as the TAPI specification {{TAPI240}}, and different proposals to select and establish paths. It seems necessary to explore and experiment with similar interfaces and procedures for the management and control of quantum links, addressing the challenges already identified in {{RFC9340}} and exploring the implications of quantum-native routing proposals as made in {{QUADDR}}. A specially significant question is the mapping between the entangled pairs, as identified by the service unit, and the payloads exchanged within the QFS.
 
 Finally, a word on the telemetry planes in each of the proposed strata. It should be obvious the elements in the control planes at each of the strata should start monitoring mechanisms at the involved elements in the resource planes and activate telemetry collection mechanisms. This brings the requirement of defining and experimenting with appropriate metrics and telemetry data models for both the SS and the QFS, as already being defined for QKD infrastructures {{ETSI23}}.
 
-### The Role of Synthetic Environments
+### The Role of Synthetic Environments {QNDTS}
 
 Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availability. This challenge is particularly evident for experimentation at the scale required to validate network protocols and inter- and intra-strata interfaces. In this context, synthetic environments, and synthetic testbeds enabled by these environments, become an essential tool. They enable the emulation of quantum network deployments in a fully controlled setting, allowing the execution of experiments and trials, protocol evaluations, and even security analyses, where potential network attacks can be tested without compromising the integrity of an already built quantum network or a significant number of physical devices.
 
@@ -470,7 +489,7 @@ In the case of QKD network deployments, significant progress has been achieved t
 
 When considering general-purpose quantum networks, particularly those based on entanglement distribution and management, the role of synthetic environments becomes even more significant. Unlike QKD networks, whose architectural and operational principles are relatively well understood, entanglement-based networks are still in an early stage of development. Many fundamental networking aspects, such as entanglement routing, resource scheduling, and inter-layer coordination, remain open research questions, with a crucial lack of practical validation. In this context, QNDTs offer a unique opportunity to accelerate progress: by enabling controlled emulation of quantum states, interactions, and network behaviors, they allow to test novel architectures, evaluate protocol performance, and explore scalability under realistic yet fully reproducible conditions.
 
-However, the development of a general-purpose QNDT introduces its own set of challenges. Such a system must not only emulate the functional behavior of quantum components but also ensure that the underlying classical infrastructure responds within the same temporal and operational constraints as its quantum counterpart, thereby enabling accurate validation of protocols and network strategies. Moreover, unlike QKD networks where standardized interfaces and APIs have already been established (or are at least emerging), no equivalent standards currently exist for general quantum networks. Consequently, a QNDT must be designed to be inherently flexible and extensible, capable of accomodating evolving definitions of interfaces, communication protocols, and architectural abstractions. In this regard, the QNDT once again becomes a key enabler for the development, integration, and testing of these foundational elements.
+However, the development of a general-purpose QNDT introduces its own set of challenges. Such a system must not only emulate the functional behavior of quantum components but also ensure that the underlying classical infrastructure responds within the same temporal and operational constraints as its quantum counterpart, thereby enabling accurate validation of protocols and network strategies. Moreover, unlike QKD networks where standardized interfaces and APIs have already been established (or are at least emerging), no equivalent standards currently exist for general quantum networks. Consequently, a QNDT must be designed to be inherently flexible and extensible, capable of accommodating evolving definitions of interfaces, communication protocols, and architectural abstractions. In this regard, the QNDT once again becomes a key enabler for the development, integration, and testing of these foundational elements.
 
 Building upon the above discussion, two primary challenges must be addressed as prerequisites for constructing a fully functional QNDT. First, it is necessary to develop a mechanism capable of handling the quantum-specific aspects of the system, executing simulations and distributing results across nodes, resulting in the emulation of the quantum behavior of network elements within the underlying classical infrastructure. Second, there must be a definition of a minimal set of core primitives or instructions that serves as the foundation for constructing more advanced mechanisms, such as standardized interfaces and communication methods between network elements and external systems. Together, these two pillars will establish the groundwork for a QNDT framework capable of evolving in parallel with the broader quantum networking ecosystem.
 
@@ -482,13 +501,15 @@ In addition, to maintain state realism within the QNDT, it is crucial to take in
 
 # Security Considerations
 
-This section is TBP in detail, as the identification of interfaces and protocols progresses. The general considerations made in {{RFC8597}} apply, as well as an elaboration on the following points regarding:
+The general considerations made in {{RFC8597}} apply, as well as an elaboration on the following points regarding:
 
 * The requirements on mutual authentication in the channels used for quantum interactions, as they should require methods rooted at physical properties.
 
 * Specific physical attacks related to the particular quantum mechanisms in use by the quantum forwarding stratum.
 
 * The interaction of these physical attacks with classical attacks to the control and monitoring activities, possibly translating into a threat surface augmentation.
+
+Furthermore, as the identification of interfaces and protocols progresses other considerations will be required. In particular, the security considerations included in the documents referenced for the Connectivity Stratum, {{RFC8453}} and {{RFC8637}} apply to the proposed framework.
 
 --- back
 
