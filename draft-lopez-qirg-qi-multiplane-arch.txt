@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 22 April 2026                                               UPM
+Expires: 23 April 2026                                               UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                         19 October 2025
+                                                         20 October 2025
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 April 2026.
+   This Internet-Draft will expire on 23 April 2026.
 
 Copyright Notice
 
@@ -755,7 +755,7 @@ Table of Contents
    some extent, satellite-based networks.  The differentiation of the
    planes considered in the CLAS architecture within the Connectivity
    Stratum has been common practice in the deployment and operation of
-   IP converged services over optical networks, The abstractions and
+   IP converged services over optical networks.  The abstractions and
    topology views described in the ACTN framework defined in [RFC8453]
    constitute a solid foundation to describe the functionality of the
    planes within the Connectivity Stratum, and the interfaces to be used
