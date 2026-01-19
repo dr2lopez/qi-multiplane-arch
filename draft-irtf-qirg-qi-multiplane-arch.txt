@@ -5,16 +5,16 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 22 April 2026                                               UPM
+Expires: 23 July 2026                                                UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                         19 October 2025
+                                                         19 January 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
-               draft-lopez-qirg-qi-multiplane-arch-latest
+               draft-irtf-qirg-qi-multiplane-arch-latest
 
 Abstract
 
@@ -40,9 +40,9 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://dr2lopez.github.io/qi-multiplane-arch/draft-lopez-qirg-qi-
+   https://dr2lopez.github.io/qi-multiplane-arch/draft-irtf-qirg-qi-
    multiplane-arch.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-lopez-qirg-qi-
+   found at https://datatracker.ietf.org/doc/draft-irtf-qirg-qi-
    multiplane-arch/.
 
    Discussion of this document takes place on the Quantum Internet
@@ -68,11 +68,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 April 2026.
+   This Internet-Draft will expire on 23 July 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -506,9 +506,9 @@ Table of Contents
    incorporate general requirements regarding automation to support
    convergence with operational practices.
 
-   The new extension of the CLAS architecture, as defined in
-   [CLASEVO], intends to address the current evolution of networks and
-   the services they support introducing new aspects, in particular the
+   The new extension of the CLAS architecture, as defined in [CLASEVO],
+   intends to address the current evolution of networks and the services
+   they support introducing new aspects, in particular the
    considerations of distributed computing capabilities attached to
    different points in the network, and the introduction of evidence-
    driven techniques, such as Analytics, Artificial Intelligence (AI)
@@ -755,7 +755,7 @@ Table of Contents
    some extent, satellite-based networks.  The differentiation of the
    planes considered in the CLAS architecture within the Connectivity
    Stratum has been common practice in the deployment and operation of
-   IP converged services over optical networks, The abstractions and
+   IP converged services over optical networks.  The abstractions and
    topology views described in the ACTN framework defined in [RFC8453]
    constitute a solid foundation to describe the functionality of the
    planes within the Connectivity Stratum, and the interfaces to be used
