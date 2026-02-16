@@ -170,11 +170,11 @@ informative:
  QCE24:
   title: "Experiences on developing an on-demand entanglement service coexisting with classical traffic over a Q-LAN testbed"
   author:
-  -name: M. S. Islam
-  -name: J. Chung
-  -name: R. Kettimuthu
-  -name: A. Ramesh
-  -name: P. Kumar
+  - ins: M. S. Islam
+  - ins: J. Chung
+  - ins: R. Kettimuthu
+  - ins: A. Ramesh
+  - ins: P. Kumar
   date: September 2024
   target: https://doi.org/10.1109/QCE60285.2024.00089
  QIROAD18:
@@ -201,13 +201,13 @@ informative:
  QREPS:
   title: "Quantum repeaters: From quantum networks to the quantum internet"
   author:
-  -name: Koji Azuma
-  -name: Sophia E. Economou
-  -name: David Elkouss
-  -name: Paul Hilaire
-  -name: Liang Jiang
-  -name: Hoi-Kwong Lo
-  -name: Ilan Tzitrin
+  - name: Koji Azuma
+  - name: Sophia E. Economou
+  - name: David Elkouss
+  - name: Paul Hilaire
+  - name: Liang Jiang
+  - name: Hoi-Kwong Lo
+  - name: Ilan Tzitrin
   date: December 2023
   target: https://doi.org/10.1103/RevModPhys.95.045006
  QUADDR:
