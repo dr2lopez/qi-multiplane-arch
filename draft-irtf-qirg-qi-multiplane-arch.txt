@@ -1160,9 +1160,10 @@ Table of Contents
               <https://journals.aps.org/prresearch/abstract/10.1103/
               PhysRevResearch.4.043064>.
 
-   [QCE24]    "Experiences on developing an on-demand entanglement
-              service coexisting with classical traffic over a Q-LAN
-              testbed", September 2024,
+   [QCE24]    Islam, M. S., Chung, J., Kettimuthu, R., Ramesh, A., and
+              P. Kumar, "Experiences on developing an on-demand
+              entanglement service coexisting with classical traffic
+              over a Q-LAN testbed", September 2024,
               <https://doi.org/10.1109/QCE60285.2024.00089>.
 
    [QIPS22]   Illiano, J., Caleffia, M., Manzalini, A., and A. S.
@@ -1186,9 +1187,10 @@ Table of Contents
               July 2024,
               <https://ieeexplore.ieee.org/document/10628345>.
 
-   [QREPS]    "Quantum repeaters: From quantum networks to the quantum
-              internet", December 2023,
-              <https://doi.org/10.1103/RevModPhys.95.045006>.
+   [QREPS]    Azuma, K., Economou, S. E., Elkouss, D., Hilaire, P.,
+              Jiang, L., Lo, H.-K., and I. Tzitrin, "Quantum repeaters:
+              From quantum networks to the quantum internet", December
+              2023, <https://doi.org/10.1103/RevModPhys.95.045006>.
 
    [QTTI21]   Martin, V., Brito, J. P., Escribano, C., Menchetti, M.,
               White, C., Lord, A., Wissel, F., Gunkel, M., Gavignet, P.,
