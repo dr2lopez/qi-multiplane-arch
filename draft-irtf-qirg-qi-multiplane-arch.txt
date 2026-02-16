@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 23 July 2026                                                UPM
+Expires: 20 August 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                         19 January 2026
+                                                        16 February 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 July 2026.
+   This Internet-Draft will expire on 20 August 2026.
 
 Copyright Notice
 
@@ -174,8 +174,8 @@ Table of Contents
    *  Universality, so a quantum network can accommodate any
       application.
 
-   *  Transparency, so quantum networks can share physical media with
-      classical networks.
+   *  Transparency, so quantum network deployments allow the coexistence
+      [QCE24] of classical and quantum signals over the same medium.
 
    *  Scalability, so quantum networking protocols can support the
       growth of the network.
@@ -343,17 +343,12 @@ Table of Contents
    urn:qkd:quditto:emulator:ipsec:controller?=nid=af33017
    urn:qkd:lifecycle?=size=256&valid-until=1750708945
 
-   The structure and delegation mechanisms provided by URNs allow for
-   arbitrary aggregation of prefixes, enabling any kind of routing
-   style, from the aggregation and inter-domain announcement similar (or
-   compatible) to BGP in classical Internet to the decision on which
-   prefixes are announced and how they are routed by means of SDN
-   controllers, whether by means of a federation approach or in a
-   hierarchical control structure.  The approach also supports the use
-   of non-routable identifiers that cannot be announced outside a given
-   domain or KMS and can only establish service pairing with other
-   applications within the same domain.  These mechanisms would be
-   applied by the corresponding elements in the CMP.
+   The nature of the endpoint identifiers support the use of any
+   aggregation and routing mechanisms, ranging from strictly
+   hierarchical and centralized schemas based on orchestration
+   mechanisms to fully distributed routing algorithms.  The approach
+   also supports the use of non-routable identifiers, limited to that a
+   given domain or KMS.
 
    The QKD service unit identifies a shared state between two
    application entities, and therefore cannot be consider directional,
@@ -378,7 +373,7 @@ Table of Contents
    The interface of QKD infrastructures with classical networks
    (commonly identified as OTN, Optical Transport Networks) has been
    based on three basic principles, related to the ones we mentioned
-   above: facilitate the reuse of physical infrastructure
+   above: facilitate the coexistence on physical infrastructure
    (sustainability and transparency), apply the abstractions commonly
    used in open and disaggregated networks (agility and universality),
    and reuse the best practices in network management being applied in
@@ -873,10 +868,18 @@ Table of Contents
    plane element attached to the application to start its route decision
    procedures and to start the interactions with the relevant SS control
    planes to start the necessary exchanges to establish the shared
-   quantum states.  The nature of the endpoint identifiers support, as
-   discussed for shared keys in QKD, the use of any routing mechanisms,
-   ranging from strictly hierarchical and centralized schemas based on
-   orchestration mechanisms to fully distributed routing algorithms.
+   quantum states.  The structure and delegation mechanisms provided by
+   URNs allow for arbitrary aggregation of prefixes, enabling any kind
+   of routing style, from the aggregation and inter-domain announcement
+   similar (or compatible) to BGP in classical Internet to the decision
+   on which prefixes are announced and how they are routed by means of
+   SDN controllers, whether by means of a federation approach or in a
+   hierarchical control structure.  The approach also supports the use
+   of non-routable identifiers that cannot be announced outside a given
+   domain and can only establish service pairing with other applications
+   within the same domain.  These mechanisms would be applied by the
+   corresponding elements in the control and management planes of the
+   Service Stratum.
 
    As a result of the routing procedures and the interaction among SS
    control plane elements, there should be corresponding interactions
@@ -1156,6 +1159,11 @@ Table of Contents
               the quantum Internet", October 2022,
               <https://journals.aps.org/prresearch/abstract/10.1103/
               PhysRevResearch.4.043064>.
+
+   [QCE24]    "Experiences on developing an on-demand entanglement
+              service coexisting with classical traffic over a Q-LAN
+              testbed", September 2024,
+              <https://doi.org/10.1109/QCE60285.2024.00089>.
 
    [QIPS22]   Illiano, J., Caleffia, M., Manzalini, A., and A. S.
               Cacciapuoti, "Quantum Internet Protocol Stack: a
