@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 20 August 2026                                              UPM
+Expires: 21 August 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        16 February 2026
+                                                        17 February 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 August 2026.
+   This Internet-Draft will expire on 21 August 2026.
 
 Copyright Notice
 
@@ -85,21 +85,23 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Base Technologies: QKD Experience and Evolved SDN Concepts
-     3.1.  A QKD Multi-Plane Architecture
-       3.1.1.  The Service Unit Concept in QKD Networks
-     3.2.  Interfacing with Classical Networks
-     3.3.  Applying Network Virtualization Principles
-     3.4.  CLAS and Quantum Networks
-   4.  A Framework Architecture for the Quantum Internet
-     4.1.  Strata for Quantum Networks
-     4.2.  Identification of Interfaces and Protocols
-       4.2.1.  The Role of Service Units
-       4.2.2.  The Role of Synthetic Environments
-   5.  Security Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+   3.  Base Technologies: Evolved SDN Concepts and Network
+           Virtualization
+   4.  Applying Baee Technologies: The QKD Experience
+     4.1.  A QKD Multi-Plane Architecture
+     4.2.  Applying SDN and Network Virtualization Principles
+   5.  A Framework Architecture for the Quantum Internet
+     5.1.  CLAS and Quantum Networks
+     5.2.  Strata for Quantum Networks
+     5.3.  The Service Unit Concept
+       5.3.1.  Applying Service Units in QKD Networks
+       5.3.2.  Generalizing Service Units
+     5.4.  Identification of Interfaces and Protocols
+     5.5.  The Role of Synthetic Environments
+   6.  Security Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -188,27 +190,93 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Base Technologies: QKD Experience and Evolved SDN Concepts
+3.  Base Technologies: Evolved SDN Concepts and Network Virtualization
+
+   SDN concepts are at the core of current networking technologies.
+   From the original ideas of separating control and forwarding planes,
+   connected by open interfaces and supporting programmability and
+   logically-centralized management.  As part of this evolution of SDN
+   concepts, the Cooperating Layered Architecture for Software-Defined
+   Networking (CLAS) [RFC8597] described a SDN architecture structured
+   in two different strata, namely Service Stratum and Transport
+   Stratum.  On one hand, the Service Stratum contains the functions
+   related to the provision of services and the capabilities offered to
+   external applications.  On the other hand, the Transport Stratum
+   comprises the functions focused on the transfer of data between the
+   communication endpoints, e.g., between end-user devices, between two
+   service gateways, etc.
+
+   It is worth noting this management centralization does not contradict
+   the distributed principles generally applied in current networks.
+   Local control decisions are intended to be coordinated by centralized
+   management.  While the communication between the controller and the
+   controlled elements relies on some kind of SDN protocol, the
+   controller exposes a consistent abstract model of the network devices
+   and topology, that can be structured in a hierarchy of abstractions,
+   from lower-level, element-focused ones, up to application-oriented
+   ones.
+
+   While SDN ensures higher degrees of flexibility and reconfigurability
+   by allowing network functions to be easily modified and upgraded
+   through software changes, virtualization enables the abstraction of
+   hardware devices by creating virtual instances, which improves
+   scalability, resource efficiency and allows the dynamic allocation of
+   softwarized network functions in different locations.  As quantum
+   technology evolves, a virtualized layer for softwarized network
+   functions significantly aids adaptation to these changes, ensuring
+   pliability and responsiveness for seamless updates, and incorporating
+   new mechanisms without extensive hardware modifications.
+
+   These approaches pave the way for a tighter integration of quantum
+   functionality with functions already established in state of the art
+   classical networks, including support for user/function
+   authentication and authorization, and support for user and function
+   mobility, while adhering to established network standards.
+   Integrating these mechanisms enhance security measures and ensure
+   that quantum networks can seamlessly interface with existing and
+   future telecommunications infrastructure.
+
+   The use of these base technologies support a seamless interface with
+   classical networks (commonly identified as OTN, Optical Transport
+   Networks), addressing three basic principles, related to the ones we
+   mentioned above: facilitate the coexistence on physical
+   infrastructure (sustainability and transparency), apply the
+   abstractions commonly used in open and disaggregated networks
+   (agility and universality), and reuse the best practices in network
+   management being applied in current infrastructures (pliability and
+   scalability).
+
+   SDN and virtualization support the integration of control and
+   management, even if the distinct nature of network elements and the
+   mediation nature of the controller role do not make advisable the use
+   of common quantum/OTN controllers.  There are common abstractions
+   able to support cross-interactions among controllers and management
+   applications, especially regarding:
+
+   *  Quantum management applications requiring operations on topologies
+      and physical paths in the OTN mediated by an OTN controller.
+
+   *  OTN management applications requiring operation on quantum
+      topologies mediated by the quantum controller.
+
+   *  Topology updates exchanged between quantum and OTN controllers.
+
+   *  The coordination through an integrated controller (commonly
+      referred as "orchestrator"), able to provide a common view to
+      application network functions.
+
+4.  Applying Baee Technologies: The QKD Experience
 
    The design and deployment of QKD infrastructures has followed a
    number of design principles, based on the best practices in network
    architecture and management established during the lifetime of the
    Internet (and even before), and focused on the separation of
-   concerns, that have been converging on the trends around open
-   disaggregation strategies, and the identification of separate data
-   and control planes, connected by means of open interfaces.
+   concerns, that have been converging on the trends around applying SDN
+   principles and virtualization mechanisms, addressing open
+   disaggregation strategies and the identification of separate data and
+   control planes, connected by means of open interfaces.
 
-   In what relates to the evolution of SDN concepts, the Cooperating
-   Layered Architecture for Software-Defined Networking (CLAS) [RFC8597]
-   described a SDN architecture structured in two different strata,
-   namely Service Stratum and Transport Stratum.  On one hand, the
-   Service Stratum contains the functions related to the provision of
-   services and the capabilities offered to external applications.  On
-   the other hand, the Transport Stratum comprises the functions focused
-   on the transfer of data between the communication endpoints, e.g.,
-   between end-user devices, between two service gateways, etc.
-
-3.1.  A QKD Multi-Plane Architecture
+4.1.  A QKD Multi-Plane Architecture
 
    Applying the SDN and disaggregation principles, QKD infrastructures
    have been essentially structured around three different planes
@@ -260,34 +328,14 @@ Table of Contents
    best performance of the network and avoid diverging local control
    decisions that might lead to sub-optimal configurations.
 
-   It is worth noting this management centralization does not contradict
-   the distributed principles generally applied in current networks.
-   Local control decisions are intended to be coordinated by centralized
-   management.  While the communication between the controller and the
-   controlled elements relies on some kind of SDN protocol, the
-   controller exposes a consistent abstract model of the network devices
-   and topology, that can be structured in a hierarchy of abstractions,
-   from lower-level, element-focused ones, up to application-oriented
-   ones.
-
-   In summary, QKD infrastructures are converging into an extended SDN
-   model, with two differentiated data planes, controlled in a
-   coordinated manner through a common Control and Management Plane,
-   that supports aggregated mechanisms for further orchestration.  The
-   QFP/SOP duality constitutes a common abstract foundation for a
-   general approach to quantum communications networks, regardless of
-   their final purpose.
-
-3.1.1.  The Service Unit Concept in QKD Networks
-
-   QKD infrastructures are evolving from a conglomerate of links, where
-   keys derived from the protocol applied to a link are used to secure
-   the communication between two entities directly associated to the
-   endpoints of the link, into real networks, able to forward a key to
-   be used between any two entities attached to the network.  As
-   discussed above, the entities in the SOP play a key role for this,
-   supporting the storage, delivery and lifecycle management of the
-   service units being consumed by the applications attached to the
+   Supported by these abstractions, QKD infrastructures are evolving
+   from a conglomerate of links, where keys derived from the protocol
+   applied to a link are used to secure the communication between two
+   entities directly associated to the endpoints of the link, into real
+   networks, able to forward a key to be used between any two entities
+   attached to the network.  The entities in the SOP play a key role for
+   this, supporting the storage, delivery and lifecycle management of
+   the service units being consumed by the applications attached to the
    network.  These SOP entities, are commonly referred as KME (Key
    Management Entity), acting as key storage for a specific element or
    elements in the QFP, and providing an endpoint for applications to
@@ -305,81 +353,15 @@ Table of Contents
    infrastructures referring to a KMS as the entity integrating both
    roles.
 
-   The service units provided by a QKD network have to be uniquely
-   identified within the network, so they can be properly managed by the
-   SOP, including their routing across the different required KMEs, the
-   requests of appropriate links in the QFP, and the management of the
-   lifecycle events related to making the key available to the
-   applications willing to use it.  It is important to note we are
-   talking about a service unit, and not a data unit associated with a
-   particular protocol, and therefore what is relevant here are the
-   identification of the two application endpoints (that should include
-   a nonce mechanism to identify the specific pairing) together with
-   relevant parameters regarding the key lifecycle, such as its length
-   and valid time-to-live.  While these are the two essential lifecycle
-   parameters, others, as it might be the case of applicable crypto
-   algorithms, could be considered as well.  The service unit identifier
-   is not directional, i.e., it has no source or destination addresses,
-   as it defines a shared state to be used by two applications.  We can
-   consider the analogy of transport flows in the current Internet,
-   rather than packets.
+   In summary, QKD infrastructures are converging into an extended SDN
+   model, with two differentiated data planes, controlled in a
+   coordinated manner through a common Control and Management Plane,
+   that supports aggregated mechanisms for further orchestration.  The
+   QFP/SOP duality constitutes a common abstract foundation for a
+   general approach to quantum communications networks, regardless of
+   their final purpose.
 
-   The current proposal we are experimenting with advocate for using
-   URNs [RFC8141] as endpoint identifiers, taking advantage of their
-   nature of location-independent, persistent resource identifiers.  The
-   q-component of the endpoint URN can be used to carry the nonce part
-   of the specific application identifier.  If we consider that
-   lifecycle parameters can be expressed using a specific URN in its
-   q-component, we have that a service unit identifier consists of the
-   combination of three URNs.
-
-   As an example, let’s consider URNs for application endpoints use the
-   qkd namespace id, and that lifecycle parameters use the URN
-   qkd:lifecycle assigned name, with the parameters size and valid-
-   until.  A service unit identifier for QKD between two domains, with
-   roots madqci and quditto, would look like:
-
-   urn:qkd:madqci:ccips?=nonce=177923
-   urn:qkd:quditto:emulator:ipsec:controller?=nid=af33017
-   urn:qkd:lifecycle?=size=256&valid-until=1750708945
-
-   The nature of the endpoint identifiers support the use of any
-   aggregation and routing mechanisms, ranging from strictly
-   hierarchical and centralized schemas based on orchestration
-   mechanisms to fully distributed routing algorithms.  The approach
-   also supports the use of non-routable identifiers, limited to that a
-   given domain or KMS.
-
-   The QKD service unit identifies a shared state between two
-   application entities, and therefore cannot be consider directional,
-   and the concepts of source and destination do not apply here.
-   Nevertheless, directionality is relevant in the process of
-   establishing the QKD service unit, both in terms of its identifier
-   and of its contents.  In the case of the identifier, one of the
-   application entities will request a service unit to the relevant KMS/
-   KME it is attached to, identifying itself and the other peer in the
-   service unit, together with the applicable lifecycle parameters.
-   Relying on the available route information and the replies of the
-   intermediate elements in the SOP, the final identifier of the QKD
-   service unit will be built.  The associated content, i.e., the bit
-   string defining the key to be shared between the two application
-   endpoints, will be derived from the elements in the participating
-   links in the QFP and the application of any additional mechanisms
-   (key encryption, augmentation, trusted node forwarding…) required by
-   the participating KMEs and the corresponding links.
-
-3.2.  Interfacing with Classical Networks
-
-   The interface of QKD infrastructures with classical networks
-   (commonly identified as OTN, Optical Transport Networks) has been
-   based on three basic principles, related to the ones we mentioned
-   above: facilitate the coexistence on physical infrastructure
-   (sustainability and transparency), apply the abstractions commonly
-   used in open and disaggregated networks (agility and universality),
-   and reuse the best practices in network management being applied in
-   current infrastructures (pliability and scalability).  We can
-   classify the interface mechanisms according to the level at which
-   they occur.
+4.2.  Applying SDN and Network Virtualization Principles
 
    At the application level, end-to-end key management and end-to-end
    key creation are obviously the main target.  Since many applications
@@ -395,71 +377,31 @@ Table of Contents
    of all network functions, of any nature, under a common MANO stack
    [NFV06], seems the most reasonable option.
 
-   At the control and management level, the distinct nature of network
-   elements and the mediation nature of the controller role do not make
-   advisable the use of common quantum/OTN controllers, but there are
-   common abstractions able to support cross-interactions among
-   controllers and management applications, especially regarding:
-
-   *  Quantum management applications requiring operations on topologies
-      and physical paths in the OTN mediated by an OTN controller.
-
-   *  OTN management applications requiring operation on quantum
-      topologies mediated by the quantum controller.
-
-   *  Topology updates exchanged between quantum and OTN controllers.
-
-   *  The coordination through an integrated controller (commonly
-      referred as "orchestrator"), able to provide a common view to
-      application network functions.
-
-   At the forwarding level, there is a radical difference between the
-   network elements in quantum networks and OTN, and therefore
-   interactions in data forwarding are not feasible, with only two
-   exceptions: the possibility of sharing physical media, and the use of
-   classical channels to support QKD algorithms, as it is the case of
-   distillation channels in protocols like BB84.  In this case, a proper
-   control of the path and physical parameters has to be applied to
-   minimize interferences of any nature and guarantee OTN connectivity
-   for the quantum algorithms.
-
-3.3.  Applying Network Virtualization Principles
+   While there is a radical difference between the network elements in
+   quantum networks and OTN, and therefore interactions in data
+   forwarding are not feasible, with only two exceptions: the
+   possibility of sharing physical media, and the use of classical
+   channels to support QKD algorithms, as it is the case of distillation
+   channels in protocols like BB84.  In this case, a proper control of
+   the path and physical parameters has to be applied to minimize
+   interferences of any nature and guarantee optical classical
+   connectivity for the quantum algorithms.
 
    Recent proposals for QKD network management have explored the use of
    operational models that radically leverage the virtualization of
-   control and key management functionalities [EVCK25].  These
-   approaches pave the way for a tighter integration of quantum
-   functionality with functions already established in state of the art
-   classical networks, including support for user/function
-   authentication and authorization, and support for user and function
-   mobility, while adhering to established QKD network standards.
-   Integrating these mechanisms enhance security measures and ensure
-   that quantum networks can seamlessly interface with existing and
-   future telecommunications infrastructure.
-
-   While SDN ensures higher degrees of flexibility and reconfigurability
-   by allowing network functions to be easily modified and upgraded
-   through software changes, virtualization enables the abstraction of
-   hardware devices by creating virtual instances, which improves
-   scalability, resource efficiency and allows the dynamic allocation of
-   softwarized network functions in different locations.  As quantum
-   technology evolves, a virtualized layer for softwarized network
-   functions significantly aids adaptation to these changes, ensuring
-   pliability and responsiveness for seamless updates, and incorporating
-   new mechanisms without extensive hardware modifications.
-
-   As for key exchange, current technology does not allow direct end-to-
-   end quantum key exchange between distant nodes.  Instead, key
-   distribution must rely on trusted intermediary nodes to transmit keys
-   hop-by-hop.  A key management layer where the actions of all nodes
-   are coordinated is needed to ensure secure and efficient key
-   distribution.  Virtualizing and decoupling key management from the
-   physical QKD devices enhances flexibility and scalability, and
-   supports the integration of hybrid cryptographic strategies,
-   combining QKD and post-quantum algorithms to ensure security and
-   performance.  Additionally, it allows real-time performance
-   monitoring, data-driven control and management, and tailored access
-   and admission mechanisms [QNSA24].
+   control and key management functionalities [EVCK25].  For key
+   exchange, current technology does not allow direct end-to-end quantum
+   key exchange between distant nodes.  Instead, key distribution must
+   rely on trusted intermediary nodes to transmit keys hop-by-hop.  A
+   key management layer where the actions of all nodes are coordinated
+   is needed to ensure secure and efficient key distribution.
+   Virtualizing and decoupling key management from the physical QKD
+   devices enhances flexibility and scalability, and supports the
+   integration of hybrid cryptographic strategies, combining QKD and
+   post-quantum algorithms to ensure security and performance.
+   Additionally, it allows real-time performance monitoring, data-driven
+   control and management, and tailored access and admission mechanisms
+   [QNSA24].
 
    The virtualized key management layer acts as an intermediary between
    the clients and the cryptographic material generating devices.  This
@@ -486,17 +428,37 @@ Table of Contents
    statistics on the QKD modules, quickly alerting about any failure or
    possible attack on the QFP.
 
-3.4.  CLAS and Quantum Networks
+5.  A Framework Architecture for the Quantum Internet
 
-   As discussed above, SDN principles have enabled the base abstractions
-   for the conceptualization of QKD infrastructures, including the
-   services they provide and the required interactions in the use of
-   classical infrastructure to support the required connectivity
-   patterns.  The original CLAS architecture, as defined by [RFC8597],
-   addresses SDN evolution considering the forwarding (transport) and
-   service aspects in two separated but coordinated planes.  This
-   approach matches the multi-plane approach described for QKD
-   infrastructures, though it seems somehow limited to address the
+   Based on the available experience on the deployment of existing QKD
+   infrastructures and on the evolution of SDN-enabled architectures
+   described in the previous section, this document proposes an
+   architecture framework intended to offer a conceptual common
+   framework for the integration of technologies intended to build the
+   Quantum Internet infrastructure and its integration with the current
+   Internet.
+
+   Once we presented in the previous section the lessons learned from
+   QKD deployments, introducing a general architecture applicable to
+   those deployments, in this section we propose the generalization of
+   such architecture towards a Quantum Internet, augmented by the
+   extended SDN approach proposed by the evolved CLAS in [CLASEVO].  In
+   what follows, we will discuss how this framework architecture would
+   support the required properties: agility, allowing for technology
+   evolution, sustainability, fostering infrastructure reuse, and
+   pliability, supporting operational best practices.
+
+5.1.  CLAS and Quantum Networks
+
+   As discussed in the previous section, SDN principles have enabled the
+   base abstractions for the conceptualization of QKD infrastructures,
+   including the services they provide and the required interactions in
+   the use of classical infrastructure to support the required
+   connectivity patterns.  The original CLAS architecture, as defined by
+   [RFC8597], addresses SDN evolution considering the forwarding
+   (transport) and service aspects in two separated but coordinated
+   planes.  This approach matches the multi-plane approach described for
+   QKD infrastructures, though it seems somehow limited to address the
    required interactions with physical connectivity, as well as to
    incorporate general requirements regarding automation to support
    convergence with operational practices.
@@ -518,26 +480,6 @@ Table of Contents
    integration of control mechanisms, and the interplay with the
    (shared) infrastructure and its management.
 
-4.  A Framework Architecture for the Quantum Internet
-
-   Based on the available experience on the deployment of existing QKD
-   infrastructures and on the evolution of SDN-enabled architectures
-   described in the previous section, this document proposes an
-   architecture framework intended to offer a conceptual common
-   framework for the integration of technologies intended to build the
-   Quantum Internet infrastructure and its integration with the current
-   Internet.
-
-   Once we presented in the previous section the lessons learned from
-   QKD deployments, introducing a general architecture applicable to
-   those deployments, in this section we propose the generalization of
-   such architecture towards a Quantum Internet, augmented by the
-   extended SDN approach proposed by the evolved CLAS in [CLASEVO].  In
-   what follows, we will discuss how this framework architecture would
-   support the required properties: agility, allowing for technology
-   evolution, sustainability, fostering infrastructure reuse, and
-   pliability, supporting operational best practices.
-
    Furthermore, we propose here a general network architecture trying to
    incorporate relevant trends such as cloud nativeness, the integration
    of zero-touch management, or the considerations about intent.  With
@@ -545,7 +487,7 @@ Table of Contents
    for quantum communications networks is introduced, including the
    proposed strata and their main characteristics.
 
-4.1.  Strata for Quantum Networks
+5.2.  Strata for Quantum Networks
 
    The CLAS architecture was initially conceived from the perspective of
    exploiting the advantages of network programmability in operational
@@ -729,95 +671,74 @@ Table of Contents
    stratum focused on these aspects makes the proposed architecture
    better aligned with the sustainability goal.
 
-4.2.  Identification of Interfaces and Protocols
+5.3.  The Service Unit Concept
 
-   The architecture proposed in this document is intended as a framework
-   to evaluate and explore compatibility among the different proposals
-   on protocols and interfaces for the future availability of quantum
-   features in the global Internet, with the goal of providing a uniform
-   reference model to choose and apply the most appropriate solutions to
-   the Quantum Internet challenges.  While the reference architecture
-   does not intend to identify a concrete set of these protocols and
-   interfaces, it is useful to analyze current proposals and trends, and
-   provide some guidance on how the framework can be useful for
-   assessing the integration of the solutions applicable to the
-   different elements that have to converge to realize the Quantum
-   Internet.
+5.3.1.  Applying Service Units in QKD Networks
 
-   There is a significant corpus of standards and operational practica
-   applicable for the Connectivity Stratum, sustained by a well
-   established experience in the management and use of optical and, to
-   some extent, satellite-based networks.  The differentiation of the
-   planes considered in the CLAS architecture within the Connectivity
-   Stratum has been common practice in the deployment and operation of
-   IP converged services over optical networks.  The abstractions and
-   topology views described in the ACTN framework defined in [RFC8453]
-   constitute a solid foundation to describe the functionality of the
-   planes within the Connectivity Stratum, and the interfaces to be used
-   in the interactions with the other strata.  An element like the Path
-   Computation Element (PCE) described in [RFC8637], able to address the
-   considerations related to quantum connectivity and the implications
-   of entanglement-based forwarding, could constitute the core of the
-   intelligence and telemetry planes.  Specific forwarding elements,
-   able to fulfill the conditions for quantum signals, including the
-   potential co-propagation with classical signals, and to interface
-   with future quantum repeaters [QREPS], would constitute the essential
-   substrate of the resource plane.  The current trends in optical
-   disaggregation and the use of orchestrated SDN mechanisms for network
-   path management and monitoring provide a natural path for leveraging
-   network virtualization mechanisms within the Connectivity Stratum,
-   facilitating their integration.
+   The service units provided by a QKD network have to be uniquely
+   identified within the network, so they can be properly managed by the
+   SOP, including their routing across the different required KMEs, the
+   requests of appropriate links in the QFP, and the management of the
+   lifecycle events related to making the key available to the
+   applications willing to use it.  It is important to note we are
+   talking about a service unit, and not a data unit associated with a
+   particular protocol, and therefore what is relevant here are the
+   identification of the two application endpoints (that should include
+   a nonce mechanism to identify the specific pairing) together with
+   relevant parameters regarding the key lifecycle, such as its length
+   and valid time-to-live.  While these are the two essential lifecycle
+   parameters, others, as it might be the case of applicable crypto
+   algorithms, could be considered as well.  The service unit identifier
+   is not directional, i.e., it has no source or destination addresses,
+   as it defines a shared state to be used by two applications.  We can
+   consider the analogy of transport flows in the current Internet,
+   rather than packets.
 
-   In what relates to the Quantum Forwarding Stratum, current best
-   practices indicate that telemetry and SDN intelligence planes will
-   follow the same directions as the other strata, with virtualized,
-   likely cloud-native implementations for them.  Even in the case of
-   the resource plane, one can expect the availability of specific
-   software agent elements in charge of managing devices, interacting
-   with the Connectivity Plane and providing support to the service
-   units relevant for the Service Stratum.  A recent proposal [QUADDR],
-   beyond the foundations described in [RFC9340], can be used to
-   exemplify the main objective of the framework architecture described
-   in this document.  The proposal presents quantum-native mechanisms
-   for routing procedures, and the corresponding addressing conventions
-   supporting them, and considers network-wide mechanisms, structured in
-   two tiers defining what could be assimilated to a local domain and an
-   internetworking domain.  This proposal can be naturally integrated in
-   the Quantum Forwarding Stratum (QFS), and its SDN-inspired
-   architecture would map the proposed Entanglement-Defined Controller
-   (EDC) at the kernel of the SDN intelligence plane.  The integration
-   of an architecture like this within the framework described in this
-   document would require to analyze the mapping between the node
-   identifiers described in the paper and the service units discussed
-   below.  The choices for the coordination among the different strata
-   if the QFS uses an architecture like the one proposed in the
-   references paper would need to be also analyzed: on the one hand, the
-   interface between the EDC and Service Stratum should be defined, and
-   the QFS elements should need to be extended to include its
-   interactions with the Connectivity Stratum, or consider it oblivious
-   to physical connectivity and leave the coordination to the Service
-   Stratum.  This is the kind of evaluations the synthetic environments
-   discussed in Section 4.2.2 will be extremely useful.
+   The current proposal we are experimenting with advocate for using
+   URNs [RFC8141] as endpoint identifiers, taking advantage of their
+   nature of location-independent, persistent resource identifiers.  The
+   q-component of the endpoint URN can be used to carry the nonce part
+   of the specific application identifier.  If we consider that
+   lifecycle parameters can be expressed using a specific URN in its
+   q-component, we have that a service unit identifier consists of the
+   combination of three URNs.
 
-   The discussion on the foundations of the Service Stratum (SS) is made
-   on the following section, where the concept of service units, as
-   already introduced for the case of QKD networks, is analyzed.
-   Furthermore, As a natural consequence of what is discussed above in
-   the framework of cloud-native QKD, the use of network virtualization
-   techniques would be essential for the Service Stratum, at all of
-   their planes:
+   As an example, let’s consider URNs for application endpoints use the
+   qkd namespace id, and that lifecycle parameters use the URN
+   qkd:lifecycle assigned name, with the parameters size and valid-
+   until.  A service unit identifier for QKD between two domains, with
+   roots madqci and quditto, would look like:
 
-   *  The SDN intelligence plane, allowing the dynamic management of
-      service units and their association with the corresponding units
-      in the Quantum Forwarding Stratum.
+   urn:qkd:madqci:ccips?=nonce=177923
+   urn:qkd:quditto:emulator:ipsec:controller?=nid=af33017
+   urn:qkd:lifecycle?=size=256&valid-until=1750708945
 
-   *  The telemetry plane, for dynamic monitoring and data aggregation.
+   The nature of the endpoint identifiers support the use of any
+   aggregation and routing mechanisms, ranging from strictly
+   hierarchical and centralized schemas based on orchestration
+   mechanisms to fully distributed routing algorithms.  The approach
+   also supports the use of non-routable identifiers, limited to that a
+   given domain or KMS.
 
-   *  The resource plane, in support of the different nature of the
-      interactions at the Quantum Forwarding Stratum, like the case of
-      entanglement persistence beyond direct physical reachability.
+   The QKD service unit identifies a shared state between two
+   application entities, and therefore cannot be consider directional,
+   and the concepts of source and destination do not apply here.
+   Nevertheless, directionality is relevant in the process of
+   establishing the QKD service unit, both in terms of its identifier
+   and of its contents.  In the case of the identifier, one of the
+   application entities will request a service unit to the relevant KMS/
+   KME it is attached to, identifying itself and the other peer in the
+   service unit, together with the applicable lifecycle parameters.
+   Relying on the available route information and the replies of the
+   intermediate elements in the SOP, the final identifier of the QKD
+   service unit will be built.  The associated content, i.e., the bit
+   string defining the key to be shared between the two application
+   endpoints, will be derived from the elements in the participating
+   links in the QFP and the application of any additional mechanisms
+   (key encryption, augmentation, trusted node forwarding…) required by
+   the participating KMEs and the corresponding links.
 
-4.2.1.  The Role of Service Units
+5.3.2.  Generalizing Service Units
 
    The fact we remarked above about the QKD service unit being a shared
    state between two application entities supports a direct translation
@@ -907,7 +828,95 @@ Table of Contents
    both the SS and the QFS, as already being defined for QKD
    infrastructures [ETSI23].
 
-4.2.2.  The Role of Synthetic Environments
+5.4.  Identification of Interfaces and Protocols
+
+   The architecture proposed in this document is intended as a framework
+   to evaluate and explore compatibility among the different proposals
+   on protocols and interfaces for the future availability of quantum
+   features in the global Internet, with the goal of providing a uniform
+   reference model to choose and apply the most appropriate solutions to
+   the Quantum Internet challenges.  While the reference architecture
+   does not intend to identify a concrete set of these protocols and
+   interfaces, it is useful to analyze current proposals and trends, and
+   provide some guidance on how the framework can be useful for
+   assessing the integration of the solutions applicable to the
+   different elements that have to converge to realize the Quantum
+   Internet.
+
+   There is a significant corpus of standards and operational practica
+   applicable for the Connectivity Stratum, sustained by a well
+   established experience in the management and use of optical and, to
+   some extent, satellite-based networks.  The differentiation of the
+   planes considered in the CLAS architecture within the Connectivity
+   Stratum has been common practice in the deployment and operation of
+   IP converged services over optical networks.  The abstractions and
+   topology views described in the ACTN framework defined in [RFC8453]
+   constitute a solid foundation to describe the functionality of the
+   planes within the Connectivity Stratum, and the interfaces to be used
+   in the interactions with the other strata.  An element like the Path
+   Computation Element (PCE) described in [RFC8637], able to address the
+   considerations related to quantum connectivity and the implications
+   of entanglement-based forwarding, could constitute the core of the
+   intelligence and telemetry planes.  Specific forwarding elements,
+   able to fulfill the conditions for quantum signals, including the
+   potential co-propagation with classical signals, and to interface
+   with future quantum repeaters [QREPS], would constitute the essential
+   substrate of the resource plane.  The current trends in optical
+   disaggregation and the use of orchestrated SDN mechanisms for network
+   path management and monitoring provide a natural path for leveraging
+   network virtualization mechanisms within the Connectivity Stratum,
+   facilitating their integration.
+
+   In what relates to the Quantum Forwarding Stratum, current best
+   practices indicate that telemetry and SDN intelligence planes will
+   follow the same directions as the other strata, with virtualized,
+   likely cloud-native implementations for them.  Even in the case of
+   the resource plane, one can expect the availability of specific
+   software agent elements in charge of managing devices, interacting
+   with the Connectivity Plane and providing support to the service
+   units relevant for the Service Stratum.  A recent proposal [QUADDR],
+   beyond the foundations described in [RFC9340], can be used to
+   exemplify the main objective of the framework architecture described
+   in this document.  The proposal presents quantum-native mechanisms
+   for routing procedures, and the corresponding addressing conventions
+   supporting them, and considers network-wide mechanisms, structured in
+   two tiers defining what could be assimilated to a local domain and an
+   internetworking domain.  This proposal can be naturally integrated in
+   the Quantum Forwarding Stratum (QFS), and its SDN-inspired
+   architecture would map the proposed Entanglement-Defined Controller
+   (EDC) at the kernel of the SDN intelligence plane.  The integration
+   of an architecture like this within the framework described in this
+   document would require to analyze the mapping between the node
+   identifiers described in the paper and the service units discussed
+   below.  The choices for the coordination among the different strata
+   if the QFS uses an architecture like the one proposed in the
+   references paper would need to be also analyzed: on the one hand, the
+   interface between the EDC and Service Stratum should be defined, and
+   the QFS elements should need to be extended to include its
+   interactions with the Connectivity Stratum, or consider it oblivious
+   to physical connectivity and leave the coordination to the Service
+   Stratum.  This is the kind of evaluations the synthetic environments
+   discussed in Section 5.5 will be extremely useful.
+
+   The discussion on the foundations of the Service Stratum (SS) is made
+   on the following section, where the concept of service units, as
+   already introduced for the case of QKD networks, is analyzed.
+   Furthermore, As a natural consequence of what is discussed above in
+   the framework of cloud-native QKD, the use of network virtualization
+   techniques would be essential for the Service Stratum, at all of
+   their planes:
+
+   *  The SDN intelligence plane, allowing the dynamic management of
+      service units and their association with the corresponding units
+      in the Quantum Forwarding Stratum.
+
+   *  The telemetry plane, for dynamic monitoring and data aggregation.
+
+   *  The resource plane, in support of the different nature of the
+      interactions at the Quantum Forwarding Stratum, like the case of
+      entanglement persistence beyond direct physical reachability.
+
+5.5.  The Role of Synthetic Environments
 
    Due to the early stage of many, if not all, quantum technologies,
    experimenting with quantum devices and equipment can be seriously
@@ -1039,7 +1048,7 @@ Table of Contents
    elapsed time between state creation and use, and updating the state
    accordingly before executing the next instruction.
 
-5.  Security Considerations
+6.  Security Considerations
 
    The general considerations made in [RFC8597] apply, as well as an
    elaboration on the following points regarding:
@@ -1061,9 +1070,9 @@ Table of Contents
    Connectivity Stratum, [RFC8453] and [RFC8637] apply to the proposed
    framework.
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1084,7 +1093,7 @@ Table of Contents
               DOI 10.17487/RFC8597, May 2019,
               <https://www.rfc-editor.org/rfc/rfc8597>.
 
-6.2.  Informative References
+7.2.  Informative References
 
    [ALTOQ24]  Muniz, A., Canto, R., Contreras, L., Pastor, A., Lopez,
               D., and J. Morales, "Using Protocol to Address SD-QKD
