@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 21 August 2026                                              UPM
+Expires: 22 August 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        17 February 2026
+                                                        18 February 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 August 2026.
+   This Internet-Draft will expire on 22 August 2026.
 
 Copyright Notice
 
@@ -501,14 +501,14 @@ Table of Contents
       purpose of the quantum network, and aligned with SOP described for
       QKD networks above.  At this moment, the most general service,
       beyond QKD key management, is obviously entanglement distribution
-      in a general quantum network.  Others can be considered, as time
-      synchronization, identity assurance or sensing.  The service
-      stratum would consider the relevant service units (keys, shared
-      states, identities, timelines...), deal with their appropriate
-      forwarding and routing, and deliver these service units as
-      requested by the user application functions.  The concept of
-      service unit becomes essential here, as the cornerstone for
-      fundamental network characteristics (addressing, routing,
+      in a general quantum network.  Others can be considered, as
+      quantum-enhanced clock synchronization, identity assurance or
+      sensing.  The service stratum would consider the relevant service
+      units (keys, shared states, identities, timelines...), deal with
+      their appropriate disitribution and routing, and deliver these
+      service units as requested by the user application functions.  The
+      concept of service unit becomes essential here, as the cornerstone
+      for fundamental network characteristics (addressing, routing,
       information structuring...) and for the interface to the
       applications using the network.  As the discussion on how to
       identify and relate keys in a wide-area QKD network is still
@@ -518,34 +518,33 @@ Table of Contents
       on them is crucial to define how a global quantum network should
       be built and operated.
 
-   *  A Quantum Forwarding Stratum, in charge of the direct application
-      of quantum protocols and algorithms between the two endpoints of a
-      quantum link, even when it is a multi-hop one, very much as the
-      QFP we described as part of QKD deployments.  It is important to
-      note that this stratum must be able to support the service units
-      that constitute, but there is no need for a one-to-one mapping
-      between those quantum forwarding units and the service units.  As
-      example, let us consider entanglement forwarding via swapping,
-      which would likely occur on a pairwise basis at this stratum, but
-      needs to be considered in a collective view to make sense to the
-      applications interacting with the service stratum.
+   *  A Quantum Fabric Stratum, in charge of the direct application of
+      quantum protocols and algorithms among the endpoints of a quantum
+      link, whatever their number, providing support to bipartite and
+      multipartite entanglement distribution.  It is important to note
+      that this stratum must be able to support the appropriate service
+      units, but there is no need for a one-to-one mapping between those
+      quantum entanglement units and the service units.  As example, let
+      us consider entanglement distribution via swapping, which would
+      likely occur on a pairwise basis at this stratum, but needs to be
+      considered in a collective view to make sense to the applications
+      interacting with the service stratum.
 
    *  A Connectivity Stratum, taking care of providing the paths to
-      support the quantum links used by the quantum forwarding and
-      service strata.  Typically, the connectivity stratum would be
-      supported by OTN infrastructure, via fiber and/or open-space
-      links, and would follow a common connectivity paradigm,
-      specifically a circuit-based or packet-based one.  While current
-      quantum links deal with OTN infrastructure according to a circuit-
-      based paradigm, recent proposals are addressing the idea of
-      "quantum packets" [PSQN22] and the connectivity stratum would have
-      to deal, in general terms, with the classical headers of such
-      packets.  Furthermore, classical links are always required for
-      supporting quantum links procedures, and by any kind of
-      monitoring, control, and management connections.  The provisioning
-      of related quantum and classical links, and their consistent
-      operation to meet service levels will be the main concern of this
-      stratum.
+      support the quantum links used by the quantum fabric and service
+      strata.  Typically, the connectivity stratum would be supported by
+      OTN infrastructure, via fiber and/or open-space links, and would
+      follow a common connectivity paradigm, specifically a circuit-
+      based or packet-based one.  While current quantum links deal with
+      OTN infrastructure according to a circuit-based paradigm, recent
+      proposals are addressing the idea of "quantum packets" [PSQN22]
+      and the connectivity stratum would have to deal, in general terms,
+      with the classical headers of such packets.  Furthermore,
+      classical links are always required for supporting quantum links
+      procedures, and by any kind of monitoring, control, and management
+      connections.  The provisioning of related quantum and classical
+      links, and their consistent operation to meet service levels will
+      be the main concern of this stratum.
 
    This architecture, following the CLAS proposal itself, is built under
    the assumption that planes within and across strata communicate
@@ -562,9 +561,11 @@ Table of Contents
    distributed approaches, in which each participating domain runs a
    specific instance of the different strata, providing collaboration by
    the exposure of tailored information to the other domains via border
-   protocols, as proposed in [ALTOQ24].  Even configurations where a
-   particular domain focuses on one or two of the strata, supporting the
-   other strata being hosted in different domains is also conceivable.
+   protocols, as proposed in [ALTOQ24], in a way equivalent to the
+   peering mechanisms in use among current Internet Autonomous Systems.
+   Even configurations where a particular domain focuses on one or two
+   of the strata, supporting the other strata being hosted in different
+   domains is also conceivable.
 
    Based on the images used to illustrate the strata proposed in
    [CLASEVO] and [RFC8597], the relationship among the strata described
@@ -591,7 +592,7 @@ Table of Contents
            +--------------------------------||-------------||---+
                             Standard API -- || --          ||
            +--------------------------------||-----+       ||
-           | Quantum Forwarding Stratum     ||     |       ||
+           | Quantum Fabric Stratum         ||     |       ||
            |                                \/     |       ||
            |  +----------+    ...................  |       ||
            |  | Telemetry|    . SDN             .  |  Std. ||
@@ -640,10 +641,10 @@ Table of Contents
    "Quantum Memory Networks", "Few Qubit Fault-Tolerant Networks", and
    "Quantum Computing Networks".  As immediate examples we can consider
    the integration of features in the Connectivity Stratum with the
-   other two strata to support entanglement forwarding among different
+   other two strata to support entanglement distribution among different
    locations, or the incorporation of future quantum repeaters into the
-   Quantum Forwarding Stratum to support more elaborated behaviors of
-   the Service Stratum.
+   Quantum Fabric Stratum to support more elaborated behaviors of the
+   Service Stratum.
 
    In addition, these network abstractions are intended to provide
    specific degrees of freedom for network design and deployment,
@@ -774,11 +775,11 @@ Table of Contents
    identify the corresponding entangled pairs.  The elements equivalent
    to the KMEs in the control plane of the SS interact with these
    quantum memories to identify the applicable addresses, and to require
-   the elements in the control plane of the Quantum Forwarding Stratum
-   (QFS) to activate the corresponding exchanges in the quantum links
-   they operate.  Each of the endpoints of these quantum links is
-   expected to provide a functionality equivalent to the agents
-   discussed for QKD networks, in support of the SS quantum memories.
+   the elements in the control plane of the Quantum Fabric Stratum (QFS)
+   to activate the corresponding exchanges in the quantum links they
+   operate.  Each of the endpoints of these quantum links is expected to
+   provide a functionality equivalent to the agents discussed for QKD
+   networks, in support of the SS quantum memories.
 
    As discussed in the case of QKD service units, directionality (the
    specification of an origin and a destination) is not applicable in
@@ -856,8 +857,8 @@ Table of Contents
    in the interactions with the other strata.  An element like the Path
    Computation Element (PCE) described in [RFC8637], able to address the
    considerations related to quantum connectivity and the implications
-   of entanglement-based forwarding, could constitute the core of the
-   intelligence and telemetry planes.  Specific forwarding elements,
+   of entanglement-based distribution, could constitute the core of the
+   intelligence and telemetry planes.  Specific distribution elements,
    able to fulfill the conditions for quantum signals, including the
    potential co-propagation with classical signals, and to interface
    with future quantum repeaters [QREPS], would constitute the essential
@@ -867,25 +868,25 @@ Table of Contents
    network virtualization mechanisms within the Connectivity Stratum,
    facilitating their integration.
 
-   In what relates to the Quantum Forwarding Stratum, current best
-   practices indicate that telemetry and SDN intelligence planes will
-   follow the same directions as the other strata, with virtualized,
-   likely cloud-native implementations for them.  Even in the case of
-   the resource plane, one can expect the availability of specific
-   software agent elements in charge of managing devices, interacting
-   with the Connectivity Plane and providing support to the service
-   units relevant for the Service Stratum.  A recent proposal [QUADDR],
-   beyond the foundations described in [RFC9340], can be used to
-   exemplify the main objective of the framework architecture described
-   in this document.  The proposal presents quantum-native mechanisms
-   for routing procedures, and the corresponding addressing conventions
+   In what relates to the Quantum Fabric Stratum, current best practices
+   indicate that telemetry and SDN intelligence planes will follow the
+   same directions as the other strata, with virtualized, likely cloud-
+   native implementations for them.  Even in the case of the resource
+   plane, one can expect the availability of specific software agent
+   elements in charge of managing devices, interacting with the
+   Connectivity Plane and providing support to the service units
+   relevant for the Service Stratum.  A recent proposal [QUADDR], beyond
+   the foundations described in [RFC9340], can be used to exemplify the
+   main objective of the framework architecture described in this
+   document.  The proposal presents quantum-native mechanisms for
+   routing procedures, and the corresponding addressing conventions
    supporting them, and considers network-wide mechanisms, structured in
    two tiers defining what could be assimilated to a local domain and an
    internetworking domain.  This proposal can be naturally integrated in
-   the Quantum Forwarding Stratum (QFS), and its SDN-inspired
-   architecture would map the proposed Entanglement-Defined Controller
-   (EDC) at the kernel of the SDN intelligence plane.  The integration
-   of an architecture like this within the framework described in this
+   the Quantum Fabric Stratum (QFS), and its SDN-inspired architecture
+   would map the proposed Entanglement-Defined Controller (EDC) at the
+   kernel of the SDN intelligence plane.  The integration of an
+   architecture like this within the framework described in this
    document would require to analyze the mapping between the node
    identifiers described in the paper and the service units discussed
    below.  The choices for the coordination among the different strata
@@ -908,12 +909,12 @@ Table of Contents
 
    *  The SDN intelligence plane, allowing the dynamic management of
       service units and their association with the corresponding units
-      in the Quantum Forwarding Stratum.
+      in the Quantum Fabric Stratum.
 
    *  The telemetry plane, for dynamic monitoring and data aggregation.
 
    *  The resource plane, in support of the different nature of the
-      interactions at the Quantum Forwarding Stratum, like the case of
+      interactions at the Quantum Fabric Stratum, like the case of
       entanglement persistence beyond direct physical reachability.
 
 5.5.  The Role of Synthetic Environments
@@ -1058,7 +1059,7 @@ Table of Contents
       physical properties.
 
    *  Specific physical attacks related to the particular quantum
-      mechanisms in use by the quantum forwarding stratum.
+      mechanisms in use by the quantum fabric stratum.
 
    *  The interaction of these physical attacks with classical attacks
       to the control and monitoring activities, possibly translating
