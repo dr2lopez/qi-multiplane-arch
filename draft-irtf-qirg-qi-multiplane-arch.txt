@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 22 August 2026                                              UPM
+Expires: 23 August 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        18 February 2026
+                                                        19 February 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2026.
+   This Internet-Draft will expire on 23 August 2026.
 
 Copyright Notice
 
@@ -754,20 +754,21 @@ Table of Contents
    it would be the case of distributed quantum sensing or metrology.
 
    The identification of such service units can follow the same patterns
-   described for the QKD service units, with three URNs, two of them
-   identifying the pair of application entities sharing the state, and a
-   third one defining the lifecycle parameters.  Obviously, these
-   parameters should differ from the ones postulated for QKD, and it is
-   possible to envisage parameters such as shared state size (the number
-   of entangled pairs), a timestamp regarding lifetime of the shared
-   state, and others addressing aspects like fidelity.  As the quantum
-   memory technology at the foundation of these shared states evolve, a
-   clearer view of the parameter URN will become available.  Experiments
-   on this issue will be really useful to identify these parameters and
-   shape the q-component of the parameter URN.
+   described for the QKD service units, but in this general case with
+   N+1 URNs, being N the number of application entities (two for the
+   case of bipartite entanglement) sharing the state, and a final one
+   defining the lifecycle parameters.  Obviously, these parameters
+   should differ from the ones postulated for QKD, and it is possible to
+   envisage parameters such as shared state size (the number of
+   entangled pairs), a timestamp regarding lifetime of the shared state,
+   and others addressing aspects like fidelity.  As the quantum memory
+   technology at the foundation of these shared states evolve, a clearer
+   view of the parameter URN will become available.  Experiments on this
+   issue will be really useful to identify these parameters and shape
+   the q-component of the parameter URN.
 
    The content of a QKD service unit is a bitstring corresponding to the
-   shared key.  These bitstring is stored in the memories of the
+   shared key.  This bitstring is stored in the memories of the
    corresponding KMEs, with individual bits differentiated by their
    position in the string.  Quantum memories must be available at the
    resource plane of the Service Stratum (SS), and the service unit
@@ -781,21 +782,21 @@ Table of Contents
    provide a functionality equivalent to the agents discussed for QKD
    networks, in support of the SS quantum memories.
 
-   As discussed in the case of QKD service units, directionality (the
-   specification of an origin and a destination) is not applicable in
-   this case either, as service units correspond to a shared state.
-   What can be certainly considered is an originator of this shared
-   state, corresponding to the application element requesting the
-   establishment of the service unit.  This would trigger the SS control
-   plane element attached to the application to start its route decision
-   procedures and to start the interactions with the relevant SS control
-   planes to start the necessary exchanges to establish the shared
-   quantum states.  The structure and delegation mechanisms provided by
-   URNs allow for arbitrary aggregation of prefixes, enabling any kind
-   of routing style, from the aggregation and inter-domain announcement
-   similar (or compatible) to BGP in classical Internet to the decision
-   on which prefixes are announced and how they are routed by means of
-   SDN controllers, whether by means of a federation approach or in a
+   For these service units, directionality (the specification of an
+   origin and a destination) is not applicable, as service units
+   correspond to a shared state.  The only directional element that can
+   be considered is an originator of this shared state, corresponding to
+   the application element requesting the establishment of the service
+   unit.  This would trigger the SS control plane element attached to
+   the application to start its route decision procedures and to start
+   the interactions with the relevant SS control planes to start the
+   necessary exchanges to establish the shared quantum states.  The
+   structure and delegation mechanisms provided by URNs allow for
+   arbitrary aggregation of prefixes, enabling any kind of routing
+   style, from the aggregation and inter-domain announcement similar (or
+   compatible) to BGP in classical Internet to the decision on which
+   prefixes are announced and how they are routed by means of SDN
+   controllers, whether by means of a federation approach or in a
    hierarchical control structure.  The approach also supports the use
    of non-routable identifiers that cannot be announced outside a given
    domain and can only establish service pairing with other applications
@@ -816,9 +817,10 @@ Table of Contents
    similar interfaces and procedures for the management and control of
    quantum links, addressing the challenges already identified in
    [RFC9340] and exploring the implications of quantum-native routing
-   proposals as made in [QUADDR].  A specially significant question is
-   the mapping between the entangled pairs, as identified by the service
-   unit, and the payloads exchanged within the QFS.
+   proposals as made in [QUADDR] and, more recently, in [QNAD].  A
+   specially significant question is the mapping between the entangled
+   pairs, as identified by the service unit, and the payloads exchanged
+   within the QFS.
 
    Finally, a word on the telemetry planes in each of the proposed
    strata.  It should be obvious the elements in the control planes at
@@ -875,7 +877,7 @@ Table of Contents
    plane, one can expect the availability of specific software agent
    elements in charge of managing devices, interacting with the
    Connectivity Plane and providing support to the service units
-   relevant for the Service Stratum.  A recent proposal [QUADDR], beyond
+   relevant for the Service Stratum.  The proposal in [QUADDR], beyond
    the foundations described in [RFC9340], can be used to exemplify the
    main objective of the framework architecture described in this
    document.  The proposal presents quantum-native mechanisms for
@@ -1065,6 +1067,9 @@ Table of Contents
       to the control and monitoring activities, possibly translating
       into a threat surface augmentation.
 
+   *  The trust issues in inter-domain exchanges, especially at the
+      control and management planes.
+
    Furthermore, as the identification of interfaces and protocols
    progresses other considerations will be required.  In particular, the
    security considerations included in the documents referenced for the
@@ -1176,7 +1181,7 @@ Table of Contents
               over a Q-LAN testbed", September 2024,
               <https://doi.org/10.1109/QCE60285.2024.00089>.
 
-   [QIPS22]   Illiano, J., Caleffia, M., Manzalini, A., and A. S.
+   [QIPS22]   Illiano, J., Caleffi, M., Manzalini, A., and A. S.
               Cacciapuoti, "Quantum Internet Protocol Stack: a
               Comprehensive Survey", August 2022,
               <https://www.sciencedirect.com/science/article/abs/pii/
@@ -1190,6 +1195,14 @@ Table of Contents
               Nogales, "Service for Deploying Digital Twins of QKD
               Networks", January 2024,
               <https://doi.org/10.3390/app14031018>.
+
+   [QNAD]     Cacciapuoti, A. S., Caleffi, M., Illiano, J., and C. De
+              Risi, "Quantum-Native Architectural Tenets and Philosophy
+              for the Quantum Internet", Work in Progress, Internet-
+              Draft, draft-cacciapuoti-qirg-quantum-native-architecture-
+              00, 14 November 2025,
+              <https://datatracker.ietf.org/doc/html/draft-cacciapuoti-
+              qirg-quantum-native-architecture-00>.
 
    [QNSA24]   Lopez, B., Vidal, I., Valera, F., Lopez, D., and A.
               Pastor, "Unleashing Flexibility and Interoperability in
