@@ -760,12 +760,12 @@ Table of Contents
    defining the lifecycle parameters.  Obviously, these parameters
    should differ from the ones postulated for QKD, and it is possible to
    envisage parameters such as shared state size (the number of
-   entangled pairs), a timestamp regarding lifetime of the shared state,
-   and others addressing aspects like fidelity.  As the quantum memory
-   technology at the foundation of these shared states evolve, a clearer
-   view of the parameter URN will become available.  Experiments on this
-   issue will be really useful to identify these parameters and shape
-   the q-component of the parameter URN.
+   entangled states), a timestamp regarding lifetime of the shared
+   state, and others addressing aspects like fidelity.  As the quantum
+   memory technology at the foundation of these shared states evolve, a
+   clearer view of the parameter URN will become available.  Experiments
+   on this issue will be really useful to identify these parameters and
+   shape the q-component of the parameter URN.
 
    The content of a QKD service unit is a bitstring corresponding to the
    shared key.  This bitstring is stored in the memories of the
@@ -773,7 +773,7 @@ Table of Contents
    position in the string.  Quantum memories must be available at the
    resource plane of the Service Stratum (SS), and the service unit
    should contain the addresses used by those quantum memories to
-   identify the corresponding entangled pairs.  The elements equivalent
+   identify the corresponding entangled states.  The elements equivalent
    to the KMEs in the control plane of the SS interact with these
    quantum memories to identify the applicable addresses, and to require
    the elements in the control plane of the Quantum Fabric Stratum (QFS)
@@ -808,7 +808,7 @@ Table of Contents
    control plane elements, there should be corresponding interactions
    with elements in the control planes of the Connectivity Strata (CS)
    and the QFS, to verify and require, as needed, the establishment of
-   the individual entangled pairs and, as required, the physical links
+   the individual entangled states and, as required, the physical links
    to support them.  There is a consolidated corpus of interfaces
    (usually known as North-Bound Interfaces, NBI) for the control of
    classical connectivity, and specially of optical links, such as the
@@ -819,7 +819,7 @@ Table of Contents
    [RFC9340] and exploring the implications of quantum-native routing
    proposals as made in [QUADDR] and, more recently, in [QNAD].  A
    specially significant question is the mapping between the entangled
-   pairs, as identified by the service unit, and the payloads exchanged
+   states, as identified by the service unit, and the payloads exchanged
    within the QFS.
 
    Finally, a word on the telemetry planes in each of the proposed
@@ -1044,12 +1044,12 @@ Table of Contents
 
    In addition, to maintain state realism within the QNDT, it is crucial
    to take into account the natural decoherence and noise dynamics of
-   quantum states over time.  For instance, when entangled pairs are
-   distributed between two nodes and stored for a period before being
-   used in subsequent operations, the QNDT must emulate the gradual
-   evolution and degradation of these states.  This entails tracking the
-   elapsed time between state creation and use, and updating the state
-   accordingly before executing the next instruction.
+   quantum states over time.  For instance, when entangled states are
+   distributed among the participating nodes and stored for a period
+   before being used in subsequent operations, the QNDT must emulate the
+   gradual evolution and degradation of these states.  This entails
+   tracking the elapsed time between state creation and use, and
+   updating the state accordingly before executing the next instruction.
 
 6.  Security Considerations
 
