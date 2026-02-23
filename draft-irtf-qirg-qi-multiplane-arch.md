@@ -347,7 +347,7 @@ SDN and virtualization support the integration of control and management, even i
 
 * The coordination through an integrated controller (commonly referred as "orchestrator"), able to provide a common view to application network functions.
 
-# Applying Baee Technologies: The QKD Experience
+# Applying Base Technologies: The QKD Experience
 
 The design and deployment of QKD infrastructures has followed a number of design principles, based on the best practices in network architecture and management established during the lifetime of the Internet (and even before), and focused on the separation of concerns, that have been converging on the trends around applying SDN principles and virtualization mechanisms, addressing open disaggregation strategies and the identification of separate data and control planes, connected by means of open interfaces.
 This section reviews the practical knowledge acquired from the engineering and operation of QKD infrastructures and uses them as a practical reference point for the architectural discussion that follows. Although several of the concepts and interfaces examined here have been shaped by specific QKD implementations and standardization efforts, the intention is to highlight which elements appear reusable as general design patterns and which remain specific to the assumptions and limitations of QKD. In that sense, QKD is treated in this document primarily as an informative example within a broader architectural space, and the discussion is framed in a way that remains compatible with other quantum networking technologies and service models as they mature.
