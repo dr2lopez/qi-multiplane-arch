@@ -266,7 +266,7 @@ informative:
   title: "ITU-T  Technical Report Y.TR-QN-UC: Use cases of quantum networks beyond QKDN"
   date: November 2023
   target: https://www.itu.int/rec/T-TUT-QN
- ITUQNBT:
+ ITUQNTB:
   title: "Draft new Technical Report ITU-T YSTR.QN-TB: Analysis of quantum network architecture from existing testbeds"
   date: November 2025
   target: https://www.ietf.org/lib/dt/documents/LIAISON/liaison-2025-12-18-itu-t-sg-13-opsawg-ls-on-work-progress-on-quantum-key-distribution-qkd-network-in-sg13-as-of-november-2025-attachment-1.pdf
