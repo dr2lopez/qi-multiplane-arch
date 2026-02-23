@@ -191,13 +191,13 @@ informative:
  QREPS:
   title: "Quantum repeaters: From quantum networks to the quantum internet"
   author:
-  -name: Koji Azuma
-  -name: Sophia E. Economou
-  -name: David Elkouss
-  -name: Paul Hilaire
-  -name: Liang Jiang
-  -name: Hoi-Kwong Lo
-  -name: Ilan Tzitrin
+  - name: Koji Azuma
+  - name: Sophia E. Economou
+  - name: David Elkouss
+  - name: Paul Hilaire
+  - name: Liang Jiang
+  - name: Hoi-Kwong Lo
+  - name: Ilan Tzitrin
   date: December 2023
   target: https://doi.org/10.1103/RevModPhys.95.045006
  QUADDR:
