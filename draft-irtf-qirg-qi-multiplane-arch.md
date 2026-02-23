@@ -258,15 +258,15 @@ informative:
   title: "ITU-T Recommendation Y.3800: Overview on networks supporting quantum key distribution"
   date: July 2020
   target: https://www.itu.int/rec/T-REC-Y.3800
-  ITUQ4160:
+ ITUQ4160:
   title: "ITU-T Recommendation Q.4160: Quantum key distribution networks – Protocol framework"
   date: December 2023
   target: https://www.itu.int/rec/T-REC-Q.4160
-  ITUTRQNUC:
+ ITUTRQNUC:
   title: "ITU-T  Technical Report Y.TR-QN-UC: Use cases of quantum networks beyond QKDN"
   date: November 2023
   target: https://www.itu.int/rec/T-TUT-QN
-  ITUTQNBT:
+ ITUQNTB:
   title: "Draft new Technical Report ITU-T YSTR.QN-TB: Analysis of quantum network architecture from existing testbeds"
   date: November 2025
   target: https://www.ietf.org/lib/dt/documents/LIAISON/liaison-2025-12-18-itu-t-sg-13-opsawg-ls-on-work-progress-on-quantum-key-distribution-qkd-network-in-sg13-as-of-november-2025-attachment-1.pdf
@@ -302,7 +302,7 @@ As another case of the "classical vs quantum" apparent contradictions, the natur
 
 Several steps have been taken in this direction, including the identification of architectural principles and base technologies made in {RFC9340}}, the description of relevant use cases {{RFC9583}}, and specific approaches to layered models for Quantum Networking, summarized and discussed in {{QIPS22}}. While the principles provide an extremely valuable common ground for further collaboration among quantum and network practitioners, they are not intended to provide the solid framework required for progressing in the definition of specific protocols and other interfaces for common network management tasks and interactions with user applications. On the other hand, the proposals made for a layered approach provide interesting insights on requirements and potential mechanisms to structure quantum communications, but, first, they do not include essential aspects for a network at scale and, second and most important, they do not take into account the need for direct interactions beyond the layered structure, such as those between classical and quantum networking services, between applications and the quantum network, etc.
 
-In parallel, the operational experience with the first kind of infrastructures using quantum communication technologies to provide an actual network service, those focused on Quantum Key Distribution (QKD), has allowed practitioners to explore the solution space and identify design patterns that can serve as concrete examples within the general case of a Quantum Internet. A corpus of architectural proposals {{Y3802}}, experimental deployments {{MADQCI23}} and pilot infrastructures {{EUROQCI}} have become available in the recent years, and can be used to derive useful conclusions, especially if combined with recent proposals in network architecture {{RFC8597}}, intended to address the complexity of management and integration at scale beyond the basic layered constructs supporting connectivity.
+In parallel, the operational experience with the first kind of infrastructures using quantum communication technologies to provide an actual network service, those focused on Quantum Key Distribution (QKD), has allowed practitioners to explore the solution space and identify design patterns that can serve as concrete examples within the general case of a Quantum Internet. A corpus of architectural proposals {{ITUY3802}}, experimental deployments {{MADQCI23}} and pilot infrastructures {{EUROQCI}} have become available in the recent years, and can be used to derive useful conclusions, especially if combined with recent proposals in network architecture {{RFC8597}}, intended to address the complexity of management and integration at scale beyond the basic layered constructs supporting connectivity.
 
 This document is intentionally a framework document: it does not prescribe a single protocol stack or a fixed layering. Instead, it provides a set of architectural anchors that allow new proposals to be positioned, compared, and discussed consistently. The document proposes a multi-plane reference architecture for the Quantum Internet, derived from available proposals and operational experience. The proposal attempts to define a framework with three essential properties to guarantee a seamless evolution of the technology, and the consolidation of applications and management practices:
 
@@ -558,7 +558,7 @@ The evolution toward the Quantum Internet is being addressed in ITU-T through se
 ## ETSI
 
 The European Telecommunications Standards Institute (ETSI) established the Industry Specification Group on Quantum Key Distribution (ISG QKD) in 2008, which has produced a set of Group Specifications that are particularly relevant as concrete, implementable interface examples for a quantum-enabled service. ETSI has specified key
-delivery APIs {{ETSI04, ETSI14}}, a SDN control interface {{ETSI15}}, a orchestration interface {{ETSI18}}, and a monitoring data model for QKD networks {{ETSI23}}. This work has had direct operational relevance, underpinning the deployments that constitute the experience base from which the architecture proposed here is derived. At the same time, the ISG QKD scope has been deliberately bounded to QKD, leaving the broader quantum networking challenges outside its mandate.
+delivery APIs {{ETSI04}}{{ETSI14}}, a SDN control interface {{ETSI15}}, a orchestration interface {{ETSI18}}, and a monitoring data model for QKD networks {{ETSI23}}. This work has had direct operational relevance, underpinning the deployments that constitute the experience base from which the architecture proposed here is derived. At the same time, the ISG QKD scope has been deliberately bounded to QKD, leaving the broader quantum networking challenges outside its mandate.
 
 In September 2025 the ETSI Board approved the creation of a new Technical Committee on Quantum Technologies (TC QT). The primary objective of this new committee is to develop specifications addressing quantum communications and quantum networks across multiple sectors, explicitly including quantum networking for distributed computing and cryptography, satellite quantum communications, quantum sensing, and quantum random number generation. It is the successor forum for the broader scope that ISG QKD cannot address, and its initial work program includes a Technical Report mapping the quantum ecosystem and identifying cooperation opportunities, as well as a Quantum Technologies radar document tracking the maturity of the relevant technology areas.
 
