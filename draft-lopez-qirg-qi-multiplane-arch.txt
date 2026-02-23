@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 23 August 2026                                              UPM
+Expires: 27 August 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        19 February 2026
+                                                        23 February 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 August 2026.
+   This Internet-Draft will expire on 27 August 2026.
 
 Copyright Notice
 
@@ -1178,9 +1178,10 @@ Table of Contents
               July 2024,
               <https://ieeexplore.ieee.org/document/10628345>.
 
-   [QREPS]    "Quantum repeaters: From quantum networks to the quantum
-              internet", December 2023,
-              <https://doi.org/10.1103/RevModPhys.95.045006>.
+   [QREPS]    Azuma, K., Economou, S. E., Elkouss, D., Hilaire, P.,
+              Jiang, L., Lo, H.-K., and I. Tzitrin, "Quantum repeaters:
+              From quantum networks to the quantum internet", December
+              2023, <https://doi.org/10.1103/RevModPhys.95.045006>.
 
    [QTTI21]   Martin, V., Brito, J. P., Escribano, C., Menchetti, M.,
               White, C., Lord, A., Wissel, F., Gunkel, M., Gavignet, P.,

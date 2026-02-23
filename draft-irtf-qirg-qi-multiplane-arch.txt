@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 23 August 2026                                              UPM
+Expires: 27 August 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        19 February 2026
+                                                        23 February 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 August 2026.
+   This Internet-Draft will expire on 27 August 2026.
 
 Copyright Notice
 
@@ -87,7 +87,7 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Base Technologies: Evolved SDN Concepts and Network
            Virtualization
-   4.  Applying Baee Technologies: The QKD Experience
+   4.  Applying Base Technologies: The QKD Experience
      4.1.  A QKD Multi-Plane Architecture
      4.2.  Applying SDN and Network Virtualization Principles
    5.  A Framework Architecture for the Quantum Internet
@@ -98,10 +98,15 @@ Table of Contents
        5.3.2.  Generalizing Service Units
      5.4.  Identification of Interfaces and Protocols
      5.5.  The Role of Synthetic Environments
-   6.  Security Considerations
-   7.  References
-     7.1.  Normative References
-     7.2.  Informative References
+   6.  Related Standardization and Industry Work
+     6.1.  ITU-T
+     6.2.  ETSI
+     6.3.  ISO/IEC
+     6.4.  Industry and consortia
+   7.  Security Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -112,11 +117,16 @@ Table of Contents
    associated with natural physical effects that require a specific
    infrastructure to be used for communications, poses a significant
    challenge in the definition of any network reference architecture to
-   be used for such communications.  Nevertheless, the growing interest
-   on quantum networking, its applications, and the eventual
-   availability of a Quantum Internet, require of consensus on an
-   architecture framework able to support the definition and evolution
-   of different protocols and interfaces.
+   be used for such communications.  Furthermore, given that a quantum
+   network necessarily depends on some classical communications and
+   protocols to function fully, we need this reference network
+   architecture to also incorporate these classical elements.  We should
+   not think of two separate environments, but rather a unified one
+   where the classical and quantum parts interoperate as seamlessly as
+   possible.  The growing interest in quantum networking, its
+   applications, and the eventual availability of a Quantum Internet,
+   require of consensus on an architecture framework able to support the
+   definition and evolution of different protocols and interfaces.
 
    Several steps have been taken in this direction, including the
    identification of architectural principles and base technologies made
@@ -141,21 +151,25 @@ Table of Contents
    infrastructures using quantum communication technologies to provide
    an actual network service, those focused on Quantum Key Distribution
    (QKD), has allowed practitioners to explore the solution space and
-   identify design patterns that seem applicable to the general case of
-   a Quantum Internet.  A corpus of architectural proposals [Y3802],
-   experimental deployments [MADQCI23] and pilot infrastructures
-   [EUROQCI] have become available in the recent years, and can be used
-   to derive useful conclusions, especially if combined with recent
-   proposals in network architecture [RFC8597], intended to address the
-   complexity of management and integration at scale beyond the basic
-   layered constructs supporting connectivity.
+   identify design patterns that can serve as concrete examples within
+   the general case of a Quantum Internet.  A corpus of architectural
+   proposals [ITUY3802], experimental deployments [MADQCI23] and pilot
+   infrastructures [EUROQCI] have become available in the recent years,
+   and can be used to derive useful conclusions, especially if combined
+   with recent proposals in network architecture [RFC8597], intended to
+   address the complexity of management and integration at scale beyond
+   the basic layered constructs supporting connectivity.
 
-   This document proposes a multi-plane reference architecture for the
-   Quantum Internet, derived from available proposals and the
-   operational experience with QKD infrastructure.  The proposal
-   attempts to define a framework with three essential properties to
-   guarantee a seamless evolution of the technology, and the
-   consolidation of applications and management practices:
+   This document is intentionally a framework document: it does not
+   prescribe a single protocol stack or a fixed layering.  Instead, it
+   provides a set of architectural anchors that allow new proposals to
+   be positioned, compared, and discussed consistently.  The document
+   proposes a multi-plane reference architecture for the Quantum
+   Internet, derived from available proposals and operational
+   experience.  The proposal attempts to define a framework with three
+   essential properties to guarantee a seamless evolution of the
+   technology, and the consolidation of applications and management
+   practices:
 
    *  Agility: Provide abstractions able to incorporate new protocols
       and interfaces as the technology evolves, avoiding a tight
@@ -265,7 +279,7 @@ Table of Contents
       referred as "orchestrator"), able to provide a common view to
       application network functions.
 
-4.  Applying Baee Technologies: The QKD Experience
+4.  Applying Base Technologies: The QKD Experience
 
    The design and deployment of QKD infrastructures has followed a
    number of design principles, based on the best practices in network
@@ -274,7 +288,19 @@ Table of Contents
    concerns, that have been converging on the trends around applying SDN
    principles and virtualization mechanisms, addressing open
    disaggregation strategies and the identification of separate data and
-   control planes, connected by means of open interfaces.
+   control planes, connected by means of open interfaces.  This section
+   reviews the practical knowledge acquired from the engineering and
+   operation of QKD infrastructures and uses them as a practical
+   reference point for the architectural discussion that follows.
+   Although several of the concepts and interfaces examined here have
+   been shaped by specific QKD implementations and standardization
+   efforts, the intention is to highlight which elements appear reusable
+   as general design patterns and which remain specific to the
+   assumptions and limitations of QKD.  In that sense, QKD is treated in
+   this document primarily as an informative example within a broader
+   architectural space, and the discussion is framed in a way that
+   remains compatible with other quantum networking technologies and
+   service models as they mature.
 
 4.1.  A QKD Multi-Plane Architecture
 
@@ -289,7 +315,7 @@ Table of Contents
 
    In this approach, the Quantum Forwarding Plane (QFP) is in charge of
    performing the operations (quantum and classical) to ensure the
-   forwarding of the quantum signals or enable the utilization of
+   transmission of the quantum signals or enable the utilization of
    persistent quantum resources, like persistent, distributed
    entanglement.  In QKD, the QFP encapsulates all the functionality
    required to obtain an end-to-end secret key across the network.  This
@@ -492,7 +518,7 @@ Table of Contents
    The CLAS architecture was initially conceived from the perspective of
    exploiting the advantages of network programmability in operational
    networks, complementing and going beyond the traditional layered
-   structured of the original SDN proposal.  Following the CLAS
+   structure of the original SDN proposal.  Following the CLAS
    philosophy, as proposed in its recent update [CLASEVO] of decoupling
    services, additional functionality, and base connectivity, the
    architecture of a quantum network should be composed of:
@@ -501,8 +527,11 @@ Table of Contents
       purpose of the quantum network, and aligned with SOP described for
       QKD networks above.  At this moment, the most general service,
       beyond QKD key management, is obviously entanglement distribution
-      in a general quantum network.  Others can be considered, as
-      quantum-enhanced clock synchronization, identity assurance or
+      in a general quantum network.  This stratum is intentionally
+      defined in a technology and service-agnostic way.  It does not
+      assume a fixed layering or a single, primary service.  In addition
+      to QKD key management, candidate services include entanglement
+      distribution, time synchronization, identity assurance, or
       sensing.  The service stratum would consider the relevant service
       units (keys, shared states, identities, timelines...), deal with
       their appropriate disitribution and routing, and deliver these
@@ -1051,7 +1080,105 @@ Table of Contents
    tracking the elapsed time between state creation and use, and
    updating the state accordingly before executing the next instruction.
 
-6.  Security Considerations
+6.  Related Standardization and Industry Work
+
+   A number of standardization bodies and industry/consortium efforts
+   are developing architectural concepts, interfaces specifications, and
+   operational practices that are relevant to the framework presented in
+   this document.  The following briefly positions those activities as
+   external reference points.
+
+6.1.  ITU-T
+
+   The International Telecommunication Union Telecommunication
+   Standardization Sector (ITU-T) initiated in 2018 the first work item
+   on the concept of QKD networks with Recommendation Y.3800 [ITUY3800].
+   Since then, it has built an extensive body of Recommendations around
+   QKD networks, incluiding functional arcchitecture [ITUY3802] and
+   protocol framework material [ITUQ4160].  In the context of this
+   document, these ITU-T outputs are best read as mature examples of how
+   one quantum service (QKD) has been decomposed into functions,
+   interfaces, and operational procedures.  They are useful as
+   comparative input when discussing interface patterns, management
+   hooks, and operational decomposition.
+
+   The evolution toward the Quantum Internet is being addressed in ITU-T
+   through several complementary initiatives.  Technical Report Y.TR-QN-
+   UC [ITUTRQNUC] collects and analyses uses cases of quantum networks
+   beyond QKD, drawing on deliverables from the ITU-T Focus Group on
+   Quantum Information Technology for Networks (FG-QIT4N, active
+   2019-2022).  These use cases encompass entanglement distribution,
+   distributed quantum sensing, quantum-enhanced clock synchronization,
+   and distributed quantum computing, providing a networking-oriented
+   characterization of the services that a general Quantum Internet
+   should support.  The draft Technical Report YSTR.QN-TB [ITUQNTB],
+   analysing quantum network testbeds globally, complements this
+   perspective by identifying the architectural commonalities and
+   interface gaps across existing experimental infrastructures,
+   providing a grounded basis for future standards work.
+
+6.2.  ETSI
+
+   The European Telecommunications Standards Institute (ETSI)
+   established the Industry Specification Group on Quantum Key
+   Distribution (ISG QKD) in 2008, which has produced a set of Group
+   Specifications that are particularly relevant as concrete,
+   implementable interface examples for a quantum-enabled service.  ETSI
+   has specified key delivery APIs [ETSI04][ETSI14], a SDN control
+   interface [ETSI15], a orchestration interface [ETSI18], and a
+   monitoring data model for QKD networks [ETSI23].  This work has had
+   direct operational relevance, underpinning the deployments that
+   constitute the experience base from which the architecture proposed
+   here is derived.  At the same time, the ISG QKD scope has been
+   deliberately bounded to QKD, leaving the broader quantum networking
+   challenges outside its mandate.
+
+   In September 2025 the ETSI Board approved the creation of a new
+   Technical Committee on Quantum Technologies (TC QT).  The primary
+   objective of this new committee is to develop specifications
+   addressing quantum communications and quantum networks across
+   multiple sectors, explicitly including quantum networking for
+   distributed computing and cryptography, satellite quantum
+   communications, quantum sensing, and quantum random number
+   generation.  It is the successor forum for the broader scope that ISG
+   QKD cannot address, and its initial work program includes a Technical
+   Report mapping the quantum ecosystem and identifying cooperation
+   opportunities, as well as a Quantum Technologies radar document
+   tracking the maturity of the relevant technology areas.
+
+6.3.  ISO/IEC
+
+   In January 2024, the International Electrotechnical Commission (IEC)
+   and the International Organization for Standardization (ISO) jointly
+   established ISO/IEC Joint Technical Committee 3 (JTC 3) on Quantum
+   Technologies.  The scope of JTC 3 covers quantum information
+   technologies (quantum computing and quantum simulation), quantum
+   metrology, quantum sources and detectors, quantum communications, and
+   fundamental quantum technologies.  It was created as a structured
+   mechanism to develop fundamental standards for quantum technology,
+   including those related to quantum communication.
+
+6.4.  Industry and consortia
+
+   Beyond formal standards bodies, several large-scale initiatives and
+   industrial efforts are generating the experimental evidence and
+   operational experience that will eventually inform normative
+   standards work on the Quantum Internet.  Recent public milestones
+   include deployments and demonstrations on existing fiber plant and
+   the emergence of software stacks that abstract hardware heterogeneity
+   to enable multi-node quantum applications [HSESNY].  Large consortia
+   are building ecosystem roadmaps and testbed programs aimed at
+   evolving from point solutions toward repeaters/memories and
+   entanglement distribution at scale.  The Quantum Internet Alliance is
+   one prominent European example in this direction.
+
+   These industry activities reinforce the need for a framework that can
+   (i) compare alternative architectural decompositions, (ii) map
+   diverse services into a common vocabulary, and (iii) remain flexible
+   as technology moves from QKD-centric deployments toward entanglement-
+   centric networking.
+
+7.  Security Considerations
 
    The general considerations made in [RFC8597] apply, as well as an
    elaboration on the following points regarding:
@@ -1076,9 +1203,9 @@ Table of Contents
    Connectivity Stratum, [RFC8453] and [RFC8637] apply to the proposed
    framework.
 
-7.  References
+8.  References
 
-7.1.  Normative References
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1099,7 +1226,7 @@ Table of Contents
               DOI 10.17487/RFC8597, May 2019,
               <https://www.rfc-editor.org/rfc/rfc8597>.
 
-7.2.  Informative References
+8.2.  Informative References
 
    [ALTOQ24]  Muniz, A., Canto, R., Contreras, L., Pastor, A., Lopez,
               D., and J. Morales, "Using Protocol to Address SD-QKD
@@ -1148,6 +1275,39 @@ Table of Contents
               Enhanced Virtualized Control and Key Management Model for
               QKD Networks", January 2025,
               <https://ieeexplore.ieee.org/document/10870375>.
+
+   [HSESNY]   Craddock, A. N., Cowan, T., Bigagli, N., Yekasiri, S.,
+              Robinson, D., Portmann, G. B., Guo, Z., Kilzer, M., Zhao,
+              J., Flament, M., Shabani, J., Nejabati, R., and M. Namazi,
+              "High-rate Scalable Entanglement Swapping Between Remote
+              Entanglement Sources on Deployed New York City Fibers",
+              February 2026,
+              <https://doi.org/10.48550/arXiv.2602.15653>.
+
+   [ITUQ4160] "ITU-T Recommendation Q.4160: Quantum key distribution
+              networks – Protocol framework", December 2023,
+              <https://www.itu.int/rec/T-REC-Q.4160>.
+
+   [ITUQNTB]  "Draft new Technical Report ITU-T YSTR.QN-TB: Analysis of
+              quantum network architecture from existing testbeds",
+              November 2025,
+              <https://www.ietf.org/lib/dt/documents/LIAISON/liaison-
+              2025-12-18-itu-t-sg-13-opsawg-ls-on-work-progress-on-
+              quantum-key-distribution-qkd-network-in-sg13-as-of-
+              november-2025-attachment-1.pdf>.
+
+   [ITUTRQNUC]
+              "ITU-T Technical Report Y.TR-QN-UC: Use cases of quantum
+              networks beyond QKDN", November 2023,
+              <https://www.itu.int/rec/T-TUT-QN>.
+
+   [ITUY3800] "ITU-T Recommendation Y.3800: Overview on networks
+              supporting quantum key distribution", July 2020,
+              <https://www.itu.int/rec/T-REC-Y.3800>.
+
+   [ITUY3802] "ITU-T Recommendation Y.3802: Quantum key distribution
+              networks. Functional architecture", April 2021,
+              <https://www.itu.int/rec/T-REC-Y.3802>.
 
    [MADQCI23] Martin, V., Brito, J. P., Ortíz, L., Brito-Méndez, R.,
               Vicente, R., Saez-Buruaga, J., Sebastian, A. J., Aguado,
@@ -1266,10 +1426,6 @@ Table of Contents
    [TAPI240]  "ONF Transport API SDK 2.4.0", n.d., <https://github.com/
               Open-Network-Models-and-Interfaces-ONMI/TAPI/releases/tag/
               v2.4.0>.
-
-   [Y3802]    "ITU-T Recommendation Y.3802: Quantum key distribution
-              networks. Functional architecture", April 2021,
-              <https://www.itu.int/rec/T-REC-Y.3802>.
 
 Acknowledgments
 
