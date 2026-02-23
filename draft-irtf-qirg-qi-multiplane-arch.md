@@ -258,15 +258,15 @@ informative:
   title: "ITU-T Recommendation Y.3800: Overview on networks supporting quantum key distribution"
   date: July 2020
   target: https://www.itu.int/rec/T-REC-Y.3800
-  ITUQ4160:
+ ITUQ4160:
   title: "ITU-T Recommendation Q.4160: Quantum key distribution networks – Protocol framework"
   date: December 2023
   target: https://www.itu.int/rec/T-REC-Q.4160
-  ITUTRQNUC:
+ ITUTRQNUC:
   title: "ITU-T  Technical Report Y.TR-QN-UC: Use cases of quantum networks beyond QKDN"
   date: November 2023
   target: https://www.itu.int/rec/T-TUT-QN
-  ITUTQNBT:
+ ITUTQNBT:
   title: "Draft new Technical Report ITU-T YSTR.QN-TB: Analysis of quantum network architecture from existing testbeds"
   date: November 2025
   target: https://www.ietf.org/lib/dt/documents/LIAISON/liaison-2025-12-18-itu-t-sg-13-opsawg-ls-on-work-progress-on-quantum-key-distribution-qkd-network-in-sg13-as-of-november-2025-attachment-1.pdf
