@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-22T01:27:00.158728+00:00",
+  "timestamp": "2026-02-24T01:24:46.039708+00:00",
   "repo": "dr2lopez/qi-multiplane-arch",
   "labels": [
     {
@@ -92,6 +92,86 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOKiMxCM7Fr1A0",
+      "title": "draft-irtf-qirg-qi-multiplane-arch-01 merge",
+      "url": "https://github.com/dr2lopez/qi-multiplane-arch/pull/2",
+      "state": "CLOSED",
+      "author": "BLopezR",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-23T15:53:22Z",
+      "updatedAt": "2026-02-23T16:02:23Z",
+      "baseRepository": "dr2lopez/qi-multiplane-arch",
+      "baseRefName": "main",
+      "baseRefOid": "8ab05de7e1da922828cadd172a2306ca60c334fe",
+      "headRepository": "BLopezR/qi-multiplane-arch",
+      "headRefName": "main",
+      "headRefOid": "fc085f31734d0e19b47d3d742eaf1d13693330c1",
+      "closedAt": "2026-02-23T16:02:23Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOKiMxCM7Fr_KB",
+      "title": "draft-irtf-qirg-qi-multiplane-arch-01 merge",
+      "url": "https://github.com/dr2lopez/qi-multiplane-arch/pull/3",
+      "state": "CLOSED",
+      "author": "BLopezR",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-23T16:03:11Z",
+      "updatedAt": "2026-02-23T16:10:21Z",
+      "baseRepository": "dr2lopez/qi-multiplane-arch",
+      "baseRefName": "main",
+      "baseRefOid": "8ab05de7e1da922828cadd172a2306ca60c334fe",
+      "headRepository": "BLopezR/qi-multiplane-arch",
+      "headRefName": "main",
+      "headRefOid": "eb1ac05f9ca909b4e51d84c3ae69021dbe66c9d0",
+      "closedAt": "2026-02-23T16:10:21Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOKiMxCM7FsGTi",
+      "title": "draft-irtf-qirg-qi-multiplane-arch-01 merge",
+      "url": "https://github.com/dr2lopez/qi-multiplane-arch/pull/4",
+      "state": "MERGED",
+      "author": "BLopezR",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-23T16:10:44Z",
+      "updatedAt": "2026-02-23T19:28:09Z",
+      "baseRepository": "dr2lopez/qi-multiplane-arch",
+      "baseRefName": "main",
+      "baseRefOid": "8ab05de7e1da922828cadd172a2306ca60c334fe",
+      "headRepository": "BLopezR/qi-multiplane-arch",
+      "headRefName": "main",
+      "headRefOid": "4527b435d5f44ac8e79ae3002ad08c9561b7bb6a",
+      "closedAt": "2026-02-23T19:28:09Z",
+      "mergedAt": "2026-02-23T19:28:09Z",
+      "mergedBy": "dr2lopez",
+      "mergeCommit": {
+        "oid": "f69faeb5be0f23986c6c12a9686e9e7e3aebac31"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
