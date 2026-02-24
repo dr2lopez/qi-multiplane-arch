@@ -65,6 +65,9 @@ informative:
  RFC8637:
  RFC9340:
  RFC9583:
+ QIA:
+  title: "Quantum Internet Alliance"
+  target: https://quantuminternetalliance.org
  QIPS22:
   title: "Quantum Internet Protocol Stack: a Comprehensive Survey"
   author:
@@ -357,7 +360,7 @@ This section reviews the practical knowledge acquired from the engineering and o
 
 Applying the SDN and disaggregation principles, QKD infrastructures have been essentially structured around three different planes {{QTTI21}}. While we are not talking about a rigid, layered structure, where a given layer can only provide services to the immediate upper layer and consume services from the immediate lower layer, it is worth noting that interactions among elements in the different planes must use well-defined interfaces {{ETSI04}} {{ETSI14}} {{ETSI15}} {{ETSI18}}, and these interactions may incorporate a layered approach.
 
-In this approach, the Quantum Forwarding Plane (QFP) is in charge of performing the operations (quantum and classical) to ensure the transmission of the quantum signals or enable the utilization of persistent quantum resources, like persistent, distributed entanglement. In QKD, the QFP encapsulates all the functionality required to obtain an end-to-end secret key across the network. This implies the transmission of the quantum signals and the execution of any associated protocols. Note this would require the use of classical procedures, either via a separated physical "classical channel" {{QTTI21}} or the reuse of a common channel, as proposed in "packet-oriented" approaches {{PSQN22}}. In this sense, the forwarding of the keys at intermediate nodes in the multi-hop chains used to overcome current limitations in propagation of quantum signals or states, has to be considered part of the QFP, since it is done exclusively on behalf of the QKD functionality.
+In this approach, the Quantum Forwarding Plane (QFP) is in charge of performing the operations (quantum and classical) to ensure the exchange of the quantum signals or enable the utilization of persistent quantum resources, like persistent, distributed entanglement. In QKD, the QFP encapsulates all the functionality required to obtain an end-to-end secret key across the network. This implies the transmission of the quantum signals and the execution of any associated protocols. Note this would require the use of classical procedures, either via a separated physical "classical channel" {{QTTI21}} or the reuse of a common channel, as proposed in "packet-oriented" approaches {{PSQN22}}. In this sense, the forwarding of the keys at intermediate nodes in the multi-hop chains used to overcome current limitations in propagation of quantum signals or states, has to be considered part of the QFP, since it is done exclusively on behalf of the QKD functionality.
 
 On its side, the Service Overlay Plane (SOP) supports the use of the keys derived from the QFP by applications. This includes the storage, identification, delivery, and lifecycle management of the units of consumption (keys of different length, delivered according to specific patterns) at the endpoints of the network. All network functionalities at this plane can be considered application-oriented, with a clear mapping to an overlay data plane in a classical network, though the SOP elements should be aware of the nature and specific needs of the QFP they interact with. Key management mechanisms, beyond key forwarding by intermediate nodes, fit within the SOP. This comprises methods such as hybridization and augmentation techniques, or the means for synchronizing key identifiers across API boundaries.
 
@@ -570,7 +573,7 @@ In January 2024, the International Electrotechnical Commission (IEC) and the Int
 ## Industry and consortia
 
 Beyond formal standards bodies, several large-scale initiatives and industrial efforts are generating the experimental evidence and operational experience that will eventually inform normative standards work on the Quantum Internet. Recent public milestones include deployments and demonstrations on existing fiber plant and the emergence of software stacks that abstract hardware heterogeneity to enable multi-node quantum applications {{HSESNY}}.
-Large consortia are building ecosystem roadmaps and testbed programs aimed at evolving from point solutions toward repeaters/memories and entanglement distribution at scale. The Quantum Internet Alliance is one prominent European example in this direction.
+Large consortia are building ecosystem roadmaps and testbed programs aimed at evolving from point solutions toward repeaters/memories and entanglement distribution at scale. The Quantum Internet Alliance {{QIA}} is one prominent European example in this direction.
 
 These industry activities reinforce the need for a framework that can (i) compare alternative architectural decompositions, (ii) map diverse services  into a common vocabulary, and (iii) remain flexible as technology moves from QKD-centric deployments toward entanglement-centric networking.
 
