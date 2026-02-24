@@ -5,12 +5,12 @@
 Quantum Internet Research Group                                 D. Lopez
 Internet-Draft                                                Telefonica
 Intended status: Informational                                 V. Martin
-Expires: 27 August 2026                                              UPM
+Expires: 28 August 2026                                              UPM
                                                                 B. Lopez
                                                           IMDEA Networks
                                                          L. M. Contreras
                                                               Telefonica
-                                                        23 February 2026
+                                                        24 February 2026
 
 
       A Multiplane Architecture Proposal for the Quantum Internet
@@ -68,7 +68,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 August 2026.
+   This Internet-Draft will expire on 28 August 2026.
 
 Copyright Notice
 
@@ -315,7 +315,7 @@ Table of Contents
 
    In this approach, the Quantum Forwarding Plane (QFP) is in charge of
    performing the operations (quantum and classical) to ensure the
-   transmission of the quantum signals or enable the utilization of
+   exchange of the quantum signals or enable the utilization of
    persistent quantum resources, like persistent, distributed
    entanglement.  In QKD, the QFP encapsulates all the functionality
    required to obtain an end-to-end secret key across the network.  This
@@ -1169,8 +1169,8 @@ Table of Contents
    to enable multi-node quantum applications [HSESNY].  Large consortia
    are building ecosystem roadmaps and testbed programs aimed at
    evolving from point solutions toward repeaters/memories and
-   entanglement distribution at scale.  The Quantum Internet Alliance is
-   one prominent European example in this direction.
+   entanglement distribution at scale.  The Quantum Internet Alliance
+   [QIA] is one prominent European example in this direction.
 
    These industry activities reinforce the need for a framework that can
    (i) compare alternative architectural decompositions, (ii) map
@@ -1340,6 +1340,9 @@ Table of Contents
               entanglement service coexisting with classical traffic
               over a Q-LAN testbed", September 2024,
               <https://doi.org/10.1109/QCE60285.2024.00089>.
+
+   [QIA]      "Quantum Internet Alliance", n.d.,
+              <https://quantuminternetalliance.org>.
 
    [QIPS22]   Illiano, J., Caleffi, M., Manzalini, A., and A. S.
               Cacciapuoti, "Quantum Internet Protocol Stack: a

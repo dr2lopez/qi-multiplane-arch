@@ -1055,7 +1055,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lopez, et al.</td>
-<td class="center">Expires 27 August 2026</td>
+<td class="center">Expires 28 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1068,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-irtf-qirg-qi-multiplane-arch-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-02-23" class="published">23 February 2026</time>
+<time datetime="2026-02-24" class="published">24 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-08-27">27 August 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-28">28 August 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1135,7 +1135,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1335,7 +1335,7 @@ This section reviews the practical knowledge acquired from the engineering and o
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-a-qkd-multi-plane-architect" class="section-name selfRef">A QKD Multi-Plane Architecture</a>
         </h3>
 <p id="section-4.1-1">Applying the SDN and disaggregation principles, QKD infrastructures have been essentially structured around three different planes <span>[<a href="#QTTI21" class="cite xref">QTTI21</a>]</span>. While we are not talking about a rigid, layered structure, where a given layer can only provide services to the immediate upper layer and consume services from the immediate lower layer, it is worth noting that interactions among elements in the different planes must use well-defined interfaces <span>[<a href="#ETSI04" class="cite xref">ETSI04</a>]</span> <span>[<a href="#ETSI14" class="cite xref">ETSI14</a>]</span> <span>[<a href="#ETSI15" class="cite xref">ETSI15</a>]</span> <span>[<a href="#ETSI18" class="cite xref">ETSI18</a>]</span>, and these interactions may incorporate a layered approach.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">In this approach, the Quantum Forwarding Plane (QFP) is in charge of performing the operations (quantum and classical) to ensure the transmission of the quantum signals or enable the utilization of persistent quantum resources, like persistent, distributed entanglement. In QKD, the QFP encapsulates all the functionality required to obtain an end-to-end secret key across the network. This implies the transmission of the quantum signals and the execution of any associated protocols. Note this would require the use of classical procedures, either via a separated physical "classical channel" <span>[<a href="#QTTI21" class="cite xref">QTTI21</a>]</span> or the reuse of a common channel, as proposed in "packet-oriented" approaches <span>[<a href="#PSQN22" class="cite xref">PSQN22</a>]</span>. In this sense, the forwarding of the keys at intermediate nodes in the multi-hop chains used to overcome current limitations in propagation of quantum signals or states, has to be considered part of the QFP, since it is done exclusively on behalf of the QKD functionality.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-2">In this approach, the Quantum Forwarding Plane (QFP) is in charge of performing the operations (quantum and classical) to ensure the exchange of the quantum signals or enable the utilization of persistent quantum resources, like persistent, distributed entanglement. In QKD, the QFP encapsulates all the functionality required to obtain an end-to-end secret key across the network. This implies the transmission of the quantum signals and the execution of any associated protocols. Note this would require the use of classical procedures, either via a separated physical "classical channel" <span>[<a href="#QTTI21" class="cite xref">QTTI21</a>]</span> or the reuse of a common channel, as proposed in "packet-oriented" approaches <span>[<a href="#PSQN22" class="cite xref">PSQN22</a>]</span>. In this sense, the forwarding of the keys at intermediate nodes in the multi-hop chains used to overcome current limitations in propagation of quantum signals or states, has to be considered part of the QFP, since it is done exclusively on behalf of the QKD functionality.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.1-3">On its side, the Service Overlay Plane (SOP) supports the use of the keys derived from the QFP by applications. This includes the storage, identification, delivery, and lifecycle management of the units of consumption (keys of different length, delivered according to specific patterns) at the endpoints of the network. All network functionalities at this plane can be considered application-oriented, with a clear mapping to an overlay data plane in a classical network, though the SOP elements should be aware of the nature and specific needs of the QFP they interact with. Key management mechanisms, beyond key forwarding by intermediate nodes, fit within the SOP. This comprises methods such as hybridization and augmentation techniques, or the means for synchronizing key identifiers across API boundaries.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
 <p id="section-4.1-4">Finally, the Control and Management Plane (CMP) is made of the elements that create and supervise the state of the network. This decoupling between network configuration and (general) data forwarding is supported by the controller, a mediation logically centralized element between the control capabilities supported by the elements in the QFP and SOP and the management and control functions. These management and control applications rely on the controller, taking advantage of the centralization it provides, to guarantee the best performance of the network and avoid diverging local control decisions that might lead to sub-optimal configurations.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
 <p id="section-4.1-5">Supported by these abstractions, QKD infrastructures are evolving from a conglomerate of links, where keys derived from the protocol applied to a link are used to secure the communication between two entities directly associated to the endpoints of the link, into real networks, able to forward a key to be used between any two entities attached to the network. The entities in the SOP play a key role for this, supporting the storage, delivery and lifecycle management of the service units being consumed by the applications attached to the network. These SOP entities, are commonly referred as KME (Key Management Entity), acting as key storage for a specific element or elements in the QFP, and providing an endpoint for applications to request and consume keys for a specific secure interaction. The interfaces KMEs use to interact with the QFP elements are usually provided by specific (commonly software-based) components, acting as agents in the QFP, and therefore termed Key Management Agent (KMA).<a href="#section-4.1-5" class="pilcrow">¶</a></p>
@@ -1574,7 +1574,7 @@ delivery APIs <span>[<a href="#ETSI04" class="cite xref">ETSI04</a>]</span><span
 <a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-industry-and-consortia" class="section-name selfRef">Industry and consortia</a>
         </h3>
 <p id="section-6.4-1">Beyond formal standards bodies, several large-scale initiatives and industrial efforts are generating the experimental evidence and operational experience that will eventually inform normative standards work on the Quantum Internet. Recent public milestones include deployments and demonstrations on existing fiber plant and the emergence of software stacks that abstract hardware heterogeneity to enable multi-node quantum applications <span>[<a href="#HSESNY" class="cite xref">HSESNY</a>]</span>.
-Large consortia are building ecosystem roadmaps and testbed programs aimed at evolving from point solutions toward repeaters/memories and entanglement distribution at scale. The Quantum Internet Alliance is one prominent European example in this direction.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+Large consortia are building ecosystem roadmaps and testbed programs aimed at evolving from point solutions toward repeaters/memories and entanglement distribution at scale. The Quantum Internet Alliance <span>[<a href="#QIA" class="cite xref">QIA</a>]</span> is one prominent European example in this direction.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.4-2">These industry activities reinforce the need for a framework that can (i) compare alternative architectural decompositions, (ii) map diverse services  into a common vocabulary, and (iii) remain flexible as technology moves from QKD-centric deployments toward entanglement-centric networking.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1718,6 +1718,10 @@ Large consortia are building ecosystem roadmaps and testbed programs aimed at ev
 <dt id="QCE24">[QCE24]</dt>
         <dd>
 <span class="refAuthor">Islam, M. S.</span>, <span class="refAuthor">Chung, J.</span>, <span class="refAuthor">Kettimuthu, R.</span>, <span class="refAuthor">Ramesh, A.</span>, and <span class="refAuthor">P. Kumar</span>, <span class="refTitle">"Experiences on developing an on-demand entanglement service coexisting with classical traffic over a Q-LAN testbed"</span>, <time datetime="2024-09" class="refDate">September 2024</time>, <span>&lt;<a href="https://doi.org/10.1109/QCE60285.2024.00089">https://doi.org/10.1109/QCE60285.2024.00089</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="QIA">[QIA]</dt>
+        <dd>
+<span class="refTitle">"Quantum Internet Alliance"</span>, <span>n.d.</span>, <span>&lt;<a href="https://quantuminternetalliance.org">https://quantuminternetalliance.org</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="QIPS22">[QIPS22]</dt>
         <dd>
