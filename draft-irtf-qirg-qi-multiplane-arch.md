@@ -292,6 +292,15 @@ informative:
   - name: Mehdi Namazi
   date: February 2026
   target: https://doi.org/10.48550/arXiv.2602.15653
+ BRIEGEL98:
+  title: "Quantum Repeaters: The Role of Imperfect Local Operations in Quantum Communication"
+  author:
+  - name: H.-J. Briegel
+  - name: W. Dür
+  - name: J. I. Cirac
+  - name: P. Zoller
+  date: December 1998
+  target: https://doi.org/10.1103/PhysRevLett.81.5932
 
 
 --- abstract
@@ -521,13 +530,27 @@ There is a significant corpus of standards and operational practica applicable f
 
 In what relates to the Quantum Fabric Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum. The proposal in {{QUADDR}}, beyond the foundations described in {{RFC9340}}, can be used to exemplify the main objective of the framework architecture described in this document. The proposal presents quantum-native mechanisms for routing procedures, and the corresponding addressing conventions supporting them, and considers network-wide mechanisms, structured in two tiers defining what could be assimilated to a local domain and an internetworking domain. This proposal can be naturally integrated in the Quantum Fabric Stratum (QFS), and its SDN-inspired architecture would map the proposed Entanglement-Defined Controller (EDC) at the kernel of the SDN intelligence plane. The integration of an architecture like this within the framework described in this document would require to analyze the mapping between the node identifiers described in the paper and the service units discussed below. The choices for the coordination among the different strata if the QFS uses an architecture like the one proposed in the references paper would need to be also analyzed: on the one hand, the interface between the EDC and Service Stratum should be defined, and the QFS elements should need to be extended to include its interactions with the Connectivity Stratum, or consider it oblivious to physical connectivity and leave the coordination to the Service Stratum. This is the kind of evaluations the synthetic environments discussed in {{QNDTS}} will be extremely useful.
 
-The discussion on the foundations of the Service Stratum (SS) is made on the following section, where the concept of service units, as already introduced for the case of QKD networks, is analyzed. Furthermore, As a natural consequence of what is discussed above in the framework of cloud-native QKD, the use of network virtualization techniques would be essential for the Service Stratum, at all of their planes:
+The discussion on the foundations of the Service Stratum (SS) is made on the previous section, which introduces and analyzes the concept of service units. Furthermore, As a natural consequence of what is discussed above in the framework of cloud-native infrastructures, the use of network virtualization techniques would be essential for the Service Stratum, at all of their planes:
 
 * The SDN intelligence plane, allowing the dynamic management of service units and their association with the corresponding units in the Quantum Fabric Stratum.
 
 * The telemetry plane, for dynamic monitoring and data aggregation.
 
 * The resource plane, in support of the different nature of the interactions at the Quantum Fabric Stratum, like the case of entanglement persistence beyond direct physical reachability.
+
+## Mapping Current Architectural and Protocol Proposals
+
+To demonstrate the application of the framework propose here, and to provide guidance in the future assessment of new proposals, this section discusses the mapping of a number of representative current proposals, addressing different issue in quantum networking and covering a number of relevant architecture solutions or protocol approaches to the general problem of the Quantum Internet. This mapping is also intended to clarify the main concepts (strata, planes, service units) underpinning the framework, considering how these concepts are applied in the context of already available, and in most cases well-known, approaches. Finally, the mapping also aims at supporting future experimental validation of the applicability of the different proposals and their potential interplay to support Quantum Internet infrastructure and services, in most cases to be performed by means of the synthetic environments discussed in the next section.
+
+The discussion of the mapped proposals is structured according to a set of general categories and their conection the reference framework. For each one, an analysis of how they fit in the reference framework, and a few considerations on their interplay within it and possible experimentation paths are provided.
+
+### Quantum Physical Foundations and Repeater Technology
+
+The papers in this category establish the physical mechanisms upon which quantum networking at scale depends, mainly quantum repeaters in their various forms, and analyze their architectural and operational implications. They are considered as primary references defining the design of the resource plane of the QFS and the interface requirements for the CS.
+
+{{Briegel98}} introduces the base concept of quantum repeater, addressing the exponential growth of error probability with the length of the channel in direct quantum transmissions by means of a nested purification protocol over intermediate nodes. Quantum repeaters are an essential elements in the reference framework, and in particular for the resource plane of the QFS. They are the foundation of the nodes that perform entanglement generation, swapping, and error correction operations that produce the shared entangled states consumed by the SS. The design of the QFS and its interface to the CS must accommodate the characteristics of repeater nodes.
+
+This work also highlights an architectural implication discussed when introducing the service unit concept. The elementary entanglement events occurring within the QFS, such as the generation and exchange of entangled pairs at the individual links, do not correspond one-to-one with the units the applications expect to consume from the quantum connection. A service unit, as provided by the SS, represents a multi-hop end-to-end entangled state, whose construction may have involved a complex sequence of operations at the QFS level, typically spanning multiple repeater nodes and requiring classical coordination via the CS.
 
 ## The Role of Synthetic Environments {#QNDTS}
 
