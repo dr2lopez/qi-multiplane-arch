@@ -319,7 +319,7 @@ informative:
   - name: L. Li
   - name: J. Kim
   - name: N. Lütkenhaus
-  - name. M. D. Lukin
+  - name: M. D. Lukin
   - name: L. Jiang
   date: February 2016
   target: https://doi.org/10.1038/srep20463
