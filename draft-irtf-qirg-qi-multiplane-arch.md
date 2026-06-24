@@ -324,22 +324,22 @@ informative:
   date: February 2016
   target: https://doi.org/10.1038/srep20463
  DAHLBERG19:
- title: "A link layer protocol for quantum networks"
- author:
- - name: A. Dahlberg 
- - name: M. Skrzypczyk
- - name: T. Coopmans
- - name: L. Wubben
- - name: F. Rozpędek
- - name: M. Pompili
- - name: A. Stolk
- - name: P. Pawełczak
- - name: R. Knegjens
- - name: J. de Oliveira Filho
- - name: R. Hanson
- - name: S. Wehner
- date: August 2019
- target: https://doi.org/10.1145/3341302.3342070
+  title: "A link layer protocol for quantum networks"
+  author:
+  - name: A. Dahlberg 
+  - name: M. Skrzypczyk
+  - name: T. Coopmans
+  - name: L. Wubben
+  - name: F. Rozpędek
+  - name: M. Pompili
+  - name: A. Stolk
+  - name: P. Pawełczak
+  - name: R. Knegjens
+  - name: J. de Oliveira Filho
+  - name: R. Hanson
+  - name: S. Wehner
+  date: August 2019
+  target: https://doi.org/10.1145/3341302.3342070
 
 --- abstract
 
