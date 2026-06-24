@@ -326,7 +326,7 @@ informative:
  DAHLBERG19:
   title: "A link layer protocol for quantum networks"
   author:
-  - name: A. Dahlberg 
+  - name: A. Dahlberg
   - name: M. Skrzypczyk
   - name: T. Coopmans
   - name: L. Wubben
