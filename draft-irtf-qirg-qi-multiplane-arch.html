@@ -1054,7 +1054,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lopez, et al.</td>
-<td class="center">Expires 25 December 2026</td>
+<td class="center">Expires 26 December 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg {
 <dd class="internet-draft">draft-irtf-qirg-qi-multiplane-arch-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-06-23" class="published">23 June 2026</time>
+<time datetime="2026-06-24" class="published">24 June 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-12-25">25 December 2026</time></dd>
+<dd class="expires"><time datetime="2026-12-26">26 December 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1134,7 +1134,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1204,10 +1204,13 @@ svg {
                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-identification-of-interface" class="internal xref">Identification of Interfaces and Protocols</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
-                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-mapping-current-architectur" class="internal xref">Mapping Current Architectural and Protocol Proposals</a></p>
+                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-mapping-current-proposals" class="internal xref">Mapping Current Proposals</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5.2.1">
                     <p id="section-toc.1-1.5.2.5.2.1.1"><a href="#section-5.5.1" class="auto internal xref">5.5.1</a>.  <a href="#name-quantum-physical-foundation" class="internal xref">Quantum Physical Foundations and Repeater Technology</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5.2.2">
+                    <p id="section-toc.1-1.5.2.5.2.2.1"><a href="#section-5.5.2" class="auto internal xref">5.5.2</a>.  <a href="#name-network-architecture-and-pr" class="internal xref">Network Architecture and Protocols</a></p>
 </li>
                 </ul>
 </li>
@@ -1524,13 +1527,13 @@ urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
         </ul>
 </section>
 </div>
-<div id="mapping-current-architectural-and-protocol-proposals">
+<div id="mapping-current-proposals">
 <section id="section-5.5">
-        <h3 id="name-mapping-current-architectur">
-<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-mapping-current-architectur" class="section-name selfRef">Mapping Current Architectural and Protocol Proposals</a>
+        <h3 id="name-mapping-current-proposals">
+<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-mapping-current-proposals" class="section-name selfRef">Mapping Current Proposals</a>
         </h3>
 <p id="section-5.5-1">To demonstrate the application of the framework propose here, and to provide guidance in the future assessment of new proposals, this section discusses the mapping of a number of representative current proposals, addressing different issue in quantum networking and covering a number of relevant architecture solutions or protocol approaches to the general problem of the Quantum Internet. This mapping is also intended to clarify the main concepts (strata, planes, service units) underpinning the framework, considering how these concepts are applied in the context of already available, and in most cases well-known, approaches. Finally, the mapping also aims at supporting future experimental validation of the applicability of the different proposals and their potential interplay to support Quantum Internet infrastructure and services, in most cases to be performed by means of the synthetic environments discussed in the next section.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
-<p id="section-5.5-2">The discussion of the mapped proposals is structured according to a set of general categories and their conection the reference framework. For each one, an analysis of how they fit in the reference framework, and a few considerations on their interplay within it and possible experimentation paths are provided.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
+<p id="section-5.5-2">The discussion of the mapped proposals is structured according to a set of general categories and their conection the reference framework. Within each categroy, proposals are ordered according to their publication date. An analysis of how each one of them fits in the reference framework, together with a few considerations on their interplay within the framework and possible experimentation paths are provided.<a href="#section-5.5-2" class="pilcrow">¶</a></p>
 <div id="quantum-physical-foundations-and-repeater-technology">
 <section id="section-5.5.1">
           <h4 id="name-quantum-physical-foundation">
@@ -1539,6 +1542,22 @@ urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
 <p id="section-5.5.1-1">The papers in this category establish the physical mechanisms upon which quantum networking at scale depends, mainly quantum repeaters in their various forms, and analyze their architectural and operational implications. They are considered as primary references defining the design of the resource plane of the QFS and the interface requirements for the CS.<a href="#section-5.5.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.5.1-2"><span>[<a href="#BRIEGEL98" class="cite xref">BRIEGEL98</a>]</span> introduces the base concept of quantum repeater, addressing the exponential growth of error probability with the length of the channel in direct quantum transmissions by means of a nested purification protocol over intermediate nodes. Quantum repeaters are an essential elements in the reference framework, and in particular for the resource plane of the QFS. They are the foundation of the nodes that perform entanglement generation, swapping, and error correction operations that produce the shared entangled states consumed by the SS. The design of the QFS and its interface to the CS must accommodate the characteristics of repeater nodes.<a href="#section-5.5.1-2" class="pilcrow">¶</a></p>
 <p id="section-5.5.1-3">This work also highlights an architectural implication discussed when introducing the service unit concept. The elementary entanglement events occurring within the QFS, such as the generation and exchange of entangled pairs at the individual links, do not correspond one-to-one with the units the applications expect to consume from the quantum connection. A service unit, as provided by the SS, represents a multi-hop end-to-end entangled state, whose construction may have involved a complex sequence of operations at the QFS level, typically spanning multiple repeater nodes and requiring classical coordination via the CS.<a href="#section-5.5.1-3" class="pilcrow">¶</a></p>
+<p id="section-5.5.1-4"><span>[<a href="#JIANG09" class="cite xref">JIANG09</a>]</span> proposes a quantum repeater protocol that locally encodes qubits with CCS code and applies classical error correction during simultaneous entanglement connections. The scheme achieves substantially higher communication rates over long distances and relaxes the requirements on quantum memory fidelity. In the context of the multiplane architecture, this work exemplifies the class of implementations that the QFS resource plane must support. The encoding, decoding, and error correction operations are internal to the QFS and transparent to the SS, but they may place specific requirements on the classical channel capacity and latency that the CS must provide.<a href="#section-5.5.1-4" class="pilcrow">¶</a></p>
+<p id="section-5.5.1-5">Another interesting aspect relates to the service unit lifecycle definition. Depending on the protocol implemented by the repeaters (for example, the one presented in this work versus a purify-and-swap scheme), the rate and fidelity of the end-to-end logical entangled pairs differ. The SS control plane needs to be able to represent and negotiate these QoS components when establishing service units, and the interface between the SS and the QFS must expose them in a technology-agnostic manner. The encoding scheme, logical error rate, and generation rate could be candidates for inclusion in the lifecycle parameter component of a service unit URN.<a href="#section-5.5.1-5" class="pilcrow">¶</a></p>
+<p id="section-5.5.1-6"><span>[<a href="#MURALI16" class="cite xref">MURALI16</a>]</span> presents a classification of quantum repeaters into three generations and analyses their performance in terms of communication rate and physical resources required. First-generation repeaters require two-way classical communication and quantum memories, but no quantum error correction. They reduce the exponential overhead in direct state transfer to only polynomial overhead, limited by the two-way classical signaling required between non-adjacent repeater stations. The second generation adds quantum error correction, which implies more complex hardware, but only adjacent repeater stations require two-way classical signaling. Finally, the third generation eliminates the need for two-way classical signaling by relying solely on quantum error correction. It only needs one-way signaling and thus can achieve a very high communication rate, just like the classical repeaters, only limited by local operation delay. Thus, each generation would place different demands on the classical channel model that the CS must support, and embodies a different capability level for the QFS.<a href="#section-5.5.1-6" class="pilcrow">¶</a></p>
+<p id="section-5.5.1-7">This classification provides a roadmap for the potential evolution of the QFS as quantum hardware matures. The same service unit abstraction living in the SS should remain valid across all generations, with the QFS-CS interface evolving to accommodate the changing classical channel requirements as technology advances.<a href="#section-5.5.1-7" class="pilcrow">¶</a></p>
+<p id="section-5.5.1-8"><span>[<a href="#QREPS" class="cite xref">QREPS</a>]</span> presents a comprehensive review of the conceptual frameworks, architectures, and experimental progress of quantum repeaters. The analysis contextualises the proposals and advancements on the broader goal of a Quantum Internet. This work includes a substantial portion of the technology space that the QFS must accommodate. It maps the diversity of repeater designs, their hardware requirements, and their operational constraints. This type of approach is key to defining which abstractions the QFS should expose to remain independent of the specific physical implementation used at any given stage of network evolution.<a href="#section-5.5.1-8" class="pilcrow">¶</a></p>
+<p id="section-5.5.1-9">The review also notes that several near-term repeater architectures rely heavily on classical co-processing and on specific timing and synchronisation constraints that must be jointly provisioned with the quantum channel. This coordination role is one of the primary responsibilities for which the CS is designed. Furthermore, the discussion on the experimental state of the art in quantum memories, entanglement generation rate, and fidelity provide a physical grounding for the lifecycle parameters that service units in the SS must be able to express. Memory lifetime set the upper bound on the valid-until parameter of a service unit, generation rate constrains the throughput of the QFS, and achievable fidelity defines the quality floor below which a service unit cannot meaningfully be delivered.<a href="#section-5.5.1-9" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="network-architecture-and-protocols">
+<section id="section-5.5.2">
+          <h4 id="name-network-architecture-and-pr">
+<a href="#section-5.5.2" class="section-number selfRef">5.5.2. </a><a href="#name-network-architecture-and-pr" class="section-name selfRef">Network Architecture and Protocols</a>
+          </h4>
+<p id="section-5.5.2-1">The proposals in this category deal with architectural foundations and concrete protocols for quantum networking, covering the design of repeater network architectures, link-layer protocol engineering, and the application of classical architectural principles, such as recursion and end-to-end argument, to quantum networks. They constitute the primary references for the QFS control and management planes and for the inter-stratum interface design.<a href="#section-5.5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.5.2-2"><span>[<a href="#DAHLBERG19" class="cite xref">DAHLBERG19</a>]</span> presents a functional allocation of a quantum network stack with concrete physical and link layer protocols, transforming the isolated physical experiments that produce heralded entanglement into a well-defined, robust service. Their link-layer protocol manages the stochastic nature of entanglement generation, handles issues like timeouts, and provides a stable interface to higher layers that abstracts the deatil of the physical mechanism underlying the process. In the multiplane architecture proposed in this document, this work falls in the QFS and its interface with the CS. The link-layer protocol operates on the quantum links and exposes upward-facing events that the control plane of the QFS may consume to manage network-wide entanglement distribution.<a href="#section-5.5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.5.2-3">The paper also makes explicit the dependence of the link layer on classical communication, for heralding mechanisms, timing and post-selection processes. Thereby supporting the requirement for coordinated classical connectivity that the CS has to satisfy. The functional decomposition proposed in the paper is compatible with the QFS structure describided in this document, and their protocol can be understood as an example of an operation within the resource plane of the QFS, managed by the control plane through well-defined events and triggers.<a href="#section-5.5.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1677,6 +1696,10 @@ Large consortia are building ecosystem roadmaps and testbed programs aimed at ev
         <dd>
 <span class="refAuthor">Contreras, L. M.</span>, <span class="refAuthor">Boucadair, M.</span>, <span class="refAuthor">Lopez, D.</span>, and <span class="refAuthor">C. J. Bernardos</span>, <span class="refTitle">"An Evolution of Cooperating Layered Architecture for SDN (CLAS) for Compute and Data Awareness"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-contreras-coinrg-clas-evolution-03</span>, <time datetime="2024-07-05" class="refDate">5 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-03">https://datatracker.ietf.org/doc/html/draft-contreras-coinrg-clas-evolution-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="DAHLBERG19">[DAHLBERG19]</dt>
+        <dd>
+<span class="refAuthor">Dahlberg, A.</span>, <span class="refAuthor">Skrzypczyk, M.</span>, <span class="refAuthor">Coopmans, T.</span>, <span class="refAuthor">Wubben, L.</span>, <span class="refAuthor">Rozpędek, F.</span>, <span class="refAuthor">Pompili, M.</span>, <span class="refAuthor">Stolk, A.</span>, <span class="refAuthor">Pawełczak, P.</span>, <span class="refAuthor">Knegjens, R.</span>, <span class="refAuthor">Filho, J. de O.</span>, <span class="refAuthor">Hanson, R.</span>, and <span class="refAuthor">S. Wehner</span>, <span class="refTitle">"A link layer protocol for quantum networks"</span>, <time datetime="2019-08" class="refDate">August 2019</time>, <span>&lt;<a href="https://doi.org/10.1145/3341302.3342070">https://doi.org/10.1145/3341302.3342070</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="ETSI04">[ETSI04]</dt>
         <dd>
 <span class="refTitle">"ETSI GS QKD 004: Quantum Key Distribution (QKD); Application Interface"</span>, <time datetime="2020-08" class="refDate">August 2020</time>, <span>&lt;<a href="https://www.etsi.org/deliver/etsi_gs/QKD/001_099/004/02.01.01_60/gs_QKD004v020101p.pdf">https://www.etsi.org/deliver/etsi_gs/QKD/001_099/004/02.01.01_60/gs_QKD004v020101p.pdf</a>&gt;</span>. </dd>
@@ -1729,9 +1752,17 @@ Large consortia are building ecosystem roadmaps and testbed programs aimed at ev
         <dd>
 <span class="refTitle">"ITU-T Recommendation Y.3802: Quantum key distribution networks. Functional architecture"</span>, <time datetime="2021-04" class="refDate">April 2021</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-Y.3802">https://www.itu.int/rec/T-REC-Y.3802</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="JIANG09">[JIANG09]</dt>
+        <dd>
+<span class="refAuthor">Jiang, L.</span>, <span class="refAuthor">Taylor, J. M.</span>, <span class="refAuthor">Nemoto, K.</span>, <span class="refAuthor">Munro, W. J.</span>, <span class="refAuthor">Meter, R. V.</span>, and <span class="refAuthor">M. D. Lukin</span>, <span class="refTitle">"Quantum Repeater with Encoding"</span>, <time datetime="2009-03" class="refDate">March 2009</time>, <span>&lt;<a href="https://doi.org/10.1103/PhysRevA.79.032325">https://doi.org/10.1103/PhysRevA.79.032325</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="MADQCI23">[MADQCI23]</dt>
         <dd>
 <span class="refAuthor">Martin, V.</span>, <span class="refAuthor">Brito, J. P.</span>, <span class="refAuthor">Ortíz, L.</span>, <span class="refAuthor">Brito-Méndez, R.</span>, <span class="refAuthor">Vicente, R.</span>, <span class="refAuthor">Saez-Buruaga, J.</span>, <span class="refAuthor">Sebastian, A. J.</span>, <span class="refAuthor">Aguado, D. G.</span>, <span class="refAuthor">García-Cid, M. I.</span>, <span class="refAuthor">Setien, J.</span>, <span class="refAuthor">Salas, P.</span>, <span class="refAuthor">Escribano, C.</span>, <span class="refAuthor">Dopazo, E.</span>, <span class="refAuthor">Rivas-Moscoso, J.</span>, <span class="refAuthor">Pastor-Perales, A.</span>, and <span class="refAuthor">D. Lopez</span>, <span class="refTitle">"The Madrid Testbed: QKD SDN Control and Key Management in a Production Network"</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://ieeexplore.ieee.org/document/10207295">https://ieeexplore.ieee.org/document/10207295</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MURALI16">[MURALI16]</dt>
+        <dd>
+<span class="refAuthor">Muralidharan, S.</span>, <span class="refAuthor">Li, L.</span>, <span class="refAuthor">Kim, J.</span>, <span class="refAuthor">Lütkenhaus, N.</span>, <span class="refAuthor">Lukin, M. D.</span>, and <span class="refAuthor">L. Jiang</span>, <span class="refTitle">"Optimal architectures for long distance quantum communication"</span>, <time datetime="2016-02" class="refDate">February 2016</time>, <span>&lt;<a href="https://doi.org/10.1038/srep20463">https://doi.org/10.1038/srep20463</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="NetSquid">[NetSquid]</dt>
         <dd>
