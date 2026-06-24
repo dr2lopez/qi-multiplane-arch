@@ -323,10 +323,10 @@ informative:
   - name: L. Jiang
   date: February 2016
   target: https://doi.org/10.1038/srep20463
-DAHLBERG19:
+ DAHLBERG19:
  title: "A link layer protocol for quantum networks"
  author:
- - name: A. Dahlberg
+ - name: A. Dahlberg 
  - name: M. Skrzypczyk
  - name: T. Coopmans
  - name: L. Wubben
