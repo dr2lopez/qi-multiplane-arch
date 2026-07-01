@@ -340,6 +340,32 @@ informative:
   - name: S. Wehner
   date: August 2019
   target: https://doi.org/10.1145/3341302.3342070
+ GOTTESMAN99:
+  title: "Demonstrating the viability of universal quantum computation using teleportation and single-qubit operations"
+  author:
+  - name: D. Gottesman
+  - name: I. Chuang
+  date: November 1999
+  target: https://doi.org/10.1038/46503
+ CUOMO20:
+  title: "Towards a distributed quantum computing ecosystem"
+  author:
+  - name: D. Cuomo
+  - name: M. Caleffi
+  - name: A. S. Cacciapuoti
+  date: July 2020
+  target: https://doi.org/10.1049/iet-qtc.2020.0002
+ SATOH20:
+  title: "Attacking the Quantum Internet"
+  author:
+  - name: T. Satoh
+  - name: S. Nagayama
+  - name: S. Suzuki
+  - name: T. Matsuo
+  - name: M. Hajdušek
+  - name: R. Van Meter
+  date: July 2021
+  target: https://doi.org/10.1109/TQE.2021.3094983
 
 --- abstract
 
@@ -578,21 +604,21 @@ The discussion on the foundations of the Service Stratum (SS) is made on the pre
 
 ## Mapping Current Proposals
 
-To demonstrate the application of the framework propose here, and to provide guidance in the future assessment of new proposals, this section discusses the mapping of a number of representative current proposals, addressing different issue in quantum networking and covering a number of relevant architecture solutions or protocol approaches to the general problem of the Quantum Internet. This mapping is also intended to clarify the main concepts (strata, planes, service units) underpinning the framework, considering how these concepts are applied in the context of already available, and in most cases well-known, approaches. Finally, the mapping also aims at supporting future experimental validation of the applicability of the different proposals and their potential interplay to support Quantum Internet infrastructure and services, in most cases to be performed by means of the synthetic environments discussed in the next section.
+To demonstrate the application of the framework proposed here, and to provide guidance in the future assessment of new proposals, this section discusses the mapping of a number of representative current proposals, addressing different issues in quantum networking and covering a number of relevant architecture solutions or protocol approaches to the general problem of the Quantum Internet. This mapping is also intended to clarify the main concepts (strata, planes, service units) underpinning the framework, considering how these concepts are applied in the context of already available, and in most cases well-known, approaches. Finally, the mapping also aims at supporting future experimental validation of the applicability of the different proposals and their potential interplay to support Quantum Internet infrastructure and services, in most cases to be performed by means of the synthetic environments discussed in the next section.
 
-The discussion of the mapped proposals is structured according to a set of general categories and their conection the reference framework. Within each categroy, proposals are ordered according to their publication date. An analysis of how each one of them fits in the reference framework, together with a few considerations on their interplay within the framework and possible experimentation paths are provided.
+The discussion of the mapped proposals is structured according to a set of general categories and their connection to the reference framework. Within each category, proposals are ordered according to their publication date. An analysis of how each one of them fits in the reference framework, together with a few considerations on their interplay within the framework and possible experimentation paths are provided.
 
 ### Quantum Physical Foundations and Repeater Technology
 
-The papers in this category establish the physical mechanisms upon which quantum networking at scale depends, mainly quantum repeaters in their various forms, and analyze their architectural and operational implications. They are considered as primary references defining the design of the resource plane of the QFS and the interface requirements for the CS.
+The papers in this category establish the physical mechanisms upon which quantum networking at scale depends, mainly quantum repeaters in their various forms, and analyze their architectural and operational implications. They are mainly related to the design of the resource plane of the QFS and the interface requirements for the CS.
 
-{{BRIEGEL98}} introduces the base concept of quantum repeater, addressing the exponential growth of error probability with the length of the channel in direct quantum transmissions by means of a nested purification protocol over intermediate nodes. Quantum repeaters are an essential elements in the reference framework, and in particular for the resource plane of the QFS. They are the foundation of the nodes that perform entanglement generation, swapping, and error correction operations that produce the shared entangled states consumed by the SS. The design of the QFS and its interface to the CS must accommodate the characteristics of repeater nodes.
+{{BRIEGEL98}} introduces the base concept of quantum repeater, addressing the exponential growth of error probability with the length of the channel in direct quantum transmissions by means of a nested purification protocol over intermediate nodes. Quantum repeaters are essential elements in the reference framework, and in particular for the resource plane of the QFS. They are the foundation of the nodes that perform entanglement generation, swapping, and error correction operations that produce the shared entangled states consumed by the SS. The design of the QFS and its interface to the CS must accommodate the characteristics of repeater nodes.
 
-This work also highlights an architectural implication discussed when introducing the service unit concept. The elementary entanglement events occurring within the QFS, such as the generation and exchange of entangled pairs at the individual links, do not correspond one-to-one with the units the applications expect to consume from the quantum connection. A service unit, as provided by the SS, represents a multi-hop end-to-end entangled state, whose construction may have involved a complex sequence of operations at the QFS level, typically spanning multiple repeater nodes and requiring classical coordination via the CS.
+This work also highlights an architectural implication discussed when introducing the service unit concept. The elementary entanglement events occurring within the QFS, such as the generation and exchange of entangled pairs at the individual links, do not correspond one-to-one with the units the applications expect to consume from the quantum connection. A service unit, as provided by the SS, represents a multi-hop end-to-end entangled state, whose construction may have involved a complex sequence of operations at the QFS level, typically spanning multiple repeater nodes and requiring classical coordination via the CS. This gap between elementary link-level entanglement events and the application-visible service unit is one of the motivations for the domain-scoped QUI indirection introduced in this document: the QUI allows the multi-hop, multi-operation construction internal to the QFS to be represented and re-bound independently of the stable service-unit identifier the application consumes.
 
 {{JIANG09}} proposes a quantum repeater protocol that locally encodes qubits with CCS code and applies classical error correction during simultaneous entanglement connections. The scheme achieves substantially higher communication rates over long distances and relaxes the requirements on quantum memory fidelity. In the context of the multiplane architecture, this work exemplifies the class of implementations that the QFS resource plane must support. The encoding, decoding, and error correction operations are internal to the QFS and transparent to the SS, but they may place specific requirements on the classical channel capacity and latency that the CS must provide.
 
-Another interesting aspect relates to the service unit lifecycle definition. Depending on the protocol implemented by the repeaters (for example, the one presented in this work versus a purify-and-swap scheme), the rate and fidelity of the end-to-end logical entangled pairs differ. The SS control plane needs to be able to represent and negotiate these QoS components when establishing service units, and the interface between the SS and the QFS must expose them in a technology-agnostic manner. The encoding scheme, logical error rate, and generation rate could be candidates for inclusion in the lifecycle parameter component of a service unit URN.
+Another interesting aspect relates to the service unit lifecycle definition. Depending on the protocol implemented by the repeaters (for example, the one presented in this work versus a purify-and-swap scheme), the rate and fidelity of the end-to-end logical entangled pairs differ. The SS control plane needs to be able to represent and negotiate these QoS components when establishing service units, and the interface between the SS and the QFS must expose them in a technology-agnostic manner. The encoding scheme, logical error rate, and generation rate could be candidates for inclusion in the lifecycle parameter component of a service unit URN.  The encoding scheme, logical error rate, and generation rate correspond directly to quantum QoS parameters, and the resulting per-link or per-segment characteristics can be naturally associated with the domain-scoped QUI representing the allocation on that segment rather than encoded directly into the application-facing service-unit identifier.
 
 {{MURALI16}} presents a classification of quantum repeaters into three generations and analyses their performance in terms of communication rate and physical resources required. First-generation repeaters require two-way classical communication and quantum memories, but no quantum error correction. They reduce the exponential overhead in direct state transfer to only polynomial overhead, limited by the two-way classical signaling required between non-adjacent repeater stations. The second generation adds quantum error correction, which implies more complex hardware, but only adjacent repeater stations require two-way classical signaling. Finally, the third generation eliminates the need for two-way classical signaling by relying solely on quantum error correction. It only needs one-way signaling and thus can achieve a very high communication rate, just like the classical repeaters, only limited by local operation delay. Thus, each generation would place different demands on the classical channel model that the CS must support, and embodies a different capability level for the QFS.
 
@@ -600,15 +626,37 @@ This classification provides a roadmap for the potential evolution of the QFS as
 
 {{QREPS}} presents a comprehensive review of the conceptual frameworks, architectures, and experimental progress of quantum repeaters. The analysis contextualises the proposals and advancements on the broader goal of a Quantum Internet. This work includes a substantial portion of the technology space that the QFS must accommodate. It maps the diversity of repeater designs, their hardware requirements, and their operational constraints. This type of approach is key to defining which abstractions the QFS should expose to remain independent of the specific physical implementation used at any given stage of network evolution.
 
-The review also notes that several near-term repeater architectures rely heavily on classical co-processing and on specific timing and synchronisation constraints that must be jointly provisioned with the quantum channel. This coordination role is one of the primary responsibilities for which the CS is designed. Furthermore, the discussion on the experimental state of the art in quantum memories, entanglement generation rate, and fidelity provide a physical grounding for the lifecycle parameters that service units in the SS must be able to express. Memory lifetime set the upper bound on the valid-until parameter of a service unit, generation rate constrains the throughput of the QFS, and achievable fidelity defines the quality floor below which a service unit cannot meaningfully be delivered.
+The review also notes that several near-term repeater architectures rely heavily on classical co-processing and on specific timing and synchronisation constraints that must be jointly provisioned with the quantum channel. This coordination role is one of the primary responsibilities for which the CS is designed. Furthermore, the discussion on the experimental state of the art in quantum memories, entanglement generation rate, and fidelity provide a physical grounding for the lifecycle parameters that service units in the SS must be able to express. Memory lifetime set the upper bound on the valid-until parameter of a service unit, generation rate constrains the throughput of the QFS, and achievable fidelity defines the quality floor below which a service unit cannot meaningfully be delivered. Memory lifetime sets the upper bound on the time-to-live or coherence-window information that can be associated with a QUI, entanglement generation rate constrains the throughput of the QFS, and achievable fidelity defines the quality floor below which the underlying QUI-bound resource can no longer satisfy the service unit's requested objectives.
 
 ### Network Architecture and Protocols
 
-The proposals in this category deal with architectural foundations and concrete protocols for quantum networking, covering the design of repeater network architectures, link-layer protocol engineering, and the application of classical architectural principles, such as recursion and end-to-end argument, to quantum networks. They constitute the primary references for the QFS control and management planes and for the inter-stratum interface design.
+The proposals in this category deal with architectural foundations and concrete protocols for quantum networking, covering the design of repeater network architectures, link-layer protocol engineering, and the application of classical architectural principles, such as recursion and end-to-end argument, to quantum networks. They are applicable to the QFS control and management planes and for the inter-stratum interface design.
 
-{{DAHLBERG19}} presents a functional allocation of a quantum network stack with concrete physical and link layer protocols, transforming the isolated physical experiments that produce heralded entanglement into a well-defined, robust service. Their link-layer protocol manages the stochastic nature of entanglement generation, handles issues like timeouts, and provides a stable interface to higher layers that abstracts the deatil of the physical mechanism underlying the process. In the multiplane architecture proposed in this document, this work falls in the QFS and its interface with the CS. The link-layer protocol operates on the quantum links and exposes upward-facing events that the control plane of the QFS may consume to manage network-wide entanglement distribution.
+{{DAHLBERG19}} presents a functional allocation of a quantum network stack with concrete physical and link layer protocols, transforming the isolated physical experiments that produce heralded entanglement into a well-defined, robust service. Their link-layer protocol manages the stochastic nature of entanglement generation, handles issues like timeouts, and provides a stable interface to higher layers that abstracts the deatil of the physical mechanism underlying the process. This timeout-and-retry behavior is a concrete instance of the kind of event that, in the framework's terms, can trigger QUI re-binding: a failed or expired link-level attempt is replaced by a new allocation without changing the service-unit context exposed to the application.
 
-The paper also makes explicit the dependence of the link layer on classical communication, for heralding mechanisms, timing and post-selection processes. Thereby supporting the requirement for coordinated classical connectivity that the CS has to satisfy. The functional decomposition proposed in the paper is compatible with the QFS structure describided in this document, and their protocol can be understood as an example of an operation within the resource plane of the QFS, managed by the control plane through well-defined events and triggers.
+In the multiplane architecture proposed in this document, this work falls in the QFS and its interface with the CS. The link-layer protocol operates on the quantum links and exposes upward-facing events that the control plane of the QFS may consume to manage network-wide entanglement distribution.
+
+This work also makes explicit he dependence of the link layer on classical communication, for heralding mechanisms, timing and post-selection processes. Thereby supporting the requirement for coordinated classical connectivity that the CS has to satisfy. The functional decomposition proposed in the paper is compatible with the QFS structure described in this document, and their protocol can be understood as an example of an operation within the resource plane of the QFS, managed by the control plane through well-defined events and triggers.
+
+### Service Abstractions and Application Frameworks
+
+The proposals in this category address how the quantum resources produced by the QFS are abstracted into units that applications and higher-level computations can consume, either through concrete algorithmic techniques or through system-level layering. They are relevant primarily to the definition of the service unit and to the boundary between the SS and the lower strata.
+
+{{GOTTESMAN99}} shows theoretically that single-qubit operations, Bell-basis measurements and a set of certain pre-shared entangled resource states, such as GHZ states, are together sufficient to  construct a universal quantum computer, unifying several fault-tolerant protocols under a single teleportation-based technique. The entangled resource state consumed by this technique corresponds to the shared quantum state delivered by the SS as a service unit: the paper treats the state as an input to a local computation, decoupled from how it was generated, which is consistent with the separation between the SS, which delivers the service unit, and the QFS, which generates and maintains the underlying entangled state through entanglement generation and, where required, swapping and purification.
+
+The proposed teleportation-based technique depends on classical communication of the measurement outcome to complete the operation at the receiving side. This places it within the scope of the classical constraints and quantum communication latency parameters that the CS has to support.
+
+{{CUOMO20}} elaborates a layered abstraction of a distributed quantum computing ecosystem, structured from the underlying communication infrastructure connecting remote quantum devices up through successive logical layers to the functionality consumed by distributed applications. The lower layers described in the paper, covering the physical exchange of quantum information between devices, correspond to the QFS and CS. The upper layers, covering the abstractions exposed to distributed applications, correspond to the SS.
+
+The boundary drawn between the communication infrastructure and the abstractions exposed to applications matches the separation maintained by the service unit: applications interact with the shared state delivered by the SS without visibility into the sequence of QFS operations, spanning individual links and, where applicable, repeater nodes, that produced it.
+
+### Security
+
+Works in this category address potential attack surfaces and security-relevant properties of quantum networking, related to the mechanims applicable to secure strata, planes and their interfaces, as dicussed in {{SECONS}}.
+
+{{SATOH20}} models the internal components and structure of a quantum repeater network node and classifies attacks against them in terms of confidentiality, integrity, and availability, finding that while confidentiality is generally preserved by the physical properties of quantum states, integrity and availability introduce vulnerabilities with no classical counterpart.
+
+The report also analyzes how classical computing and networking elements attached to a quantum node materially affect the system's overall security risk. Attacks on the classical control, timing, or heralding information exchanged between nodes can propagate into integrity or availability failures even when the quantum channel itself is not directly compromised. This is consistent with the elaboration {{SECONS}} makes on the interaction of physical attacks with classical attacks on control and monitoring activities.
 
 ## The Role of Synthetic Environments {#QNDTS}
 
@@ -651,14 +699,15 @@ In September 2025 the ETSI Board approved the creation of a new Technical Commit
 
 In January 2024, the International Electrotechnical Commission (IEC) and the International Organization for Standardization (ISO) jointly established ISO/IEC Joint Technical Committee 3 (JTC 3) on Quantum Technologies. The scope of JTC 3 covers quantum information technologies (quantum computing and quantum simulation), quantum metrology, quantum sources and detectors, quantum communications, and fundamental quantum technologies. It was created as a structured mechanism to develop fundamental standards for quantum technology, including those related to quantum communication.
 
-## Industry and consortia
+## Industry and Consortia
 
 Beyond formal standards bodies, several large-scale initiatives and industrial efforts are generating the experimental evidence and operational experience that will eventually inform normative standards work on the Quantum Internet. Recent public milestones include deployments and demonstrations on existing fiber plant and the emergence of software stacks that abstract hardware heterogeneity to enable multi-node quantum applications {{HSESNY}}.
 Large consortia are building ecosystem roadmaps and testbed programs aimed at evolving from point solutions toward repeaters/memories and entanglement distribution at scale. The Quantum Internet Alliance {{QIA}} is one prominent European example in this direction.
 
 These industry activities reinforce the need for a framework that can (i) compare alternative architectural decompositions, (ii) map diverse services  into a common vocabulary, and (iii) remain flexible as technology moves from QKD-centric deployments toward entanglement-centric networking.
 
-# Security Considerations
+
+# Security Considerations {#SECONS}
 The general considerations made in {{RFC8597}} apply, as well as an elaboration on the following points regarding:
 
 * The requirements on mutual authentication in the channels used for quantum interactions, as they should require methods rooted at physical properties.
