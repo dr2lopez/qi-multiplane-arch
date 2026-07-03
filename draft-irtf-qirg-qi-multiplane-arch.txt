@@ -101,23 +101,23 @@ Table of Contents
        5.3.3.  Scoped Handles for Service Units (QUI)
        5.3.4.  Quantum QoS Parameters
        5.3.5.  Classical Ancillary Functions
-     5.4.  Identification of Interfaces and Protocols
-     5.5.  Mapping Current Proposals
-       5.5.1.  Quantum Physical Foundations and Repeater Technology
-       5.5.2.  Network Architecture and Protocols
-       5.5.3.  Service Abstractions and Application Frameworks
-       5.5.4.  Security
-     5.6.  An Example Service-Unit Establishment Procedure
-     5.7.  The Role of Synthetic Environments
-   6.  Related Standardization and Industry Work
-     6.1.  ITU-T
-     6.2.  ETSI
-     6.3.  ISO/IEC
-     6.4.  Industry and Consortia
-   7.  Security Considerations
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+     5.4.  An Example Service-Unit Establishment Procedure
+   6.  Identification of Interfaces and Protocols
+     6.1.  Mapping Current Proposals
+       6.1.1.  Quantum Physical Foundations and Repeater Technology
+       6.1.2.  Network Architecture and Protocols
+       6.1.3.  Service Abstractions and Application Frameworks
+       6.1.4.  Security
+     6.2.  The Role of Synthetic Environments
+   7.  Related Standardization and Industry Work
+     7.1.  ITU-T
+     7.2.  ETSI
+     7.3.  ISO/IEC
+     7.4.  Industry and Consortia
+   8.  Security Considerations
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -1030,7 +1030,95 @@ Table of Contents
    of the quality and security envelope of an entanglement-based service
    unit.
 
-5.4.  Identification of Interfaces and Protocols
+5.4.  An Example Service-Unit Establishment Procedure
+
+   Let us outline an example procedure for establishing an entanglement-
+   based service unit between two quantum-capable endpoints.  The
+   procedure is informative and does not define a protocol or prescribe
+   a particular control architecture.  Different realizations can map
+   the functions described below to SS, QFS, and CS control-plane
+   entities in different ways.
+
+   *0.  Capability and Service Discovery*
+
+   A requesting application or service consumer obtains information that
+   quantum services or quantum-enhanced services are available.  This
+   information can be obtained through configuration, service discovery,
+   registration, policy distribution, or another discovery mechanism.
+   The discovered information can include service identifiers, endpoint
+   identifiers, supported quantum QoS parameter ranges, availability
+   windows, technology constraints, supported node capabilities, and any
+   policy constraints relevant to service establishment.
+
+   *1.  Service Request*
+
+   The requesting application or service consumer requests a service
+   unit from an SS function.  The request can include the requested
+   service type, peer endpoint identifier or identifiers, lifecycle
+   parameters such as size or time-to-live, and quantum QoS objectives
+   such as target fidelity, minimum generation rate, success
+   probability, establishment latency, or classical-assist latency.  The
+   SS function performs the applicable admission, authentication,
+   authorization, and policy checks.
+
+   *2.  Candidate Path and Resource Evaluation*
+
+   By request of the SS, QFS control functions evaluate candidate
+   quantum paths between the relevant endpoints.  The evaluation can
+   consider available nodes, quantum memory constraints, communication-
+   qubit availability, link-level entanglement generation rates,
+   expected fidelity, purification capabilities, swapping depth,
+   classical-assist latency, and policy constraints.  Where physical or
+   optical connectivity has to be established or reserved, the relevant
+   CS functions are engaged to provide the required paths and classical
+   assist channels.
+
+   *3.  Hop-by-Hop Resource Allocation*
+
+   For each selected hop or segment, the relevant QFS control function
+   requests allocation of the quantum resources needed to support the
+   service unit.  The allocation can be associated with a domain-scoped
+   QUI.  If a hop or segment cannot provide the requested resources or
+   cannot satisfy the requested quality parameters, the control logic
+   can attempt an alternative path, reduce or renegotiate objectives
+   according to policy, or fail the establishment attempt and release
+   previously allocated resources.
+
+   *4.  Entanglement Generation and Multi-Hop Operations*
+
+   Once the required hop-level resources are available, the QFS
+   coordinates entanglement generation on the relevant links.  For
+   multi-hop service units, intermediate nodes can perform entanglement
+   swapping and, where supported and useful, purification.  Classical
+   ancillary functions carry the required heralding information,
+   measurement outcomes, timing information, and feed-forward data.  The
+   resulting fidelity, success probability, age, and other relevant
+   quantum QoS parameters are recorded or exposed to the responsible
+   control functions.
+
+   *5.  Service-Unit Binding and Delivery*
+
+   If the established shared state satisfies the requested objectives,
+   the SS binds the resulting resource to the service unit identifier
+   expected by the application.  The application receives the
+   information needed to consume the service unit, while domain-local
+   mappings from service-unit identifiers to QUIs and from QUIs to
+   device-local resource handles remain within the appropriate
+   administrative scope.
+
+   *6.  Maintenance, Re-Establishment, and On-Demand Activation*
+
+   Because coherence windows can be short and quality can degrade over
+   time, telemetry can trigger refresh, re-establishment, or re-binding
+   when a time-to-live is close to expiry, fidelity drops below the
+   requested level, intermediate resources fail, or policy conditions
+   change.  Some deployments can also separate authorization and
+   reservation from actual entanglement creation.  In such cases, the
+   service request establishes the right to consume a quantum service,
+   while the shared state is generated later, when the application is
+   ready to use it.
+
+6.  Identification of Interfaces and Protocols
 
    The architecture proposed in this document is intended as a framework
    to evaluate and explore compatibility among the different proposals
@@ -1098,7 +1186,7 @@ Table of Contents
    interactions with the Connectivity Stratum, or consider it oblivious
    to physical connectivity and leave the coordination to the Service
    Stratum.  This is the kind of evaluations the synthetic environments
-   discussed in Section 5.7 will be extremely useful.
+   discussed in Section 6.2 will be extremely useful.
 
    The discussion on the foundations of the Service Stratum (SS) is made
    on the previous section, which introduces and analyzes the concept of
@@ -1117,7 +1205,7 @@ Table of Contents
       interactions at the Quantum Fabric Stratum, like the case of
       entanglement persistence beyond direct physical reachability.
 
-5.5.  Mapping Current Proposals
+6.1.  Mapping Current Proposals
 
    To demonstrate the application of the framework proposed here, and to
    provide guidance in the future assessment of new proposals, this
@@ -1143,7 +1231,7 @@ Table of Contents
    interplay within the framework and possible experimentation paths are
    provided.
 
-5.5.1.  Quantum Physical Foundations and Repeater Technology
+6.1.1.  Quantum Physical Foundations and Repeater Technology
 
    The papers in this category establish the physical mechanisms upon
    which quantum networking at scale depends, mainly quantum repeaters
@@ -1263,7 +1351,7 @@ Table of Contents
    underlying QUI-bound resource can no longer satisfy the service
    unit's requested objectives.
 
-5.5.2.  Network Architecture and Protocols
+6.1.2.  Network Architecture and Protocols
 
    The proposals in this category deal with architectural foundations
    and concrete protocols for quantum networking, covering the design of
@@ -1302,7 +1390,7 @@ Table of Contents
    the QFS, managed by the control plane through well-defined events and
    triggers.
 
-5.5.3.  Service Abstractions and Application Frameworks
+6.1.3.  Service Abstractions and Application Frameworks
 
    The proposals in this category address how the quantum resources
    produced by the QFS are abstracted into units that applications and
@@ -1347,12 +1435,12 @@ Table of Contents
    operations, spanning individual links and, where applicable, repeater
    nodes, that produced it.
 
-5.5.4.  Security
+6.1.4.  Security
 
    Works in this category address potential attack surfaces and
    security-relevant properties of quantum networking, related to the
    mechanims applicable to secure strata, planes and their interfaces,
-   as dicussed in Section 7.
+   as dicussed in Section 8.
 
    [SATOH20] models the internal components and structure of a quantum
    repeater network node and classifies attacks against them in terms of
@@ -1367,98 +1455,10 @@ Table of Contents
    heralding information exchanged between nodes can propagate into
    integrity or availability failures even when the quantum channel
    itself is not directly compromised.  This is consistent with the
-   elaboration Section 7 makes on the interaction of physical attacks
+   elaboration Section 8 makes on the interaction of physical attacks
    with classical attacks on control and monitoring activities.
 
-5.6.  An Example Service-Unit Establishment Procedure
-
-   Let us outline an example procedure for establishing an entanglement-
-   based service unit between two quantum-capable endpoints.  The
-   procedure is informative and does not define a protocol or prescribe
-   a particular control architecture.  Different realizations can map
-   the functions described below to SS, QFS, and CS control-plane
-   entities in different ways.
-
-   *0.  Capability and Service Discovery*
-
-   A requesting application or service consumer obtains information that
-   quantum services or quantum-enhanced services are available.  This
-   information can be obtained through configuration, service discovery,
-   registration, policy distribution, or another discovery mechanism.
-   The discovered information can include service identifiers, endpoint
-   identifiers, supported quantum QoS parameter ranges, availability
-   windows, technology constraints, supported node capabilities, and any
-   policy constraints relevant to service establishment.
-
-   *1.  Service Request*
-
-   The requesting application or service consumer requests a service
-   unit from an SS function.  The request can include the requested
-   service type, peer endpoint identifier or identifiers, lifecycle
-   parameters such as size or time-to-live, and quantum QoS objectives
-   such as target fidelity, minimum generation rate, success
-   probability, establishment latency, or classical-assist latency.  The
-   SS function performs the applicable admission, authentication,
-   authorization, and policy checks.
-
-   *2.  Candidate Path and Resource Evaluation*
-
-   By request of the SS, QFS control functions evaluate candidate
-   quantum paths between the relevant endpoints.  The evaluation can
-   consider available nodes, quantum memory constraints, communication-
-   qubit availability, link-level entanglement generation rates,
-   expected fidelity, purification capabilities, swapping depth,
-   classical-assist latency, and policy constraints.  Where physical or
-   optical connectivity has to be established or reserved, the relevant
-   CS functions are engaged to provide the required paths and classical
-   assist channels.
-
-   *3.  Hop-by-Hop Resource Allocation*
-
-   For each selected hop or segment, the relevant QFS control function
-   requests allocation of the quantum resources needed to support the
-   service unit.  The allocation can be associated with a domain-scoped
-   QUI.  If a hop or segment cannot provide the requested resources or
-   cannot satisfy the requested quality parameters, the control logic
-   can attempt an alternative path, reduce or renegotiate objectives
-   according to policy, or fail the establishment attempt and release
-   previously allocated resources.
-
-   *4.  Entanglement Generation and Multi-Hop Operations*
-
-   Once the required hop-level resources are available, the QFS
-   coordinates entanglement generation on the relevant links.  For
-   multi-hop service units, intermediate nodes can perform entanglement
-   swapping and, where supported and useful, purification.  Classical
-   ancillary functions carry the required heralding information,
-   measurement outcomes, timing information, and feed-forward data.  The
-   resulting fidelity, success probability, age, and other relevant
-   quantum QoS parameters are recorded or exposed to the responsible
-   control functions.
-
-   *5.  Service-Unit Binding and Delivery*
-
-   If the established shared state satisfies the requested objectives,
-   the SS binds the resulting resource to the service unit identifier
-   expected by the application.  The application receives the
-   information needed to consume the service unit, while domain-local
-   mappings from service-unit identifiers to QUIs and from QUIs to
-   device-local resource handles remain within the appropriate
-   administrative scope.
-
-   *6.  Maintenance, Re-Establishment, and On-Demand Activation*
-
-   Because coherence windows can be short and quality can degrade over
-   time, telemetry can trigger refresh, re-establishment, or re-binding
-   when a time-to-live is close to expiry, fidelity drops below the
-   requested level, intermediate resources fail, or policy conditions
-   change.  Some deployments can also separate authorization and
-   reservation from actual entanglement creation.  In such cases, the
-   service request establishes the right to consume a quantum service,
-   while the shared state is generated later, when the application is
-   ready to use it.
-
-5.7.  The Role of Synthetic Environments
+6.2.  The Role of Synthetic Environments
 
    Due to the early stage of many, if not all, quantum technologies,
    experimenting with quantum devices and equipment can be seriously
@@ -1590,7 +1590,7 @@ Table of Contents
    tracking the elapsed time between state creation and use, and
    updating the state accordingly before executing the next instruction.
 
-6.  Related Standardization and Industry Work
+7.  Related Standardization and Industry Work
 
    A number of standardization bodies and industry/consortium efforts
    are developing architectural concepts, interfaces specifications, and
@@ -1598,7 +1598,7 @@ Table of Contents
    this document.  The following briefly positions those activities as
    external reference points.
 
-6.1.  ITU-T
+7.1.  ITU-T
 
    The International Telecommunication Union Telecommunication
    Standardization Sector (ITU-T) initiated in 2018 the first work item
@@ -1627,7 +1627,7 @@ Table of Contents
    interface gaps across existing experimental infrastructures,
    providing a grounded basis for future standards work.
 
-6.2.  ETSI
+7.2.  ETSI
 
    The European Telecommunications Standards Institute (ETSI)
    established the Industry Specification Group on Quantum Key
@@ -1656,7 +1656,7 @@ Table of Contents
    opportunities, as well as a Quantum Technologies radar document
    tracking the maturity of the relevant technology areas.
 
-6.3.  ISO/IEC
+7.3.  ISO/IEC
 
    In January 2024, the International Electrotechnical Commission (IEC)
    and the International Organization for Standardization (ISO) jointly
@@ -1668,7 +1668,7 @@ Table of Contents
    mechanism to develop fundamental standards for quantum technology,
    including those related to quantum communication.
 
-6.4.  Industry and Consortia
+7.4.  Industry and Consortia
 
    Beyond formal standards bodies, several large-scale initiatives and
    industrial efforts are generating the experimental evidence and
@@ -1688,7 +1688,7 @@ Table of Contents
    as technology moves from QKD-centric deployments toward entanglement-
    centric networking.
 
-7.  Security Considerations
+8.  Security Considerations
 
    The general considerations made in [RFC8597] apply, as well as an
    elaboration on the following points regarding:
@@ -1728,9 +1728,9 @@ Table of Contents
    Connectivity Stratum, [RFC8453] and [RFC8637] apply to the proposed
    framework.
 
-8.  References
+9.  References
 
-8.1.  Normative References
+9.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1751,7 +1751,7 @@ Table of Contents
               DOI 10.17487/RFC8597, May 2019,
               <https://www.rfc-editor.org/rfc/rfc8597>.
 
-8.2.  Informative References
+9.2.  Informative References
 
    [ALTOQ24]  Muniz, A., Canto, R., Contreras, L., Pastor, A., Lopez,
               D., and J. Morales, "Using Protocol to Address SD-QKD
