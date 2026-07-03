@@ -9,6 +9,7 @@
 <meta content="Vicente Martin" name="author">
 <meta content="Blanca Lopez" name="author">
 <meta content="Luis M. Contreras" name="author">
+<meta content="Chathura Sarathchandra" name="author">
 <meta content="
        A consistent reference architecture model for the Quantum Internet is required to progress in its evolution, providing a framework for the integration of the protocols applicable to it, and enabling the advance of the applications based on it. This model has to satisfy three essential requirements: agility, so it is able to adapt to the evolution of quantum communications base technologies, sustainability, with open availability in technological and economical terms, and pliability, being able to integrate with the operations and management procedures in current networks. This document proposes such an architecture framework, with the goal of providing a conceptual common framework for the integration of technologies intended to build the Quantum Internet infrastructure and its integration with the current Internet. The framework is based on the already extensive experience in the deployment of QKD network infrastructures and on related initiatives focused on the integration of network infrastructures and services. 
     " name="description">
@@ -31,7 +32,7 @@
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.1
+    wcwidth 0.8.2
 -->
 <link href="draft-irtf-qirg-qi-multiplane-arch.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1054,7 +1055,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lopez, et al.</td>
-<td class="center">Expires 2 January 2027</td>
+<td class="center">Expires 4 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1068,12 @@ svg {
 <dd class="internet-draft">draft-irtf-qirg-qi-multiplane-arch-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-01" class="published">1 July 2026</time>
+<time datetime="2026-07-03" class="published">3 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-02">2 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-01-04">4 January 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1090,6 +1091,10 @@ svg {
 <div class="author">
       <div class="author-name">L. M. Contreras</div>
 <div class="org">Telefonica</div>
+</div>
+<div class="author">
+      <div class="author-name">C. Sarathchandra</div>
+<div class="org">InterDigital</div>
 </div>
 </dd>
 </dl>
@@ -1134,7 +1139,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1198,6 +1203,15 @@ svg {
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.2">
                     <p id="section-toc.1-1.5.2.3.2.2.1"><a href="#section-5.3.2" class="auto internal xref">5.3.2</a>.  <a href="#name-generalizing-service-units" class="internal xref">Generalizing Service Units</a></p>
 </li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.3">
+                    <p id="section-toc.1-1.5.2.3.2.3.1"><a href="#section-5.3.3" class="auto internal xref">5.3.3</a>.  <a href="#name-scoped-handles-for-service-" class="internal xref">Scoped Handles for Service Units (QUI)</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.4">
+                    <p id="section-toc.1-1.5.2.3.2.4.1"><a href="#section-5.3.4" class="auto internal xref">5.3.4</a>.  <a href="#name-quantum-qos-parameters" class="internal xref">Quantum QoS Parameters</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3.2.5">
+                    <p id="section-toc.1-1.5.2.3.2.5.1"><a href="#section-5.3.5" class="auto internal xref">5.3.5</a>.  <a href="#name-classical-ancillary-functio" class="internal xref">Classical Ancillary Functions</a></p>
+</li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
@@ -1221,7 +1235,10 @@ svg {
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.6">
-                <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-the-role-of-synthetic-envir" class="internal xref">The Role of Synthetic Environments</a></p>
+                <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="auto internal xref">5.6</a>.  <a href="#name-an-example-service-unit-est" class="internal xref">An Example Service-Unit Establishment Procedure</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.7">
+                <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="auto internal xref">5.7</a>.  <a href="#name-the-role-of-synthetic-envir" class="internal xref">The Role of Synthetic Environments</a></p>
 </li>
             </ul>
 </li>
@@ -1509,6 +1526,80 @@ urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
 <p id="section-5.3.2-6">Finally, a word on the telemetry planes in each of the proposed strata. It should be obvious the elements in the control planes at each of the strata should start monitoring mechanisms at the involved elements in the resource planes and activate telemetry collection mechanisms. This brings the requirement of defining and experimenting with appropriate metrics and telemetry data models for both the SS and the QFS, as already being defined for QKD infrastructures <span>[<a href="#ETSI23" class="cite xref">ETSI23</a>]</span>.<a href="#section-5.3.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="scoped-handles-for-service-units-qui">
+<section id="section-5.3.3">
+          <h4 id="name-scoped-handles-for-service-">
+<a href="#section-5.3.3" class="section-number selfRef">5.3.3. </a><a href="#name-scoped-handles-for-service-" class="section-name selfRef">Scoped Handles for Service Units (QUI)</a>
+          </h4>
+<p id="section-5.3.3-1">Service unit identifiers are intended to be stable and meaningful to applications and SS functions, typically by combining endpoint identifiers and lifecycle parameters. However, the internal handles used to access quantum memories, communication qubits, entangled pairs, or other device-local quantum resources are often local to a device, technology, implementation, or administrative domain. Exposing such device-local handles outside their local scope can unnecessarily reveal resource structure and can complicate reallocation, recovery, and inter-domain operation.<a href="#section-5.3.3-1" class="pilcrow">¶</a></p>
+<p id="section-5.3.3-2">A useful indirection mechanism is a domain-scoped Quantum Unit Identifier (QUI). Following this approach, the application-facing service unit identifier corresponds to one or more domain-scoped QUIs, and each QUI may be mapped inside its domain to the corresponding device-local quantum resource handles.  A QUI is not expected to be globally unique. Its scope can be an administrative domain, a technology segment, a trust domain, a controller domain, or another operational scope appropriate to the deployment.<a href="#section-5.3.3-2" class="pilcrow">¶</a></p>
+<p id="section-5.3.3-3">A QUI may represent a single entangled pair, a set of entangled pairs, a quantum memory allocation, a local share of an end-to-end shared state, or another quantum resource unit relevant to the service. The same end-to-end service unit may therefore be associated with different QUIs in different domains, while preserving the service-unit abstraction presented to applications.<a href="#section-5.3.3-3" class="pilcrow">¶</a></p>
+<p id="section-5.3.3-4">Because quantum resources are time-sensitive, a QUI may naturally be associated with lifecycle information. Such information may include a time-to-live, a coherence window, an expiry time, an age value, or an availability window.  The relevant lifecycle properties are exposed through the interface betweehn the SS and QFS, so it is possible to decide whether a resource remains usable, whether it has to be consumed immediately, or whether it has to be replaced to fulfill a given service unit denotation.<a href="#section-5.3.3-4" class="pilcrow">¶</a></p>
+<p id="section-5.3.3-5">A QUI may also include, or be associated with, freshness information such as a nonce or other one-time value.  Freshness information is useful to distinguish different allocations, avoid accidental reuse of stale state, and reduce replay or mix-up risks when several service units or resource allocations are active at the same time.<a href="#section-5.3.3-5" class="pilcrow">¶</a></p>
+<p id="section-5.3.3-6">The use of a QUI may also enable re-binding.  For example, when a particular entangled pair decoheres, a quantum memory allocation fails, a link-level establishment attempt does not reach the target fidelity, or an implementation decides to regenerate the underlying state, the domain can bind the same service-unit context to a new local quantum resource allocation.  Such re-binding may not imply preservation of a consumed or measured quantum state; it is a control-plane mechanism for replacing or refreshing the underlying resource associated with the service unit.<a href="#section-5.3.3-6" class="pilcrow">¶</a></p>
+<p id="section-5.3.3-7">Resolution among service unit identifiers and QUIs happens at the interface between the SS and QFS control planes, while the mapping of QUIs to the applicable device-local resource handles would be typically performed by QFS resource-plane agents, managed by the QFS control plane, though particular architectures may define specific control and management functions for this purpose. The mapping between a QUI and device-local handles is expected to remain local to the relevant scope unless explicitly exposed through an inter-domain or management interface.<a href="#section-5.3.3-7" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="quantum-qos-parameters">
+<section id="section-5.3.4">
+          <h4 id="name-quantum-qos-parameters">
+<a href="#section-5.3.4" class="section-number selfRef">5.3.4. </a><a href="#name-quantum-qos-parameters" class="section-name selfRef">Quantum QoS Parameters</a>
+          </h4>
+<p id="section-5.3.4-1">Admission, routing, resource reservation, and maintenance of entanglement-based service units require parameters that describe the requested and achieved quality of the quantum resource. These parameters will be carried in service requests, used internally by SS and QFS control functions, and exposed through telemetry. They apply at different granularities, including a physical quantum link, a link-level entanglement, a segment, a domain, or an end-to-end service unit. Quantum QoS parameters to be considered include:<a href="#section-5.3.4-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-5.3.4-2.1">
+              <p id="section-5.3.4-2.1.1">Target fidelity: the desired minimum quality of the shared state, either end-to-end or per segment.<a href="#section-5.3.4-2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.2">
+              <p id="section-5.3.4-2.2.1">Achieved or estimated fidelity: the observed or predicted quality of an established state, including the effects of link loss, local operations, swapping, purification, and storage time.<a href="#section-5.3.4-2.2.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.3">
+              <p id="section-5.3.4-2.3.1">Entanglement generation rate: the expected, requested, or observed rate at which usable entangled pairs can be generated.<a href="#section-5.3.4-2.3.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.4">
+              <p id="section-5.3.4-2.4.1">End-to-end success probability: the probability that the requested shared state can be established with the requested parameters, optionally expressed per link, per segment, or for the complete service unit.<a href="#section-5.3.4-2.4.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.5">
+              <p id="section-5.3.4-2.5.1">Establishment latency: the time required to create a usable service unit, including link-level entanglement generation, heralding, swapping, purification, resource reservation, and relevant control interactions.<a href="#section-5.3.4-2.5.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.6">
+              <p id="section-5.3.4-2.6.1">Quantum communication latency: the latency relevant to the quantum application, including any classical-assist signaling required for measurement outcomes, timing, feed-forward operations, or completion of teleportation-based procedures.<a href="#section-5.3.4-2.6.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.7">
+              <p id="section-5.3.4-2.7.1">Age, time-to-live, or coherence window: the time for which a shared state or resource allocation is expected to remain usable.<a href="#section-5.3.4-2.7.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.8">
+              <p id="section-5.3.4-2.8.1">Swapping depth cap: the maximum number of entanglement-swapping operations, or the maximum repeater depth, acceptable for the requested service unit.<a href="#section-5.3.4-2.8.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.9">
+              <p id="section-5.3.4-2.9.1">Quantum memory constraints: the amount, type, and availability of memory qubits and communication qubits at the endpoints and intermediate nodes.<a href="#section-5.3.4-2.9.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.10">
+              <p id="section-5.3.4-2.10.1">Purification support and cost: whether purification is available, which purification schemes or cycles are supported, and their effect on fidelity, rate, latency, and resource consumption.<a href="#section-5.3.4-2.10.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.11">
+              <p id="section-5.3.4-2.11.1">Classical-assist constraints: latency, reliability, timing, and synchronization properties of the classical channels used for heralding, measurement-outcome exchange, calibration, and feed-forward control.<a href="#section-5.3.4-2.11.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.12">
+              <p id="section-5.3.4-2.12.1">Loss and error indicators: parameters describing photon loss, failed entanglement attempts, decoherence events, operation errors, or classical packet loss affecting the quantum procedure.<a href="#section-5.3.4-2.12.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="section-5.3.4-2.13">
+              <p id="section-5.3.4-2.13.1">Application or service constraints: policy or application-level constraints such as availability windows, allowed technologies (for example fiber or free-space links), supported service types, or restrictions on which domains or node capabilities can be used.<a href="#section-5.3.4-2.13.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+<p id="section-5.3.4-3">These parameters provide the basis for evaluating the suitability of a candidate path, deciding whether a service unit request can be fulfilled, selecting among alternative paths, deciding whether purification is needed, and triggering refresh, re-establishment, or re-binding when the observed quality no longer satisfies the service objective.<a href="#section-5.3.4-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="classical-ancillary-functions">
+<section id="section-5.3.5">
+          <h4 id="name-classical-ancillary-functio">
+<a href="#section-5.3.5" class="section-number selfRef">5.3.5. </a><a href="#name-classical-ancillary-functio" class="section-name selfRef">Classical Ancillary Functions</a>
+          </h4>
+<p id="section-5.3.5-1">Many quantum-network procedures require a classical ancillary function associated with a quantum node or quantum resource. This function can be realized in the same physical node as the quantum resource, in an attached classical controller or agent, or in a logically separate control-plane element. Its role is not to carry quantum information, but to support the control and consumption of quantum resources.<a href="#section-5.3.5-1" class="pilcrow">¶</a></p>
+<p id="section-5.3.5-2">Examples of these ancillary functions include translating service-unit identifiers to QUIs, and these into local resource handles, forwarding service requests to local quantum resources, exchanging measurement outcomes, coordinating heralding and entanglement swapping, distributing timing and calibration information, performing authentication and authorization checks, and applying feed-forward information such as correction data required by teleportation-based procedures.<a href="#section-5.3.5-2" class="pilcrow">¶</a></p>
+<p id="section-5.3.5-3">The use of such functions requires clear interfaces among the different strata, applying classical control and timing paths as part of the quality and security envelope of an entanglement-based service unit.<a href="#section-5.3.5-3" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="identification-of-interfaces-and-protocols">
@@ -1518,7 +1609,7 @@ urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
         </h3>
 <p id="section-5.4-1">The architecture proposed in this document is intended as a framework to evaluate and explore compatibility among the different proposals on protocols and interfaces for the future availability of quantum features in the global Internet, with the goal of providing a uniform reference model to choose and apply the most appropriate solutions to the Quantum Internet challenges. While the reference architecture does not intend to identify a concrete set of these protocols and interfaces, it is useful to analyze current proposals and trends, and provide some guidance on how the framework can be useful for assessing the integration of the solutions applicable to the different elements that have to converge to realize the Quantum Internet.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
 <p id="section-5.4-2">There is a significant corpus of standards and operational practica applicable for the Connectivity Stratum, sustained by a well established experience in the management and use of optical and, to some extent, satellite-based networks. The differentiation of the planes considered in the CLAS architecture within the Connectivity Stratum has been common practice in the deployment and operation of IP converged services over optical networks. The abstractions and topology views described in the ACTN framework defined in <span>[<a href="#RFC8453" class="cite xref">RFC8453</a>]</span> constitute a solid foundation to describe the functionality of the planes within the Connectivity Stratum, and the interfaces to be used in the interactions with the other strata. An element like the Path Computation Element (PCE) described in <span>[<a href="#RFC8637" class="cite xref">RFC8637</a>]</span>, able to address the considerations related to quantum connectivity and the implications of entanglement-based distribution, could constitute the core of the intelligence and telemetry planes. Specific distribution elements, able to fulfill the conditions for quantum signals, including the potential co-propagation with classical signals, and to interface with future quantum repeaters <span>[<a href="#QREPS" class="cite xref">QREPS</a>]</span>, would constitute the essential substrate of the resource plane. The current trends in optical disaggregation and the use of orchestrated SDN mechanisms for network path management and monitoring provide a natural path for leveraging network virtualization mechanisms within the Connectivity Stratum, facilitating their integration.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
-<p id="section-5.4-3">In what relates to the Quantum Fabric Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum. The proposal in <span>[<a href="#QUADDR" class="cite xref">QUADDR</a>]</span>, beyond the foundations described in <span>[<a href="#RFC9340" class="cite xref">RFC9340</a>]</span>, can be used to exemplify the main objective of the framework architecture described in this document. The proposal presents quantum-native mechanisms for routing procedures, and the corresponding addressing conventions supporting them, and considers network-wide mechanisms, structured in two tiers defining what could be assimilated to a local domain and an internetworking domain. This proposal can be naturally integrated in the Quantum Fabric Stratum (QFS), and its SDN-inspired architecture would map the proposed Entanglement-Defined Controller (EDC) at the kernel of the SDN intelligence plane. The integration of an architecture like this within the framework described in this document would require to analyze the mapping between the node identifiers described in the paper and the service units discussed below. The choices for the coordination among the different strata if the QFS uses an architecture like the one proposed in the references paper would need to be also analyzed: on the one hand, the interface between the EDC and Service Stratum should be defined, and the QFS elements should need to be extended to include its interactions with the Connectivity Stratum, or consider it oblivious to physical connectivity and leave the coordination to the Service Stratum. This is the kind of evaluations the synthetic environments discussed in <a href="#QNDTS" class="auto internal xref">Section 5.6</a> will be extremely useful.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
+<p id="section-5.4-3">In what relates to the Quantum Fabric Stratum, current best practices indicate that telemetry and SDN intelligence planes will follow the same directions as the other strata, with virtualized, likely cloud-native implementations for them. Even in the case of the resource plane, one can expect the availability of specific software agent elements in charge of managing devices, interacting with the Connectivity Plane and providing support to the service units relevant for the Service Stratum. The proposal in <span>[<a href="#QUADDR" class="cite xref">QUADDR</a>]</span>, beyond the foundations described in <span>[<a href="#RFC9340" class="cite xref">RFC9340</a>]</span>, can be used to exemplify the main objective of the framework architecture described in this document. The proposal presents quantum-native mechanisms for routing procedures, and the corresponding addressing conventions supporting them, and considers network-wide mechanisms, structured in two tiers defining what could be assimilated to a local domain and an internetworking domain. This proposal can be naturally integrated in the Quantum Fabric Stratum (QFS), and its SDN-inspired architecture would map the proposed Entanglement-Defined Controller (EDC) at the kernel of the SDN intelligence plane. The integration of an architecture like this within the framework described in this document would require to analyze the mapping between the node identifiers described in the paper and the service units discussed below. The choices for the coordination among the different strata if the QFS uses an architecture like the one proposed in the references paper would need to be also analyzed: on the one hand, the interface between the EDC and Service Stratum should be defined, and the QFS elements should need to be extended to include its interactions with the Connectivity Stratum, or consider it oblivious to physical connectivity and leave the coordination to the Service Stratum. This is the kind of evaluations the synthetic environments discussed in <a href="#QNDTS" class="auto internal xref">Section 5.7</a> will be extremely useful.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
 <p id="section-5.4-4">The discussion on the foundations of the Service Stratum (SS) is made on the previous section, which introduces and analyzes the concept of service units. Furthermore, As a natural consequence of what is discussed above in the framework of cloud-native infrastructures, the use of network virtualization techniques would be essential for the Service Stratum, at all of their planes:<a href="#section-5.4-4" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.4-5.1">
@@ -1591,20 +1682,43 @@ urn:qkd:lifecycle?=size=256&amp;valid-until=1750708945
 </div>
 </section>
 </div>
-<div id="QNDTS">
+<div id="an-example-service-unit-establishment-procedure">
 <section id="section-5.6">
-        <h3 id="name-the-role-of-synthetic-envir">
-<a href="#section-5.6" class="section-number selfRef">5.6. </a><a href="#name-the-role-of-synthetic-envir" class="section-name selfRef">The Role of Synthetic Environments</a>
+        <h3 id="name-an-example-service-unit-est">
+<a href="#section-5.6" class="section-number selfRef">5.6. </a><a href="#name-an-example-service-unit-est" class="section-name selfRef">An Example Service-Unit Establishment Procedure</a>
         </h3>
-<p id="section-5.6-1">Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availability. This challenge is particularly evident for experimentation at the scale required to validate network protocols and inter- and intra-strata interfaces. In this context, synthetic environments, and synthetic testbeds enabled by these environments, become an essential tool. They enable the emulation of quantum network deployments in a fully controlled setting, allowing the execution of experiments and trials, protocol evaluations, and even security analyses, where potential network attacks can be tested without compromising the integrity of an already built quantum network or a significant number of physical devices.<a href="#section-5.6-1" class="pilcrow">¶</a></p>
-<p id="section-5.6-2">Based on the results introduced in <span>[<a href="#QKNDT24" class="cite xref">QKNDT24</a>]</span> for QKD networks, the concept of a Quantum Network Digital Twin (QNDT) provides a foundation for such environments. QNDTs will enable a better understanding of the properties of the different network elements, interfaces, and protocols, and the applicability of the architecture proposed in this document. It is important to note that a QNDT is not a simulation tool, even though some of its components may apply simulation functionality to adapt their behavior to that of a quantum element. Rather, a QNDT represents a distributed classical system that mirrors the operational behavior of a quantum network, responding in real time and accurately reproducing the dynamics and interactions of quantum entities.<a href="#section-5.6-2" class="pilcrow">¶</a></p>
-<p id="section-5.6-3">In the case of QKD network deployments, significant progress has been achieved thanks to both practical deployments, as exemplified in <span>[<a href="#EUROQCI" class="cite xref">EUROQCI</a>]</span> and the early coordinated efforts of standardization bodies. These advances include the definition of standardized APIs that specify the communication means between quantum nodes and customer applications, like <span>[<a href="#ETSI04" class="cite xref">ETSI04</a>]</span>, and the integration of network management mechanisms widely adopted in classical communication systems, like the SDN approach defined in <span>[<a href="#ETSI15" class="cite xref">ETSI15</a>]</span>. This coordinated efforts have translated into more flexible, programmable, and scalable control of quantum resources, facilitating seamless interoperability between quantum and classical infrastructures. Despite these advances, several aspects of QKD networking remain under active development. These include the definition of interfaces that ensure interoperability across different administrative domains, as well as the design and validation of architectures capable of supporting large-scale deployments, that is, networks comprising hundreds of interconnected nodes. In this regard, platforms such as the one described in <span>[<a href="#QUDITTO" class="cite xref">QUDITTO</a>]</span> offer a valuable opportunity, as they enable the emulation of low-level quantum network behaviors using classical computational resources. Such synthetic environments provide the means to model and analyze complex network scenarios that are currently unattainable in fully physical experimental testbeds.<a href="#section-5.6-3" class="pilcrow">¶</a></p>
-<p id="section-5.6-4">When considering general-purpose quantum networks, particularly those based on entanglement distribution and management, the role of synthetic environments becomes even more significant. Unlike QKD networks, whose architectural and operational principles are relatively well understood, entanglement-based networks are still in an early stage of development. Many fundamental networking aspects, such as entanglement routing, resource scheduling, and inter-layer coordination, remain open research questions, with a crucial lack of practical validation. In this context, QNDTs offer a unique opportunity to accelerate progress: by enabling controlled emulation of quantum states, interactions, and network behaviors, they allow to test novel architectures, evaluate protocol performance, and explore scalability under realistic yet fully reproducible conditions.<a href="#section-5.6-4" class="pilcrow">¶</a></p>
-<p id="section-5.6-5">However, the development of a general-purpose QNDT introduces its own set of challenges. Such a system must not only emulate the functional behavior of quantum components but also ensure that the underlying classical infrastructure responds within the same temporal and operational constraints as its quantum counterpart, thereby enabling accurate validation of protocols and network strategies. Moreover, unlike QKD networks where standardized interfaces and APIs have already been established (or are at least emerging), no equivalent standards currently exist for general quantum networks. Consequently, a QNDT must be designed to be inherently flexible and extensible, capable of accommodating evolving definitions of interfaces, communication protocols, and architectural abstractions. In this regard, the QNDT once again becomes a key enabler for the development, integration, and testing of these foundational elements.<a href="#section-5.6-5" class="pilcrow">¶</a></p>
-<p id="section-5.6-6">Building upon the above discussion, two primary challenges must be addressed as prerequisites for constructing a fully functional QNDT. First, it is necessary to develop a mechanism capable of handling the quantum-specific aspects of the system, executing simulations and distributing results across nodes, resulting in the emulation of the quantum behavior of network elements within the underlying classical infrastructure. Second, there must be a definition of a minimal set of core primitives or instructions that serves as the foundation for constructing more advanced mechanisms, such as standardized interfaces and communication methods between network elements and external systems. Together, these two pillars will establish the groundwork for a QNDT framework capable of evolving in parallel with the broader quantum networking ecosystem.<a href="#section-5.6-6" class="pilcrow">¶</a></p>
-<p id="section-5.6-7">The core quantum emulation mechanism for such an environment, according to the current state of the art, would be the QNDT emulation engine, based on a centralized simulation component designed to execute the simulations needed to emulate the quantum behavior of all network elements. This engine may rely on quantum network simulators such as <span>[<a href="#NetSquid" class="cite xref">NetSquid</a>]</span>, <span>[<a href="#SeQUeNCe" class="cite xref">SeQUeNCe</a>]</span>, or <span>[<a href="#QuNetSim" class="cite xref">QuNetSim</a>]</span>. However, these platforms alone do not fulfill the requirements of a QNDT, since, as discussed above, a QNDT is not a simulation of the network but a distributed classical system that replicates the behavior of a real quantum network. Therefore, the central simulation element must be complemented by a result distribution mechanism, for example, through a publish/subscribe (Pub/Sub) protocol. In such a setup, network elements subscribe to topics relevant to their operation and can communicate with the central simulation tool both to request simulations and receive results through asynchronous interactions.<a href="#section-5.6-7" class="pilcrow">¶</a></p>
-<p id="section-5.6-8">Another essential aspect concerns the handling of temporal consistency between the “simulation time”, i.e., the time required to execute a simulation, and the “simulated time,” i.e., the time the simulation calculates the real system would take to perform the same operation. Since simulation time is generally shorter than simulated time, the QNDT must incorporate logic ensuring that results are delivered only after the appropriate simulated delay has elapsed. This guarantees that the QNDT responds within the same temporal boundaries as its physical counterpart, thereby preserving the fidelity and realism of the emulated network behavior.<a href="#section-5.6-8" class="pilcrow">¶</a></p>
-<p id="section-5.6-9">In addition, to maintain state realism within the QNDT, it is crucial to take into account the natural decoherence and noise dynamics of quantum states over time. For instance, when entangled states are distributed among the participating nodes and stored for a period before being used in subsequent operations, the QNDT must emulate the gradual evolution and degradation of these states. This entails tracking the elapsed time between state creation and use, and updating the state accordingly before executing the next instruction.<a href="#section-5.6-9" class="pilcrow">¶</a></p>
+<p id="section-5.6-1">Let us outline an example procedure for establishing an entanglement-based service unit between two quantum-capable endpoints. The procedure is informative and does not define a protocol or prescribe a particular control architecture. Different realizations can map the functions described below to SS, QFS, and CS control-plane entities in different ways.<a href="#section-5.6-1" class="pilcrow">¶</a></p>
+<p id="section-5.6-2"><strong>0. Capability and Service Discovery</strong><a href="#section-5.6-2" class="pilcrow">¶</a></p>
+<p id="section-5.6-3">A requesting application or service consumer obtains information that quantum services or quantum-enhanced services are available. This information can be obtained through configuration, service discovery, registration, policy distribution, or another discovery mechanism. The discovered information can include service identifiers, endpoint identifiers, supported quantum QoS parameter ranges, availability windows, technology constraints, supported node capabilities, and any policy constraints relevant to service establishment.<a href="#section-5.6-3" class="pilcrow">¶</a></p>
+<p id="section-5.6-4"><strong>1. Service Request</strong><a href="#section-5.6-4" class="pilcrow">¶</a></p>
+<p id="section-5.6-5">The requesting application or service consumer requests a service unit from an SS function. The request can include the requested service type, peer endpoint identifier or identifiers, lifecycle parameters such as size or time-to-live, and quantum QoS objectives such as target fidelity, minimum generation rate, success probability, establishment latency, or classical-assist latency. The SS function performs the applicable admission, authentication, authorization, and policy checks.<a href="#section-5.6-5" class="pilcrow">¶</a></p>
+<p id="section-5.6-6"><strong>2. Candidate Path and Resource Evaluation</strong><a href="#section-5.6-6" class="pilcrow">¶</a></p>
+<p id="section-5.6-7">By request of the SS, QFS control functions evaluate candidate quantum paths between the relevant endpoints. The evaluation can consider available nodes, quantum memory constraints, communication-qubit availability, link-level entanglement generation rates, expected fidelity, purification capabilities, swapping depth, classical-assist latency, and policy constraints. Where physical or optical connectivity has to be established or reserved, the relevant CS functions are engaged to provide the required paths and classical assist channels.<a href="#section-5.6-7" class="pilcrow">¶</a></p>
+<p id="section-5.6-8"><strong>3. Hop-by-Hop Resource Allocation</strong><a href="#section-5.6-8" class="pilcrow">¶</a></p>
+<p id="section-5.6-9">For each selected hop or segment, the relevant QFS control function requests allocation of the quantum resources needed to support the service unit. The allocation can be associated with a domain-scoped QUI. If a hop or segment cannot provide the requested resources or cannot satisfy the requested quality parameters, the control logic can attempt an alternative path, reduce or renegotiate objectives according to policy, or fail the establishment attempt and release previously allocated resources.<a href="#section-5.6-9" class="pilcrow">¶</a></p>
+<p id="section-5.6-10"><strong>4. Entanglement Generation and Multi-Hop Operations</strong><a href="#section-5.6-10" class="pilcrow">¶</a></p>
+<p id="section-5.6-11">Once the required hop-level resources are available, the QFS coordinates entanglement generation on the relevant links. For multi-hop service units, intermediate nodes can perform entanglement swapping and, where supported and useful, purification. Classical ancillary functions carry the required heralding information, measurement outcomes, timing information, and feed-forward data. The resulting fidelity, success probability, age, and other relevant quantum QoS parameters are recorded or exposed to the responsible control functions.<a href="#section-5.6-11" class="pilcrow">¶</a></p>
+<p id="section-5.6-12"><strong>5. Service-Unit Binding and Delivery</strong><a href="#section-5.6-12" class="pilcrow">¶</a></p>
+<p id="section-5.6-13">If the established shared state satisfies the requested objectives, the SS binds the resulting resource to the service unit identifier expected by the application. The application receives the information needed to consume the service unit, while domain-local mappings from service-unit identifiers to QUIs and from QUIs to
+device-local resource handles remain within the appropriate administrative scope.<a href="#section-5.6-13" class="pilcrow">¶</a></p>
+<p id="section-5.6-14"><strong>6. Maintenance, Re-Establishment, and On-Demand Activation</strong><a href="#section-5.6-14" class="pilcrow">¶</a></p>
+<p id="section-5.6-15">Because coherence windows can be short and quality can degrade over time, telemetry can trigger refresh, re-establishment, or re-binding when a time-to-live is close to expiry, fidelity drops below the requested level, intermediate resources fail, or policy conditions change. Some deployments can also separate authorization and reservation from actual entanglement creation. In such cases, the service request establishes the right to consume a quantum service, while the shared state is generated later, when the application is ready to use it.<a href="#section-5.6-15" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="QNDTS">
+<section id="section-5.7">
+        <h3 id="name-the-role-of-synthetic-envir">
+<a href="#section-5.7" class="section-number selfRef">5.7. </a><a href="#name-the-role-of-synthetic-envir" class="section-name selfRef">The Role of Synthetic Environments</a>
+        </h3>
+<p id="section-5.7-1">Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availability. This challenge is particularly evident for experimentation at the scale required to validate network protocols and inter- and intra-strata interfaces. In this context, synthetic environments, and synthetic testbeds enabled by these environments, become an essential tool. They enable the emulation of quantum network deployments in a fully controlled setting, allowing the execution of experiments and trials, protocol evaluations, and even security analyses, where potential network attacks can be tested without compromising the integrity of an already built quantum network or a significant number of physical devices.<a href="#section-5.7-1" class="pilcrow">¶</a></p>
+<p id="section-5.7-2">Based on the results introduced in <span>[<a href="#QKNDT24" class="cite xref">QKNDT24</a>]</span> for QKD networks, the concept of a Quantum Network Digital Twin (QNDT) provides a foundation for such environments. QNDTs will enable a better understanding of the properties of the different network elements, interfaces, and protocols, and the applicability of the architecture proposed in this document. It is important to note that a QNDT is not a simulation tool, even though some of its components may apply simulation functionality to adapt their behavior to that of a quantum element. Rather, a QNDT represents a distributed classical system that mirrors the operational behavior of a quantum network, responding in real time and accurately reproducing the dynamics and interactions of quantum entities.<a href="#section-5.7-2" class="pilcrow">¶</a></p>
+<p id="section-5.7-3">In the case of QKD network deployments, significant progress has been achieved thanks to both practical deployments, as exemplified in <span>[<a href="#EUROQCI" class="cite xref">EUROQCI</a>]</span> and the early coordinated efforts of standardization bodies. These advances include the definition of standardized APIs that specify the communication means between quantum nodes and customer applications, like <span>[<a href="#ETSI04" class="cite xref">ETSI04</a>]</span>, and the integration of network management mechanisms widely adopted in classical communication systems, like the SDN approach defined in <span>[<a href="#ETSI15" class="cite xref">ETSI15</a>]</span>. This coordinated efforts have translated into more flexible, programmable, and scalable control of quantum resources, facilitating seamless interoperability between quantum and classical infrastructures. Despite these advances, several aspects of QKD networking remain under active development. These include the definition of interfaces that ensure interoperability across different administrative domains, as well as the design and validation of architectures capable of supporting large-scale deployments, that is, networks comprising hundreds of interconnected nodes. In this regard, platforms such as the one described in <span>[<a href="#QUDITTO" class="cite xref">QUDITTO</a>]</span> offer a valuable opportunity, as they enable the emulation of low-level quantum network behaviors using classical computational resources. Such synthetic environments provide the means to model and analyze complex network scenarios that are currently unattainable in fully physical experimental testbeds.<a href="#section-5.7-3" class="pilcrow">¶</a></p>
+<p id="section-5.7-4">When considering general-purpose quantum networks, particularly those based on entanglement distribution and management, the role of synthetic environments becomes even more significant. Unlike QKD networks, whose architectural and operational principles are relatively well understood, entanglement-based networks are still in an early stage of development. Many fundamental networking aspects, such as entanglement routing, resource scheduling, and inter-layer coordination, remain open research questions, with a crucial lack of practical validation. In this context, QNDTs offer a unique opportunity to accelerate progress: by enabling controlled emulation of quantum states, interactions, and network behaviors, they allow to test novel architectures, evaluate protocol performance, and explore scalability under realistic yet fully reproducible conditions.<a href="#section-5.7-4" class="pilcrow">¶</a></p>
+<p id="section-5.7-5">However, the development of a general-purpose QNDT introduces its own set of challenges. Such a system must not only emulate the functional behavior of quantum components but also ensure that the underlying classical infrastructure responds within the same temporal and operational constraints as its quantum counterpart, thereby enabling accurate validation of protocols and network strategies. Moreover, unlike QKD networks where standardized interfaces and APIs have already been established (or are at least emerging), no equivalent standards currently exist for general quantum networks. Consequently, a QNDT must be designed to be inherently flexible and extensible, capable of accommodating evolving definitions of interfaces, communication protocols, and architectural abstractions. In this regard, the QNDT once again becomes a key enabler for the development, integration, and testing of these foundational elements.<a href="#section-5.7-5" class="pilcrow">¶</a></p>
+<p id="section-5.7-6">Building upon the above discussion, two primary challenges must be addressed as prerequisites for constructing a fully functional QNDT. First, it is necessary to develop a mechanism capable of handling the quantum-specific aspects of the system, executing simulations and distributing results across nodes, resulting in the emulation of the quantum behavior of network elements within the underlying classical infrastructure. Second, there must be a definition of a minimal set of core primitives or instructions that serves as the foundation for constructing more advanced mechanisms, such as standardized interfaces and communication methods between network elements and external systems. Together, these two pillars will establish the groundwork for a QNDT framework capable of evolving in parallel with the broader quantum networking ecosystem.<a href="#section-5.7-6" class="pilcrow">¶</a></p>
+<p id="section-5.7-7">The core quantum emulation mechanism for such an environment, according to the current state of the art, would be the QNDT emulation engine, based on a centralized simulation component designed to execute the simulations needed to emulate the quantum behavior of all network elements. This engine may rely on quantum network simulators such as <span>[<a href="#NetSquid" class="cite xref">NetSquid</a>]</span>, <span>[<a href="#SeQUeNCe" class="cite xref">SeQUeNCe</a>]</span>, or <span>[<a href="#QuNetSim" class="cite xref">QuNetSim</a>]</span>. However, these platforms alone do not fulfill the requirements of a QNDT, since, as discussed above, a QNDT is not a simulation of the network but a distributed classical system that replicates the behavior of a real quantum network. Therefore, the central simulation element must be complemented by a result distribution mechanism, for example, through a publish/subscribe (Pub/Sub) protocol. In such a setup, network elements subscribe to topics relevant to their operation and can communicate with the central simulation tool both to request simulations and receive results through asynchronous interactions.<a href="#section-5.7-7" class="pilcrow">¶</a></p>
+<p id="section-5.7-8">Another essential aspect concerns the handling of temporal consistency between the “simulation time”, i.e., the time required to execute a simulation, and the “simulated time,” i.e., the time the simulation calculates the real system would take to perform the same operation. Since simulation time is generally shorter than simulated time, the QNDT must incorporate logic ensuring that results are delivered only after the appropriate simulated delay has elapsed. This guarantees that the QNDT responds within the same temporal boundaries as its physical counterpart, thereby preserving the fidelity and realism of the emulated network behavior.<a href="#section-5.7-8" class="pilcrow">¶</a></p>
+<p id="section-5.7-9">In addition, to maintain state realism within the QNDT, it is crucial to take into account the natural decoherence and noise dynamics of quantum states over time. For instance, when entangled states are distributed among the participating nodes and stored for a period before being used in subsequent operations, the QNDT must emulate the gradual evolution and degradation of these states. This entails tracking the elapsed time between state creation and use, and updating the state accordingly before executing the next instruction.<a href="#section-5.7-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1671,7 +1785,16 @@ Large consortia are building ecosystem roadmaps and testbed programs aimed at ev
           <p id="section-7-2.3.1">The interaction of these physical attacks with classical attacks to the control and monitoring activities, possibly translating into a threat surface augmentation.<a href="#section-7-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-7-2.4">
-          <p id="section-7-2.4.1">The trust issues in inter-domain exchanges, especially at the control and management planes.<a href="#section-7-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-7-2.4.1">The integrity and access control protection of service-unit indirection mechanisms, such as QUIs, to avoid attacks leading to resource exhaustion, state mix-up, unauthorized consumption, or incorrect association between applications and quantum resources.<a href="#section-7-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-7-2.5">
+          <p id="section-7-2.5.1">The explicit freshness and lifetime information about QUI allocations and service-unit bindings, to address attacks related to replay, stale-state reuse, and state confusion risks during establishment, re-binding, and consumption of shared states.<a href="#section-7-2.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-7-2.6">
+          <p id="section-7-2.6.1">The protection of classical ancillary functions associated with nodes, as any manipulation of these functions can impact security, triggering wrong correction operations, incorrect service-unit binding, or unauthorized use of quantum resources.<a href="#section-7-2.6.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-7-2.7">
+          <p id="section-7-2.7.1">The trust issues in inter-domain exchanges, especially at the control and management planes.<a href="#section-7-2.7.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-7-3">Furthermore, as the identification of interfaces and protocols progresses other considerations will be required. In particular, the security considerations included in the documents referenced for the Connectivity Stratum, <span>[<a href="#RFC8453" class="cite xref">RFC8453</a>]</span> and <span>[<a href="#RFC8637" class="cite xref">RFC8637</a>]</span> apply to the proposed framework.<a href="#section-7-3" class="pilcrow">¶</a></p>
@@ -1937,6 +2060,14 @@ Large consortia are building ecosystem roadmaps and testbed programs aimed at ev
 <div class="email">
 <span>Email:</span>
 <a href="mailto:luismiguel.contrerasmurillo@telefonica.com" class="email">luismiguel.contrerasmurillo@telefonica.com</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Chathura Sarathchandra</span></div>
+<div dir="auto" class="left"><span class="org">InterDigital</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:chathura.sarathchandra@interdigital.com" class="email">chathura.sarathchandra@interdigital.com</a>
 </div>
 </address>
 </section>
