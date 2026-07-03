@@ -35,6 +35,9 @@ author:
  - name: Luis M. Contreras
    organization: Telefonica
    email: "luismiguel.contrerasmurillo@telefonica.com"
+ - name: Chathura Sarathchandra
+   organization: InterDigital
+   email: "chathura.sarathchandra@interdigital.com"
 
 normative:
  RFC8141:
@@ -586,6 +589,62 @@ As a result of the routing procedures and the interaction among SS control plane
 
 Finally, a word on the telemetry planes in each of the proposed strata. It should be obvious the elements in the control planes at each of the strata should start monitoring mechanisms at the involved elements in the resource planes and activate telemetry collection mechanisms. This brings the requirement of defining and experimenting with appropriate metrics and telemetry data models for both the SS and the QFS, as already being defined for QKD infrastructures {{ETSI23}}.
 
+### Scoped Handles for Service Units (QUI)
+
+Service unit identifiers are intended to be stable and meaningful to applications and SS functions, typically by combining endpoint identifiers and lifecycle parameters. However, the internal handles used to access quantum memories, communication qubits, entangled pairs, or other device-local quantum resources are often local to a device, technology, implementation, or administrative domain. Exposing such device-local handles outside their local scope can unnecessarily reveal resource structure and can complicate reallocation, recovery, and inter-domain operation.
+
+A useful indirection mechanism is a domain-scoped Quantum Unit Identifier (QUI). Following this approach, the application-facing service unit identifier corresponds to one or more domain-scoped QUIs, and each QUI may be mapped inside its domain to the corresponding device-local quantum resource handles.  A QUI is not expected to be globally unique. Its scope can be an administrative domain, a technology segment, a trust domain, a controller domain, or another operational scope appropriate to the deployment.
+
+A QUI may represent a single entangled pair, a set of entangled pairs, a quantum memory allocation, a local share of an end-to-end shared state, or another quantum resource unit relevant to the service. The same end-to-end service unit may therefore be associated with different QUIs in different domains, while preserving the service-unit abstraction presented to applications.
+
+Because quantum resources are time-sensitive, a QUI may naturally be associated with lifecycle information. Such information may include a time-to-live, a coherence window, an expiry time, an age value, or an availability window.  The relevant lifecycle properties are exposed through the interface betweehn the SS and QFS, so it is possible to decide whether a resource remains usable, whether it has to be consumed immediately, or whether it has to be replaced to fulfill a given service unit denotation.
+
+A QUI may also include, or be associated with, freshness information such as a nonce or other one-time value.  Freshness information is useful to distinguish different allocations, avoid accidental reuse of stale state, and reduce replay or mix-up risks when several service units or resource allocations are active at the same time.
+
+The use of a QUI may also enable re-binding.  For example, when a particular entangled pair decoheres, a quantum memory allocation fails, a link-level establishment attempt does not reach the target fidelity, or an implementation decides to regenerate the underlying state, the domain can bind the same service-unit context to a new local quantum resource allocation.  Such re-binding may not imply preservation of a consumed or measured quantum state; it is a control-plane mechanism for replacing or refreshing the underlying resource associated with the service unit.
+
+Resolution among service unit identifiers and QUIs happens at the interface between the SS and QFS control planes, while the mapping of QUIs to the applicable device-local resource handles would be typically performed by QFS resource-plane agents, managed by the QFS control plane, though particular architectures may define specific control and management functions for this purpose. The mapping between a QUI and device-local handles is expected to remain local to the relevant scope unless explicitly exposed through an inter-domain or management interface.
+
+### Quantum QoS Parameters
+
+Admission, routing, resource reservation, and maintenance of entanglement-based service units require parameters that describe the requested and achieved quality of the quantum resource. These parameters will be carried in service requests, used internally by SS and QFS control functions, and exposed through telemetry. They apply at different granularities, including a physical quantum link, a link-level entanglement, a segment, a domain, or an end-to-end service unit. Quantum QoS parameters to be considered include:
+
+*	Target fidelity: the desired minimum quality of the shared state, either end-to-end or per segment.
+
+*	Achieved or estimated fidelity: the observed or predicted quality of an established state, including the effects of link loss, local operations, swapping, purification, and storage time.
+
+*	Entanglement generation rate: the expected, requested, or observed rate at which usable entangled pairs can be generated.
+
+* End-to-end success probability: the probability that the requested shared state can be established with the requested parameters, optionally expressed per link, per segment, or for the complete service unit.
+
+* Establishment latency: the time required to create a usable service unit, including link-level entanglement generation, heralding, swapping, purification, resource reservation, and relevant control interactions.
+
+* Quantum communication latency: the latency relevant to the quantum application, including any classical-assist signaling required for measurement outcomes, timing, feed-forward operations, or completion of teleportation-based procedures.
+
+* Age, time-to-live, or coherence window: the time for which a shared state or resource allocation is expected to remain usable.
+
+* Swapping depth cap: the maximum number of entanglement-swapping operations, or the maximum repeater depth, acceptable for the requested service unit.
+
+* Quantum memory constraints: the amount, type, and availability of memory qubits and communication qubits at the endpoints and intermediate nodes.
+
+* Purification support and cost: whether purification is available, which purification schemes or cycles are supported, and their effect on fidelity, rate, latency, and resource consumption.
+
+* Classical-assist constraints: latency, reliability, timing, and synchronization properties of the classical channels used for heralding, measurement-outcome exchange, calibration, and feed-forward control.
+
+* Loss and error indicators: parameters describing photon loss, failed entanglement attempts, decoherence events, operation errors, or classical packet loss affecting the quantum procedure.
+
+* Application or service constraints: policy or application-level constraints such as availability windows, allowed technologies (for example fiber or free-space links), supported service types, or restrictions on which domains or node capabilities can be used.
+
+These parameters provide the basis for evaluating the suitability of a candidate path, deciding whether a service unit request can be fulfilled, selecting among alternative paths, deciding whether purification is needed, and triggering refresh, re-establishment, or re-binding when the observed quality no longer satisfies the service objective.
+
+### Classical Ancillary Functions
+
+Many quantum-network procedures require a classical ancillary function associated with a quantum node or quantum resource. This function can be realized in the same physical node as the quantum resource, in an attached classical controller or agent, or in a logically separate control-plane element. Its role is not to carry quantum information, but to support the control and consumption of quantum resources.
+
+Examples of these ancillary functions include translating service-unit identifiers to QUIs, and these into local resource handles, forwarding service requests to local quantum resources, exchanging measurement outcomes, coordinating heralding and entanglement swapping, distributing timing and calibration information, performing authentication and authorization checks, and applying feed-forward information such as correction data required by teleportation-based procedures.
+
+The use of such functions requires clear interfaces among the different strata, applying classical control and timing paths as part of the quality and security envelope of an entanglement-based service unit.
+
 ## Identification of Interfaces and Protocols
 
 The architecture proposed in this document is intended as a framework to evaluate and explore compatibility among the different proposals on protocols and interfaces for the future availability of quantum features in the global Internet, with the goal of providing a uniform reference model to choose and apply the most appropriate solutions to the Quantum Internet challenges. While the reference architecture does not intend to identify a concrete set of these protocols and interfaces, it is useful to analyze current proposals and trends, and provide some guidance on how the framework can be useful for assessing the integration of the solutions applicable to the different elements that have to converge to realize the Quantum Internet.
@@ -658,6 +717,39 @@ Works in this category address potential attack surfaces and security-relevant p
 
 The report also analyzes how classical computing and networking elements attached to a quantum node materially affect the system's overall security risk. Attacks on the classical control, timing, or heralding information exchanged between nodes can propagate into integrity or availability failures even when the quantum channel itself is not directly compromised. This is consistent with the elaboration {{SECONS}} makes on the interaction of physical attacks with classical attacks on control and monitoring activities.
 
+## An Example Service-Unit Establishment Procedure
+
+Let us outline an example procedure for establishing an entanglement-based service unit between two quantum-capable endpoints. The procedure is informative and does not define a protocol or prescribe a particular control architecture. Different realizations can map the functions described below to SS, QFS, and CS control-plane entities in different ways.
+
+**0. Capability and Service Discovery**
+
+A requesting application or service consumer obtains information that quantum services or quantum-enhanced services are available. This information can be obtained through configuration, service discovery, registration, policy distribution, or another discovery mechanism. The discovered information can include service identifiers, endpoint identifiers, supported quantum QoS parameter ranges, availability windows, technology constraints, supported node capabilities, and any policy constraints relevant to service establishment.
+
+**1. Service Request**
+
+The requesting application or service consumer requests a service unit from an SS function. The request can include the requested service type, peer endpoint identifier or identifiers, lifecycle parameters such as size or time-to-live, and quantum QoS objectives such as target fidelity, minimum generation rate, success probability, establishment latency, or classical-assist latency. The SS function performs the applicable admission, authentication, authorization, and policy checks.
+
+**2. Candidate Path and Resource Evaluation**
+
+By request of the SS, QFS control functions evaluate candidate quantum paths between the relevant endpoints. The evaluation can consider available nodes, quantum memory constraints, communication-qubit availability, link-level entanglement generation rates, expected fidelity, purification capabilities, swapping depth, classical-assist latency, and policy constraints. Where physical or optical connectivity has to be established or reserved, the relevant CS functions are engaged to provide the required paths and classical assist channels.
+
+**3. Hop-by-Hop Resource Allocation**
+
+For each selected hop or segment, the relevant QFS control function requests allocation of the quantum resources needed to support the service unit. The allocation can be associated with a domain-scoped QUI. If a hop or segment cannot provide the requested resources or cannot satisfy the requested quality parameters, the control logic can attempt an alternative path, reduce or renegotiate objectives according to policy, or fail the establishment attempt and release previously allocated resources.
+
+**4. Entanglement Generation and Multi-Hop Operations**
+
+Once the required hop-level resources are available, the QFS coordinates entanglement generation on the relevant links. For multi-hop service units, intermediate nodes can perform entanglement swapping and, where supported and useful, purification. Classical ancillary functions carry the required heralding information, measurement outcomes, timing information, and feed-forward data. The resulting fidelity, success probability, age, and other relevant quantum QoS parameters are recorded or exposed to the responsible control functions.
+
+**5. Service-Unit Binding and Delivery**
+
+If the established shared state satisfies the requested objectives, the SS binds the resulting resource to the service unit identifier expected by the application. The application receives the information needed to consume the service unit, while domain-local mappings from service-unit identifiers to QUIs and from QUIs to
+device-local resource handles remain within the appropriate administrative scope.
+
+**6. Maintenance, Re-Establishment, and On-Demand Activation**
+
+Because coherence windows can be short and quality can degrade over time, telemetry can trigger refresh, re-establishment, or re-binding when a time-to-live is close to expiry, fidelity drops below the requested level, intermediate resources fail, or policy conditions change. Some deployments can also separate authorization and reservation from actual entanglement creation. In such cases, the service request establishes the right to consume a quantum service, while the shared state is generated later, when the application is ready to use it.
+
 ## The Role of Synthetic Environments {#QNDTS}
 
 Due to the early stage of many, if not all, quantum technologies, experimenting with quantum devices and equipment can be seriously hindered by high costs and limited availability. This challenge is particularly evident for experimentation at the scale required to validate network protocols and inter- and intra-strata interfaces. In this context, synthetic environments, and synthetic testbeds enabled by these environments, become an essential tool. They enable the emulation of quantum network deployments in a fully controlled setting, allowing the execution of experiments and trials, protocol evaluations, and even security analyses, where potential network attacks can be tested without compromising the integrity of an already built quantum network or a significant number of physical devices.
@@ -715,6 +807,12 @@ The general considerations made in {{RFC8597}} apply, as well as an elaboration 
 * Specific physical attacks related to the particular quantum mechanisms in use by the quantum fabric stratum.
 
 * The interaction of these physical attacks with classical attacks to the control and monitoring activities, possibly translating into a threat surface augmentation.
+
+* The integrity and access control protection of service-unit indirection mechanisms, such as QUIs, to avoid attacks leading to resource exhaustion, state mix-up, unauthorized consumption, or incorrect association between applications and quantum resources.
+
+* The explicit freshness and lifetime information about QUI allocations and service-unit bindings, to address attacks related to replay, stale-state reuse, and state confusion risks during establishment, re-binding, and consumption of shared states.
+
+* The protection of classical ancillary functions associated with nodes, as any manipulation of these functions can impact security, triggering wrong correction operations, incorrect service-unit binding, or unauthorized use of quantum resources.
 
 * The trust issues in inter-domain exchanges, especially at the control and management planes.
 
